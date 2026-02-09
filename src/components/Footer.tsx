@@ -1,4 +1,4 @@
-import { ChefHat } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <ChefHat size={24} className="text-primary-light" />
+            <Image src="/images/logo.png" alt="LabManager" width={24} height={24} />
             <span className="text-lg font-bold tracking-wide">LABMANAGER</span>
           </div>
 

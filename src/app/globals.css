@@ -2,10 +2,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1a1a1a;
+  --foreground: #333333;
   --primary: #4403af;
   --primary-light: #5a1ec9;
   --primary-dark: #3a0390;
+  --success: #107C10;
+  --warning: #E6A700;
+  --error: #E81123;
 }
 
 @theme inline {

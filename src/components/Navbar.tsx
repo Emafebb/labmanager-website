@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
@@ -9,8 +10,9 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/5">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold text-primary tracking-wide">
-          LABMANAGER
+        <a href="#" className="flex items-center gap-2">
+          <Image src="/images/logo.png" alt="LabManager" width={32} height={32} />
+          <span className="text-xl font-bold text-primary tracking-wide">LABMANAGER</span>
         </a>
 
         {/* Desktop menu */}

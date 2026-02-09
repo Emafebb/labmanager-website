@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Smartphone,
   ChefHat,
@@ -58,7 +59,7 @@ export default function Hero() {
               {/* Phone mockup */}
               <div className="w-36 h-64 bg-gray-900 rounded-2xl p-1.5 shadow-xl">
                 <div className="w-full h-full bg-gradient-to-b from-primary/20 to-primary/5 rounded-xl flex flex-col items-center justify-center gap-2">
-                  <ChefHat size={32} className="text-primary" />
+                  <Image src="/images/logo.png" alt="LabManager" width={40} height={40} />
                   <span className="text-[10px] font-bold text-primary">LABMANAGER</span>
                   <div className="w-16 h-1.5 bg-primary/20 rounded-full" />
                   <div className="w-12 h-1.5 bg-primary/20 rounded-full" />
@@ -68,7 +69,7 @@ export default function Hero() {
               {/* Tablet mockup */}
               <div className="hidden sm:block w-64 h-44 bg-gray-900 rounded-xl p-1.5 shadow-xl">
                 <div className="w-full h-full bg-gradient-to-b from-primary/20 to-primary/5 rounded-lg flex flex-col items-center justify-center gap-2">
-                  <ChefHat size={28} className="text-primary" />
+                  <Image src="/images/logo.png" alt="LabManager" width={32} height={32} />
                   <span className="text-xs font-bold text-primary">LABMANAGER TABLET</span>
                   <div className="flex gap-2">
                     <div className="w-16 h-16 bg-primary/10 rounded-lg" />
