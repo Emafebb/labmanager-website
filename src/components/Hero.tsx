@@ -12,8 +12,8 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-              LabManager è l&apos;app completa per gestire ricette, costi e
-              produzione della tua pasticceria.
+              LabManager è il gestionale completo per la tua pasticceria: ricette, costi,
+              etichette alimentari e produzione in un&apos;unica app.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
@@ -48,7 +48,7 @@ export default function Hero() {
             <div className="hidden sm:block w-36 sm:w-40 bg-gray-900 rounded-3xl p-1.5 shadow-xl overflow-hidden relative z-10 -mr-6 mb-4">
               <Image
                 src="/images/screen smartphone.jpg"
-                alt="LabManager su smartphone"
+                alt="App gestione pasticceria LabManager su smartphone Android"
                 width={360}
                 height={640}
                 className="w-full h-auto rounded-2xl"
@@ -60,7 +60,7 @@ export default function Hero() {
               <div className="w-full max-w-[320px] sm:w-[480px] sm:max-w-none lg:w-[420px] xl:w-[500px] bg-gray-900 rounded-xl p-1.5 shadow-2xl overflow-hidden">
                 <Image
                   src="/images/Screenshot DESKTOP.png"
-                  alt="LabManager su desktop"
+                  alt="Software gestionale pasticceria LabManager - dashboard desktop con ricette e costi"
                   width={1920}
                   height={1080}
                   className="w-full h-auto rounded-lg"
@@ -74,7 +74,7 @@ export default function Hero() {
             <div className="hidden sm:block w-44 sm:w-52 lg:w-44 xl:w-48 bg-gray-900 rounded-2xl p-1.5 shadow-xl overflow-hidden relative z-10 -ml-6 mb-4">
               <Image
                 src="/images/Screenshot tablet.jpg"
-                alt="LabManager su tablet"
+                alt="Gestionale pasticceria LabManager su tablet in laboratorio"
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-xl"

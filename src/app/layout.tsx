@@ -72,6 +72,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: BASE_URL,
+    languages: {
+      "it": BASE_URL,
+    },
   },
 };
 
@@ -90,6 +93,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
+                  "@type": "WebSite",
+                  name: "LabManager",
+                  url: BASE_URL,
+                  inLanguage: "it",
+                },
+                {
                   "@type": "Organization",
                   name: "LabManager",
                   url: BASE_URL,
@@ -100,11 +109,16 @@ export default function RootLayout({
                     email: "labmanager.info@gmail.com",
                     availableLanguage: "Italian",
                   },
+                  areaServed: {
+                    "@type": "Country",
+                    name: "Italia",
+                  },
                 },
                 {
                   "@type": "SoftwareApplication",
                   name: "LabManager",
                   applicationCategory: "BusinessApplication",
+                  applicationSubCategory: "Gestionale Pasticceria",
                   operatingSystem: "Android, Windows",
                   offers: {
                     "@type": "Offer",
@@ -112,7 +126,9 @@ export default function RootLayout({
                     priceCurrency: "EUR",
                   },
                   description:
-                    "App completa per gestire la tua pasticceria: ricette, ingredienti, costi, etichette alimentari, produzione e vendite.",
+                    "Software gestionale per pasticceria: gestisci ricette, ingredienti, costi, etichette alimentari EU 1169/2011, produzione e vendite.",
+                  featureList:
+                    "Gestione ricette, Bilanciamento, Calcolo costi, Etichette alimentari, Tabella nutrizionale, Dashboard produzione, Funzionamento offline",
                 },
               ],
             }),

@@ -7,7 +7,7 @@ const faqs = [
   {
     question: "Come posso provare l'app?",
     answer:
-      "Contattaci tramite il form per richiedere accesso. L'app è attualmente in fase di lancio e stiamo selezionando i primi utenti.",
+      "Contattaci tramite il form per richiedere accesso al nostro gestionale per pasticceria. L'app è attualmente in fase di lancio e stiamo selezionando i primi utenti.",
   },
   {
     question: "Quanto costa LabManager?",

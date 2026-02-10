@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -6,12 +5,6 @@ import Platforms from "@/components/Platforms";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
-
-export const metadata: Metadata = {
-  title: "LabManager - Il tuo braccio destro in laboratorio",
-  description:
-    "Gestisci ricette, ingredienti, costi, etichette alimentari EU 1169/2011, produzione e vendite della tua pasticceria. App disponibile per Android e Windows.",
-};
 
 export default function Home() {
   return (

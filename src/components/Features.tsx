@@ -99,8 +99,8 @@ export default function Features() {
             Tutto ciò che serve al tuo laboratorio
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Strumenti professionali pensati per la pasticceria moderna, dalla
-            ricetta al prodotto finito.
+            Software gestionale per pasticceria con strumenti professionali,
+            dalla ricetta al prodotto finito.
           </p>
         </div>
 

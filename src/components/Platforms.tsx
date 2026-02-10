@@ -36,7 +36,7 @@ export default function Platforms() {
             Un&apos;app, <span className="gradient-text">tutte le piattaforme</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            LabManager si adatta perfettamente al tuo dispositivo con
+            Il gestionale per pasticceria che si adatta al tuo dispositivo con
             un&apos;interfaccia nativa e ottimizzata per ogni piattaforma.
           </p>
         </div>
