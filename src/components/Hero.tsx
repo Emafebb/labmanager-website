@@ -1,93 +1,87 @@
 import Image from "next/image";
-import {
-  Smartphone,
-  ChefHat,
-  ArrowDown,
-} from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative px-6 pt-20 pb-24 bg-gradient-to-br from-gray-50 to-white text-center overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
+    <section className="px-6 pt-32 pb-12 bg-[#F8F9FA]" aria-labelledby="hero-heading">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
+          <div className="animate-fade-in-up lg:flex-1 text-center lg:text-left mb-16 lg:mb-0">
+            <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-display font-bold leading-tight mb-6 text-[var(--foreground)]">
+              La tua pasticceria,{" "}
+              <span className="gradient-text">sempre con te</span>
+            </h1>
 
-      <div className="relative max-w-4xl mx-auto flex flex-col items-center">
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-semibold tracking-wide mb-6">
-          <Smartphone size={14} />
-          NUOVA APP ANDROID DISPONIBILE
-        </span>
-
-        {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-          La tua pasticceria,{" "}
-          <span className="text-primary">sempre con te</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-lg text-gray-500 max-w-2xl mb-10 leading-relaxed">
-          LabManager &egrave; l&apos;app completa per gestire ricette, ingredienti,
-          costi e produzione della tua pasticceria. Ora disponibile su{" "}
-          <strong className="text-gray-700">Android smartphone e tablet</strong>.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-16">
-          <a
-            href="#download"
-            className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-xl text-base font-semibold hover:bg-primary-dark transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/30"
-          >
-            <Smartphone size={20} />
-            Scarica per Android
-          </a>
-          <a
-            href="#funzionalita"
-            className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-base font-semibold border-2 border-primary hover:bg-primary hover:text-white transition-all"
-          >
-            <ChefHat size={20} />
-            Scopri le Funzionalit&agrave;
-          </a>
-        </div>
-
-        {/* App mockup placeholder */}
-        <div className="w-full max-w-3xl">
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-2xl shadow-black/10 p-8 min-h-[350px] flex flex-col items-center justify-center gap-4">
-            <div className="flex gap-6 items-end">
-              {/* Phone mockup */}
-              <div className="w-36 h-64 bg-gray-900 rounded-2xl p-1.5 shadow-xl">
-                <div className="w-full h-full bg-gradient-to-b from-primary/20 to-primary/5 rounded-xl flex flex-col items-center justify-center gap-2">
-                  <Image src="/images/logo.png" alt="LabManager" width={40} height={40} />
-                  <span className="text-[10px] font-bold text-primary">LABMANAGER</span>
-                  <div className="w-16 h-1.5 bg-primary/20 rounded-full" />
-                  <div className="w-12 h-1.5 bg-primary/20 rounded-full" />
-                  <div className="w-20 h-1.5 bg-primary/20 rounded-full" />
-                </div>
-              </div>
-              {/* Tablet mockup */}
-              <div className="hidden sm:block w-64 h-44 bg-gray-900 rounded-xl p-1.5 shadow-xl">
-                <div className="w-full h-full bg-gradient-to-b from-primary/20 to-primary/5 rounded-lg flex flex-col items-center justify-center gap-2">
-                  <Image src="/images/logo.png" alt="LabManager" width={32} height={32} />
-                  <span className="text-xs font-bold text-primary">LABMANAGER TABLET</span>
-                  <div className="flex gap-2">
-                    <div className="w-16 h-16 bg-primary/10 rounded-lg" />
-                    <div className="w-16 h-16 bg-primary/10 rounded-lg" />
-                    <div className="w-16 h-16 bg-primary/10 rounded-lg" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className="text-sm text-gray-400 mt-4">
-              Sostituisci con screenshot reali della tua app
+            <p className="text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+              LabManager è l&apos;app completa per gestire ricette, costi e
+              produzione della tua pasticceria.
             </p>
-          </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-10 animate-bounce">
-          <ArrowDown size={24} className="text-gray-300" />
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
+              <a
+                href="#funzionalita"
+                className="inline-flex items-center justify-center bg-primary text-white px-8 py-4 rounded-lg text-base font-semibold transition-all duration-200 ease-out hover:opacity-90"
+              >
+                Scopri Funzionalità
+              </a>
+              <a
+                href="#contatti"
+                className="inline-flex items-center justify-center border-2 border-primary/20 bg-white text-primary px-8 py-4 rounded-lg text-base font-semibold transition-all duration-200 ease-out hover:border-primary/40"
+              >
+                Contattaci
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm text-gray-500">
+              {["Android + Windows", "Funziona Offline", "Dati sicuri su Cloud"].map((text) => (
+                <div key={text} className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-icon rounded-full" />
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="animate-fade-in lg:flex-1 flex items-end justify-center"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <div className="hidden sm:block w-36 sm:w-40 bg-gray-900 rounded-3xl p-1.5 shadow-xl overflow-hidden relative z-10 -mr-6 mb-4">
+              <Image
+                src="/images/screen smartphone.jpg"
+                alt="LabManager su smartphone"
+                width={360}
+                height={640}
+                className="w-full h-auto rounded-2xl"
+                priority
+              />
+            </div>
+
+            <div className="relative z-20 flex flex-col items-center">
+              <div className="w-full max-w-[320px] sm:w-[480px] sm:max-w-none lg:w-[420px] xl:w-[500px] bg-gray-900 rounded-xl p-1.5 shadow-2xl overflow-hidden">
+                <Image
+                  src="/images/Screenshot DESKTOP.png"
+                  alt="LabManager su desktop"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto rounded-lg"
+                  priority
+                />
+              </div>
+              <div className="w-24 h-4 bg-gray-800 rounded-b-lg" />
+              <div className="w-36 h-1.5 bg-gray-700 rounded-full" />
+            </div>
+
+            <div className="hidden sm:block w-44 sm:w-52 lg:w-44 xl:w-48 bg-gray-900 rounded-2xl p-1.5 shadow-xl overflow-hidden relative z-10 -ml-6 mb-4">
+              <Image
+                src="/images/Screenshot tablet.jpg"
+                alt="LabManager su tablet"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-xl"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

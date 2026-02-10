@@ -1,99 +1,146 @@
 import {
   ChefHat,
-  Calculator,
+  Scale,
+  Package,
+  Layers,
+  Wrench,
+  FileText,
   Tag,
   BarChart3,
   Wifi,
-  ShieldCheck,
-  Package,
-  FileText,
+  Calculator,
+  Printer,
+  Sparkles,
 } from "lucide-react";
 
 const features = [
   {
     icon: ChefHat,
-    title: "Gestione Ricette",
+    title: "Ricette",
     description:
-      "Crea, modifica e organizza tutte le ricette della tua pasticceria con ingredienti, procedimenti e rese.",
+      "Crea, modifica e organizza tutte le ricette con ingredienti, procedimenti e rese",
+  },
+  {
+    icon: Scale,
+    title: "Bilanciamento",
+    description:
+      "Analizza la composizione della ricetta (zuccheri, grassi, proteine, lattosio, solidi, acqua) con categorie di riferimento personalizzabili e range target",
   },
   {
     icon: Package,
     title: "Ingredienti & Semilavorati",
     description:
-      "Gestisci il tuo inventario di ingredienti con costi al kg, valori nutrizionali e semilavorati riutilizzabili.",
+      "Gestisci inventario ingredienti con costi al kg, valori nutrizionali e semilavorati riutilizzabili",
+  },
+  {
+    icon: Layers,
+    title: "Assemblaggi",
+    description:
+      "Combina più ricette e semilavorati per creare il prodotto finito (es. torta = pan di spagna + crema + glassa)",
+  },
+  {
+    icon: Wrench,
+    title: "Tools",
+    description:
+      "Calcolatori specifici per pasticceria: bagne, calcolo W, gelato, impasto, rinfresco lievito madre, stampi, tempistiche",
+  },
+  {
+    icon: FileText,
+    title: "Tabella Nutrizionale",
+    description:
+      "Calcola automaticamente i valori nutrizionali completi per ogni prodotto",
+  },
+  {
+    icon: Tag,
+    title: "Etichette alimentari",
+    description:
+      "Genera etichette alimentari con allergeni e valori nutrizionali scegliendo il formato desiderato",
+  },
+  {
+    icon: BarChart3,
+    title: "Dashboard",
+    description:
+      "Monitora produzione, vendite, lotti di produzione e performance con grafici e statistiche",
+  },
+];
+
+const advantages = [
+  {
+    icon: Wifi,
+    title: "Funziona Offline",
+    description: "Sincronizzazione automatica tra i dispositivi quando torni online",
   },
   {
     icon: Calculator,
     title: "Calcolo Costi Automatico",
-    description:
-      "Costo materie prime, manodopera e costi strutturali calcolati in tempo reale per ogni ricetta.",
+    description: "Materie prime, manodopera, strutturali",
   },
   {
-    icon: Tag,
-    title: "Etichette EU 1169/2011",
-    description:
-      "Genera etichette alimentari conformi alla normativa europea con allergeni, valori nutrizionali e ingredienti.",
-  },
-  {
-    icon: BarChart3,
-    title: "Dashboard Produzione & Vendite",
-    description:
-      "Monitora produzione, vendite, margini e performance con grafici interattivi e statistiche dettagliate.",
-  },
-  {
-    icon: Wifi,
-    title: "Funziona Offline",
-    description:
-      "Grazie a PowerSync, lavora senza connessione. I dati si sincronizzano automaticamente quando torni online.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Dati Sempre al Sicuro",
-    description:
-      "I tuoi dati sono crittografati e salvati su Supabase con backup automatici e autenticazione sicura.",
-  },
-  {
-    icon: FileText,
+    icon: Printer,
     title: "Stampa & Esporta PDF",
-    description:
-      "Stampa ricette, etichette e report. Esporta in PDF per condividere con il tuo team o i fornitori.",
+    description: "Ricette, etichette, report",
+  },
+  {
+    icon: Sparkles,
+    title: "Aggiornamenti Costanti",
+    description: "Nuove funzionalità e miglioramenti rilasciati regolarmente",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="funzionalita" className="px-6 py-24 bg-white">
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
+    <section id="funzionalita" className="py-24 bg-white" aria-labelledby="features-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Tutto ci&ograve; che serve alla tua pasticceria
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+            Funzionalità
+          </p>
+          <h2 id="features-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Tutto ciò che serve al tuo laboratorio
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            LabManager integra tutti gli strumenti per gestire la tua attivit&agrave;
-            in un&apos;unica app, dal laboratorio al punto vendita.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Strumenti professionali pensati per la pasticceria moderna, dalla
+            ricetta al prodotto finito.
           </p>
         </div>
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group p-6 bg-gray-50 rounded-xl border border-transparent hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+              className="app-card bg-white border border-card-border-light rounded-xl p-6 shadow-sm"
             >
-              <feature.icon
-                size={36}
-                className="text-primary mb-4 group-hover:scale-110 transition-transform"
-              />
-              <h3 className="text-base font-bold text-gray-900 mb-2">
+              <div className="bg-icon/10 rounded-xl p-3 w-fit mb-4">
+                <feature.icon className="text-icon" size={24} aria-hidden="true" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="bg-surface border border-card-border-light rounded-xl p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {advantages.map((advantage) => (
+              <div key={advantage.title} className="flex items-start gap-4">
+                <div className="bg-icon/10 rounded-xl p-3 shrink-0">
+                  <advantage.icon className="text-icon" size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground mb-1">
+                    {advantage.title}
+                  </h4>
+                  <p className="text-xs text-gray-600">
+                    {advantage.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

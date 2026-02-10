@@ -1,92 +1,73 @@
-import { Smartphone, Tablet, Monitor, CheckCircle2 } from "lucide-react";
+import { Smartphone, Tablet, Monitor } from "lucide-react";
 
 const platforms = [
   {
     icon: Smartphone,
-    name: "Android Smartphone",
-    badge: "NUOVO",
-    badgeColor: "bg-green-500",
-    description: "Porta LabManager sempre in tasca. Perfetto per consultare ricette e registrare vendite in movimento.",
-    features: [
-      "Interfaccia Material Design ottimizzata",
-      "Touch-friendly con gesti intuitivi",
-      "Funziona offline",
-      "Sincronizzazione automatica",
-    ],
+    name: "Smartphone",
+    title: "Sempre in tasca",
+    description:
+      "Porta LabManager sempre con te. Perfetto per consultare ricette e registrare vendite in movimento.",
   },
   {
     icon: Tablet,
-    name: "Android Tablet",
-    badge: "NUOVO",
-    badgeColor: "bg-green-500",
-    description: "Lo schermo pi\u00f9 grande del tablet ti offre una visione completa delle tue ricette e dashboard.",
-    features: [
-      "Layout ottimizzato per schermi grandi",
-      "Dashboard con grafici dettagliati",
-      "Ideale per il laboratorio",
-      "Multitasking facilitato",
-    ],
+    name: "Tablet",
+    title: "Lo schermo grande per il laboratorio",
+    description:
+      "Visione completa delle ricette e dashboard, ideale per la postazione in laboratorio.",
   },
   {
     icon: Monitor,
-    name: "Windows Desktop",
-    badge: "DISPONIBILE",
-    badgeColor: "bg-primary",
-    description: "La versione completa per il tuo ufficio con interfaccia Fluent UI professionale.",
-    features: [
-      "Interfaccia Fluent UI nativa",
-      "Gestione avanzata ricette e costi",
-      "Stampa etichette e PDF",
-      "Perfetto per la postazione fissa",
-    ],
+    name: "Desktop Windows",
+    title: "Gestione completa dall'ufficio",
+    description:
+      "La versione completa per gestire ricette, costi, etichette e report dalla postazione fissa.",
   },
 ];
 
 export default function Platforms() {
   return (
-    <section id="piattaforme" className="px-6 py-24 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Un&apos;app, tutte le piattaforme
+    <section id="piattaforme" className="px-6 py-32 bg-white" aria-labelledby="platforms-heading">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20 animate-fade-in-up">
+          <p className="uppercase text-sm font-bold tracking-widest text-primary mb-4">
+            Multi-piattaforma
+          </p>
+          <h2 id="platforms-heading" className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6">
+            Un&apos;app, <span className="gradient-text">tutte le piattaforme</span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            LabManager si adatta al tuo dispositivo con un&apos;interfaccia nativa per ogni piattaforma.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
+            LabManager si adatta perfettamente al tuo dispositivo con
+            un&apos;interfaccia nativa e ottimizzata per ogni piattaforma.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {platforms.map((platform) => (
+          {platforms.map((platform, index) => (
             <div
               key={platform.name}
-              className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <platform.icon size={32} className="text-primary" />
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {platform.name}
-                  </h3>
-                  <span
-                    className={`${platform.badgeColor} text-white text-[10px] font-bold px-2 py-0.5 rounded-full`}
-                  >
-                    {platform.badge}
-                  </span>
+              <div className="h-full bg-white rounded-xl p-8 border border-card-border-light shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center">
+                <div className="bg-icon/10 rounded-xl p-4 w-fit mx-auto mb-5">
+                  <platform.icon size={28} className="text-icon" strokeWidth={2} aria-hidden="true" />
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">
+                  {platform.name}
+                </h3>
+                <p className="text-sm font-medium text-icon mb-3">{platform.title}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {platform.description}
+                </p>
               </div>
-              <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                {platform.description}
-              </p>
-              <ul className="space-y-3">
-                {platform.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckCircle2 size={16} className="text-green-500 mt-0.5 shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <p className="text-gray-500 text-sm">
+            Tutti i dati sincronizzati in tempo reale tra i tuoi dispositivi
+          </p>
         </div>
       </div>
     </section>
