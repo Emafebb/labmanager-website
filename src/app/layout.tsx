@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -135,6 +136,10 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Script
+          src="https://embeds.iubenda.com/widgets/468f18b9-c49c-4c8a-8a3f-bc63040f7939.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
