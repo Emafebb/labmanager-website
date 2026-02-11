@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "L'app completa per gestire la tua pasticceria: ricette, ingredienti, costi, etichette EU 1169/2011, produzione e vendite. Disponibile per Android e Windows.",
+    "L'app completa per gestire la tua pasticceria: ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Disponibile per Android e Windows.",
   keywords: [
     "pasticceria",
     "gestione pasticceria",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "app pasticceria",
     "costi ricette",
     "etichette alimentari",
-    "EU 1169/2011",
+    "etichette alimentari",
     "software pasticceria",
     "gestione ingredienti",
     "produzione dolci",
@@ -126,7 +126,7 @@ export default function RootLayout({
                     priceCurrency: "EUR",
                   },
                   description:
-                    "Software gestionale per pasticceria: gestisci ricette, ingredienti, costi, etichette alimentari EU 1169/2011, produzione e vendite.",
+                    "Software gestionale per pasticceria: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite.",
                   featureList:
                     "Gestione ricette, Bilanciamento, Calcolo costi, Etichette alimentari, Tabella nutrizionale, Dashboard produzione, Funzionamento offline",
                 },

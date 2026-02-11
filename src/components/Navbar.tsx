@@ -57,7 +57,7 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-gray-900 tracking-tight">
-                LABMANAGER
+                LabManager
               </span>
               <span className="text-[10px] text-gray-500 font-medium tracking-widest -mt-1">
                 PASTICCERIA

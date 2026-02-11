@@ -45,7 +45,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-bold text-white tracking-tight">
-                    LABMANAGER
+                    LabManager
                   </span>
                   <span className="text-[10px] text-gray-400 font-medium tracking-widest -mt-1">
                     PASTICCERIA
