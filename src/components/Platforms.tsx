@@ -4,23 +4,23 @@ const platforms = [
   {
     icon: Smartphone,
     name: "Smartphone",
-    title: "Sempre in tasca",
+    title: "Gestione mobile del laboratorio",
     description:
-      "Porta LabManager sempre con te. Perfetto per consultare ricette e registrare vendite in movimento.",
+      "Consulta ricette, controlla inventario ingredienti e registra ordini in tempo reale. Gestione completa ovunque tu sia.",
   },
   {
     icon: Tablet,
     name: "Tablet",
-    title: "Lo schermo grande per il laboratorio",
+    title: "Controllo produzione in laboratorio",
     description:
-      "Visione completa delle ricette e dashboard, ideale per la postazione in laboratorio.",
+      "Monitora lavorazioni, tracciabilità ingredienti e calcolo costi in tempo reale. Schermo ottimizzato per la postazione di produzione.",
   },
   {
     icon: Monitor,
     name: "Desktop Windows",
-    title: "Gestione completa dall'ufficio",
+    title: "Gestione completa dell'attività",
     description:
-      "La versione completa per gestire ricette, costi, etichette e report dalla postazione fissa.",
+      "Analisi food cost, gestione ricette, etichette alimentari e report avanzati. Tutte le funzionalità per amministrare la tua bottega.",
   },
 ];
 
@@ -36,8 +36,8 @@ export default function Platforms() {
             Un&apos;app, <span className="gradient-text">tutte le piattaforme</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            Il gestionale per pasticceria che si adatta al tuo dispositivo con
-            un&apos;interfaccia nativa e ottimizzata per ogni piattaforma.
+            Software gestionale che si adatta al tuo dispositivo con sincronizzazione
+            dati in tempo reale e interfaccia ottimizzata per ogni piattaforma.
           </p>
         </div>
 

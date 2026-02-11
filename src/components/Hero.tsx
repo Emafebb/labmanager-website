@@ -7,13 +7,13 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
           <div className="animate-fade-in-up lg:flex-1 text-center lg:text-left mb-16 lg:mb-0">
             <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-display font-bold leading-tight mb-6 text-[var(--foreground)]">
-              La tua pasticceria,{" "}
+              Il Software per la Tua Pasticceria,{" "}
               <span className="gradient-text">sempre con te</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-              LabManager è il gestionale completo per la tua pasticceria: ricette, costi,
-              etichette alimentari e produzione in un&apos;unica app.
+              LabManager è l&apos;app per pasticceria che ti aiuta a gestire ricette, calcolo costi,
+              etichette alimentari e produzione in un unico gestionale completo.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">

@@ -21,23 +21,43 @@ const downloads: { icon: LucideIcon; name: string; subtitle: string; label: stri
   },
 ];
 
+const badges = [
+  "100% Gratuito",
+  "Funziona Offline",
+  "Nessun Abbonamento",
+  "Made in Italy",
+];
+
 export default function Download() {
   return (
-    <section className="px-6 py-24">
+    <section id="download-app" className="px-6 py-24" aria-labelledby="download-heading">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
             <DownloadIcon size={16} aria-hidden="true" />
-            <span>DOWNLOAD</span>
+            <span>DOWNLOAD GRATUITO</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            Scarica <span className="text-primary">LabManager</span>
-          </h1>
+          <h2 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+            Scarica <span className="text-primary">Gratis</span> l&apos;App per Pasticceria
+          </h2>
 
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Scegli la versione per il tuo dispositivo e inizia a gestire la tua pasticceria in modo professionale.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+            Software gestionale completo: scegli Android o Windows, funziona offline e senza abbonamento.
+            Inizia subito a gestire ricette, costi ed etichette.
           </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {badges.map((badge) => (
+              <span
+                key={badge}
+                className="inline-flex items-center gap-1.5 bg-primary/5 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/10"
+              >
+                <span aria-hidden="true">&#10003;</span>
+                {badge}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -47,7 +67,7 @@ export default function Download() {
                 <div className="bg-icon/10 rounded-xl p-4 w-fit mx-auto mb-5">
                   <item.icon size={32} className="text-icon" strokeWidth={2} aria-hidden="true" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground mb-1">{item.name}</h2>
+                <h3 className="text-2xl font-bold text-foreground mb-1">{item.name}</h3>
                 <p className="text-sm text-gray-500 mb-6">{item.subtitle}</p>
                 <div className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-primary-dark transition-colors duration-200">
                   <DownloadIcon size={18} aria-hidden="true" />

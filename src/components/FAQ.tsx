@@ -49,6 +49,26 @@ const faqs = [
     answer:
       "Assolutamente sì. I tuoi dati sono protetti con crittografia e salvati su server cloud sicuri. Ogni account è isolato: nessun altro utente può vedere le tue ricette o i tuoi dati. Anche senza connessione internet, tutto resta salvato sul tuo dispositivo e si sincronizza automaticamente appena torni online.",
   },
+  {
+    question: "Come funziona il calcolo costi ricetta in LabManager?",
+    answer:
+      "LabManager calcola automaticamente il costo di ogni ricetta sommando il prezzo degli ingredienti utilizzati, tenendo conto delle quantità esatte e degli scarti. Il sistema aggiorna i costi in tempo reale quando modifichi i prezzi di acquisto. Puoi monitorare i margini di guadagno e analizzare lo storico delle variazioni.",
+  },
+  {
+    question: "Come gestisco l'inventario ingredienti del laboratorio?",
+    answer:
+      "LabManager offre un sistema completo di gestione ingredienti: traccia le scorte disponibili, registra carichi e scarichi automatici durante la produzione e ti avvisa quando le quantità scendono sotto la soglia minima impostata. Ogni ingrediente include costo al kg, valori nutrizionali e allergeni.",
+  },
+  {
+    question: "Posso tracciare i lotti di produzione?",
+    answer:
+      "Sì, LabManager consente di gestire i lotti di produzione associando ogni lavorazione agli ingredienti utilizzati con numero di lotto e data di scadenza. Questo garantisce piena tracciabilità degli ingredienti per la sicurezza alimentare e il rispetto delle normative.",
+  },
+  {
+    question: "LabManager è veramente gratuito?",
+    answer:
+      "Sì, LabManager è un software gratuito per la gestione del tuo laboratorio. Puoi utilizzare tutte le funzionalità senza limiti di tempo e senza abbonamento. Non ci sono costi nascosti: scaricalo su Android o Windows e inizia subito.",
+  },
 ];
 
 export default function FAQ() {

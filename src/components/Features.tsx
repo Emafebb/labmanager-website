@@ -7,6 +7,7 @@ import {
   FileText,
   Tag,
   BarChart3,
+  DollarSign,
   Wifi,
   Calculator,
   Printer,
@@ -18,19 +19,25 @@ const features = [
     icon: ChefHat,
     title: "Ricette",
     description:
-      "Crea, modifica e organizza tutte le ricette con ingredienti, procedimenti e rese",
+      "Crea, modifica e organizza tutte le tue preparazioni con ingredienti, procedimenti e rese. Gestisci formule e varianti in un archivio digitale completo.",
+  },
+  {
+    icon: DollarSign,
+    title: "Calcolo Costi Ricette",
+    description:
+      "Calcola automaticamente i costi di ogni ricetta con analisi dettagliata di materie prime, manodopera e costi strutturali. Monitora i margini di guadagno.",
   },
   {
     icon: Scale,
     title: "Bilanciamento",
     description:
-      "Analizza la composizione della ricetta (zuccheri, grassi, proteine, lattosio, solidi, acqua) con categorie di riferimento personalizzabili e range target",
+      "Analisi composizione ricetta: zuccheri, grassi, proteine, lattosio, solidi e acqua. Categorie di riferimento personalizzabili con range target per ogni preparazione.",
   },
   {
     icon: Package,
     title: "Ingredienti & Semilavorati",
     description:
-      "Gestisci inventario ingredienti con costi al kg, valori nutrizionali e semilavorati riutilizzabili",
+      "Gestisci l'inventario del laboratorio con costi al kg, valori nutrizionali e semilavorati riutilizzabili. Tracciabilità ingredienti sempre sotto controllo.",
   },
   {
     icon: Layers,
@@ -42,25 +49,25 @@ const features = [
     icon: Wrench,
     title: "Tools",
     description:
-      "Calcolatori specifici per pasticceria: bagne, calcolo W, gelato, impasto, rinfresco lievito madre, stampi, tempistiche",
+      "Calcolatori specifici per il laboratorio: bagne, calcolo W, gelato, impasto, rinfresco lievito madre, stampi, tempistiche",
   },
   {
     icon: FileText,
     title: "Tabella Nutrizionale",
     description:
-      "Calcola automaticamente i valori nutrizionali completi per ogni prodotto",
+      "Calcola automaticamente i valori nutrizionali di ogni ricetta e prodotto finito, pronti per etichette e documentazione.",
   },
   {
     icon: Tag,
     title: "Etichette alimentari",
     description:
-      "Genera etichette alimentari con allergeni e valori nutrizionali scegliendo il formato desiderato",
+      "Genera etichette alimentari con allergeni evidenziati e tabella nutrizionale. Scegli il formato desiderato, pronte per la stampa.",
   },
   {
     icon: BarChart3,
     title: "Dashboard",
     description:
-      "Monitora produzione, vendite, lotti di produzione e performance con grafici e statistiche",
+      "Monitora produzione, vendite, lotti e tracciabilità con grafici e statistiche. Tieni sotto controllo le performance del tuo laboratorio.",
   },
 ];
 
@@ -72,13 +79,13 @@ const advantages = [
   },
   {
     icon: Calculator,
-    title: "Calcolo Costi Automatico",
-    description: "Materie prime, manodopera, strutturali",
+    title: "Gratuito",
+    description: "Software free per la tua attività, nessun abbonamento richiesto",
   },
   {
     icon: Printer,
     title: "Stampa & Esporta PDF",
-    description: "Ricette, etichette, report",
+    description: "Ricette, etichette, report pronti per la stampa",
   },
   {
     icon: Sparkles,
