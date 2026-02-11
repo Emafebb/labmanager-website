@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Platforms from "@/components/Platforms";
-import Download from "@/components/Download";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -21,7 +20,6 @@ export default function Home() {
         <Hero />
         <Features />
         <Platforms />
-        <Download />
         <ContactForm />
         <FAQ />
       </main>

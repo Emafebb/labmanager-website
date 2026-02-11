@@ -57,7 +57,7 @@ const faqs = [
   {
     question: "Come gestisco l'inventario ingredienti del laboratorio?",
     answer:
-      "LabManager offre un sistema completo di gestione ingredienti: traccia le scorte disponibili, registra carichi e scarichi automatici durante la produzione e ti avvisa quando le quantità scendono sotto la soglia minima impostata. Ogni ingrediente include costo al kg, valori nutrizionali e allergeni.",
+      "LabManager offrirà presto anche questa opzione.",
   },
   {
     question: "Posso tracciare i lotti di produzione?",
@@ -67,7 +67,7 @@ const faqs = [
   {
     question: "LabManager è veramente gratuito?",
     answer:
-      "Sì, LabManager è un software gratuito per la gestione del tuo laboratorio. Puoi utilizzare tutte le funzionalità senza limiti di tempo e senza abbonamento. Non ci sono costi nascosti: scaricalo su Android o Windows e inizia subito.",
+      "Sì, LabManager è un software gratuito per la gestione del tuo laboratorio. Puoi utilizzare tutte le funzionalità senza limiti di tempo e senza abbonamento. Non ci sono costi nascosti: scaricalo su Android o Windows e inizia subito. Ti ricordiamo che questo è valido per la fase di lancio,a seguire ci saranno degli abbonamementi",
   },
 ];
 
