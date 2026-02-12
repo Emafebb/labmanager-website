@@ -1,13 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { Smartphone, Monitor, Download as DownloadIcon, ShieldAlert, ChevronDown } from "lucide-react";
+import {
+  Smartphone,
+  Monitor,
+  Download as DownloadIcon,
+  ShieldAlert,
+  ChevronDown,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+interface DownloadItem {
+  icon: LucideIcon;
+  name: string;
+  subtitle: string;
+  label: string;
+  href: string;
+}
 
 const ANDROID_APK_URL = process.env.NEXT_PUBLIC_APK_URL || "#";
 const WINDOWS_INSTALLER_URL = process.env.NEXT_PUBLIC_WINDOWS_URL || "#";
 
-const downloads: { icon: LucideIcon; name: string; subtitle: string; label: string; href: string }[] = [
+const downloads: DownloadItem[] = [
   {
     icon: Smartphone,
     name: "Android",
@@ -25,9 +39,9 @@ const downloads: { icon: LucideIcon; name: string; subtitle: string; label: stri
 ];
 
 const badges = [
-  "100% Gratuito(al momento)",
+  "100% Gratuito (in fase di sviluppo)",
   "Funziona Offline",
-  "Multiutente",
+  "Multi-utente",
   "Supporto Diretto",
 ];
 
@@ -102,6 +116,7 @@ export default function Download() {
 
         {/* Banner collassabile: guida installazione APK */}
         <div className="max-w-3xl mx-auto bg-amber-50 border border-amber-200/60 rounded-xl p-5 sm:p-6 mt-8">
+          <h3 id="installation-guide-heading" className="sr-only">Guida all&apos;installazione APK</h3>
           <button
             id="installation-guide-button"
             type="button"
@@ -134,7 +149,7 @@ export default function Download() {
           <div
             id="installation-guide-content"
             role="region"
-            aria-labelledby="installation-guide-button"
+            aria-labelledby="installation-guide-heading"
             className={`overflow-hidden transition-all duration-300 ease-in-out ${
               guideOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
             }`}

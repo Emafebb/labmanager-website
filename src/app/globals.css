@@ -125,11 +125,38 @@ html {
   transform: translateY(-2px);
 }
 
+/* Hero device animations */
+@keyframes heroDeviceSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-device-desktop {
+  animation: heroDeviceSlideUp 0.6s ease-out 0.2s both;
+}
+
+.hero-device-tablet {
+  animation: heroDeviceSlideUp 0.5s ease-out 0.45s both;
+}
+
+.hero-device-phone {
+  animation: heroDeviceSlideUp 0.5s ease-out 0.6s both;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up,
   .animate-fade-in,
-  .animate-scale-in {
+  .animate-scale-in,
+  .hero-device-desktop,
+  .hero-device-tablet,
+  .hero-device-phone {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

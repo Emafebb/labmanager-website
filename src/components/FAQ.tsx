@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { HelpCircle, ChevronDown } from "lucide-react";
 
+const LINK_CLASS = "text-primary underline hover:text-primary-dark";
+
 const faqs = [
   {
     question: "Come posso provare l'app?",
     answer:
-      "Contattaci tramite il form per richiedere accesso al nostro gestionale per pasticceria. L'app è attualmente in fase di lancio e stiamo selezionando i primi utenti.",
+      `Contattaci tramite il <a href='#contatti' class='${LINK_CLASS}'>modulo contatti</a> per richiedere accesso al nostro gestionale per pasticceria. L'app è attualmente in fase di lancio e stiamo selezionando i primi utenti.`,
   },
   {
     question: "Quanto costa LabManager?",
@@ -17,7 +19,7 @@ const faqs = [
   {
     question: "Funziona senza internet?",
     answer:
-      "Sì, LabManager è progettato per funzionare offline: ricette, ingredienti, costi, etichette e tutti gli strumenti sono sempre disponibili anche senza connessione. La connessione è richiesta solo per la registrazione, il login e la sincronizzazione dei dati tra dispositivi. Quando torni online, tutto si aggiorna automaticamente.",
+      `Sì, LabManager è progettato per funzionare offline: ricette, ingredienti, costi, etichette e tutti gli strumenti sono sempre disponibili anche senza connessione. Scopri tutte le <a href='#funzionalita' class='${LINK_CLASS}'>funzionalità disponibili</a>. La connessione è richiesta solo per la registrazione, il login e la sincronizzazione dei dati tra dispositivi. Quando torni online, tutto si aggiorna automaticamente.`,
   },
   {
     question: "Su quanti dispositivi posso usarlo?",
@@ -27,7 +29,7 @@ const faqs = [
   {
     question: "Posso esportare ricette e documenti?",
     answer:
-      "Sì, puoi esportare ricette in PDF ed Excel, incluse tabelle nutrizionali, etichette e report. I documenti sono pronti per la stampa.",
+      `Sì, puoi esportare ricette in PDF ed Excel, incluse tabelle nutrizionali, etichette e report. Vedi la sezione <a href='#funzionalita' class='${LINK_CLASS}'>Funzionalità</a> per maggiori dettagli. I documenti sono pronti per la stampa.`,
   },
   {
     question: "L'app genera etichette alimentari?",
@@ -37,12 +39,12 @@ const faqs = [
   {
     question: "Posso usarlo con il mio team?",
     answer:
-      "Sì, puoi aggiungere i tuoi dipendenti con accesso tramite PIN e ruoli diversi (pasticcere, commessa, ecc.). Le ricette e gli assemblaggi possono essere condivisi tra gli utenti del team.",
+      "Sì, puoi aggiungere i tuoi dipendenti con accesso tramite PIN e ruoli diversi (pasticcere, banconista, ecc.). Le ricette e gli assemblaggi possono essere condivisi tra gli utenti del team.",
   },
   {
     question: "Sarà disponibile per iPhone/iPad?",
     answer:
-      "Attualmente LabManager è disponibile per Android e Windows. Il supporto iOS è in fase di valutazione per il futuro.",
+      `Attualmente LabManager è disponibile per Android e Windows. <a href='#contatti' class='${LINK_CLASS}'>Contattaci</a> per richiedere l'accesso. Il supporto iOS è in fase di valutazione per il futuro.`,
   },
   {
     question: "I miei dati sono al sicuro?",
@@ -62,14 +64,14 @@ const faqs = [
   {
     question: "Posso tracciare i lotti di produzione?",
     answer:
-      "Sì, LabManager consente di gestire i lotti di produzione associando ogni lavorazione agli ingredienti utilizzati con numero di lotto e data di scadenza. Questo garantisce piena tracciabilità degli ingredienti per la sicurezza alimentare e il rispetto delle normative.",
+      "Sì, LabManager consente di gestire i lotti di produzione associando ogni lavorazione agli ingredienti utilizzati con numero di lotto e data di scadenza. Questo garantisce piena tracciabilità della produzione per la sicurezza alimentare e il rispetto delle normative.",
   },
-  {
-    question: "LabManager è veramente gratuito?",
-    answer:
-      "Sì, LabManager è un software gratuito per la gestione del tuo laboratorio. Puoi utilizzare tutte le funzionalità senza limiti di tempo e senza abbonamento. Non ci sono costi nascosti: scaricalo su Android o Windows e inizia subito. Ti ricordiamo che questo è valido per la fase di lancio,a seguire ci saranno degli abbonamementi",
-  },
+  
 ];
+
+function stripHtmlTags(html: string): string {
+  return html.replace(/<[^>]*>/g, "");
+}
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -86,7 +88,7 @@ export default function FAQ() {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: stripHtmlTags(faq.answer),
       },
     })),
   };
@@ -129,9 +131,9 @@ export default function FAQ() {
                   aria-controls={`faq-answer-${index}`}
                   className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
                 >
-                  <span className="font-semibold text-gray-900">
+                  <h3 className="font-semibold text-gray-900 text-base">
                     {faq.question}
-                  </span>
+                  </h3>
                   <ChevronDown
                     size={20}
                     aria-hidden="true"
@@ -149,9 +151,10 @@ export default function FAQ() {
                     isOpen ? "max-h-[600px]" : "max-h-0"
                   }`}
                 >
-                  <p className="px-6 pb-6 text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
+                  <div
+                    className="px-6 pb-6 text-gray-600 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: faq.answer }}
+                  />
                 </div>
               </div>
             );

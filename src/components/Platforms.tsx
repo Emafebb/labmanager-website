@@ -4,23 +4,23 @@ const platforms = [
   {
     icon: Smartphone,
     name: "Smartphone",
-    title: "Gestione mobile del laboratorio",
+    title: "App Ricette Pasticceria - Gestione Mobile",
     description:
-      "Consulta ricette, controlla inventario ingredienti e registra ordini in tempo reale. Gestione completa ovunque tu sia.",
+      "Consulta ricette, controlla ingredienti e registra vendite e produzioni in tempo reale. Gestione completa ovunque tu sia.",
   },
   {
     icon: Tablet,
     name: "Tablet",
-    title: "Controllo produzione in laboratorio",
+    title: "Dashboard Produzione - Monitoraggio da Tablet",
     description:
-      "Monitora lavorazioni, tracciabilità ingredienti e calcolo costi in tempo reale. Schermo ottimizzato per la postazione di produzione.",
+      "Monitora lavorazioni, tracciabilità, lotti e calcolo costi in tempo reale. Schermo ottimizzato per la postazione di produzione.",
   },
   {
     icon: Monitor,
     name: "Desktop Windows",
-    title: "Gestione completa dell'attività",
+    title: "Software Gestionale Pasticceria - Suite Completa",
     description:
-      "Analisi food cost, gestione ricette, etichette alimentari e report avanzati. Tutte le funzionalità per amministrare la tua bottega.",
+      "Analisi food cost, gestione ricette, etichette alimentari e report avanzati. Tutte le funzionalità per amministrare la tua attività.",
   },
 ];
 
