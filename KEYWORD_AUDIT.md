@@ -735,7 +735,6 @@ TOTAL COMPETITOR GAP SCORE: 6.8/10
 
 4. **"software free pasticceria"** - Highlight in Hero CTA
    - Current: "gratuito" mentioned in FAQ only
-   - Potential: Badge "Software Gratuito" or "Free per Pasticcerie"
    - Impact: +80-150 monthly searches (exact match bonus)
    - Effort: Very Low
 

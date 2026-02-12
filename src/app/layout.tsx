@@ -194,7 +194,7 @@ const structuredDataGraph = {
       "@id": `${BASE_URL}/#product`,
       name: "LabManager - Software Gestionale Pasticceria",
       description:
-        "Software gratuito per gestire la tua pasticceria: ricette, costi, etichette e allergeni. Disponibile per Android e Windows.",
+        "Software per gestire la tua pasticceria: ricette, costi, etichette e allergeni. Disponibile per Android e Windows.",
       brand: { "@type": "Brand", name: "LabManager" },
       offers: { ...FREE_OFFER, url: BASE_URL },
       category: "Business Software",
