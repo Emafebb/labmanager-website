@@ -47,6 +47,14 @@ export default function ContactForm() {
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Hai domande sulle{" "}
+            <a href="#funzionalita" className="text-primary underline hover:text-primary-dark">
+              funzionalità
+            </a>{" "}
+            o sulle{" "}
+            <a href="#piattaforme" className="text-primary underline hover:text-primary-dark">
+              piattaforme disponibili
+            </a>?
             Il nostro team è pronto ad aiutarti. Compila il form e ti risponderemo al più presto.
           </p>
         </div>
@@ -76,7 +84,7 @@ export default function ContactForm() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-card-border/25 shadow-sm">
-              <h4 className="font-bold text-gray-900 mb-3">Altre informazioni</h4>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Altre informazioni</h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4">
                 Solitamente rispondiamo entro <strong className="text-gray-900">24 ore</strong> nei giorni lavorativi.
               </p>

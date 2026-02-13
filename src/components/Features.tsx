@@ -2,7 +2,6 @@ import {
   ChefHat,
   Scale,
   Package,
-  Layers,
   Wrench,
   FileText,
   Tag,
@@ -14,60 +13,59 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const features = [
+const heroFeatures = [
   {
     icon: ChefHat,
-    title: "Ricette",
+    title: "Ricette & Assemblaggi",
     description:
-      "Crea, modifica e organizza tutte le tue preparazioni con ingredienti, procedimenti e rese. Gestisci formule e varianti in un archivio digitale completo.",
+      "Crea e organizza ricette con ingredienti, procedimenti e rese. Combina più preparazioni e semilavorati per comporre il prodotto finito.",
+    accent: "from-primary/10 to-icon/10",
   },
   {
     icon: DollarSign,
-    title: "Calcolo Costi Ricette",
+    title: "Calcolo Costi & Margini",
     description:
-      "Calcola automaticamente i costi di ogni ricetta con analisi dettagliata di materie prime, manodopera e costi strutturali. Monitora i margini di guadagno.",
+      "Calcola automaticamente i costi di ogni ricetta: materie prime, manodopera e costi strutturali. Monitora i margini di guadagno.",
+    accent: "from-amber-50 to-orange-50",
   },
+];
+
+const features = [
   {
     icon: Scale,
-    title: "Bilanciamento",
+    title: "Bilanciamento Composizione",
     description:
-      "Analisi composizione ricetta: zuccheri, grassi, proteine, lattosio, solidi e acqua. Categorie di riferimento personalizzabili con range target per ogni preparazione.",
+      "Analisi zuccheri, grassi, proteine, lattosio, solidi e acqua con range target personalizzabili.",
   },
   {
     icon: Package,
-    title: "Ingredienti & Semilavorati",
+    title: "Gestione Ingredienti",
     description:
-      "Gestisci l'inventario del laboratorio con costi al kg, valori nutrizionali e semilavorati riutilizzabili. Tracciabilità ingredienti sempre sotto controllo.",
-  },
-  {
-    icon: Layers,
-    title: "Assemblaggi",
-    description:
-      "Combina più ricette e semilavorati per creare il prodotto finito (es. torta = pan di spagna + crema + glassa)",
+      "Inventario del laboratorio con costi al kg, valori nutrizionali e semilavorati riutilizzabili.",
   },
   {
     icon: Wrench,
-    title: "Tools",
+    title: "Tools Laboratorio",
     description:
-      "Calcolatori specifici per il laboratorio: bagne, calcolo W, gelato, impasto, rinfresco lievito madre, stampi, tempistiche",
+      "Calcolatori professionali: bagne, calcolo W, gelato, impasto, lievito madre, stampi.",
   },
   {
     icon: FileText,
-    title: "Tabella Nutrizionale",
+    title: "Tabelle Nutrizionali",
     description:
-      "Calcola automaticamente i valori nutrizionali di ogni ricetta e prodotto finito, pronti per etichette e documentazione.",
+      "Valori nutrizionali calcolati automaticamente per ogni ricetta e prodotto finito.",
   },
   {
     icon: Tag,
-    title: "Etichette alimentari",
+    title: "Etichette con Allergeni",
     description:
-      "Genera etichette alimentari con allergeni evidenziati e tabella nutrizionale. Scegli il formato desiderato, pronte per la stampa.",
+      "Etichette alimentari con allergeni evidenziati e tabella nutrizionale, pronte per la stampa.",
   },
   {
     icon: BarChart3,
-    title: "Dashboard",
+    title: "Dashboard & Vendite",
     description:
-      "Monitora produzione, vendite, lotti e tracciabilità con grafici e statistiche. Tieni sotto controllo le performance del tuo laboratorio.",
+      "Produzione, vendite, lotti e tracciabilità con grafici e statistiche in tempo reale.",
   },
 ];
 
@@ -75,22 +73,22 @@ const advantages = [
   {
     icon: Wifi,
     title: "Funziona Offline",
-    description: "Sincronizzazione automatica tra i dispositivi quando torni online",
+    description: "Sincronizzazione automatica quando torni online",
   },
   {
     icon: Calculator,
-    title: "Gratuito",
-    description: "Software free per la tua attività, nessun abbonamento richiesto",
+    title: "Prova Gratuita",
+    description: "Richiedi l'accesso gratuito, nessun abbonamento",
   },
   {
     icon: Printer,
     title: "Stampa & Esporta PDF",
-    description: "Ricette, etichette, report pronti per la stampa",
+    description: "Ricette, etichette e report pronti per la stampa",
   },
   {
     icon: Sparkles,
     title: "Aggiornamenti Costanti",
-    description: "Nuove funzionalità e miglioramenti rilasciati regolarmente",
+    description: "Nuove funzionalità rilasciate regolarmente",
   },
 ];
 
@@ -98,6 +96,7 @@ export default function Features() {
   return (
     <section id="funzionalita" className="py-24 bg-white" aria-labelledby="features-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
             Funzionalità
@@ -111,37 +110,80 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Hidden ordered list for search engine featured snippets */}
+        <div className="sr-only">
+          <h3>Lista completa funzionalità LabManager:</h3>
+          <ol>
+            <li><strong>Ricette e Assemblaggi</strong>: Crea e organizza ricette con ingredienti, procedimenti e rese. Combina più preparazioni e semilavorati per comporre il prodotto finito.</li>
+            <li><strong>Calcolo Costi e Margini</strong>: Calcola automaticamente i costi di ogni ricetta: materie prime, manodopera e costi strutturali. Monitora i margini di guadagno.</li>
+            <li><strong>Bilanciamento Composizione</strong>: Analisi zuccheri, grassi, proteine, lattosio, solidi e acqua con range target personalizzabili.</li>
+            <li><strong>Gestione Ingredienti</strong>: Inventario del laboratorio con costi al kg, valori nutrizionali e semilavorati riutilizzabili.</li>
+            <li><strong>Tools Laboratorio</strong>: Calcolatori professionali per bagne, calcolo W, gelato, impasto, lievito madre, stampi.</li>
+            <li><strong>Tabelle Nutrizionali</strong>: Valori nutrizionali calcolati automaticamente per ogni ricetta e prodotto finito.</li>
+            <li><strong>Etichette con Allergeni</strong>: Etichette alimentari con allergeni evidenziati e tabella nutrizionale, pronte per la stampa.</li>
+            <li><strong>Dashboard e Vendite</strong>: Produzione, vendite, lotti e tracciabilità con grafici e statistiche in tempo reale.</li>
+            <li><strong>Funziona Offline</strong>: Sincronizzazione automatica quando torni online, lavora senza connessione.</li>
+          </ol>
+        </div>
+
+        {/* Hero features - 2 large cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          {heroFeatures.map((feature) => (
+            <div
+              key={feature.title}
+              className="group relative bg-white border border-gray-100 rounded-2xl p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
+            >
+              {/* Subtle gradient background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.accent} opacity-40 pointer-events-none`} />
+              <div className="relative">
+                <div className="bg-white rounded-xl p-3 w-fit mb-5 shadow-sm border border-gray-100">
+                  <feature.icon className="text-primary" size={28} aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Secondary features - 3x2 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="app-card bg-white border border-card-border-light rounded-xl p-6 shadow-sm"
+              className="group bg-white border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
             >
-              <div className="bg-icon/10 rounded-xl p-3 w-fit mb-4">
-                <feature.icon className="text-icon" size={24} aria-hidden="true" />
+              <div className="bg-icon/8 rounded-xl p-3 w-fit mb-4">
+                <feature.icon className="text-icon" size={22} aria-hidden="true" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">
+              <h3 className="text-base font-semibold text-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 {feature.description}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="bg-surface border border-card-border-light rounded-xl p-6">
+        {/* Advantages bar */}
+        <div className="bg-surface border border-gray-100 rounded-2xl p-6">
+          <h3 className="sr-only">Vantaggi Principali</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {advantages.map((advantage) => (
-              <div key={advantage.title} className="flex items-start gap-4">
-                <div className="bg-icon/10 rounded-xl p-3 shrink-0">
-                  <advantage.icon className="text-icon" size={20} aria-hidden="true" />
+              <div key={advantage.title} className="flex items-start gap-3">
+                <div className="bg-icon/8 rounded-lg p-2.5 shrink-0">
+                  <advantage.icon className="text-icon" size={18} aria-hidden="true" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-foreground mb-1">
+                  <h4 className="text-sm font-semibold text-foreground mb-0.5">
                     {advantage.title}
                   </h4>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-gray-500">
                     {advantage.description}
                   </p>
                 </div>

@@ -1,10 +1,27 @@
-import { Smartphone, Monitor, Download as DownloadIcon } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import {
+  Smartphone,
+  Monitor,
+  Download as DownloadIcon,
+  ShieldAlert,
+  ChevronDown,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+interface DownloadItem {
+  icon: LucideIcon;
+  name: string;
+  subtitle: string;
+  label: string;
+  href: string;
+}
 
 const ANDROID_APK_URL = process.env.NEXT_PUBLIC_APK_URL || "#";
 const WINDOWS_INSTALLER_URL = process.env.NEXT_PUBLIC_WINDOWS_URL || "#";
 
-const downloads: { icon: LucideIcon; name: string; subtitle: string; label: string; href: string }[] = [
+const downloads: DownloadItem[] = [
   {
     icon: Smartphone,
     name: "Android",
@@ -22,13 +39,32 @@ const downloads: { icon: LucideIcon; name: string; subtitle: string; label: stri
 ];
 
 const badges = [
-  "100% Gratuito",
+  "100% Gratuito (in fase di sviluppo)",
   "Funziona Offline",
-  "Nessun Abbonamento",
-  "Made in Italy",
+  "Multi-utente",
+  "Supporto Diretto",
 ];
 
+const installSteps = [
+  'Quando appare "Installazione bloccata", tocca **Impostazioni**',
+  'Attiva **Consenti installazione da questa fonte** per il browser',
+  "Torna indietro e completa l'installazione",
+  "**Dopo l'installazione**, disattiva nuovamente l'opzione",
+];
+
+function renderStepText(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={index} className="text-amber-800">{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 export default function Download() {
+  const [guideOpen, setGuideOpen] = useState(false);
+
   return (
     <section id="download-app" className="px-6 py-24" aria-labelledby="download-heading">
       <div className="max-w-5xl mx-auto">
@@ -76,6 +112,65 @@ export default function Download() {
               </div>
             </a>
           ))}
+        </div>
+
+        {/* Banner collassabile: guida installazione APK */}
+        <div className="max-w-3xl mx-auto bg-amber-50 border border-amber-200/60 rounded-xl p-5 sm:p-6 mt-8">
+          <h3 id="installation-guide-heading" className="sr-only">Guida all&apos;installazione APK</h3>
+          <button
+            id="installation-guide-button"
+            type="button"
+            onClick={() => setGuideOpen((prev) => !prev)}
+            aria-expanded={guideOpen}
+            aria-controls="installation-guide-content"
+            className="w-full flex items-start gap-4 text-left cursor-pointer hover:bg-amber-100/30 rounded-lg transition-colors duration-200"
+          >
+            <div className="bg-amber-100 text-amber-600 rounded-lg p-2 shrink-0">
+              <ShieldAlert size={22} aria-hidden="true" />
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <h4 className="text-base font-bold text-amber-900 mb-1">
+                Problemi con l&apos;installazione dell&apos;APK?
+              </h4>
+              <p className="text-sm text-amber-800/80 leading-relaxed">
+                Il tuo dispositivo Android potrebbe bloccare l&apos;installazione perch&eacute;
+                l&apos;app non proviene dal Play Store. &Egrave; una procedura di sicurezza normale.
+              </p>
+            </div>
+
+            <ChevronDown
+              size={20}
+              aria-hidden="true"
+              className={`text-amber-500 shrink-0 mt-1 transition-transform duration-300 ${guideOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          <div
+            id="installation-guide-content"
+            role="region"
+            aria-labelledby="installation-guide-heading"
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+              guideOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="pt-5 pl-14">
+              <ol className="space-y-3">
+                {installSteps.map((step, index) => (
+                  <li key={index} className="flex items-start gap-3 text-sm text-amber-900/90 leading-relaxed">
+                    <span className="inline-flex items-center justify-center bg-amber-200/60 text-amber-800 font-bold text-xs rounded-full w-6 h-6 shrink-0 mt-0.5">
+                      {index + 1}
+                    </span>
+                    <span>{renderStepText(step)}</span>
+                  </li>
+                ))}
+              </ol>
+
+              <p className="text-xs text-amber-700/70 mt-4 italic">
+                I passaggi possono variare in base al produttore.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="text-center mt-10">

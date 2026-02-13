@@ -6,7 +6,9 @@
       "Bash(node -e:*)",
       "Bash(python:*)",
       "Bash(pip install:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "WebFetch(domain:skillsmp.com)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

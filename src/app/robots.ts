@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/download",
     },
     sitemap: "https://pastrylabmanager.com/sitemap.xml",
   };
