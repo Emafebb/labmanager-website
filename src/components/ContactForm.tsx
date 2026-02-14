@@ -47,7 +47,7 @@ export default function ContactForm() {
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hai domande sulle{" "}
+            Hai domande sul gestionale per la tua pasticceria? Scopri di più sulle{" "}
             <a href="#funzionalita" className="text-primary underline hover:text-primary-dark">
               funzionalità
             </a>{" "}

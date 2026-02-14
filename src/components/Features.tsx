@@ -102,11 +102,11 @@ export default function Features() {
             Funzionalità
           </p>
           <h2 id="features-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Tutto ciò che serve al tuo laboratorio
+            Tutto ciò che serve al tuo laboratorio di pasticceria
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Software gestionale per pasticceria con strumenti professionali,
-            dalla ricetta al prodotto finito.
+            Il gestionale per la tua pasticceria con strumenti professionali per gestire
+            ogni fase del tuo laboratorio, dalla ricetta al prodotto finito.
           </p>
         </div>
 

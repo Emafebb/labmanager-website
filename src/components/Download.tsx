@@ -75,11 +75,11 @@ export default function Download() {
           </div>
 
           <h2 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            Scarica <span className="text-primary">Gratis</span> l&apos;App per Pasticceria
+            Scarica il <span className="text-primary">Gestionale</span> per Pasticceria
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Software gestionale completo: scegli Android o Windows, funziona offline e senza abbonamento.
+            Il gestionale per la tua pasticceria: scegli Android o Windows, funziona offline con sincronizzazione cloud.
             Inizia subito a gestire ricette, costi ed etichette.
           </p>
 
@@ -98,7 +98,7 @@ export default function Download() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {downloads.map((item) => (
-            <a key={item.name} href={item.href} className="group block">
+            <a key={item.name} href={item.href} className="group block" rel="noopener noreferrer">
               <div className="h-full bg-white rounded-xl p-8 border border-card-border-light shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 text-center">
                 <div className="bg-icon/10 rounded-xl p-4 w-fit mx-auto mb-5">
                   <item.icon size={32} className="text-icon" strokeWidth={2} aria-hidden="true" />

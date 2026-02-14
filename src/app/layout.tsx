@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Software gestionale pasticceria: ricette, calcolo costi, etichette con allergeni. Offline su Android e Windows. Scarica ora!",
+    "Gestionale pasticceria: gestisci ricette, calcola costi e margini, crea etichette con allergeni. Funziona offline su Android e Windows.",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   authors: [{ name: "LabManager" }],
   creator: "LabManager",
   openGraph: {
-    title: "LabManager: Software Gestionale Pasticceria con Ricette e Costi",
+    title: "Gestionale Pasticceria Completo: Ricette, Costi, Allergeni | LabManager",
     description:
-      "App gestionale completa per pasticcerie: calcola ricette, margini e costi. Genera etichette con allergeni. Funziona offline su Android e Windows!",
+      "App gestionale completa per pasticcerie: gestisci ricette, calcola costi e margini, genera etichette con allergeni. Funziona offline su Android e Windows.",
     url: BASE_URL,
     siteName: "LabManager",
     locale: "it_IT",
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LabManager: Gestionale Pasticceria su Android & Windows",
+    title: "Gestionale Pasticceria su Android & Windows | LabManager",
     description:
-      "Gestisci la tua pasticceria come un professionista: ricette, calcolo costi, etichette alimentari con allergeni, inventario. Funziona offline.",
+      "Gestisci la tua pasticceria con il gestionale completo: ricette, calcolo costi, etichette alimentari con allergeni, inventario. Funziona offline.",
     images: [`${BASE_URL}/images/og-image.png`],
   },
   robots: {
@@ -171,14 +171,14 @@ const structuredDataGraph = {
       screenshot: [
         {
           "@type": "ImageObject",
-          contentUrl: `${BASE_URL}/images/Screenshot%20DESKTOP.png`,
+          contentUrl: `${BASE_URL}/images/screenshot-desktop.png`,
           description:
             "Screenshot desktop di LabManager con gestione ricette e calcolo costi",
           name: "LabManager Desktop Interface",
         },
         {
           "@type": "ImageObject",
-          contentUrl: `${BASE_URL}/images/screen%20smartphone.jpg`,
+          contentUrl: `${BASE_URL}/images/screen-smartphone.jpg`,
           description: "Screenshot mobile di LabManager per Android",
           name: "LabManager Mobile App",
         },

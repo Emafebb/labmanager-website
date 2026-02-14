@@ -36,7 +36,7 @@ export default function Platforms() {
             Un&apos;app, <span className="gradient-text">tutte le piattaforme</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            Software gestionale che si adatta al tuo dispositivo con sincronizzazione
+            Il gestionale per la tua pasticceria che si adatta al tuo dispositivo con sincronizzazione
             dati in tempo reale e interfaccia ottimizzata per ogni piattaforma.
           </p>
         </div>

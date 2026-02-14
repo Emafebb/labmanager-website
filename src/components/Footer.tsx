@@ -54,7 +54,7 @@ export default function Footer() {
               </a>
 
               <p className="text-gray-400 leading-relaxed max-w-sm">
-                Il software gestionale per pasticceria: gestisci ricette, costi, etichette alimentari e produzione con precisione professionale.
+                Il gestionale per la tua pasticceria: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione con precisione professionale.
               </p>
             </div>
 
