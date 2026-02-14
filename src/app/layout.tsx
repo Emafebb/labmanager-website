@@ -249,6 +249,13 @@ export default function RootLayout({
           src="https://embeds.iubenda.com/widgets/468f18b9-c49c-4c8a-8a3f-bc63040f7939.js"
           strategy="lazyOnload"
         />
+        <Script
+          id="iubenda-embed"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`,
+          }}
+        />
       </body>
     </html>
   );

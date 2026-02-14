@@ -175,7 +175,7 @@ export default function ContactForm() {
                     <label htmlFor="privacy" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
                       Ho letto e accetto la{" "}
                       <a
-                        href={`https://www.iubenda.com/privacy-policy/${process.env.NEXT_PUBLIC_IUBENDA_POLICY_ID}`}
+                        href="https://www.iubenda.com/privacy-policy/79608415"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary font-semibold hover:text-primary-dark underline"

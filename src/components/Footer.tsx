@@ -21,8 +21,8 @@ const footerLinks = [
   {
     title: "Legale",
     links: [
-      { label: "Privacy Policy", href: `https://www.iubenda.com/privacy-policy/${process.env.NEXT_PUBLIC_IUBENDA_POLICY_ID}`, external: true },
-      { label: "Cookie Policy", href: `https://www.iubenda.com/privacy-policy/${process.env.NEXT_PUBLIC_IUBENDA_POLICY_ID}/cookie-policy`, external: true },
+      { label: "Privacy Policy", href: "https://www.iubenda.com/privacy-policy/79608415", external: true, iubendaEmbed: true },
+      { label: "Cookie Policy", href: "https://www.iubenda.com/privacy-policy/79608415/cookie-policy", external: true, iubendaEmbed: true },
     ],
   },
 ];
@@ -70,7 +70,8 @@ export default function Footer() {
                         <a
                           href={link.href}
                           {...("external" in link && link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-block py-2"
+                          {...("iubendaEmbed" in link && link.iubendaEmbed ? { title: link.label } : {})}
+                          className={`text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-block py-2${"iubendaEmbed" in link && link.iubendaEmbed ? " iubenda-white iubenda-noiframe iubenda-embed" : ""}`}
                         >
                           {link.label}
                         </a>
