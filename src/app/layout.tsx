@@ -147,7 +147,7 @@ const structuredDataGraph = {
         "Software gestionale per pasticceria: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline, nessun abbonamento richiesto (in fase di sviluppo).",
       downloadUrl: [
         "https://play.google.com/store/apps/details?id=com.labmanager",
-        `${BASE_URL}/downloads/LabManager-Setup.exe`,
+        "https://ndlsifytatricfutjsvu.supabase.co/storage/v1/object/public/releases/LabManager-Setup.exe",
       ],
       fileSize: "47185920",
       releaseNotes:
