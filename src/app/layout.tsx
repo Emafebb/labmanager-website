@@ -189,17 +189,7 @@ const structuredDataGraph = {
       countriesSupported: "IT",
       provider: { "@id": `${BASE_URL}/#organization` },
     },
-    {
-      "@type": "Product",
-      "@id": `${BASE_URL}/#product`,
-      name: "LabManager - Software Gestionale Pasticceria",
-      description:
-        "Software per gestire la tua pasticceria: ricette, costi, etichette e allergeni. Disponibile per Android e Windows.",
-      brand: { "@type": "Brand", name: "LabManager" },
-      offers: { ...FREE_OFFER, url: BASE_URL },
-      category: "Business Software",
-      operatingSystem: "Android 5.0+, Windows 10+",
-    },
+    
     {
       "@type": "HowTo",
       "@id": `${BASE_URL}/#howto-install-apk`,
