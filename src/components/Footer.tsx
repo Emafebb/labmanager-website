@@ -47,14 +47,11 @@ export default function Footer() {
                   <span className="text-xl font-bold text-white tracking-tight">
                     LabManager
                   </span>
-                  <span className="text-[10px] text-gray-400 font-medium tracking-widest -mt-1">
-                    PASTICCERIA
-                  </span>
                 </div>
               </a>
 
               <p className="text-gray-400 leading-relaxed max-w-sm">
-                Il gestionale per la tua pasticceria: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione con precisione professionale.
+                Il gestionale completo per il tuo food business: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione.
               </p>
             </div>
 

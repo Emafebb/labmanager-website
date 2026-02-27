@@ -43,7 +43,7 @@ export default function Hero() {
                 Il gestionale per
               </span>
               <span className="block text-[2.5rem] sm:text-[3.25rem] xl:text-[3.75rem] gradient-text">
-                la tua pasticceria
+                il tuo food business
               </span>
             </h1>
 

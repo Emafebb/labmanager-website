@@ -4,7 +4,7 @@ const platforms = [
   {
     icon: Smartphone,
     name: "Smartphone",
-    title: "App Ricette Pasticceria - Gestione Mobile",
+    title: "App Ricette e Gestione Mobile",
     description:
       "Consulta ricette, controlla ingredienti e registra vendite e produzioni in tempo reale. Gestione completa ovunque tu sia.",
   },
@@ -18,7 +18,7 @@ const platforms = [
   {
     icon: Monitor,
     name: "Desktop Windows",
-    title: "Software Gestionale Pasticceria - Suite Completa",
+    title: "Software Gestionale - Suite Completa",
     description:
       "Analisi food cost, gestione ricette, etichette alimentari e report avanzati. Tutte le funzionalità per amministrare la tua attività.",
   },
@@ -36,7 +36,7 @@ export default function Platforms() {
             Un&apos;app, <span className="gradient-text">tutte le piattaforme</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            Il gestionale per la tua pasticceria che si adatta al tuo dispositivo con sincronizzazione
+            Il gestionale per il tuo food business che si adatta al tuo dispositivo con sincronizzazione
             dati in tempo reale e interfaccia ottimizzata per ogni piattaforma.
           </p>
         </div>

@@ -31,9 +31,6 @@ export default function DownloadPage() {
               <span className="text-xl font-bold text-gray-900 tracking-tight">
                 LabManager
               </span>
-              <span className="text-[10px] text-gray-500 font-medium tracking-widest -mt-1">
-                PASTICCERIA
-              </span>
             </div>
           </a>
 
