@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /download
-Sitemap: https://pastrylabmanager.com/sitemap.xml

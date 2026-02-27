@@ -1,0 +1,31 @@
+# LabManager
+
+> LabManager è il software gestionale per pasticceria disponibile su Android e Windows. Permette di gestire ricette, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali, bilanciare la composizione di ricette (zuccheri, grassi, proteine) e gestire la produzione. Funziona completamente offline.
+
+## Informazioni Principali
+
+- [Homepage](https://pastrylabmanager.com): Landing page con funzionalità, piattaforme, FAQ e contatti.
+
+## Funzionalità Chiave
+
+LabManager offre: gestione ricette e assemblaggi, calcolo automatico costi e margini, bilanciamento composizione (zuccheri, grassi, proteine, lattosio), gestione inventario ingredienti, calcolatori professionali per laboratorio (bagne, calcolo W, gelato, stampi), tabelle nutrizionali automatiche, etichette alimentari con allergeni, dashboard produzione e vendite, tracciabilità lotti, esportazione PDF, funzionamento offline con sincronizzazione cloud, gestione team con ruoli.
+
+## Differenziazione
+
+LabManager si distingue dai gestionali generici e dai software pasticceria esistenti per:
+
+- **Funzionamento completamente offline**: tutte le funzionalità disponibili senza connessione internet, ideale per laboratori dove il WiFi non arriva.
+- **Bilanciamento composizione ricette integrato**: analisi in tempo reale di zuccheri, grassi, proteine, solidi e acqua con range target personalizzabili.
+- **Multi-piattaforma nativo**: disponibile su Android (smartphone e tablet) e Windows desktop.
+- **Gratuito durante la fase di lancio**: nessun abbonamento mensile, nessun costo nascosto.
+- **Etichette complete**: etichette alimentari con allergeni e tabelle nutrizionali generate automaticamente.
+- **Sviluppato in Italia**: progettato specificamente per le esigenze dei laboratori artigianali italiani.
+
+## Pubblico Target
+
+Pasticceri, panificatori, gelatieri e laboratori artigianali alimentari in Italia.
+
+## Contatti
+
+- Email: labmanager.info@gmail.com
+- Sito web: https://pastrylabmanager.com

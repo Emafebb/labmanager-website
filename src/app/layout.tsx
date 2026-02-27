@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Gestionale pasticceria: gestisci ricette, calcola costi e margini, crea etichette con allergeni. Funziona offline su Android e Windows.",
+    "Gestionale pasticceria: gestisci ricette, calcola costi e margini, crea etichette con allergeni. Funziona offline su Android e Windows. Provalo gratis!",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     "valori nutrizionali ricette",
     "app pasticceria android",
     "software offline pasticceria",
+    "gestionale panificio",
+    "gestionale ristorante",
+    "software laboratorio alimentare",
   ],
   authors: [{ name: "LabManager" }],
   creator: "LabManager",
@@ -82,7 +85,6 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
     languages: {
       "it": BASE_URL,
-      "x-default": BASE_URL,
     },
   },
   icons: {
@@ -171,14 +173,14 @@ const structuredDataGraph = {
       screenshot: [
         {
           "@type": "ImageObject",
-          contentUrl: `${BASE_URL}/images/screenshot-desktop.png`,
+          contentUrl: `${BASE_URL}/images/software-gestionale-pasticceria-desktop.png`,
           description:
             "Screenshot desktop di LabManager con gestione ricette e calcolo costi",
           name: "LabManager Desktop Interface",
         },
         {
           "@type": "ImageObject",
-          contentUrl: `${BASE_URL}/images/screen-smartphone.jpg`,
+          contentUrl: `${BASE_URL}/images/app-gestionale-pasticceria-android.jpg`,
           description: "Screenshot mobile di LabManager per Android",
           name: "LabManager Mobile App",
         },
@@ -213,6 +215,17 @@ const structuredDataGraph = {
           position: 3,
           name: "Installa l'APK",
           text: "Apri il file APK scaricato e segui le istruzioni per completare l'installazione",
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: BASE_URL,
         },
       ],
     },

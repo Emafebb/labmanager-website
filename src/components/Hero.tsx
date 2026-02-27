@@ -47,11 +47,23 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed font-normal">
-              Gestisci ricette, costi, etichette alimentari e produzione del tuo laboratorio di pasticceria,paninifio o ristorante.
+            <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-6 leading-relaxed font-normal">
+              Gestisci ricette, costi, etichette alimentari e produzione del tuo laboratorio di pasticceria, panificio o ristorante.
               <span className="text-gray-700 font-medium"> Tutto in un&apos;unica app</span>,
               su Android e Windows.
             </p>
+
+            {/* AI-extractable definition block */}
+            <div className="bg-white/60 border border-primary/10 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
+              <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed">
+                <strong>LabManager</strong> è il software gestionale per pasticceria
+                che permette di gestire ricette, calcolare costi e margini, creare
+                etichette alimentari con allergeni e bilanciare la composizione di
+                ogni preparazione. Disponibile su <strong>Android e Windows</strong>,
+                funziona completamente <strong>offline</strong> e si sincronizza
+                automaticamente con il cloud.
+              </p>
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mb-10 justify-center lg:justify-start">
@@ -98,7 +110,7 @@ export default function Hero() {
               <div className="relative z-20 hero-device-desktop mx-6">
                 <div className="bg-gray-900 rounded-xl p-1.5 shadow-2xl overflow-hidden">
                   <Image
-                    src="/images/screenshot-desktop.png"
+                    src="/images/software-gestionale-pasticceria-desktop.png"
                     alt="Software gestionale pasticceria LabManager - dashboard desktop con ricette e costi"
                     width={1920}
                     height={1080}
@@ -120,7 +132,7 @@ export default function Hero() {
               >
                 <div className="bg-gray-900 rounded-2xl p-1.5 shadow-xl overflow-hidden ring-1 ring-white/20">
                   <Image
-                    src="/images/screenshot-tablet.jpg"
+                    src="/images/gestionale-pasticceria-tablet-produzione.jpg"
                     alt="Gestionale pasticceria LabManager su tablet in laboratorio"
                     width={800}
                     height={600}
@@ -137,7 +149,7 @@ export default function Hero() {
               >
                 <div className="bg-gray-900 rounded-3xl p-1.5 shadow-xl overflow-hidden ring-1 ring-white/20">
                   <Image
-                    src="/images/screen-smartphone.jpg"
+                    src="/images/app-gestionale-pasticceria-android.jpg"
                     alt="App gestione pasticceria LabManager su smartphone Android"
                     width={360}
                     height={640}

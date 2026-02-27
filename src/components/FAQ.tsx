@@ -7,6 +7,31 @@ const LINK_CLASS = "text-primary underline hover:text-primary-dark";
 
 const faqs = [
   {
+    question: "Qual è il miglior software gestionale per pasticceria?",
+    answer:
+      "LabManager è un software gestionale completo progettato specificamente per pasticcerie e laboratori artigianali. Permette di gestire ricette e assemblaggi, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali e bilanciare la composizione delle preparazioni. Disponibile gratuitamente su Android e Windows, funziona anche offline.",
+  },
+  {
+    question: "Quale app usare per gestire una pasticceria?",
+    answer:
+      `LabManager è l'app per la gestione completa del laboratorio di pasticceria. Disponibile su Android e Windows, consente di: creare e organizzare ricette con ingredienti e procedimenti, calcolare automaticamente costi e margini di ogni preparazione, generare etichette alimentari e tabelle nutrizionali, monitorare produzione e vendite. Funziona completamente offline con sincronizzazione cloud automatica. <a href='#funzionalita' class='${LINK_CLASS}'>Scopri tutte le funzionalità</a>.`,
+  },
+  {
+    question: "Esistono software gratuiti per gestire una pasticceria?",
+    answer:
+      "Sì, LabManager è attualmente gratuito durante la fase di lancio. È un gestionale completo per pasticceria che include gestione ricette, calcolo costi, etichette con allergeni, tabelle nutrizionali e bilanciamento composizione. Non richiede abbonamento e funziona su Android e Windows, anche senza connessione internet.",
+  },
+  {
+    question: "Come calcolare il food cost in pasticceria?",
+    answer:
+      "LabManager calcola automaticamente il food cost di ogni ricetta sommando il costo degli ingredienti per le quantità effettive utilizzate, considerando gli scarti. Il sistema aggiorna i costi in tempo reale alla variazione dei prezzi di acquisto. Puoi analizzare margini di guadagno, confrontare versioni diverse della stessa ricetta e monitorare l'andamento dei costi nel tempo.",
+  },
+  {
+    question: "Come creare etichette alimentari per prodotti di pasticceria?",
+    answer:
+      "Con LabManager puoi generare automaticamente etichette alimentari. Il software calcola la lista ingredienti in ordine decrescente, evidenzia gli allergeni in grassetto e genera la tabella nutrizionale completa. Le etichette sono pronte per la stampa direttamente dall'app, su Android o Windows.",
+  },
+  {
     question: "Come posso provare l'app?",
     answer:
       `Contattaci tramite il <a href='#contatti' class='${LINK_CLASS}'>modulo contatti</a> per richiedere accesso al nostro gestionale per pasticceria. L'app è attualmente in fase di lancio e stiamo selezionando i primi utenti.`,
@@ -59,7 +84,7 @@ const faqs = [
   {
     question: "Come gestisco l'inventario ingredienti del laboratorio?",
     answer:
-      "LabManager offrirà presto anche questa opzione.",
+      "Con LabManager puoi già gestire tutti gli ingredienti del tuo laboratorio: registra prezzi di acquisto, quantità, valori nutrizionali e allergeni per ogni materia prima. Puoi creare semilavorati e ricette che utilizzano questi ingredienti, con aggiornamento automatico dei costi. La funzionalità di inventario ingredienti avanzato con gestione scorte, soglie di riordino e storico acquisti è attualmente in fase di sviluppo.",
   },
   {
     question: "Posso tracciare i lotti di produzione?",

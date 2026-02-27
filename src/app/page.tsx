@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import WhyLabManager from "@/components/WhyLabManager";
 import Platforms from "@/components/Platforms";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
@@ -19,6 +20,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <Features />
+        <WhyLabManager />
         <Platforms />
         <ContactForm />
         <FAQ />

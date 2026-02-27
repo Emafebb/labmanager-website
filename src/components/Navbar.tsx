@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#funzionalita", label: "Funzionalità" },
+  { href: "#perche-labmanager", label: "Perché LabManager" },
   { href: "#piattaforme", label: "Piattaforme" },
   { href: "#faq", label: "FAQ" },
   { href: "#contatti", label: "Contatti" },

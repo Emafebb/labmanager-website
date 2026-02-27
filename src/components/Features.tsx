@@ -105,8 +105,10 @@ export default function Features() {
             Tutto ciò che serve al tuo laboratorio di pasticceria
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Il gestionale per la tua pasticceria con strumenti professionali per gestire
-            ogni fase del tuo laboratorio, dalla ricetta al prodotto finito.
+            LabManager offre strumenti professionali per gestire ogni fase del laboratorio
+            di pasticceria, dalla creazione della ricetta al prodotto finito. Include
+            calcolo costi, etichette con allergeni, bilanciamento composizione e
+            funzionamento offline su Android e Windows.
           </p>
         </div>
 

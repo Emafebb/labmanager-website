@@ -43,7 +43,7 @@ export default function ContactForm() {
           </div>
 
           <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Hai domande? <span className="text-primary">Scrivici</span>
+            Hai domande sul gestionale? <span className="text-primary">Scrivici</span>
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
