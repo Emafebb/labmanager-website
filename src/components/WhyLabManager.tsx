@@ -6,15 +6,14 @@ import {
   Check,
   X,
   Minus,
-  ShieldCheck,
 } from "lucide-react";
 
 const differentiators = [
   {
     icon: ChefHat,
-    title: "Pensato per la Pasticceria",
+    title: "Pensato per il Laboratorio e Cucine",
     description:
-      "Non un gestionale generico adattato, ma un software progettato specificamente per il flusso di lavoro del laboratorio di pasticceria: dalla ricetta al prodotto finito.",
+      "Non un gestionale generico adattato, ma un software progettato specificamente per pasticcerie, panifici e ristoranti: dalla ricetta al prodotto finito.",
   },
   {
     icon: Scale,
@@ -112,7 +111,7 @@ export default function WhyLabManager() {
             id="why-heading"
             className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
           >
-            Il gestionale pensato per il laboratorio di pasticceria
+            Il gestionale pensato per il tuo laboratorio o cucina
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             A differenza dei gestionali generici, LabManager è stato progettato
@@ -145,7 +144,7 @@ export default function WhyLabManager() {
         <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden mb-12">
           <div className="px-6 py-5 border-b border-gray-100">
             <h3 className="text-lg font-bold text-foreground">
-              Confronto: LabManager vs altri software per pasticceria
+              Confronto: LabManager vs altri gestionali di settore
             </h3>
             <p className="text-sm text-gray-500 mt-1">
               Come si posiziona LabManager rispetto ai gestionali generici e ai
@@ -200,23 +199,6 @@ export default function WhyLabManager() {
           </div>
         </div>
 
-        {/* Authority paragraph */}
-        <div className="bg-white border border-gray-100 rounded-2xl p-6 flex items-start gap-4">
-          <div className="bg-icon/8 rounded-lg p-2.5 shrink-0">
-            <ShieldCheck className="text-icon" size={20} aria-hidden="true" />
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-1">
-              Sviluppato in Italia per i laboratori artigianali
-            </h3>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              LabManager è sviluppato in Italia, in collaborazione con pasticceri
-              professionisti, per rispondere alle esigenze specifiche dei laboratori
-              artigianali italiani. Il software genera automaticamente etichette
-              con allergeni e tabelle nutrizionali per ogni preparazione.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
