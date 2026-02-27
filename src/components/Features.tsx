@@ -102,13 +102,13 @@ export default function Features() {
             Funzionalità
           </p>
           <h2 id="features-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Tutto ciò che serve al tuo laboratorio di pasticceria
+            Tutto ciò che serve al tuo laboratorio
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            LabManager offre strumenti professionali per gestire ogni fase del laboratorio
-            di pasticceria, dalla creazione della ricetta al prodotto finito. Include
-            calcolo costi, etichette con allergeni, bilanciamento composizione e
-            funzionamento offline su Android e Windows.
+            LabManager offre strumenti professionali per gestire ogni fase del laboratorio,
+            dalla pasticceria al ristorante: creazione ricette, calcolo costi,
+            etichette con allergeni, bilanciamento composizione e funzionamento
+            offline su Android e Windows.
           </p>
         </div>
 

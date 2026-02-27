@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Qual è il miglior software gestionale per pasticceria?",
     answer:
-      "LabManager è un software gestionale completo progettato specificamente per pasticcerie e laboratori artigianali. Permette di gestire ricette e assemblaggi, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali e bilanciare la composizione delle preparazioni. Disponibile gratuitamente su Android e Windows, funziona anche offline.",
+      "LabManager è un software gestionale completo progettato per pasticcerie, panifici, ristoranti e laboratori artigianali alimentari. Permette di gestire ricette e assemblaggi, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali e bilanciare la composizione delle preparazioni. Disponibile gratuitamente su Android e Windows, funziona anche offline.",
   },
   {
     question: "Quale app usare per gestire una pasticceria?",
@@ -85,6 +85,11 @@ const faqs = [
     question: "Come gestisco l'inventario ingredienti del laboratorio?",
     answer:
       "Con LabManager puoi già gestire tutti gli ingredienti del tuo laboratorio: registra prezzi di acquisto, quantità, valori nutrizionali e allergeni per ogni materia prima. Puoi creare semilavorati e ricette che utilizzano questi ingredienti, con aggiornamento automatico dei costi. La funzionalità di inventario ingredienti avanzato con gestione scorte, soglie di riordino e storico acquisti è attualmente in fase di sviluppo.",
+  },
+  {
+    question: "LabManager è adatto anche per ristoranti e cucine?",
+    answer:
+      "Sì, LabManager è pensato per qualsiasi attività alimentare: pasticcerie, panifici, ristoranti, pizzerie e laboratori artigianali. Le funzionalità di gestione ricette, calcolo costi, etichette con allergeni e tabelle nutrizionali sono utili in ogni cucina professionale. Se lavori nella ristorazione, puoi gestire i tuoi piatti esattamente come un pasticcere gestisce le sue ricette.",
   },
   {
     question: "Posso tracciare i lotti di produzione?",

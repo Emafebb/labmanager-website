@@ -116,8 +116,8 @@ export default function WhyLabManager() {
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             A differenza dei gestionali generici, LabManager è stato progettato
-            specificamente per le esigenze di pasticcerie, panifici e laboratori
-            artigianali.
+            specificamente per le esigenze di pasticcerie, panifici, ristoranti
+            e laboratori artigianali.
           </p>
         </div>
 

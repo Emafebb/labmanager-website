@@ -56,12 +56,12 @@ export default function Hero() {
             {/* AI-extractable definition block */}
             <div className="bg-white/60 border border-primary/10 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
               <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed">
-                <strong>LabManager</strong> è il software gestionale per pasticceria
-                che permette di gestire ricette, calcolare costi e margini, creare
-                etichette alimentari con allergeni e bilanciare la composizione di
-                ogni preparazione. Disponibile su <strong>Android e Windows</strong>,
-                funziona completamente <strong>offline</strong> e si sincronizza
-                automaticamente con il cloud.
+                <strong>LabManager</strong> è il software gestionale per pasticceria,
+                panificio e ristorante che permette di gestire ricette, calcolare
+                costi e margini, creare etichette alimentari con allergeni e
+                bilanciare la composizione di ogni preparazione. Disponibile su
+                <strong>Android e Windows</strong>, funziona completamente
+                <strong>offline</strong> e si sincronizza automaticamente con il cloud.
               </p>
             </div>
 

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Gestionale pasticceria: gestisci ricette, calcola costi e margini, crea etichette con allergeni. Funziona offline su Android e Windows. Provalo gratis!",
+    "Gestionale per pasticceria, panificio e ristorante: gestisci ricette, calcola costi e margini, crea etichette con allergeni. Funziona offline su Android e Windows. Provalo gratis!",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
@@ -42,13 +42,16 @@ export const metadata: Metadata = {
     "gestionale panificio",
     "gestionale ristorante",
     "software laboratorio alimentare",
+    "gestionale cucina professionale",
+    "software ristorazione",
+    "calcolo food cost ristorante",
   ],
   authors: [{ name: "LabManager" }],
   creator: "LabManager",
   openGraph: {
-    title: "Gestionale Pasticceria Completo: Ricette, Costi, Allergeni | LabManager",
+    title: "Gestionale Pasticceria e Ristorante: Ricette, Costi, Allergeni | LabManager",
     description:
-      "App gestionale completa per pasticcerie: gestisci ricette, calcola costi e margini, genera etichette con allergeni. Funziona offline su Android e Windows.",
+      "App gestionale per pasticcerie, panifici e ristoranti: gestisci ricette, calcola costi e margini, genera etichette con allergeni. Funziona offline su Android e Windows.",
     url: BASE_URL,
     siteName: "LabManager",
     locale: "it_IT",
@@ -67,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gestionale Pasticceria su Android & Windows | LabManager",
     description:
-      "Gestisci la tua pasticceria con il gestionale completo: ricette, calcolo costi, etichette alimentari con allergeni, inventario. Funziona offline.",
+      "Gestisci la tua pasticceria o ristorante con il gestionale completo: ricette, calcolo costi, etichette alimentari con allergeni. Funziona offline.",
     images: [`${BASE_URL}/images/og-image.png`],
   },
   robots: {
@@ -111,7 +114,7 @@ const structuredDataGraph = {
       url: BASE_URL,
       inLanguage: "it-IT",
       description:
-        "Software gestionale per pasticceria: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite.",
+        "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite.",
       publisher: { "@id": `${BASE_URL}/#organization` },
     },
     {
@@ -142,11 +145,11 @@ const structuredDataGraph = {
       "@id": `${BASE_URL}/#softwareapplication`,
       name: "LabManager",
       applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Gestionale Pasticceria",
+      applicationSubCategory: "Gestionale Pasticceria e Ristorazione",
       operatingSystem: ["Android", "Windows"],
       offers: FREE_OFFER,
       description:
-        "Software gestionale per pasticceria: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline, nessun abbonamento richiesto (in fase di sviluppo).",
+        "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline, nessun abbonamento richiesto (in fase di sviluppo).",
       downloadUrl: [
         "https://play.google.com/store/apps/details?id=com.labmanager",
         "https://ndlsifytatricfutjsvu.supabase.co/storage/v1/object/public/releases/LabManager-Setup.exe",
