@@ -23,7 +23,8 @@ const platformStyle: Record<Platform, string> = {
 };
 
 function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("it-IT", {
+  const [year, month, day] = iso.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("it-IT", {
     year: "numeric",
     month: "long",
     day: "numeric",
