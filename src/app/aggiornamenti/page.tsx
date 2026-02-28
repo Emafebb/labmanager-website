@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { changelog, type ChangelogEntry, type Platform } from "@/data/changelog";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Aggiornamenti - LabManager",
@@ -133,6 +134,7 @@ export default function AggiornamentiPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

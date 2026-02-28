@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import Download from "@/components/Download";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Download - LabManager",
@@ -47,6 +48,7 @@ export default function DownloadPage() {
       <main className="pt-20">
         <Download />
       </main>
+      <Footer />
     </>
   );
 }
