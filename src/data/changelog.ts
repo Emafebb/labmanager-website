@@ -39,7 +39,7 @@ export const changelog: ChangelogEntry[] = [
         items: [
           "Esportazione in Excel delle etichette",
           "Sezione HACCP configurabile",
-          "Avvertenza automatica per i polioli (EU 1169/2011)",
+          "Avvertenza automatica per i polioli nelle etichette",
           "Miglioramenti nella generazione PDF",
         ],
       },
@@ -115,7 +115,7 @@ export const changelog: ChangelogEntry[] = [
         items: [
           "Gestione ricette con ingredienti e pesi",
           "Archivio ingredienti con valori nutrizionali",
-          "Calcolo nutrizionale automatico (EU 1169/2011)",
+          "Calcolo nutrizionale automatico",
           "Gestione categorie per ricette e ingredienti",
           "Gestione allergeni",
           "Assemblaggi multi-ricetta",
