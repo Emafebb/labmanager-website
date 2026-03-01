@@ -14,6 +14,55 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "0.0.4",
+    date: "2026-02-28",
+    platforms: ["android", "windows"],
+    sections: [
+      {
+        title: "Novità",
+        items: [
+          "LabManager è ora disponibile su Android: gestisci ricette, costi e produzione dal telefono o tablet",
+          "Aggiornamenti automatici in-app: quando c'è una nuova versione, puoi aggiornare con un tocco",
+          "Bilancia gli ingredienti direttamente dal telefono, anche senza connessione",
+        ],
+      },
+      {
+        title: "Analisi Costi",
+        items: [
+          "Scheda costi dedicata con materie prime, ore lavorate e costi fissi",
+          "Imposta il margine desiderato e ottieni il prezzo da applicare",
+        ],
+      },
+      {
+        title: "Esportazioni",
+        items: [
+          "Tabelle di produzione in Excel",
+          "Registro vendite in PDF o CSV",
+          "Etichette pronte da stampare",
+          "Quattro viste diverse per il registro vendite",
+        ],
+      },
+      {
+        title: "Strumenti Pasticceria",
+        items: [
+          "Conversione stampi: cambia le misure e le quantità si ricalcolano in automatico",
+          "Confronta ricette: affianca due o più ricette per ingredienti, costi e valori nutrizionali",
+          "Overrun gelato: inserisci i pesi e ottieni il risultato",
+        ],
+      },
+      {
+        title: "Miglioramenti",
+        items: [
+          "Allergeni nel PDF sempre corretti; avvertenza polioli aggiunta automaticamente quando serve",
+          "I filtri restano dove li hai lasciati anche cambiando pagina",
+          "Duplica ricette e assemblaggi con un clic",
+          "Avviso immediato se un nome è già in uso",
+          "Supporto accesso simultaneo su 2 dispositivi",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.3",
     date: "2026-02-10",
     platforms: ["windows"],
