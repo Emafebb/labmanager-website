@@ -41,7 +41,7 @@ const features = [
     icon: Package,
     title: "Gestione Ingredienti",
     description:
-      "Inventario del laboratorio con costi al kg, valori nutrizionali e semilavorati riutilizzabili.",
+      "Oltre 650 ingredienti pronti con valori nutrizionali e allergeni già compilati. Aggiungi i tuoi e personalizza i prezzi.",
   },
   {
     icon: Wrench,
@@ -119,7 +119,7 @@ export default function Features() {
             <li><strong>Ricette e Assemblaggi</strong>: Crea e organizza ricette con ingredienti, procedimenti e rese. Combina più preparazioni e semilavorati per comporre il prodotto finito.</li>
             <li><strong>Calcolo Costi e Margini</strong>: Calcola automaticamente i costi di ogni ricetta: materie prime, manodopera e costi strutturali. Monitora i margini di guadagno.</li>
             <li><strong>Bilanciamento Composizione</strong>: Analisi zuccheri, grassi, proteine, lattosio, solidi e acqua con range target personalizzabili.</li>
-            <li><strong>Gestione Ingredienti</strong>: Inventario del laboratorio con costi al kg, valori nutrizionali e semilavorati riutilizzabili.</li>
+            <li><strong>Gestione Ingredienti</strong>: Oltre 650 ingredienti pronti con valori nutrizionali e allergeni già compilati. Aggiungi i tuoi e personalizza i prezzi.</li>
             <li><strong>Tools Laboratorio</strong>: Calcolatori professionali per bagne, calcolo W, gelato, impasto, lievito madre, stampi.</li>
             <li><strong>Tabelle Nutrizionali</strong>: Valori nutrizionali calcolati automaticamente per ogni ricetta e prodotto finito.</li>
             <li><strong>Etichette con Allergeni</strong>: Etichette alimentari con allergeni evidenziati e tabella nutrizionale, pronte per la stampa.</li>
