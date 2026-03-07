@@ -43,6 +43,12 @@ export const changelog: ChangelogEntry[] = [
         ],
       },
       {
+        title: "Ingredienti",
+        items: [
+          "Oltre 650 ingredienti in database con valori nutrizionali e costi già compilati, pronti all'uso o personalizzabili",
+        ],
+      },
+      {
         title: "Strumenti Pasticceria",
         items: [
           "Conversione stampi: cambia le misure e le quantità si ricalcolano in automatico",
