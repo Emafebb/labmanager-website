@@ -75,11 +75,11 @@ export default function Download() {
           </div>
 
           <h2 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            Scarica il <span className="text-primary">Gestionale</span> per Pasticceria
+            Scarica il <span className="text-primary">Gestionale</span> per Pasticceria, Panificio e Ristorante
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Il gestionale per la tua pasticceria: scegli Android o Windows, funziona offline con sincronizzazione cloud.
+            Il gestionale per pasticceria, panificio e ristorante: scegli Android o Windows, funziona offline con sincronizzazione cloud.
             Inizia subito a gestire ricette, costi ed etichette.
           </p>
 
