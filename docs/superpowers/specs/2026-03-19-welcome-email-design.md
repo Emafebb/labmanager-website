@@ -78,7 +78,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 - Sotto-testo: `Disponibile per Android e Windows` — DM Sans 11px, `#b0a898`
 
 **Link secondario:**
-- Testo: `SCOPRIAMOLO INSIEME` + freccia
+- Testo: `SCOPRIAMOLO INSIEME &rarr;`
 - Stile: DM Sans 12px, `#2d6a44`, uppercase
 - Sotto-testo: `Prenota una videocall gratuita — ti mostro LabManager dal vivo` — DM Sans 11px, `#b0a898`
 - Link: `https://cal.com/labmanager-software-gestionale/scoprire-labmanager`
@@ -88,7 +88,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 ### 4. Da Emanuele
 
 - **Sfondo:** `#faf7f2`
-- **Separazione:** divider sottile
+- **Separazione:** divider `#e8e3db`, 1px, full-width, margin 40px sopra
 - **Eyebrow:** `DA EMANUELE` — DM Sans 9px, `#2d6a44`, uppercase
 
 **Titolo (Playfair Display 20px, `#1e1b18`):**
@@ -112,7 +112,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 ### 6. Footer
 
 - **Sfondo:** `#f3efe8`
-- **Separazione:** linea `#1e1b18` sopra, double-rule `#1e1b18` sotto
+- **Separazione:** linea singola `#1e1b18` 1px sopra; bottom-rule 3px `#1e1b18` (come reference email)
 - **Logo:** `LabManager` — Playfair Display 20px
 - **Tagline:** `IL GESTIONALE PER PASTICCERI PROFESSIONISTI` — DM Sans 10px, `#a09880`, uppercase
 - **Link riga 1:** Sito Web (`pastrylabmanager.com`) · Download (`pastrylabmanager.com/download`) · Contatti (`mailto:labmanager.info@gmail.com`)
@@ -124,16 +124,21 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 
 ## Note tecniche
 
-- L'email sostituisce la funzione `buildWelcomeEmail()` in `src/app/api/newsletter/route.ts`
+- L'email sostituisce la funzione `buildWelcomeEmail()` in `src/app/api/newsletter/route.ts:104-249`
 - Parametro: `name` (stringa, gia sanitizzata con `escapeHtml`)
 - Template HTML inline con table layout per compatibilita email client
-- Font: Google Fonts (Playfair Display + DM Sans) con fallback system stack
-- Responsive: media query `max-width: 600px` per padding mobile
-- MSO conditional per Outlook desktop
-- `{{unsubscribe_url}}` gestito da Resend Audience
+- **Font loading:** includere `<link>` Google Fonts nel `<head>` (come reference email). Inline styles usano `'Playfair Display', Georgia, serif` e `'DM Sans', -apple-system, Arial, sans-serif` con fallback per client che strippano `<head>`.
+- **Responsive:** media query `max-width: 600px` — applicare classe `mobile-padding` (`padding-left: 28px; padding-right: 28px`) a tutti i `<td>` con padding 52px
+- **MSO/Outlook:** replicare i conditional blocks dalla reference email: `xmlns:v` e `xmlns:o` su `<html>`, blocco `<style>` MSO nel `<head>`, wrapper `<!--[if mso]>` table da 620px, VML `<v:roundrect>` per il pulsante CTA primario
+- **Meta tags:** includere `<meta name="x-apple-disable-message-reformatting">` e `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
+- **Top rule:** double-rule editoriale (3px + 1px gap + 1px) come reference email
+- **Ultimo feature block:** senza border-bottom (come pattern esistente)
+- **Pulsante CTA:** bordi squadrati (no border-radius), coerente con reference email (`arcsize="0%"`)
+- **`{{unsubscribe_url}}`:** attualmente l'email viene inviata via `resend.emails.send()` (transazionale). Resend sostituisce `{{unsubscribe_url}}` solo nelle broadcast email. Opzioni: (a) passare a broadcast API per la welcome email, (b) creare un endpoint custom `/api/unsubscribe`, oppure (c) rimuovere il link di disiscrizione dalla welcome email (e' un'email transazionale one-time). **Da decidere con il team.**
+- **Rimozione riferimenti normativi:** la welcome email attuale contiene "EU 1169/2011" e "a norma di legge" — devono essere rimossi.
 
 ## Riferimenti stilistici
 
-- `landing_pages/email_aggiornamento_android.html` — struttura hero, footer, sezione "Da Emanuele"
-- `landing_pages/email_annuncio_etichette_contaminazioni_prezzo_barcode_riciclo.html` — eyebrow, pull quote, feature list
-- Welcome email attuale in `src/app/api/newsletter/route.ts:104-248` — base da sostituire
+- Reference email principale: `C:\Users\emanu\Desktop\GitProjects\Labmanager\landing_pages\email_aggiornamento_android.html` — struttura hero, footer, MSO blocks, sezione "Da Emanuele"
+- Reference email secondaria: `C:\Users\emanu\Desktop\GitProjects\Labmanager\landing_pages\email_annuncio_etichette_contaminazioni_prezzo_barcode_riciclo.html` — eyebrow, feature list compatta
+- Welcome email attuale da sostituire: `src/app/api/newsletter/route.ts:104-249`
