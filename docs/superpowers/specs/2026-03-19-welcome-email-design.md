@@ -116,7 +116,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 - **Logo:** `LabManager` — Playfair Display 20px
 - **Tagline:** `IL GESTIONALE PER PASTICCERI PROFESSIONISTI` — DM Sans 10px, `#a09880`, uppercase
 - **Link riga 1:** Sito Web (`pastrylabmanager.com`) · Download (`pastrylabmanager.com/download`) · Contatti (`mailto:labmanager.info@gmail.com`)
-- **Link riga 2:** Privacy Policy (`iubenda.com/privacy-policy/79608415`) · Cancella iscrizione (`{{unsubscribe_url}}`)
+- **Link riga 2:** Privacy Policy (`iubenda.com/privacy-policy/79608415`)
 - **Copyright:** `© 2026 LabManager. Tutti i diritti riservati.`
 - **Nota:** `Hai ricevuto questa email perche ti sei iscritto alla newsletter di LabManager.`
 
@@ -134,7 +134,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 - **Top rule:** double-rule editoriale (3px + 1px gap + 1px) come reference email
 - **Ultimo feature block:** senza border-bottom (come pattern esistente)
 - **Pulsante CTA:** bordi squadrati (no border-radius), coerente con reference email (`arcsize="0%"`)
-- **`{{unsubscribe_url}}`:** attualmente l'email viene inviata via `resend.emails.send()` (transazionale). Resend sostituisce `{{unsubscribe_url}}` solo nelle broadcast email. Opzioni: (a) passare a broadcast API per la welcome email, (b) creare un endpoint custom `/api/unsubscribe`, oppure (c) rimuovere il link di disiscrizione dalla welcome email (e' un'email transazionale one-time). **Da decidere con il team.**
+- **Nessun link di disiscrizione:** la welcome email e' transazionale one-time inviata via `resend.emails.send()`. Il link unsubscribe sara' presente nelle future broadcast email inviate tramite Resend Audience.
 - **Rimozione riferimenti normativi:** la welcome email attuale contiene "EU 1169/2011" e "a norma di legge" — devono essere rimossi.
 
 ## Riferimenti stilistici
