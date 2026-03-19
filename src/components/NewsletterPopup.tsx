@@ -72,19 +72,19 @@ export default function NewsletterPopup() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="newsletter-heading"
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50"
+        className="fixed inset-0 bg-black/50"
         aria-hidden="true"
       />
 
       {/* Modal card */}
-      <div className="relative bg-white rounded-2xl w-full max-w-md p-8 sm:p-10 border border-card-border/25 shadow-lg animate-scale-in">
+      <div className="relative bg-white rounded-2xl w-full max-w-md p-6 sm:p-10 border border-card-border/25 shadow-lg animate-scale-in my-auto">
         {/* Close button */}
         <button
           onClick={status === "success" ? () => setVisible(false) : dismiss}
