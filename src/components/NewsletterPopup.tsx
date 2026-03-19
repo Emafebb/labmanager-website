@@ -80,7 +80,6 @@ export default function NewsletterPopup() {
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/50"
-        onClick={status === "success" ? () => setVisible(false) : dismiss}
         aria-hidden="true"
       />
 
