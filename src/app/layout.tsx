@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const BASE_URL = "https://pastrylabmanager.com";
@@ -251,6 +252,7 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        <SpeedInsights />
         <Script
           src="https://embeds.iubenda.com/widgets/468f18b9-c49c-4c8a-8a3f-bc63040f7939.js"
           strategy="lazyOnload"
