@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, Sparkles } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, Sparkles, MessageCircle } from "lucide-react";
+import { WHATSAPP_URL } from "./WhatsAppButton";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -88,10 +89,19 @@ export default function ContactForm() {
               <p className="text-sm text-gray-600 leading-relaxed mb-4">
                 Solitamente rispondiamo entro <strong className="text-gray-900">24 ore</strong> nei giorni lavorativi.
               </p>
-              <div className="flex items-center gap-2 text-sm text-icon font-semibold">
+              <div className="flex items-center gap-2 text-sm text-icon font-semibold mb-5">
                 <div className="w-2 h-2 bg-green-500 rounded-full" />
                 <span>Team disponibile</span>
               </div>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 w-full justify-center bg-[#25D366] text-white px-5 py-3 rounded-lg font-bold hover:bg-[#1ebe57] transition-colors duration-200 text-sm"
+              >
+                <MessageCircle size={20} fill="currentColor" aria-hidden="true" />
+                <span>Scrivici su WhatsApp</span>
+              </a>
             </div>
           </div>
 
