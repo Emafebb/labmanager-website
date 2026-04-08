@@ -8,8 +8,15 @@ import {
   ArrowLeftRight,
   MapPin,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const heroFeatures = [
+interface FeatureItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const heroFeatures: FeatureItem[] = [
   {
     icon: PackagePlus,
     title: "Ricevimento Merci",
@@ -24,7 +31,7 @@ const heroFeatures = [
   },
 ];
 
-const features = [
+const features: FeatureItem[] = [
   {
     icon: PackageMinus,
     title: "Prelievo",
@@ -99,7 +106,7 @@ export default function Warehouse() {
           {heroFeatures.map((feature) => (
             <div
               key={feature.title}
-              className="group relative bg-white border border-gray-100 rounded-3xl p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
+              className="relative bg-white border border-gray-100 rounded-3xl p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-60 pointer-events-none" />
               <div className="relative">
@@ -122,7 +129,7 @@ export default function Warehouse() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group bg-white border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+              className="bg-white border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
             >
               <div className="bg-primary/10 rounded-xl p-3 w-fit mb-4">
                 <feature.icon className="text-primary" size={22} aria-hidden="true" />
