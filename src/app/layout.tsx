@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Gestionale per pasticceria, panificio e ristorante: gestisci ricette, calcola costi e margini, crea etichette con allergeni. Funziona offline su Android e Windows. Provalo gratis!",
+    "Gestionale per pasticceria, panificio e ristorante: gestisci ricette, calcola costi e margini, crea etichette con allergeni.Magazzino: giacenze, lotti, scadenze e fornitori. Funziona offline su Android e Windows. Provalo gratis!",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
@@ -46,6 +46,14 @@ export const metadata: Metadata = {
     "gestionale cucina professionale",
     "software ristorazione",
     "calcolo food cost ristorante",
+    "gestione magazzino pasticceria",
+    "magazzino multi-sede",
+    "gestione fornitori pasticceria",
+    "scarico FIFO ingredienti",
+    "alert scadenze ingredienti",
+    "tracciabilità lotti",
+    "ricevimento merci laboratorio",
+    "giacenze materie prime",
   ],
   authors: [{ name: "LabManager" }],
   creator: "LabManager",
@@ -157,9 +165,9 @@ const structuredDataGraph = {
       ],
       fileSize: "47185920",
       releaseNotes:
-        "Nuove funzionalità: calcolo automatico costi, esportazione ricette PDF",
+        "Nuovo modulo magazzino: gestione giacenze multi-sede, ricevimento merci con tracciabilità lotti, scarico FIFO automatico, alert scadenze, anagrafica fornitori e trasferimenti tra sedi.",
       datePublished: "2024-01-15",
-      softwareVersion: "2.1.0",
+      softwareVersion: "2.2.0",
       featureList: [
         "Gestione ricette digitali con ingredienti e procedimenti",
         "Calcolo automatico costi ricette e margini",
@@ -173,6 +181,12 @@ const structuredDataGraph = {
         "Esportazione PDF e stampa documenti",
         "Tools professionali per laboratorio",
         "Gestione team con ruoli e permessi",
+        "Gestione magazzino multi-sede con disponibilità in tempo reale",
+        "Ricevimento merci con tracciabilità lotti e date di scadenza",
+        "Scarico FIFO automatico degli ingredienti",
+        "Alert configurabili per prodotti in scadenza",
+        "Anagrafica fornitori con condizioni di pagamento e scontistica",
+        "Trasferimenti merce tra sedi con tracciabilità completa",
       ],
       screenshot: [
         {
