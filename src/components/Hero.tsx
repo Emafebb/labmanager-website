@@ -59,8 +59,9 @@ export default function Hero() {
                 <strong>LabManager</strong> è il software gestionale per pasticceria,
                 panificio e ristorante che permette di gestire ricette, calcolare
                 costi e margini, creare etichette alimentari con allergeni e
-                bilanciare la composizione di ogni preparazione. Disponibile su
-                <strong>Android e Windows</strong>, funziona completamente
+                gestire il magazzino multi-sede con tracciabilità lotti e scadenze.
+                Disponibile su{" "}
+                <strong>Android e Windows</strong>, funziona completamente{" "}
                 <strong>offline</strong> e si sincronizza automaticamente con il cloud.
               </p>
             </div>
