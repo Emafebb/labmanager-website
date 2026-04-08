@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Smartphone,
   Monitor,
@@ -18,25 +18,22 @@ interface DownloadItem {
   href: string;
 }
 
-const ANDROID_APK_URL = process.env.NEXT_PUBLIC_APK_URL || "#";
-const WINDOWS_INSTALLER_URL = process.env.NEXT_PUBLIC_WINDOWS_URL || "#";
+const GITHUB_RAW = "https://raw.githubusercontent.com/Emafebb/Labmanager-Updates/main";
 
-const downloads: DownloadItem[] = [
-  {
-    icon: Smartphone,
-    name: "Android",
-    subtitle: "Smartphone & Tablet",
-    label: "Scarica APK",
-    href: ANDROID_APK_URL,
-  },
-  {
-    icon: Monitor,
-    name: "Windows",
-    subtitle: "Desktop",
-    label: "Scarica EXE",
-    href: WINDOWS_INSTALLER_URL,
-  },
-];
+async function fetchDownloadUrls(): Promise<{ android: string; windows: string }> {
+  const [androidRes, windowsRes] = await Promise.all([
+    fetch(`${GITHUB_RAW}/version_android.json`, { next: { revalidate: 3600 } }),
+    fetch(`${GITHUB_RAW}/version.json`, { next: { revalidate: 3600 } }),
+  ]);
+  const [androidJson, windowsJson] = await Promise.all([
+    androidRes.json(),
+    windowsRes.json(),
+  ]);
+  return {
+    android: androidJson.download_url ?? "#",
+    windows: windowsJson.windows_download_url ?? "#",
+  };
+}
 
 const badges = [
   "100% Gratuito (in fase di sviluppo)",
@@ -64,6 +61,28 @@ function renderStepText(text: string) {
 
 export default function Download() {
   const [guideOpen, setGuideOpen] = useState(false);
+  const [urls, setUrls] = useState({ android: "#", windows: "#" });
+
+  useEffect(() => {
+    fetchDownloadUrls().then(setUrls).catch(() => {});
+  }, []);
+
+  const downloads: DownloadItem[] = [
+    {
+      icon: Smartphone,
+      name: "Android",
+      subtitle: "Smartphone & Tablet",
+      label: "Scarica APK",
+      href: urls.android,
+    },
+    {
+      icon: Monitor,
+      name: "Windows",
+      subtitle: "Desktop",
+      label: "Scarica EXE",
+      href: urls.windows,
+    },
+  ];
 
   return (
     <section id="download-app" className="px-6 py-24" aria-labelledby="download-heading">
