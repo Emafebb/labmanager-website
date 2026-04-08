@@ -14,6 +14,44 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "0.0.5",
+    date: "2026-04-08",
+    platforms: ["android", "windows"],
+    sections: [
+      {
+        title: "Storico DDT",
+        items: [
+          "Archivio completo dei documenti di trasporto ricevuti, consultabile con filtri per sede, fornitore e data",
+          "Dettaglio di ogni riga: prodotto, quantità, lotto, scadenza e prezzo",
+        ],
+      },
+      {
+        title: "Scanner DDT più preciso",
+        items: [
+          "Ricostruzione delle righe basata sulla posizione nel documento, anche quando i testi sono disallineati",
+          "Lettura dei codici a barre GS1 Code-128 per identificare i prodotti",
+          "I PDF generati dallo scanner includono il nome della tua attività nell'intestazione",
+        ],
+      },
+      {
+        title: "Validazione in tempo reale",
+        items: [
+          "Quando salvi un ricevimento o un prelievo, l'app evidenzia in rosso ogni campo mancante riga per riga",
+          "Per i dati facoltativi come lotto e scadenza, ti chiede se vuoi procedere lo stesso senza bloccarti",
+        ],
+      },
+      {
+        title: "Miglioramenti magazzino",
+        items: [
+          "Nuova card Scaduti nella dashboard: vedi subito i prodotti oltre la data di scadenza, separati da quelli in scadenza",
+          "Le sedi ora includono il campo nazione, pre-compilato dall'indirizzo del profilo azienda",
+          "Gli avvisi di scadenza escludono i lotti con giacenza zero",
+          "Il calcolo Sotto soglia considera tutti i movimenti di magazzino, non solo i carichi",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.4",
     date: "2026-02-28",
     platforms: ["android", "windows"],
