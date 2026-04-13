@@ -26,7 +26,7 @@ export function buildWelcomeEmail(name: string, unsubscribeUrl: string): string 
   <div style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <p>Ciao ${name},</p>
     <p>grazie per esserti iscritto a LabManager.</p>
-    <p>Ti scriverò quando ci sarà qualcosa di nuovo — aggiornamenti, nuove funzionalità, o qualcosa che vale la pena condividere. Niente spam.</p>
+    <p>Ti scriverò quando ci sarà qualcosa di nuovo — aggiornamenti, nuove funzionalità.</p>
     <p>A presto,<br>Emanuele</p>
     <hr style="border: none; border-top: 1px solid #e8e3db; margin: 32px 0;">
     <p style="font-size: 12px; color: #a09880;">Hai ricevuto questa email perché ti sei iscritto a LabManager. <a href="${unsubscribeUrl}" style="color: #a09880;">Cancella iscrizione</a></p>
