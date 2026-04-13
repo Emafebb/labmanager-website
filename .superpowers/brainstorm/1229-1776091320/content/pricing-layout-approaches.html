@@ -1,0 +1,104 @@
+<h2>Struttura pagina Pricing — 3 approcci</h2>
+<p class="subtitle">Come organizzare le sezioni e il blocco prezzo. Clicca per scegliere.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Card singola centrata</h3>
+      <p>Una card unica al centro della pagina con toggle mensile/annuale in cima. Il prezzo cambia dinamicamente. Badge "Più scelto" sull'annuale. Sotto la card: riga trial 21gg, poi feature list a griglia, poi FAQ.</p>
+      <div class="mockup" style="margin-top: 16px;">
+        <div class="mockup-body" style="text-align: center; padding: 32px;">
+          <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 12px;">Un solo piano. Tutto incluso.</div>
+
+          <div style="display: inline-flex; background: #f1f1f1; border-radius: 24px; padding: 4px; margin-bottom: 24px;">
+            <span style="padding: 6px 18px; border-radius: 20px; font-size: 13px; color: #888;">Mensile</span>
+            <span style="padding: 6px 18px; border-radius: 20px; background: #4403af; color: white; font-size: 13px;">Annuale ✓</span>
+          </div>
+
+          <div style="background: white; border: 2px solid #4403af; border-radius: 16px; padding: 32px; max-width: 420px; margin: 0 auto;">
+            <div style="font-size: 42px; font-weight: 700; color: #4403af;">€400<span style="font-size: 16px; color: #888;">/anno</span></div>
+            <div style="font-size: 13px; color: #888; margin-top: 4px;">IVA 22% esclusa — €488 totali</div>
+            <div style="font-size: 14px; color: #4403af; margin-top: 8px; font-weight: 600;">€33/mese — risparmi €145</div>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee; font-size: 13px; color: #666;">Prova gratuita di 21 giorni · Nessun costo di attivazione</div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pro</h4><ul><li>Pulito, focalizzato</li><li>Coerente con "un solo piano"</li><li>Massima leggibilità</li></ul></div>
+        <div class="cons"><h4>Contro</h4><ul><li>Meno dinamico visivamente</li><li>Lo spazio laterale resta vuoto</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Due card affiancate (mensile + annuale)</h3>
+      <p>Nessun toggle — entrambi i piani visibili contemporaneamente, side by side. L'annuale leggermente più grande con badge "Più scelto" e bordo viola. Il mensile più sobrio.</p>
+      <div class="mockup" style="margin-top: 16px;">
+        <div class="mockup-body" style="text-align: center; padding: 32px;">
+          <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 20px;">Un solo piano. Tutto incluso.</div>
+          <div style="display: flex; gap: 16px; justify-content: center;">
+            <div style="background: white; border: 1px solid #ddd; border-radius: 12px; padding: 24px; width: 200px;">
+              <div style="font-size: 12px; color: #888; text-transform: uppercase; margin-bottom: 12px;">Mensile</div>
+              <div style="font-size: 32px; font-weight: 700;">€45<span style="font-size: 14px; color: #888;">/mese</span></div>
+              <div style="font-size: 12px; color: #888; margin-top: 4px;">IVA esclusa</div>
+              <div style="font-size: 12px; color: #666; margin-top: 12px;">Nessun vincolo</div>
+            </div>
+            <div style="background: white; border: 2px solid #4403af; border-radius: 12px; padding: 24px; width: 220px; position: relative;">
+              <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #4403af; color: white; padding: 2px 12px; border-radius: 10px; font-size: 11px;">Più scelto</div>
+              <div style="font-size: 12px; color: #4403af; text-transform: uppercase; margin-bottom: 12px; font-weight: 600;">Annuale</div>
+              <div style="font-size: 32px; font-weight: 700; color: #4403af;">€400<span style="font-size: 14px; color: #888;">/anno</span></div>
+              <div style="font-size: 12px; color: #888; margin-top: 4px;">€33/mese equivalente</div>
+              <div style="font-size: 12px; color: #4403af; margin-top: 12px; font-weight: 600;">Risparmi €145</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pro</h4><ul><li>Confronto immediato tra i due prezzi</li><li>Nessuna interazione richiesta</li><li>L'annuale spicca visivamente</li></ul></div>
+        <div class="cons"><h4>Contro</h4><ul><li>Può sembrare ci siano 2 piani diversi</li><li>Su mobile le card si impilano</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Card centrata + sidebar vantaggi</h3>
+      <p>Card prezzo al centro con toggle, affiancata da una colonna con i vantaggi chiave (checkmark list). Layout a due colonne su desktop, impilato su mobile.</p>
+      <div class="mockup" style="margin-top: 16px;">
+        <div class="mockup-body" style="padding: 32px;">
+          <div style="text-align: center; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 20px;">Un solo piano. Tutto incluso.</div>
+          <div style="display: flex; gap: 24px; align-items: flex-start; justify-content: center;">
+            <div style="background: white; border: 2px solid #4403af; border-radius: 12px; padding: 28px; width: 260px; text-align: center;">
+              <div style="display: inline-flex; background: #f1f1f1; border-radius: 20px; padding: 3px; margin-bottom: 16px;">
+                <span style="padding: 4px 14px; border-radius: 16px; font-size: 12px; color: #888;">Mensile</span>
+                <span style="padding: 4px 14px; border-radius: 16px; background: #4403af; color: white; font-size: 12px;">Annuale</span>
+              </div>
+              <div style="font-size: 36px; font-weight: 700; color: #4403af;">€400<span style="font-size: 14px; color: #888;">/anno</span></div>
+              <div style="font-size: 12px; color: #888; margin-top: 4px;">€33/mese · Risparmi €145</div>
+              <div style="font-size: 12px; color: #666; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">21 giorni gratis</div>
+            </div>
+            <div style="width: 200px; padding-top: 8px;">
+              <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Incluso:</div>
+              <div style="font-size: 12px; color: #444; line-height: 2;">
+                ✓ Ricette illimitate<br>
+                ✓ Food cost automatico<br>
+                ✓ Magazzino multi-sede<br>
+                ✓ Etichette conformi<br>
+                ✓ Funziona offline<br>
+                ✓ Team & permessi
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pro</h4><ul><li>Prezzo + valore visibili insieme</li><li>Rafforza il "tutto incluso"</li></ul></div>
+        <div class="cons"><h4>Contro</h4><ul><li>Più complesso da bilanciare</li><li>Feature list duplicata (c'è anche sotto)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
