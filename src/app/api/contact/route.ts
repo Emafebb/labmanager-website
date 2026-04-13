@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase-server";
+import { buildWelcomeEmail, buildAdminSubscriberNotification } from "@/lib/emails";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -70,6 +71,28 @@ export async function POST(req: NextRequest) {
         });
       } catch (audienceErr) {
         console.error("Errore Resend Audience (contact):", audienceErr);
+      }
+      try {
+        const unsubscribeToken = Buffer.from(safeEmailLower).toString("base64url");
+        const unsubscribeUrl = `https://pastrylabmanager.com/api/unsubscribe?token=${unsubscribeToken}`;
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
+          to: safeEmailLower,
+          subject: "Benvenuto in LabManager!",
+          html: buildWelcomeEmail(escapeHtml(rawName), unsubscribeUrl),
+        });
+      } catch (welcomeErr) {
+        console.error("Errore invio email benvenuto (contact):", welcomeErr);
+      }
+      try {
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
+          to: process.env.CONTACT_EMAIL || "labmanager.info@gmail.com",
+          subject: `[LabManager] Nuovo iscritto: ${rawName}`,
+          html: buildAdminSubscriberNotification(rawName, safeEmailLower, "contact_form"),
+        });
+      } catch (notifyErr) {
+        console.error("Errore notifica admin (contact):", notifyErr);
       }
     }
 
