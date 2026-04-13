@@ -54,7 +54,7 @@ export default function NewsletterPopup() {
     localStorage.setItem(STORAGE_KEY_DISMISSED, Date.now().toString());
   }, []);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
 
@@ -217,7 +217,7 @@ export default function NewsletterPopup() {
                     className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/10 accent-primary"
                   />
                   <label htmlFor="nl-privacy" className="text-[11px] text-gray-500 leading-relaxed cursor-pointer">
-                    Ho letto e accetto la{" "}
+                    Acconsento a ricevere la newsletter di LabManager e ho letto la{" "}
                     <a
                       href="https://www.iubenda.com/privacy-policy/79608415"
                       target="_blank"
@@ -226,6 +226,7 @@ export default function NewsletterPopup() {
                     >
                       Privacy Policy
                     </a>
+                    . Puoi disiscriverti in qualsiasi momento.
                   </label>
                 </div>
 

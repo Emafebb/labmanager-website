@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { supabaseAdmin } from "@/lib/supabase-server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -14,7 +15,7 @@ function escapeHtml(str: string): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, message, privacyAccepted } = await req.json();
+    const { name, email, message, privacyAccepted, newsletterAccepted } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -47,6 +48,30 @@ export async function POST(req: NextRequest) {
       `,
       replyTo: email,
     });
+
+    // Opt-in newsletter esplicito: aggiunge a Resend Audience e Supabase
+    if (newsletterAccepted === true) {
+      const rawName = name.trim();
+      const safeEmailLower = email.trim().toLowerCase();
+      try {
+        await supabaseAdmin.from("newsletter_subscribers").upsert(
+          { name: rawName, email: safeEmailLower },
+          { onConflict: "email" }
+        );
+      } catch (dbErr) {
+        console.error("Errore Supabase newsletter (contact):", dbErr);
+      }
+      try {
+        await resend.contacts.create({
+          audienceId: process.env.RESEND_AUDIENCE_ID!,
+          email: safeEmailLower,
+          firstName: rawName,
+          unsubscribed: false,
+        });
+      } catch (audienceErr) {
+        console.error("Errore Resend Audience (contact):", audienceErr);
+      }
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

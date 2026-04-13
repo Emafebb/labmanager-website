@@ -11,6 +11,7 @@ export default function ContactForm() {
     message: "",
   });
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [newsletterAccepted, setNewsletterAccepted] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -21,7 +22,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, privacyAccepted }),
+        body: JSON.stringify({ ...formData, privacyAccepted, newsletterAccepted }),
       });
 
       if (!res.ok) throw new Error("Errore invio");
@@ -29,6 +30,7 @@ export default function ContactForm() {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setPrivacyAccepted(false);
+      setNewsletterAccepted(false);
     } catch {
       setStatus("error");
     }
@@ -192,6 +194,20 @@ export default function ContactForm() {
                       >
                         Privacy Policy
                       </a>
+                    </label>
+                  </div>
+
+                  <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <input
+                      id="newsletter"
+                      type="checkbox"
+                      checked={newsletterAccepted}
+                      onChange={(e) => setNewsletterAccepted(e.target.checked)}
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-icon/10"
+                    />
+                    <label htmlFor="newsletter" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
+                      Acconsento a ricevere aggiornamenti e novità di LabManager via email.{" "}
+                      <span className="text-gray-400 text-xs">(opzionale)</span>
                     </label>
                   </div>
 

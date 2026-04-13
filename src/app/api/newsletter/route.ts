@@ -41,18 +41,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const safeName = escapeHtml(name.trim());
+    const rawName = name.trim();
+    const safeName = escapeHtml(rawName);
     const safeEmail = email.trim().toLowerCase();
-    const safeBusinessType = businessType ? escapeHtml(businessType.trim()) : null;
+    const rawBusinessType = businessType ? businessType.trim() : null;
+    const safeBusinessType = rawBusinessType ? escapeHtml(rawBusinessType) : null;
 
-    // 1. Upsert to Supabase
+    // 1. Upsert to Supabase (dati grezzi, non HTML-escaped)
     const { error: dbError } = await supabaseAdmin
       .from("newsletter_subscribers")
       .upsert(
         {
-          name: safeName,
+          name: rawName,
           email: safeEmail,
-          business_type: safeBusinessType,
+          business_type: rawBusinessType,
         },
         { onConflict: "email" }
       );
@@ -70,7 +72,7 @@ export async function POST(req: NextRequest) {
       await resend.contacts.create({
         audienceId: process.env.RESEND_AUDIENCE_ID!,
         email: safeEmail,
-        firstName: safeName,
+        firstName: rawName,
         unsubscribed: false,
       });
     } catch (audienceError) {
@@ -79,12 +81,14 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Send welcome email
+    const unsubscribeToken = Buffer.from(safeEmail).toString("base64url");
+    const unsubscribeUrl = `https://pastrylabmanager.com/api/unsubscribe?token=${unsubscribeToken}`;
     try {
       await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
         to: safeEmail,
         subject: "Benvenuto in LabManager!",
-        html: buildWelcomeEmail(safeName),
+        html: buildWelcomeEmail(safeName, unsubscribeUrl),
       });
     } catch (emailError) {
       console.error("Errore invio email benvenuto:", emailError);
@@ -101,7 +105,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-function buildWelcomeEmail(name: string): string {
+function buildWelcomeEmail(name: string, unsubscribeUrl: string): string {
   return `
 <!DOCTYPE html>
 <html lang="it" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -346,6 +350,7 @@ function buildWelcomeEmail(name: string): string {
               </p>
               <p style="font-family: 'DM Sans', -apple-system, Arial, sans-serif; font-size: 10px; color: #a09880; margin: 0 0 3px 0;">&copy; 2026 LabManager. Tutti i diritti riservati.</p>
               <p style="font-family: 'DM Sans', -apple-system, Arial, sans-serif; font-size: 10px; color: #b8b0a4; margin: 8px 0 0 0;">Hai ricevuto questa email perch&eacute; ti sei iscritto alla newsletter di LabManager.</p>
+              <p style="font-family: 'DM Sans', -apple-system, Arial, sans-serif; font-size: 10px; color: #b8b0a4; margin: 6px 0 0 0;"><a href="${unsubscribeUrl}" style="color: #a09880; text-decoration: underline;">Cancella iscrizione</a></p>
             </td>
           </tr>
 
