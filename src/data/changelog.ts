@@ -21,7 +21,6 @@ export const changelog: ChangelogEntry[] = [
       {
         title: "Tracciabilità Completa Lotti e Clienti",
         items: [
-          "Registra numero lotto e scadenza per ogni materia prima ricevuta",
           "Traccia i lotti dall'acquisto alla produzione fino alla vendita",
           "Supporto completo per clienti B2B (grossisti, catering, e-commerce)",
         ],
