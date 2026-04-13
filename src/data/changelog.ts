@@ -14,6 +14,30 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "0.0.6",
+    date: "2026-04-13",
+    platforms: ["android", "windows"],
+    sections: [
+      {
+        title: "Tracciabilità Completa Lotti e Clienti",
+        items: [
+          "Registra numero lotto e scadenza per ogni materia prima ricevuta",
+          "Traccia i lotti dall'acquisto alla produzione fino alla vendita",
+          "Supporto completo per clienti B2B (grossisti, catering, e-commerce)",
+        ],
+      },
+      {
+        title: "Export PDF per Tracciabilità",
+        items: [
+          "Esporta la storia completa di un lotto (origine, produzione, vendita)",
+          "Genera report per controlli interni e verifiche qualità",
+          "Include informazioni del fornitore e date chiave",
+          "Formato PDF pronto per stampa e conservazione",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.5",
     date: "2026-04-08",
     platforms: ["android", "windows"],
