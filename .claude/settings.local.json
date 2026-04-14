@@ -12,7 +12,10 @@
       "Bash(git commit:*)",
       "WebFetch(domain:github.com)",
       "mcp__plugin_supabase_supabase__search_docs",
-      "Bash(C:/Users/emanu/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh --project-dir \"c:/Users/emanu/Desktop/GitProjects/labmanager-website\")"
+      "Bash(C:/Users/emanu/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh --project-dir \"c:/Users/emanu/Desktop/GitProjects/labmanager-website\")",
+      "WebFetch(domain:www.pastryskill.com)",
+      "WebFetch(domain:www.teamsystem.com)",
+      "WebFetch(domain:cooki.it)"
     ]
   }
 }

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Gestionale per pasticceria, panificio e ristorante: gestisci ricette, calcola costi e margini, crea etichette con allergeni.Magazzino: giacenze, lotti, scadenze e fornitori. Funziona offline su Android e Windows. Provalo gratis!",
+    "Gestionale per pasticceria, panificio e ristorante: ricette, costi, etichette con allergeni e magazzino. Funziona offline su Android e Windows. Provalo gratis!",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
