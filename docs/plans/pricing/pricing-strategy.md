@@ -1,7 +1,7 @@
 # Pricing Strategy — LabManager
 
 > Documento di lavoro: strategia di pricing, copy pagina prezzi e note di implementazione.
-> Ultimo aggiornamento: 2026-04-13
+> Ultimo aggiornamento: 2026-04-15
 
 ---
 
@@ -12,20 +12,23 @@
 | Struttura | Piano singolo — tutto incluso |
 | Trial | Contatto diretto → tu mandi il link → cliente scarica e si registra in autonomia |
 | Modello | Mensile + Annuale |
-| IVA | 22% — da mostrare separata sul sito |
+| Regime fiscale | Forfettario — non soggetto IVA (art. 1 c. 54-89 L. 190/2014) |
+| Dispositivi inclusi | 2 connessioni simultanee nel piano base |
+| Dispositivi extra | Su richiesta diretta — attivazione manuale da parte tua, nessun prezzo pubblicato, trattativa caso per caso |
 
 ---
 
 ## Prezzi
 
-| | Netto | IVA 22% | Totale cliente |
-|---|---|---|---|
-| **Mensile** | €45/mese | + €9,90 | **€54,90/mese** |
-| **Annuale** | €400/anno | + €88 | **€488/anno** |
+| | Prezzo cliente |
+|---|---|
+| **Mensile** | **€45/mese** |
+| **Annuale** | **€400/anno** |
 
 - Annuale = **€33/mese equivalente** — risparmio di €145 vs mensile (26% sconto, ~3 mesi gratis)
 - Nessun costo di attivazione
 - Nessun vincolo contrattuale sul mensile
+- Regime forfettario: nessuna IVA addebitata al cliente — il prezzo è finale
 
 ---
 
@@ -81,7 +84,6 @@ Toggle mensile / annuale — **annuale selezionato di default**
 **[ANNUALE — più scelto]**
 ```
 €400 /anno
-IVA 22% esclusa — €488 totali
 
 Equivale a €33 al mese — risparmi €145 rispetto al piano mensile
 
@@ -91,7 +93,6 @@ Equivale a €33 al mese — risparmi €145 rispetto al piano mensile
 **[MENSILE]**
 ```
 €45 /mese
-IVA 22% esclusa — €54,90 al mese
 
 [Inizia ora — piano mensile]
 ```
@@ -127,6 +128,8 @@ Tutto quello che ti serve, dal primo giorno
 **Team e Dispositivi**
 - Accesso da Android e Windows
 - Funziona offline — sincronizzazione automatica
+- 2 dispositivi connessi simultaneamente inclusi
+- Dispositivi aggiuntivi disponibili su richiesta
 - Gestione utenti con ruoli e permessi
 - I tuoi dati sempre al sicuro nel cloud
 
@@ -176,6 +179,9 @@ Il piano include accesso per il tuo team. Puoi configurare ruoli e permessi per 
 **C'è un contratto da firmare?**
 No. Il piano mensile non ha vincoli — lo attivi e lo disdici quando vuoi. Il piano annuale è un pagamento unico anticipato.
 
+**Posso usarlo su più di 2 dispositivi?**
+Sì. Il piano base include 2 connessioni simultanee. Se hai bisogno di più dispositivi, scrivici e lo attiviamo per te.
+
 ---
 
 ### Footer Pricing
@@ -191,7 +197,7 @@ Hai domande prima di iniziare?
 - [ ] Blocco ROI ("€1,10 al giorno") subito sotto il prezzo, non in fondo
 - [ ] CTA demo nello sticky header della pagina prezzi
 - [ ] Inserire 2-3 recensioni reali tra blocco prezzo e "Cosa è incluso"
-- [ ] Mostrare IVA 22% separata in modo chiaro (come da normativa italiana)
+- [ ] ⚠️ Nota fatturazione (NON va sul sito): in fattura inserire obbligatoriamente → "Operazione effettuata ai sensi dell'art. 1, commi 54-89, L. 190/2014 — Regime forfettario. Non soggetto IVA"
 - [ ] Link CTA demo → WhatsApp o form contatto
 
 ---

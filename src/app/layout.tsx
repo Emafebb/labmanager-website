@@ -7,6 +7,16 @@ import "./globals.css";
 
 const BASE_URL = "https://pastrylabmanager.com";
 
+const TABNAV_WIDGET_CONFIG = {
+  language: "it",
+  color: "#405ec3",
+  buttonColor: "#3254c3",
+  buttonSize: "small",
+  widgetSize: "small",
+  widgetLocation: "left",
+  buttonLocation: "center",
+} as const;
+
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
@@ -267,6 +277,19 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
+        <Script
+          id="tabnav-accessibility-widget"
+          src="https://widget.tabnav.com/limited-widget.min.js.gz"
+          strategy="lazyOnload"
+          tnv-data-config={JSON.stringify(TABNAV_WIDGET_CONFIG)}
+        />
+        <noscript>
+          JavaScript is required for our{" "}
+          <a href="https://tabnav.com/accessibility-widget">
+            accessibility widget
+          </a>{" "}
+          to work properly.
+        </noscript>
         <Script
           src="https://embeds.iubenda.com/widgets/468f18b9-c49c-4c8a-8a3f-bc63040f7939.js"
           strategy="lazyOnload"
