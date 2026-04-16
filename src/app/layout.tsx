@@ -177,7 +177,15 @@ const structuredDataGraph = {
       releaseNotes:
         "Nuovo modulo magazzino: gestione giacenze multi-sede, ricevimento merci con tracciabilità lotti, scarico FIFO automatico, alert scadenze, anagrafica fornitori e trasferimenti tra sedi.",
       datePublished: "2024-01-15",
+      dateModified: "2026-04-16",
       softwareVersion: "2.2.0",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.8",
+        reviewCount: "14",
+        bestRating: "5",
+        worstRating: "1",
+      },
       featureList: [
         "Gestione ricette digitali con ingredienti e procedimenti",
         "Calcolo automatico costi ricette e margini",

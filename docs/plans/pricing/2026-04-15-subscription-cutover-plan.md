@@ -1,4 +1,4 @@
-# Subscription Cutover Plan - Website + App
+
 
 > Data: 2026-04-15  
 > Documento operativo per il passaggio da "fase gratuita" a "trial + abbonamento", coerente con `docs/plans/pricing/pricing-strategy.md`.
@@ -58,6 +58,14 @@ Eseguire il cutover solo quando questi punti sono verdi:
     - eliminare claim "attualmente gratuito";
     - inserire risposta chiara su EUR 45/mese e EUR 400/anno;
     - mantenere trial 21 giorni (se confermato al go-live).
+  - FAQ con claim "gratuito" da aggiornare (con posizione nell'array, 0-based):
+    - [2] "Esistono software gratuiti per gestire una pasticceria?" — risposta intera da riscrivere.
+    - [6] "Quanto costa LabManager?" — risposta intera da riscrivere con pricing reale.
+    - [18] "Esistono gestionali gratuiti per pasticceria, panificio o ristorante?" — aggiunta 2026-04-16, risposta da riscrivere.
+  - FAQ con claim indiretto da verificare:
+    - [1] "Quale app usare per gestire una pasticceria?" — nessun claim esplicito su prezzo, verificare.
+    - [5] "Come posso provare l'app?" — aggiornare con riferimento al trial 21 giorni.
+    - [19] "Come scegliere il software gestionale giusto per il mio laboratorio?" — menziona "senza costi mensili durante la fase di lancio", da aggiornare.
 
 ### 4.2 Structured data (SEO/schema)
 

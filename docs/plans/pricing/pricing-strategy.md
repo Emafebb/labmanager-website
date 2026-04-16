@@ -22,10 +22,10 @@
 
 | | Prezzo cliente |
 |---|---|
-| **Mensile** | **€45/mese** |
-| **Annuale** | **€400/anno** |
+| **Mensile** | **€44.99/mese** |
+| **Annuale** | **€480/anno** |
 
-- Annuale = **€33/mese equivalente** — risparmio di €145 vs mensile (26% sconto, ~3 mesi gratis)
+- Annuale = **€40/mese equivalente** — risparmio di €60 vs mensile 
 - Nessun costo di attivazione
 - Nessun vincolo contrattuale sul mensile
 - Regime forfettario: nessuna IVA addebitata al cliente — il prezzo è finale
@@ -83,16 +83,16 @@ Toggle mensile / annuale — **annuale selezionato di default**
 
 **[ANNUALE — più scelto]**
 ```
-€400 /anno
+€480 /anno
 
-Equivale a €33 al mese — risparmi €145 rispetto al piano mensile
+Equivale a €40 al mese — risparmi €145 rispetto al piano mensile
 
 [Inizia ora — piano annuale]
 ```
 
 **[MENSILE]**
 ```
-€45 /mese
+€44.99 /mese
 
 [Inizia ora — piano mensile]
 ```
@@ -108,11 +108,11 @@ Nessun costo di attivazione. Nessun vincolo contrattuale sul mensile. Puoi disdi
 Tutto quello che ti serve, dal primo giorno
 
 **Ricette e Produzione**
-- Ricette illimitate con costi aggiornati in automatico
-- Calcolo food cost preciso al grammo
-- Analisi nutrizionale e bilanciamento degli impasti
+- Ricette  con costi aggiornati in automatico
+- Calcolo food cost 
+- Analisi nutrizionale e bilanciamento 
 - Calcolatori specializzati per gelato, pasticceria, pane e lievito madre
-- Pianificazione della produzione giornaliera
+
 
 **Magazzino e Tracciabilità**
 - Magazzino multi-sede con alert scadenze
@@ -129,7 +129,7 @@ Tutto quello che ti serve, dal primo giorno
 - Accesso da Android e Windows
 - Funziona offline — sincronizzazione automatica
 - 2 dispositivi connessi simultaneamente inclusi
-- Dispositivi aggiuntivi disponibili su richiesta
+- Dispositivi aggiuntivi disponibili su richiesta a pagamento
 - Gestione utenti con ruoli e permessi
 - I tuoi dati sempre al sicuro nel cloud
 
@@ -149,7 +149,7 @@ LabManager si ripaga in tre giorni.
 ### Vuoi provarlo prima?
 
 Scrivici e ti mandiamo il link per scaricare l'app.
-Crei il tuo profilo in autonomia e hai **21 giorni gratis** per provare tutto — nessuna carta di credito richiesta.
+Crei il tuo profilo in autonomia e hai **14 giorni gratis** per provare tutto — nessuna carta di credito richiesta.
 
 Se hai domande durante il trial, rispondiamo noi direttamente.
 
@@ -164,8 +164,6 @@ Se hai domande durante il trial, rispondiamo noi direttamente.
 **Posso cambiare da mensile ad annuale?**
 Sì, in qualsiasi momento. La differenza viene scalata dal periodo già pagato.
 
-**Cosa succede se smetto di pagare?**
-I tuoi dati rimangono archiviati per 12 mesi. Se torni, ritrovi tutto esattamente com'era.
 
 **È adatto anche a ristoranti e pizzerie?**
 Sì. Le funzionalità di food cost, ricette e gestione ingredienti funzionano per qualsiasi tipo di laboratorio alimentare.
@@ -176,8 +174,6 @@ Sì. LabManager funziona completamente offline su Android e Windows. I dati si s
 **Quanti utenti posso aggiungere?**
 Il piano include accesso per il tuo team. Puoi configurare ruoli e permessi per ogni membro.
 
-**C'è un contratto da firmare?**
-No. Il piano mensile non ha vincoli — lo attivi e lo disdici quando vuoi. Il piano annuale è un pagamento unico anticipato.
 
 **Posso usarlo su più di 2 dispositivi?**
 Sì. Il piano base include 2 connessioni simultanee. Se hai bisogno di più dispositivi, scrivici e lo attiviamo per te.

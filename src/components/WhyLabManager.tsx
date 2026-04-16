@@ -111,7 +111,7 @@ export default function WhyLabManager() {
             id="why-heading"
             className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
           >
-            Il gestionale pensato per il tuo laboratorio o cucina
+            Il gestionale di pasticceria pensato per il tuo laboratorio
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             A differenza dei gestionali generici, LabManager è stato progettato

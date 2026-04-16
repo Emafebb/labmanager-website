@@ -39,20 +39,18 @@ Creare una pagina `/pricing` separata, puramente informativa, che mostri prezzi,
 **Card Mensile** (a sinistra):
 - Bordo grigio chiaro (`border-light`), sfondo bianco
 - Label: "Mensile"
-- Prezzo: **€45/mese**
-- Sotto-prezzo: "IVA 22% esclusa — €54,90 al mese"
+- Prezzo: **€44.99/mese**
 - Nota: "Nessun vincolo contrattuale"
 
 **Card Annuale** (a destra, leggermente più grande):
 - Bordo viola (`primary`), sfondo bianco
 - Badge in alto: "Più scelto" (sfondo `primary`, testo bianco, `border-radius` pill)
 - Label: "Annuale"
-- Prezzo: **€400/anno**
-- Sotto-prezzo: "IVA 22% esclusa — €488 totali"
-- Risparmio: "€33/mese — risparmi €145" (testo `primary`, bold)
+- Prezzo: **€480/anno**
+- Risparmio: "€40/mese — risparmi €60" (testo `primary`, bold)
 
 **Riga sotto le card (centrata):**
-- "Prova gratuita di 21 giorni · Nessun costo di attivazione"
+- "Prova gratuita di 14 giorni · Nessun costo di attivazione"
 - Testo secondario, font size ridotto
 
 **Responsive:** su mobile le card si impilano verticalmente, annuale prima (è la scelta raccomandata).

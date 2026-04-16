@@ -96,7 +96,21 @@ const faqs = [
     answer:
       "Sì, LabManager consente di gestire i lotti di produzione associando ogni lavorazione agli ingredienti utilizzati con numero di lotto e data di scadenza. Questo garantisce piena tracciabilità della produzione per la sicurezza alimentare e il rispetto delle normative.",
   },
-  
+  {
+    question: "Esistono gestionali gratuiti per pasticceria, panificio o ristorante?",
+    answer:
+      "Sì, LabManager è gratuito durante la fase di lancio. È un gestionale completo per pasticcerie, panifici e ristoranti che include gestione ricette, calcolo costi e margini, etichette alimentari con allergeni e tabelle nutrizionali. Non richiede abbonamento e funziona su Android e Windows, anche offline.",
+  },
+  {
+    question: "Come scegliere il software gestionale giusto per il mio laboratorio?",
+    answer:
+      "Dipende dal tipo di attività. Un buon gestionale per laboratorio alimentare deve coprire ricette e semilavorati, calcolo automatico dei costi, etichette con allergeni conformi alla normativa e funzionamento offline. LabManager è progettato specificamente per pasticcerie, panifici e ristoranti: tutte queste funzionalità sono integrate in un'unica app su Android e Windows.",
+  },
+  {
+    question: "LabManager funziona anche per panifici e ristoranti?",
+    answer:
+      `Sì, LabManager è pensato per qualsiasi laboratorio alimentare professionale: pasticcerie, panifici, ristoranti e pizzerie. Gestione ricette, calcolo food cost, etichette con allergeni e magazzino multi-sede funzionano allo stesso modo per tutte le tipologie di attività. <a href='#contatti' class='${LINK_CLASS}'>Contattaci</a> per scoprire come adattarlo alla tua realtà.`,
+  },
 ];
 
 function stripHtmlTags(html: string): string {
