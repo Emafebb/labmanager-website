@@ -11,10 +11,10 @@ const TABNAV_WIDGET_CONFIG = {
   language: "it",
   color: "#405ec3",
   buttonColor: "#3254c3",
-  buttonSize: "small",
+  buttonSize: "large",
   widgetSize: "small",
-  widgetLocation: "left",
-  buttonLocation: "center",
+  widgetLocation: "right",
+  buttonLocation: "bottom",
 } as const;
 
 const dmSans = DM_Sans({
