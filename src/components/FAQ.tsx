@@ -49,7 +49,7 @@ const faqs = [
   {
     question: "Su quanti dispositivi posso usarlo?",
     answer:
-      "Di base puoi usare LabManager contemporaneamente su 2 dispositivi. I dati si sincronizzano in tempo reale tra i dispositivi. Se hai bisogno di più postazioni, contattaci e troveremo la soluzione adatta a te.",
+      "Puoi usare LabManager contemporaneamente su 2 dispositivi. Non si tratta di un limite ai dispositivi che puoi usare nel tempo, ma del numero di accessi simultanei inclusi. I dati si sincronizzano in tempo reale tra i dispositivi. Se hai bisogno di più di 2 dispositivi contemporaneamente, contattaci e troveremo la soluzione adatta a te.",
   },
   {
     question: "Posso esportare ricette e documenti?",
