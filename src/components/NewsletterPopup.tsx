@@ -6,7 +6,7 @@ import { X, CheckCircle2, AlertCircle, Mail, User, Building2, Sparkles } from "l
 const STORAGE_KEY_SUBSCRIBED = "newsletter_subscribed";
 const STORAGE_KEY_DISMISSED = "newsletter_dismissed";
 const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-const DELAY_MS = 4000;
+const SCROLL_THRESHOLD = 0.5; // mostra dopo 50% di scroll
 
 export default function NewsletterPopup() {
   const [visible, setVisible] = useState(false);
@@ -28,8 +28,16 @@ export default function NewsletterPopup() {
       if (elapsed < COOLDOWN_MS) return;
     }
 
-    const timer = setTimeout(() => setVisible(true), DELAY_MS);
-    return () => clearTimeout(timer);
+    function handleScroll() {
+      const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (scrolled >= SCROLL_THRESHOLD) {
+        setVisible(true);
+        window.removeEventListener("scroll", handleScroll);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {

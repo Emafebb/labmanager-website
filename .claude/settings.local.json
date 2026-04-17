@@ -16,7 +16,11 @@
       "WebFetch(domain:www.pastryskill.com)",
       "WebFetch(domain:www.teamsystem.com)",
       "WebFetch(domain:cooki.it)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Skill(browse)",
+      "Skill(browse:*)",
+      "WebFetch(domain:pastrylabmanager.com)"
     ]
   }
 }

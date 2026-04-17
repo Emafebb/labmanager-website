@@ -13,7 +13,7 @@ const TABNAV_WIDGET_CONFIG = {
   buttonColor: "#3254c3",
   buttonSize: "large",
   widgetSize: "small",
-  widgetLocation: "right",
+  widgetLocation: "left",
   buttonLocation: "bottom",
 } as const;
 
@@ -170,22 +170,14 @@ const structuredDataGraph = {
       description:
         "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline, nessun abbonamento richiesto (in fase di sviluppo).",
       downloadUrl: [
-        "https://play.google.com/store/apps/details?id=com.labmanager",
         "https://ndlsifytatricfutjsvu.supabase.co/storage/v1/object/public/releases/LabManager-Setup.exe",
       ],
       fileSize: "47185920",
       releaseNotes:
         "Nuovo modulo magazzino: gestione giacenze multi-sede, ricevimento merci con tracciabilità lotti, scarico FIFO automatico, alert scadenze, anagrafica fornitori e trasferimenti tra sedi.",
-      datePublished: "2024-01-15",
+      datePublished: "2025-10-01",
       dateModified: "2026-04-16",
-      softwareVersion: "2.2.0",
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.8",
-        reviewCount: "14",
-        bestRating: "5",
-        worstRating: "1",
-      },
+      softwareVersion: "0.0.6",
       featureList: [
         "Gestione ricette digitali con ingredienti e procedimenti",
         "Calcolo automatico costi ricette e margini",
