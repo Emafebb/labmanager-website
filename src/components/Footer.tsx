@@ -1,9 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Heart } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
+const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
+const COOKIE_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/cookie-policy-it";
 
-const footerLinks = [
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+  dataLb?: string;
+};
+
+type FooterSection = {
+  title: string;
+  links: FooterLink[];
+};
+
+const footerLinks: FooterSection[] = [
   {
     title: "Prodotto",
     links: [
@@ -21,8 +36,9 @@ const footerLinks = [
   {
     title: "Legale",
     links: [
-      { label: "Privacy Policy", href: "https://www.iubenda.com/privacy-policy/79608415", external: true, iubendaEmbed: true },
-      { label: "Cookie Policy", href: "https://www.iubenda.com/privacy-policy/79608415/cookie-policy", external: true, iubendaEmbed: true },
+      { label: "Privacy Policy", href: PRIVACY_POLICY_URL, external: true },
+      { label: "Cookie Policy", href: COOKIE_POLICY_URL, external: true },
+      { label: "Aggiorna preferenze cookie", href: "#", dataLb: "c-settings" },
     ],
   },
 ];
@@ -34,7 +50,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-12">
             <div className="lg:col-span-5">
-              <a href="/" className="group inline-flex items-center gap-3 mb-6">
+              <Link href="/" className="group inline-flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                   <Image
                     src="/images/logo.png"
@@ -48,7 +64,7 @@ export default function Footer() {
                     LabManager
                   </span>
                 </div>
-              </a>
+              </Link>
 
               <p className="text-gray-400 leading-relaxed max-w-sm">
                 Il gestionale completo per pasticceria, panificio e ristorante: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione.
@@ -66,9 +82,9 @@ export default function Footer() {
                       <li key={link.label}>
                         <a
                           href={link.href}
-                          {...("external" in link && link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                          {...("iubendaEmbed" in link && link.iubendaEmbed ? { title: link.label } : {})}
-                          className={`text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-block py-2${"iubendaEmbed" in link && link.iubendaEmbed ? " iubenda-white iubenda-noiframe iubenda-embed" : ""}`}
+                          {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          {...(link.dataLb ? { "data-lb": link.dataLb } : {})}
+                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-block py-2"
                         >
                           {link.label}
                         </a>

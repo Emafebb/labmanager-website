@@ -7,6 +7,7 @@ const STORAGE_KEY_SUBSCRIBED = "newsletter_subscribed";
 const STORAGE_KEY_DISMISSED = "newsletter_dismissed";
 const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 const SCROLL_THRESHOLD = 0.5; // mostra dopo 50% di scroll
+const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
 
 export default function NewsletterPopup() {
   const [visible, setVisible] = useState(false);
@@ -227,7 +228,7 @@ export default function NewsletterPopup() {
                   <label htmlFor="nl-privacy" className="text-[11px] text-gray-500 leading-relaxed cursor-pointer">
                     Acconsento a ricevere la newsletter di LabManager e ho letto la{" "}
                     <a
-                      href="https://www.iubenda.com/privacy-policy/79608415"
+                      href={PRIVACY_POLICY_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary font-semibold hover:text-primary-dark underline underline-offset-2"

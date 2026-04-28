@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, Sparkles, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "./WhatsAppButton";
 
+const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -187,7 +189,7 @@ export default function ContactForm() {
                     <label htmlFor="privacy" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
                       Ho letto e accetto la{" "}
                       <a
-                        href="https://www.iubenda.com/privacy-policy/79608415"
+                        href={PRIVACY_POLICY_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary font-semibold hover:text-primary-dark underline"

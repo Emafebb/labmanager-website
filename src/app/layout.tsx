@@ -285,6 +285,15 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Script
+          id="legalblink-cmp"
+          type="text/javascript"
+          src="https://app.legalblink.it/api/scripts/cmp/loader.js"
+          strategy="afterInteractive"
+          data-license-id="69e89f282420950024cb1a5e"
+          data-blocking-mode="auto"
+          data-consent-mode="true"
+        />
         <Analytics />
         <SpeedInsights />
         <Script
@@ -300,24 +309,6 @@ export default function RootLayout({
           </a>{" "}
           to work properly.
         </noscript>
-        <Script
-          src="https://embeds.iubenda.com/widgets/468f18b9-c49c-4c8a-8a3f-bc63040f7939.js"
-          strategy="lazyOnload"
-        />
-        <Script
-          id="iubenda-embed"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`,
-          }}
-        />
-        <Script
-          id="iubenda-hide-badge"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var h=new MutationObserver(function(){var b=document.querySelector('button.iubenda-tp-btn');if(b){b.style.setProperty('display','none','important');h.disconnect();}});h.observe(document.body,{childList:true,subtree:true});})();`,
-          }}
-        />
       </body>
     </html>
   );
