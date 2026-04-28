@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 const badges = [
-  "100% Gratuito (in fase di sviluppo)",
+  "Trial Gratuito 14 Giorni",
   "Funziona Offline",
   "Multi-utente",
   "Supporto Diretto",
@@ -68,7 +68,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
             <DownloadIcon size={16} aria-hidden="true" />
-            <span>DOWNLOAD GRATUITO</span>
+            <span>SCARICA E PROVA GRATIS</span>
           </div>
 
           <h2 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">

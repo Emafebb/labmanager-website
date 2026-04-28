@@ -1,7 +1,7 @@
-# Pricing Strategy — LabManager
+# Pricing Strategy - LabManager
 
 > Documento di lavoro: strategia di pricing, copy pagina prezzi e note di implementazione.
-> Ultimo aggiornamento: 2026-04-15
+> Ultimo aggiornamento: 2026-04-21
 
 ---
 
@@ -9,12 +9,19 @@
 
 | Decisione | Scelta |
 |---|---|
-| Struttura | Piano singolo — tutto incluso |
-| Trial | Contatto diretto → tu mandi il link → cliente scarica e si registra in autonomia |
+| Struttura | Piano singolo, tutto incluso |
+| Trial | Contatto diretto, invio link, registrazione autonoma |
 | Modello | Mensile + Annuale |
-| Regime fiscale | Forfettario — non soggetto IVA (art. 1 c. 54-89 L. 190/2014) |
+| Attivazione abbonamento | Solo in app, dal paywall, non sul sito |
+| Regime fiscale | Forfettario, non soggetto IVA |
 | Dispositivi inclusi | 2 connessioni simultanee nel piano base |
-| Dispositivi extra | Su richiesta diretta — attivazione manuale da parte tua, nessun prezzo pubblicato, trattativa caso per caso |
+| Dispositivi extra | Su richiesta diretta, attivazione manuale |
+
+## Stato Operativo
+
+- Pricing page del sito gia riallineata a funnel informativo + trial.
+- Test di checkout Stripe sul sito archiviato come validazione tecnica interna.
+- Prossimo blocco di lavoro: trial, paywall, checkout e webhook nel flusso app.
 
 ---
 
@@ -22,46 +29,36 @@
 
 | | Prezzo cliente |
 |---|---|
-| **Mensile** | **€44.99/mese** |
+| **Mensile** | **€44,99/mese** |
 | **Annuale** | **€480/anno** |
 
-- Annuale = **€40/mese equivalente** — risparmio di €60 vs mensile 
+- Annuale = **€40/mese equivalente**, risparmio di **€60** rispetto al mensile
 - Nessun costo di attivazione
 - Nessun vincolo contrattuale sul mensile
-- Regime forfettario: nessuna IVA addebitata al cliente — il prezzo è finale
-
----
-
-## Analisi Competitiva
-
-| Competitor | Prezzo/anno (netto) | Funzionalità vs LabManager |
-|---|---|---|
-| Novicrea Classic | ~€239 | Meno (no magazzino, no etichette, no offline) |
-| Novicrea PRO | ~€360 | Meno (no FIFO, no lotti, no offline) |
-| PastrySkill | €410 primo anno / €330 rinnovo | Meno (no FIFO, no lotti, no offline) |
-| Ricette in Cloud | ~€690 + €120 attivazione | Comparabile ma più costoso |
-
-**Posizionamento:** LabManager è il miglior rapporto qualità/prezzo della categoria — funzionalità premium al prezzo dei competitor meno completi.
+- Prezzo finale, nessuna IVA addebitata al cliente
 
 ---
 
 ## Messaggi Chiave
 
 ### Proposta di valore principale
+
 > "Un solo piano. Tutto incluso. Nessuna sorpresa."
 
 ### ROI per il cliente
-> "€1,10 al giorno — meno di un caffè al bar."
+
+> "€1,32 al giorno, meno di un caffè al bar."
 > "Se una ricetta sbagliata ti fa sprecare anche solo €50 al mese, LabManager si ripaga in tre giorni."
 
 ### Differenziatore trial
-> "Niente bot. Parli direttamente con noi."
-> "Scrivici — ti mandiamo il link per iniziare subito, gratis per 21 giorni."
 
-### Da evitare nel copy
-- Elenchi tecnici di feature senza contesto ("FIFO", "tracciabilità lotti")
-- Linguaggio da software enterprise
-- Confronto diretto con competitor per nome
+> "Scrivici, ti mandiamo il link per iniziare subito, gratis per 14 giorni."
+
+### Regola di funnel
+
+- Il sito mostra prezzi, trial e condizioni.
+- La scelta del piano avviene solo dentro l'app.
+- Il checkout Stripe non fa parte del funnel pubblico del sito.
 
 ---
 
@@ -73,135 +70,66 @@
 Un solo piano. Tutto incluso. Nessuna sorpresa.
 
 **Sottotitolo:**
-LabManager ti dà accesso completo a tutte le funzionalità — ricette, costi, magazzino, etichette, tracciabilità lotti — senza scegliere tra versioni ridotte o pagare extra per ciò che ti serve davvero.
-
----
+LabManager ti dà accesso completo a tutte le funzionalità, ricette, costi, magazzino, etichette e team, senza moduli extra o versioni ridotte.
 
 ### Blocco Prezzo
 
-Toggle mensile / annuale — **annuale selezionato di default**
-
-**[ANNUALE — più scelto]**
+**[ANNUALE - più scelto]**
 ```
 €480 /anno
 
-Equivale a €40 al mese — risparmi €145 rispetto al piano mensile
+Equivale a €40 al mese, risparmi €60 rispetto al piano mensile
 
-[Inizia ora — piano annuale]
++ 2 sessioni private 1:1, setup iniziale e revisione dopo 6 mesi
++ Supporto prioritario
+
+[Scelta piano dentro l'app]
 ```
 
 **[MENSILE]**
 ```
-€44.99 /mese
+€44,99 /mese
 
-[Inizia ora — piano mensile]
+[Scelta piano dentro l'app]
 ```
 
 **Testo sotto il prezzo:**
 Nessun costo di attivazione. Nessun vincolo contrattuale sul mensile. Puoi disdire quando vuoi.
 
----
-
-### Cosa è incluso
-
-**Titolo sezione:**
-Tutto quello che ti serve, dal primo giorno
-
-**Ricette e Produzione**
-- Ricette  con costi aggiornati in automatico
-- Calcolo food cost 
-- Analisi nutrizionale e bilanciamento 
-- Calcolatori specializzati per gelato, pasticceria, pane e lievito madre
-
-
-**Magazzino e Tracciabilità**
-- Magazzino multi-sede con alert scadenze
-- Tracciabilità lotti e scarico FIFO
-- Scanner barcode per entrata merce e DDT
-- Storico movimenti sempre disponibile
-
-**Etichette e Conformità**
-- Etichette alimentari conformi alla normativa
-- Allergeni in evidenza automatica
-- Export PDF per DDT, distinte di produzione, report
-
-**Team e Dispositivi**
-- Accesso da Android e Windows
-- Funziona offline — sincronizzazione automatica
-- 2 dispositivi connessi simultaneamente inclusi
-- Dispositivi aggiuntivi disponibili su richiesta a pagamento
-- Gestione utenti con ruoli e permessi
-- I tuoi dati sempre al sicuro nel cloud
-
----
-
-### Blocco ROI
-
-```
-€1,10 al giorno.
-Meno di un caffè al bar.
-Se una ricetta sbagliata ti fa sprecare anche solo €50 al mese di materie prime,
-LabManager si ripaga in tre giorni.
-```
-
----
+**Nota di orientamento:**
+L'abbonamento non si attiva dal sito. Inizi la prova gratuita, usi LabManager e scegli il piano direttamente nell'app quando sei pronto.
 
 ### Vuoi provarlo prima?
 
 Scrivici e ti mandiamo il link per scaricare l'app.
-Crei il tuo profilo in autonomia e hai **14 giorni gratis** per provare tutto — nessuna carta di credito richiesta.
-
-Se hai domande durante il trial, rispondiamo noi direttamente.
-
-**Niente bot. Parli direttamente con noi.**
-
-`[Scrivici per il link di prova]`
-
----
-
-### FAQ
-
-**Posso cambiare da mensile ad annuale?**
-Sì, in qualsiasi momento. La differenza viene scalata dal periodo già pagato.
-
-
-**È adatto anche a ristoranti e pizzerie?**
-Sì. Le funzionalità di food cost, ricette e gestione ingredienti funzionano per qualsiasi tipo di laboratorio alimentare.
-
-**Posso usarlo senza connessione internet?**
-Sì. LabManager funziona completamente offline su Android e Windows. I dati si sincronizzano in automatico quando torni online.
-
-**Quanti utenti posso aggiungere?**
-Il piano include accesso per il tuo team. Puoi configurare ruoli e permessi per ogni membro.
-
-
-**Posso usarlo su più di 2 dispositivi?**
-Sì. Il piano base include 2 connessioni simultanee. Se hai bisogno di più dispositivi, scrivici e lo attiviamo per te.
-
----
+Crei il tuo profilo in autonomia e hai **14 giorni gratis** per provare tutto, nessuna carta di credito richiesta.
 
 ### Footer Pricing
 
 Hai domande prima di iniziare?
-`[Contattaci]` — rispondiamo entro poche ore.
+`[Contattaci]` - rispondiamo entro poche ore.
 
 ---
 
 ## Note Implementazione Sito
 
-- [ ] Toggle mensile/annuale con **annuale selezionato di default**
-- [ ] Blocco ROI ("€1,10 al giorno") subito sotto il prezzo, non in fondo
-- [ ] CTA demo nello sticky header della pagina prezzi
-- [ ] Inserire 2-3 recensioni reali tra blocco prezzo e "Cosa è incluso"
-- [ ] ⚠️ Nota fatturazione (NON va sul sito): in fattura inserire obbligatoriamente → "Operazione effettuata ai sensi dell'art. 1, commi 54-89, L. 190/2014 — Regime forfettario. Non soggetto IVA"
-- [ ] Link CTA demo → WhatsApp o form contatto
+- [x] 3 card affiancate: Prova 14 giorni, Mensile, Annuale
+- [x] CTA "Inizia la prova gratis" -> WhatsApp con messaggio precompilato
+- [x] Pricing page informativa, senza checkout self-serve sul sito
+- [x] Prezzi finali senza IVA
+- [x] Sezione "Cosa è incluso" con griglia 4 card feature
+- [x] Blocco ROI presente
+- [x] FAQ accordion con domande specifiche pricing
+- [x] Copy esplicito: la scelta del piano avviene nell'app
+- [ ] Aggiungere recensioni reali
+- [ ] Decidere se spostare blocco ROI subito sotto le card
 
 ---
 
 ## TODO
 
-- [ ] Scrivere copy email/messaggio risposta richieste demo
-- [ ] Definire flusso onboarding trial (cosa mostrare, quanti giorni, follow-up)
+- [ ] Scrivere copy email/messaggio risposta richieste trial
+- [ ] Definire flusso onboarding trial
 - [ ] Implementare in app: flag abbonamento (`active | trial | expired`) + paywall
+- [ ] Implementare checkout Stripe nell'app con `user_id` nei metadata
 - [ ] Aggiungere recensioni reali alla pagina
-- [ ] Definire metodo di pagamento (Stripe, bonifico, altro)

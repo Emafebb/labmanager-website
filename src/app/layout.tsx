@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Gestionale per pasticceria, panificio e ristorante: ricette, costi, etichette con allergeni e magazzino. Funziona offline su Android e Windows. Provalo gratis!",
+    "Gestionale per pasticceria, panificio e ristorante: ricette, costi, etichette con allergeni e magazzino. Funziona offline su Android e Windows. Trial gratuito 14 giorni.",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
@@ -116,12 +116,22 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const FREE_OFFER = {
-  "@type": "Offer",
-  price: "0",
-  priceCurrency: "EUR",
-  availability: "https://schema.org/InStock",
-} as const;
+const OFFERS = [
+  {
+    "@type": "Offer",
+    price: "44.99",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+    name: "Piano Mensile",
+  },
+  {
+    "@type": "Offer",
+    price: "480.00",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+    name: "Piano Annuale",
+  },
+] as const;
 
 const structuredDataGraph = {
   "@context": "https://schema.org",
@@ -166,9 +176,9 @@ const structuredDataGraph = {
       applicationCategory: "BusinessApplication",
       applicationSubCategory: "Gestionale Pasticceria e Ristorazione",
       operatingSystem: ["Android", "Windows"],
-      offers: FREE_OFFER,
+      offers: OFFERS,
       description:
-        "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline, nessun abbonamento richiesto (in fase di sviluppo).",
+        "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline su Android e Windows. Trial gratuito di 14 giorni.",
       downloadUrl: [
         "https://ndlsifytatricfutjsvu.supabase.co/storage/v1/object/public/releases/LabManager-Setup.exe",
       ],

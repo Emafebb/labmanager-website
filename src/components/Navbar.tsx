@@ -5,11 +5,12 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#funzionalita", label: "Funzionalità" },
-  { href: "#perche-labmanager", label: "Perché LabManager" },
-  { href: "#piattaforme", label: "Piattaforme" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contatti", label: "Contatti" },
+  { href: "/#funzionalita", label: "Funzionalità" },
+  { href: "/pricing", label: "Prezzi" },
+  { href: "/#perche-labmanager", label: "Perché LabManager" },
+  { href: "/#piattaforme", label: "Piattaforme" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contatti", label: "Contatti" },
 ];
 
 export default function Navbar() {
@@ -48,7 +49,7 @@ export default function Navbar() {
             href="/"
             className="group flex items-center gap-3"
           >
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-200 ease-out">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200 ease-out">
               <Image
                 src="/images/logo.png"
                 alt="LabManager"
@@ -76,7 +77,7 @@ export default function Navbar() {
             ))}
             <li className="ml-3">
               <a
-                href="#contatti"
+                href="/#contatti"
                 className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-colors duration-200 ease-out"
               >
                 Richiedi Info
@@ -121,7 +122,7 @@ export default function Navbar() {
             ))}
             <li className="pt-3">
               <a
-                href="#contatti"
+                href="/#contatti"
                 className="block text-center bg-primary text-white px-6 py-3 rounded-lg text-base font-bold hover:bg-primary-dark transition-colors duration-200 ease-out"
                 onClick={() => setMobileOpen(false)}
               >

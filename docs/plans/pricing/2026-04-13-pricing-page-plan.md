@@ -66,7 +66,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Prezzi",
   description:
-    "Un solo piano, tutto incluso. LabManager: ricette, costi, magazzino, etichette e tracciabilità lotti. A partire da €33/mese.",
+    "Un solo piano, tutto incluso. LabManager: ricette, costi, magazzino, etichette e tracciabilità lotti a €44,99/mese o €480/anno.",
   openGraph: {
     title: "Prezzi | LabManager",
     description:
@@ -75,25 +75,20 @@ export const metadata: Metadata = {
 };
 
 /*
- * Prezzi provvisori — modifica solo questo oggetto per aggiornare
+ * Prezzi ufficiali — modifica solo questo oggetto per aggiornare
  * tutti i valori nella pagina.
  */
 const PRICING = {
   monthly: {
-    net: 45,
-    vat: 9.9,
-    gross: 54.9,
+    price: 44.99,
   },
   yearly: {
-    net: 400,
-    vat: 88,
-    gross: 488,
-    monthlyEquivalent: 33,
-    saving: 145,
+    price: 480,
+    monthlyEquivalent: 40,
+    saving: 60,
   },
-  trialDays: 21,
-  dailyCost: 1.1,
-  vatRate: 22,
+  trialDays: 14,
+  dailyCost: 1.32,
 };
 
 export default function PricingPage() {
@@ -165,14 +160,13 @@ In `src/app/pricing/page.tsx`, aggiungere dopo la chiusura del `</section>` hero
                 Mensile
               </div>
               <div className="text-5xl font-bold text-gray-900">
-                €{PRICING.monthly.net}
+                €{PRICING.monthly.price.toFixed(2).replace(".", ",")}
                 <span className="text-lg font-normal text-gray-500">
                   /mese
                 </span>
               </div>
               <div className="text-sm text-gray-500 mt-2">
-                IVA {PRICING.vatRate}% esclusa — €{PRICING.monthly.gross} al
-                mese
+                Prezzo finale — nessuna IVA aggiunta
               </div>
               <div className="mt-6 pt-6 border-t border-gray-100 text-sm text-gray-600">
                 Nessun vincolo contrattuale
@@ -188,16 +182,13 @@ In `src/app/pricing/page.tsx`, aggiungere dopo la chiusura del `</section>` hero
                 Annuale
               </div>
               <div className="text-5xl font-bold text-primary">
-                €{PRICING.yearly.net}
+                €{PRICING.yearly.price}
                 <span className="text-lg font-normal text-gray-500">
                   /anno
                 </span>
               </div>
-              <div className="text-sm text-gray-500 mt-2">
-                IVA {PRICING.vatRate}% esclusa — €{PRICING.yearly.gross} totali
-              </div>
               <div className="text-sm font-semibold text-primary mt-3">
-                €{PRICING.yearly.monthlyEquivalent}/mese — risparmi €
+                Equivale a €{PRICING.yearly.monthlyEquivalent}/mese — risparmi €
                 {PRICING.yearly.saving}
               </div>
               <div className="mt-6 pt-6 border-t border-primary/10 text-sm text-gray-600">
@@ -456,10 +447,10 @@ In `src/app/pricing/page.tsx`, aggiungere dopo la chiusura del `</section>` di "
 
 Aprire http://localhost:3000/pricing e verificare:
 - Card centrata con sfondo viola chiaro e bordo viola tenue
-- "€1,10 al giorno." in grande, viola, bold
+- "€1,32 al giorno." in grande, viola, bold
 - "Meno di un caffè al bar." come sottotitolo
 - Testo esplicativo sotto
-- Il valore €1,10 deriva da `PRICING.dailyCost`
+- Il valore €1,32 deriva da `PRICING.dailyCost`
 
 - [ ] **Step 3: Commit**
 

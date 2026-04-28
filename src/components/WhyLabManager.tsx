@@ -29,9 +29,9 @@ const differentiators = [
   },
   {
     icon: Gift,
-    title: "Gratuito e Senza Abbonamento",
+    title: "Trial Gratuito 14 Giorni",
     description:
-      "LabManager è gratuito durante la fase di lancio. Nessun abbonamento mensile, nessun costo nascosto. Richiedi l'accesso e inizia subito.",
+      "Prova LabManager gratis per 14 giorni senza impegno. Poi scegli il piano mensile o annuale direttamente dall'app.",
   },
 ];
 
@@ -79,7 +79,7 @@ const comparisonRows = [
     other: "partial" as const,
   },
   {
-    feature: "Gratuito (fase di lancio)",
+    feature: "Trial gratuito 14 giorni",
     labmanager: true,
     generic: false,
     other: false,

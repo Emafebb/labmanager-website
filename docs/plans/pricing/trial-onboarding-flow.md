@@ -1,166 +1,175 @@
-# Trial Onboarding Flow — LabManager
+# Trial Onboarding Flow - LabManager
 
-> Flusso completo per gestire i prospect dal primo contatto alla conversione.
-> Ultimo aggiornamento: 2026-04-13
+> Flusso operativo per gestire i prospect dal primo contatto alla conversione.
+> Ultimo aggiornamento: 2026-04-21
 
 ---
 
 ## Modello
 
-```
-Prospect scrive → Tu mandi il link di download → Cliente scarica e crea profilo da solo → Trial 21 giorni parte in automatico → Follow-up WhatsApp → Paywall a scadenza
+```text
+Prospect scrive -> Tu mandi il link di download -> Cliente crea il profilo -> Trial 14 giorni parte in automatico -> Follow-up WhatsApp -> Trial scade -> Paywall -> Scelta piano direttamente in app
 ```
 
-Tu controlli chi entra (mandi il link tu), ma non devi attivare niente a mano in Supabase.
+Tu controlli chi entra nel trial, ma non devi attivare manualmente account o abbonamenti in Supabase.
 
 ## Principio Base
 
-Il cliente tipo è in laboratorio alle 5 di mattina. Non ha tempo per esplorare software da solo. Il trial funziona solo se lo guidi tu — altrimenti apre l'app due volte e si dimentica.
+Il cliente tipo e in laboratorio alle 5 del mattino. Non ha tempo per esplorare software da solo.
+Il trial funziona se lo accompagni nei primi giorni, altrimenti apre l'app due volte e poi si ferma.
 
-**Obiettivo del trial:** far inserire almeno 3 ricette reali con costi nei primi 3 giorni. Chi arriva a quel punto converte quasi sempre.
+**Obiettivo del trial:** far inserire almeno 3 ricette reali con costi nei primi 3 giorni.
+Chi arriva a quel punto converte molto piu facilmente.
 
 ---
 
-## Durata: 21 giorni
+## Durata: 14 giorni
 
 | Durata | Problema |
 |---|---|
-| 14 giorni | Troppo poco — i primi giorni li perde a capire l'interfaccia |
-| 30 giorni | Troppi — crea procrastinazione |
-| **21 giorni** | Tempo reale + urgenza mantenuta ✓ |
+| 7 giorni | Troppo poco, rischia di non arrivare a inserire ricette reali |
+| **14 giorni** | Tempo sufficiente per testare il flusso e decidere senza rimandare |
+| 21 giorni | Da evitare: rallenta la decisione e abbassa l'urgenza |
 
 ---
 
 ## Timeline
 
-```
-GIORNO 0  — Richiesta ricevuta
-GIORNO 1  — Attivazione + primo contatto
-GIORNO 3  — Primo check-in
-GIORNO 7  — Metà trial
-GIORNO 14 — Urgenza soft
-GIORNO 19 — Ultimo avviso
-GIORNO 21 — Scadenza
+```text
+GIORNO 0  - Richiesta ricevuta
+GIORNO 1  - Invio link + primo contatto
+GIORNO 3  - Primo check-in
+GIORNO 7  - Meta trial
+GIORNO 10 - Urgenza soft
+GIORNO 12 - Ultimo avviso
+GIORNO 14 - Scadenza e paywall
 ```
 
 ---
 
-## Giorno 0 — Richiesta Ricevuta
+## Giorno 0 - Richiesta ricevuta
 
-Rispondi **entro 2 ore** dalla richiesta (anche solo per confermare).
+Rispondi entro 2 ore dalla richiesta, anche solo per confermare.
 
 **Messaggio WhatsApp:**
-> Ciao [Nome], grazie per l'interesse in LabManager!
-> Che tipo di attività hai? Pasticceria, panificio, ristorante?
+> Ciao [Nome], grazie per l'interesse in LabManager.
+> Che tipo di attivita hai? Pasticceria, panificio o ristorante?
 
-*Chiedere il tipo di attività qualifica il prospect e fa sentire la risposta personalizzata, non automatica.*
+Questo ti aiuta a qualificare il prospect e rende la risposta percepita come personale.
 
 ---
 
-## Giorno 1 — Invio Link
+## Giorno 1 - Invio link
 
-Mandi il link di download. Il cliente scarica, crea il profilo da solo, e il trial parte in automatico dall'account creation.
+Mandi il link di download. Il cliente scarica l'app, crea il profilo e il trial parte in automatico.
 
 **Messaggio WhatsApp:**
-> Ciao [Nome]! Ecco il link per scaricare LabManager: [link]
+> Ciao [Nome], ecco il link per scaricare LabManager: [link]
 >
-> Crea il tuo profilo e hai 21 giorni gratis per provare tutto.
+> Crea il tuo profilo e hai 14 giorni gratis per provare tutto.
 >
-> Per iniziare nel modo più veloce, fai queste 3 cose oggi:
-> 1. Aggiungi i tuoi ingredienti principali con i prezzi
-> 2. Crea la tua prima ricetta
-> 3. Guarda il food cost calcolato in automatico
+> Per iniziare velocemente oggi fai queste 3 cose:
+> 1. aggiungi i tuoi ingredienti principali con i prezzi
+> 2. crea la tua prima ricetta
+> 3. controlla il food cost calcolato in automatico
 >
-> Se hai dubbi su qualsiasi passaggio, scrivimi qui — rispondo io direttamente.
+> Se hai dubbi su qualsiasi passaggio, scrivimi qui.
 
 ---
 
-## Giorno 3 — Primo Check-in
+## Giorno 3 - Primo check-in
 
 Non aspettare che scrivano loro.
 
 **Messaggio WhatsApp:**
-> Ciao [Nome], come stai andando con LabManager?
-> Hai riuscito a inserire qualche ricetta?
+> Ciao [Nome], come sta andando con LabManager?
+> Sei riuscito a inserire qualche ricetta?
 >
-> Se ti sei bloccato su qualcosa dimmi pure — in 5 minuti ti risolvo.
+> Se ti sei bloccato su qualcosa dimmi pure, in 5 minuti ti aiuto.
 
-*Se non ha ancora inserito niente: offri una chiamata rapida di 15 minuti per guidarlo in diretta.*
+Se non ha ancora inserito niente, proponi una chiamata rapida di 15 minuti.
 
 ---
 
-## Giorno 7 — Metà Trial
+## Giorno 7 - Meta trial
 
-Valuta se è un prospect caldo o freddo. Aggancia una funzione che non ha ancora visto.
+Capisci se il prospect e caldo o freddo. Aggancia una funzione che non ha ancora provato.
 
 **Messaggio WhatsApp:**
-> Ciao [Nome], sei già a metà del periodo di prova!
+> Ciao [Nome], sei gia a meta del periodo di prova.
 >
-> Come ti trovi finora? C'è qualche funzione che non hai ancora provato e vuoi esplorare?
+> Come ti trovi finora? C'e qualche funzione che non hai ancora provato e vuoi vedere meglio?
 >
-> Se ti interessa, posso mostrarti come funziona il magazzino con la tracciabilità lotti — per molti clienti è la parte che fa più differenza.
+> Se ti interessa, posso mostrarti come usare magazzino e tracciabilita lotti.
 
 ---
 
-## Giorno 14 — Urgenza Soft
+## Giorno 10 - Urgenza soft
 
 **Messaggio WhatsApp:**
-> Ciao [Nome], mancano 7 giorni alla scadenza del tuo trial.
+> Ciao [Nome], mancano 4 giorni alla scadenza del tuo trial.
 >
-> Se vuoi continuare senza interruzioni, puoi attivare il piano annuale a €400 (€488 con IVA) oppure mensile a €45 (€54,90 con IVA).
+> Se vuoi continuare senza interruzioni, puoi attivare direttamente in app il piano annuale a EUR 480 oppure mensile a EUR 44,99.
 >
-> Hai domande prima di decidere?
+> Se vuoi, ti aiuto io a capire quale dei due ha piu senso per il tuo laboratorio.
 
 ---
 
-## Giorno 19 — Ultimo Avviso
+## Giorno 12 - Ultimo avviso
 
 **Messaggio WhatsApp:**
 > Ciao [Nome], il tuo account LabManager scade tra 2 giorni.
 >
-> Se vuoi continuare, rispondimi e ti mando il link per attivare l'abbonamento.
-> I tuoi dati (ricette, ingredienti, magazzino) rimangono tutti al loro posto.
+> Se vuoi continuare, apri l'app e attiva il piano dal paywall. I tuoi dati restano al loro posto.
 >
-> Se invece non fa per te, nessun problema — dimmi pure cosa non ti ha convinto, mi aiuta a migliorare.
+> Se invece non fa per te, nessun problema: dimmi pure cosa non ti ha convinto.
 
 ---
 
-## Giorno 21 — Scadenza
+## Giorno 14 - Scadenza
 
-L'account passa a `expired`. L'app mostra il paywall.
-I dati restano archiviati per 12 mesi.
+L'account passa a `expired`.
+L'app mostra il paywall e il cliente puo scegliere il piano direttamente li.
+I dati restano archiviati.
 
 ---
 
-## Classificare i Prospect
+## Classificare i prospect
 
 | Segnale | Significato | Azione |
 |---|---|---|
-| Ha inserito ricette nei primi 3 giorni | Prospect caldo | Segui con attenzione |
-| Ti risponde ai messaggi | Coinvolto | Aumenta frequenza contatti |
+| Ha inserito ricette nei primi 3 giorni | Prospect caldo | Seguilo con attenzione |
+| Ti risponde ai messaggi | Coinvolto | Aumenta la frequenza dei contatti |
 | Non ha mai aperto l'app | Freddo | Un tentativo di recupero, poi lascia perdere |
 | Fa domande su funzioni specifiche | Sta valutando seriamente | Rispondi veloce |
-| Chiede del prezzo durante il trial | Pronto a comprare | Non aspettare il giorno 21 — proponi subito |
+| Chiede del prezzo durante il trial | Pronto a comprare | Anticipa la conversazione sul piano |
 
 ---
 
-## Gestione Obiezioni
+## Gestione obiezioni
 
-**"È un po' caro"**
-> Capisco. Considera che se ti aiuta a recuperare anche €50 al mese di sprechi su ricette o ingredienti, si ripaga in meno di un mese. Vuoi che ti mostro come usare il food cost per trovare dove perdi margine?
+**"E un po caro"**
+> Capisco. Se ti aiuta a recuperare anche solo EUR 50 al mese di sprechi su ricette o ingredienti, si ripaga in meno di un mese.
 
 **"Non ho tempo di impararlo"**
-> Ci penso io — dammi 20 minuti in videochiamata e ti configuro tutto. Dopo non devi fare altro che inserire le ricette.
+> Ci penso io. Dammi 20 minuti in videochiamata e ti porto sulle prime ricette.
 
-**"Lo uso già su carta / Excel"**
-> Excel va bene finché hai 10 ricette. Quando cresci, o quando arriva un'ispezione ASL sulla tracciabilità, è un altro discorso.
+**"Lo uso gia su carta o Excel"**
+> Excel va bene finche hai poche ricette. Quando cresci o devi gestire tracciabilita e costi in modo continuo, non basta piu.
 
 ---
+
+## Stato operativo
+
+- [x] Trial deciso a 14 giorni
+- [x] Tabella `public.user_subscriptions` creata in Supabase
+- [ ] Paywall ancora da implementare nell'app
+- [ ] Checkout Stripe in app ancora da collegare
 
 ## TODO
 
-- [ ] Implementare flag stato abbonamento in Supabase: `active | trial | expired`
-- [ ] Implementare campo data scadenza trial
+- [ ] Collegare l'app al record `user_subscriptions`
 - [ ] Costruire paywall in app per account `expired`
-- [ ] Valutare se automatizzare i messaggi di follow-up (es. con un CRM semplice)
-- [ ] Creare un foglio/tracker prospect per tenere traccia dei trial attivi
+- [ ] Collegare checkout Stripe e webhook
+- [ ] Valutare se automatizzare i messaggi di follow-up
+- [ ] Creare un tracker prospect per i trial attivi

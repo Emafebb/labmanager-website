@@ -18,7 +18,7 @@ Creare una pagina `/pricing` separata, puramente informativa, che mostri prezzi,
 | Tipo pagina | Route separata `/pricing` | URL condivisibile, SEO dedicato, spazio per tutte le sezioni |
 | CTA d'acquisto | Nessuno | Il modello trial prevede contatto diretto, non self-service |
 | Layout blocco prezzo | Due card affiancate (mensile + annuale) | Confronto immediato, l'annuale risalta con badge e bordo viola |
-| Trial | Riga sotto le card ("Prova gratuita 21 giorni") | Informativo senza sezione dedicata |
+| Trial | Riga sotto le card ("Prova gratuita 14 giorni") | Informativo senza sezione dedicata |
 | Recensioni | Spazio placeholder per 2-3 recensioni | Contenuto da aggiungere in seguito |
 | FAQ | 6 FAQ dedicate al pricing | Rispondono alle obiezioni della fase decisionale |
 | Navbar | Link "Prezzi" dopo "Funzionalità" | Primo link relativo al costo, posizione naturale nel funnel |
@@ -39,7 +39,7 @@ Creare una pagina `/pricing` separata, puramente informativa, che mostri prezzi,
 **Card Mensile** (a sinistra):
 - Bordo grigio chiaro (`border-light`), sfondo bianco
 - Label: "Mensile"
-- Prezzo: **€44.99/mese**
+- Prezzo: **€44,99/mese**
 - Nota: "Nessun vincolo contrattuale"
 
 **Card Annuale** (a destra, leggermente più grande):
@@ -95,7 +95,7 @@ Griglia 2x2 su desktop, impilata su mobile. Ogni blocco ha: icona (lucide-react)
 ### 5. Blocco ROI
 
 - Card evidenziata con sfondo `primary-muted` o `primary-subtle`
-- Testo principale: **"€1,10 al giorno. Meno di un caffè al bar."**
+- Testo principale: **"€1,32 al giorno. Meno di un caffè al bar."**
 - Testo secondario: "Se una ricetta sbagliata ti fa sprecare anche solo €50 al mese di materie prime, LabManager si ripaga in tre giorni."
 - Layout centrato, font size più grande per l'importo giornaliero
 
@@ -140,7 +140,7 @@ Funzionalità | Prezzi | Perché LabManager | Piattaforme | FAQ | Contatti | [Ri
 
 ## Nota sui prezzi
 
-I prezzi indicati in questa spec (€45/mese, €400/anno) sono provvisori e potrebbero cambiare. L'implementazione deve definire tutti i valori di prezzo (netto, IVA, totale, risparmio, equivalente mensile, costo giornaliero ROI) come **costanti in un unico oggetto di configurazione** in cima al file della pagina, in modo che una modifica ai prezzi richieda un solo punto di intervento.
+I prezzi indicati in questa spec (€44,99/mese, €480/anno) riflettono i valori canonici correnti. L'implementazione deve definire tutti i valori di prezzo (prezzo mensile, prezzo annuale, risparmio, equivalente mensile e costo giornaliero ROI) come **costanti in un unico oggetto di configurazione** in cima al file della pagina, in modo che una modifica ai prezzi richieda un solo punto di intervento.
 
 ---
 

@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Qual è il miglior software gestionale per pasticceria?",
     answer:
-      "LabManager è un software gestionale completo progettato per pasticcerie, panifici, ristoranti e laboratori artigianali alimentari. Permette di gestire ricette e assemblaggi, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali e bilanciare la composizione delle preparazioni. Disponibile gratuitamente su Android e Windows, funziona anche offline.",
+      "LabManager è un software gestionale completo progettato per pasticcerie, panifici, ristoranti e laboratori artigianali alimentari. Permette di gestire ricette e assemblaggi, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali e bilanciare la composizione delle preparazioni. Disponibile su Android e Windows, funziona anche offline. Prova gratuita di 14 giorni.",
   },
   {
     question: "Quale app usare per gestire una pasticceria?",
@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "Esistono software gratuiti per gestire una pasticceria?",
     answer:
-      "Sì, LabManager è attualmente gratuito durante la fase di lancio. È un gestionale completo per pasticceria che include gestione ricette, calcolo costi, etichette con allergeni, tabelle nutrizionali e bilanciamento composizione. Non richiede abbonamento e funziona su Android e Windows, anche senza connessione internet.",
+      "LabManager offre una prova gratuita di 14 giorni. È un gestionale completo per pasticceria che include gestione ricette, calcolo costi, etichette con allergeni, tabelle nutrizionali e bilanciamento composizione. Funziona su Android e Windows, anche senza connessione internet. Dopo il trial puoi scegliere il piano mensile (EUR 44,99/mese) o annuale (EUR 480/anno) direttamente dall'app.",
   },
   {
     question: "Come calcolare il food cost in pasticceria?",
@@ -34,12 +34,12 @@ const faqs = [
   {
     question: "Come posso provare l'app?",
     answer:
-      `Contattaci tramite il <a href='#contatti' class='${LINK_CLASS}'>modulo contatti</a> per richiedere accesso al nostro gestionale per pasticceria. L'app è attualmente in fase di lancio e stiamo selezionando i primi utenti.`,
+      `Contattaci tramite il <a href='#contatti' class='${LINK_CLASS}'>modulo contatti</a> per richiedere accesso al trial gratuito di 14 giorni. Dopo il periodo di prova puoi attivare il tuo abbonamento direttamente dall'app.`,
   },
   {
     question: "Quanto costa LabManager?",
     answer:
-      "LabManager è attualmente gratuito durante la fase di lancio. In futuro saranno disponibili piani a pagamento con funzionalità avanzate.",
+      "LabManager è disponibile con un piano mensile a EUR 44,99/mese o un piano annuale a EUR 480/anno (pari a circa EUR 40/mese). Prima di scegliere puoi provare gratis per 14 giorni. L'attivazione dell'abbonamento avviene direttamente dall'app.",
   },
   {
     question: "Funziona senza internet?",
@@ -99,7 +99,7 @@ const faqs = [
   {
     question: "Esistono gestionali gratuiti per pasticceria, panificio o ristorante?",
     answer:
-      "Sì, LabManager è gratuito durante la fase di lancio. È un gestionale completo per pasticcerie, panifici e ristoranti che include gestione ricette, calcolo costi e margini, etichette alimentari con allergeni e tabelle nutrizionali. Non richiede abbonamento e funziona su Android e Windows, anche offline.",
+      "LabManager offre una prova gratuita di 14 giorni. È un gestionale completo per pasticcerie, panifici e ristoranti che include gestione ricette, calcolo costi e margini, etichette alimentari con allergeni e tabelle nutrizionali. Funziona su Android e Windows, anche offline. Dopo il trial puoi scegliere il piano mensile (EUR 44,99/mese) o annuale (EUR 480/anno).",
   },
   {
     question: "Come scegliere il software gestionale giusto per il mio laboratorio?",

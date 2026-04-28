@@ -77,8 +77,8 @@ const advantages = [
   },
   {
     icon: Calculator,
-    title: "Prova Gratuita",
-    description: "Richiedi l'accesso gratuito, nessun abbonamento",
+    title: "Trial 14 Giorni",
+    description: "Prova gratis per 14 giorni, poi scegli il piano",
   },
   {
     icon: Printer,

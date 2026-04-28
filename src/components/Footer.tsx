@@ -97,6 +97,15 @@ export default function Footer() {
                 <span aria-hidden="true">per i pasticceri</span>
               </div>
             </div>
+
+            <div className="mt-6 pt-6 border-t border-white/5">
+              <p className="text-xs sm:text-sm text-gray-400 text-center leading-relaxed">
+                LabManager di Emanuele Lucania — Impresa individuale — P.IVA: 04257360364 — MO-455893 — Sede: Via Guido Mazzali 37, Carpi (MO) —{" "}
+                <a href="mailto:labmanager.info@gmail.com" className="hover:text-gray-400 transition-colors duration-200">
+                  labmanager.info@gmail.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
