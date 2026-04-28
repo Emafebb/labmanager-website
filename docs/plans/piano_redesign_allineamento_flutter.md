@@ -255,9 +255,9 @@ La landing page attuale ha un'estetica "AI slop" con gradienti aggressivi, blob 
 
 | Azione | Note |
 |--------|------|
-| ✅ Privacy Policy + Cookie Policy | Integrazione Iubenda: link nel Footer (sezione "Legale") con `target="_blank"` |
+| ✅ Privacy Policy + Cookie Policy | Integrazione LegalBlink: link nel Footer (sezione "Legale") con `target="_blank"` |
 | ✅ Checkbox consenso privacy | Aggiunto nel ContactForm: checkbox obbligatorio con link a Privacy Policy, `privacyAccepted` state, submit disabilitato senza consenso |
-| ✅ Env var `NEXT_PUBLIC_IUBENDA_POLICY_ID` | Usata per generare URL dinamici Iubenda |
+| ✅ CMP LegalBlink | Script LegalBlink in `layout.tsx`, CSP aggiornata e link "Aggiorna preferenze cookie" nel footer |
 
 ### Step 6: Verifica e Deploy ✅ COMPLETATO
 

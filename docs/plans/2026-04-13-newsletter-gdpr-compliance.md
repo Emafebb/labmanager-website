@@ -126,7 +126,7 @@ Form di contatto                    NewsletterPopup
 - [x] Link disiscrizione in ogni email transazionale
 - [x] Endpoint disiscrizione funzionante
 - [x] Disiscrizione rimuove da Supabase e Resend
-- [ ] Aggiornare Privacy Policy su Iubenda per menzionare newsletter marketing
+- [ ] Aggiornare Privacy Policy su LegalBlink per menzionare newsletter marketing
 - [ ] Aggiungere link disiscrizione anche nelle future email broadcast (Resend)
 - [ ] Valutare HMAC-SHA256 per il token disiscrizione (hardening futuro)
 

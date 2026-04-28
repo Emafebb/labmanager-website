@@ -1,117 +1,88 @@
 # Piano: Compliance Legale (GDPR, Cookie, Privacy)
 
-## Contesto
-La landing page LabManager raccoglie dati personali tramite il form contatti (nome, email, messaggio) ma non ha **nessuna infrastruttura legale**: niente Privacy Policy, Cookie Policy, cookie banner, né consenso privacy nel form. Questo viola il GDPR (Reg. UE 2016/679) e la normativa italiana. L'utente è un privato (no P.IVA) e vuole usare **Iubenda** per generare le policy e il cookie banner.
+## Stato attuale
 
----
+La landing page LabManager raccoglie dati personali tramite form contatti e iscrizione newsletter. La compliance legale e' gestita con **LegalBlink**:
 
-## Prerequisito: Setup Iubenda (azione utente)
+- Privacy Policy pubblica
+- Cookie Policy pubblica
+- CMP/cookie banner con blocco automatico e consent mode
+- Checkbox privacy obbligatoria nei form dove necessario
+- Link per aggiornare le preferenze cookie dal footer
 
-Prima dell'implementazione, l'utente deve:
-1. Creare account su [iubenda.com/it](https://www.iubenda.com/it)
-2. Generare Privacy Policy + Cookie Policy (lingua: italiano)
-3. Attivare Cookie Solution (banner semplice, solo cookies tecnici)
-4. Personalizzare colore banner: background `#4403af`, testo bianco
-5. Ottenere: **Site ID**, **Cookie Policy ID**, **Privacy Policy ID**, **snippet JS**
+## Documenti LegalBlink
 
----
+- Privacy Policy: `https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it`
+- Cookie Policy: `https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/cookie-policy-it`
 
-## File da modificare (4 file)
+## Integrazione CMP
 
-### 1. `.env.local` — Variabili Iubenda
-Aggiungere:
-```env
-NEXT_PUBLIC_IUBENDA_SITE_ID=TUO_SITE_ID
-NEXT_PUBLIC_IUBENDA_COOKIE_POLICY_ID=TUO_COOKIE_POLICY_ID
-NEXT_PUBLIC_IUBENDA_PRIVACY_POLICY_ID=TUO_PRIVACY_POLICY_ID
+Lo script CMP e' inserito in `src/app/layout.tsx` con `next/script`:
+
+```tsx
+<Script
+  id="legalblink-cmp"
+  type="text/javascript"
+  src="https://app.legalblink.it/api/scripts/cmp/loader.js"
+  strategy="afterInteractive"
+  data-license-id="69e89f282420950024cb1a5e"
+  data-blocking-mode="auto"
+  data-consent-mode="true"
+/>
 ```
 
-### 2. `src/app/layout.tsx` — Script Iubenda (cookie banner)
-- Importare `Script` da `next/script`
-- Aggiungere 3 script Iubenda prima di `</body>`:
-  1. Script inline con configurazione `_iub.csConfiguration` (siteId, cookiePolicyId, lang: "it", banner con acceptButton)
-  2. Script autoblocking: `https://cs.iubenda.com/autoblocking/{SITE_ID}.js`
-  3. Script CS: `https://cdn.iubenda.com/cs/iubenda_cs.js`
-- Strategy: `afterInteractive` per non bloccare il rendering
+## File coinvolti
 
-### 3. `src/components/ContactForm.tsx` — Checkbox consenso privacy
-- Aggiungere stato `privacyAccepted` (useState boolean, default false)
-- Inserire checkbox obbligatoria **prima del bottone submit**:
-  - Testo: "Ho letto e accetto la **Privacy Policy**" (con link a Iubenda)
-  - Stile: `bg-gray-50 rounded-lg border border-gray-200` (coerente col form)
-  - Checkbox: `text-primary focus:ring-icon/10`
-  - Link: `text-primary font-semibold hover:text-primary-dark underline`, target `_blank`
-- Disabilitare submit se `!privacyAccepted`
-- Reset checkbox dopo invio riuscito
+### `src/app/layout.tsx`
 
-### 4. `src/components/Footer.tsx` — Link legali
-- Aggiungere sezione "Legale" a `footerLinks`:
-  - "Privacy Policy" → link Iubenda (target _blank)
-  - "Cookie Policy" → link Iubenda (target _blank)
-- Aggiornare tipo link per supportare `external?: boolean`
-- Aggiungere `target="_blank" rel="noopener noreferrer"` ai link esterni
+- Carica il CMP LegalBlink dopo l'idratazione.
+- E' l'unica integrazione CMP prevista dal sito.
+- Deve restare prima degli script terzi principali, cosi' il consenso viene inizializzato in anticipo.
 
----
+### `next.config.ts`
 
-## Agent, Skill e Plugin consigliati
+La Content Security Policy deve consentire LegalBlink:
 
-### Per l'implementazione
+- `script-src`: `https://app.legalblink.it`
+- `style-src`: `https://app.legalblink.it`
+- `connect-src`: `https://app.legalblink.it`
+- `frame-src`: `https://app.legalblink.it`
 
-| Step | Attività | Agent/Skill | Motivazione |
-|------|----------|-------------|-------------|
-| 1 | Variabili `.env.local` | **Bash** (diretto) | Operazione triviale, nessun agent necessario |
-| 2 | Script Iubenda in `layout.tsx` | **`application-performance:frontend-developer`** | Integrazione script Next.js con `next/script`, strategy `afterInteractive`, gestione SSR/CSR |
-| 3 | Checkbox consenso in `ContactForm.tsx` | **`application-performance:frontend-developer`** | Componente React con stato, validazione form, styling Tailwind coerente |
-| 4 | Link legali in `Footer.tsx` | **`application-performance:frontend-developer`** | Modifica componente UI, aggiunta tipo link esterno, responsive layout |
+### `src/components/Footer.tsx`
 
-### Per la revisione e qualità
+La sezione "Legale" contiene:
 
-| Fase | Agent/Skill | Motivazione |
-|------|-------------|-------------|
-| Post-implementazione | **`code-simplifier:code-simplifier`** | Semplifica e pulisce il codice scritto, mantiene consistenza col codebase |
-| Code review | **`feature-dev:code-reviewer`** | Verifica bug, sicurezza (XSS nei link, HTML injection), aderenza alle convenzioni del progetto |
-| Review sicurezza | **`backend-api-security:backend-security-coder`** | Verifica che il consenso privacy sia validato anche lato server (`api/contact/route.ts`), non solo client-side |
-| Build & verifica | **Bash** (diretto) | `npm run build` e `npm run dev` per test manuali |
+- `Privacy Policy` -> documento LegalBlink
+- `Cookie Policy` -> documento LegalBlink
+- `Aggiorna preferenze cookie` -> link con `data-lb="c-settings"`
 
-### Per deploy
+### `src/components/ContactForm.tsx`
 
-| Fase | Skill | Motivazione |
-|------|-------|-------------|
-| Deploy su Vercel | **`vercel:deploy`** | Deploy automatico con variabili d'ambiente configurate |
-| Setup env vars Vercel | **`vercel:setup`** | Configurazione variabili `NEXT_PUBLIC_IUBENDA_*` nel progetto Vercel |
+- Checkbox privacy obbligatoria.
+- Submit disabilitato se `privacyAccepted` e' falso.
+- Link Privacy Policy puntato al documento LegalBlink.
 
-### Flusso di esecuzione con agent
+### `src/components/NewsletterPopup.tsx`
 
-```
-1. Bash                                    → .env.local (variabili Iubenda)
-2. frontend-developer (3 task paralleli)   → layout.tsx + ContactForm.tsx + Footer.tsx
-3. code-simplifier                         → pulizia codice modificato
-4. code-reviewer                           → review qualità e convenzioni
-5. backend-security-coder                  → validazione consenso lato server
-6. Bash                                    → npm run build (verifica)
-7. vercel:setup + vercel:deploy            → deploy produzione
-```
+- Checkbox privacy/newsletter obbligatoria per l'iscrizione.
+- Link Privacy Policy puntato al documento LegalBlink.
 
-> **Nota**: Gli step 2a/2b/2c (layout, ContactForm, Footer) possono essere eseguiti in **parallelo** con 3 istanze di `frontend-developer`, poiché i file sono indipendenti tra loro.
+### API
 
----
-
-## Ordine di esecuzione
-
-```
-1. .env.local          → variabili Iubenda
-2. layout.tsx          → script cookie banner
-3. ContactForm.tsx     → checkbox consenso privacy
-4. Footer.tsx          → link legali nel footer
-5. Verifica            → npm run dev + npm run build
-```
-
----
+- `src/app/api/contact/route.ts` valida `privacyAccepted`.
+- `src/app/api/newsletter/route.ts` valida `privacyAccepted`.
 
 ## Verifica
 
-1. **Cookie banner**: appare alla prima visita, in italiano, bottone "Accetta", non riappare dopo accettazione
-2. **Form contatti**: checkbox obbligatoria, form non inviabile senza spunta, link Privacy Policy funzionante
-3. **Footer**: sezione "Legale" visibile, link aprono in nuova tab
-4. **Build**: `npm run build` senza errori
-5. **Mobile**: layout responsive del checkbox e footer su mobile
+1. Il banner cookie LegalBlink appare alla prima visita in sessione pulita.
+2. Il link "Aggiorna preferenze cookie" riapre le preferenze CMP.
+3. Privacy Policy e Cookie Policy aprono documenti LegalBlink pubblici.
+4. I form non sono inviabili senza consenso privacy dove richiesto.
+5. `npm run build` completa senza errori.
+6. Nessun riferimento a provider CMP precedenti resta in `src` o `next.config.ts`.
+
+## Note operative
+
+- Non sono necessarie variabili `NEXT_PUBLIC_*` per LegalBlink nell'implementazione attuale.
+- Se gli URL LegalBlink cambiano, aggiornare le costanti nei componenti e ripetere la verifica con `curl -I -L`.
+- Se il CMP richiede nuovi domini, aggiornare anche la CSP in `next.config.ts`.

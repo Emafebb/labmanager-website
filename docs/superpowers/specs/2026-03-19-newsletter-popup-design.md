@@ -29,7 +29,7 @@ Componente client-side (`"use client"`) con gestione SSR-safe di `localStorage` 
   - **Nome** (text, required)
   - **Email** (email, required)
   - **Tipo di attività** (select, opzionale): Pasticceria, Panificio, Ristorante, Altro
-- Checkbox privacy policy (link a iubenda `https://www.iubenda.com/privacy-policy/79608415`, stessa del ContactForm)
+- Checkbox privacy policy (link LegalBlink `https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it`, stessa del ContactForm)
 - Bottone "Iscriviti" in colore `primary`
 - Stato successo: messaggio di conferma con icona check verde
 

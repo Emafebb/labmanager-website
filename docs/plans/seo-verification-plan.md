@@ -63,7 +63,7 @@ La keyword "gestionale" appariva solo 6 volte in ~2.500 parole. Target: 12-15 oc
 - [x] `X-Frame-Options: SAMEORIGIN`
 - [x] `X-XSS-Protection: 1; mode=block`
 - [x] `Referrer-Policy: strict-origin-when-cross-origin`
-- [x] `Content-Security-Policy`: whitelist per self, iubenda, Vercel Analytics
+- [x] `Content-Security-Policy`: whitelist per self, LegalBlink, Vercel Analytics
 - [x] `Permissions-Policy`: camera=(), microphone=(), geolocation=(), interest-cohort=()
 - [x] **SecurityHeaders.com**: Grado **A** (14 Feb 2026)
 
@@ -133,9 +133,9 @@ La keyword "gestionale" appariva solo 6 volte in ~2.500 parole. Target: 12-15 oc
 - [x] `X-XSS-Protection: 1; mode=block`
 - [x] `Referrer-Policy: strict-origin-when-cross-origin`
 - [x] `Strict-Transport-Security: max-age=63072000` (HSTS da Vercel)
-- [x] `Content-Security-Policy`: configurato con whitelist per iubenda, Vercel Analytics, self
+- [x] `Content-Security-Policy`: configurato con whitelist per LegalBlink, Vercel Analytics, self
 - [x] `Permissions-Policy`: camera=(), microphone=(), geolocation=(), interest-cohort=()
-- [x] **SecurityHeaders.com**: Grado **A** (tutti 6 header verdi). Warning: CSP contiene `unsafe-inline`/`unsafe-eval` (necessari per Next.js e Iubenda). Per A+ servirebbe CSP con nonce (miglioramento futuro).
+- [x] **SecurityHeaders.com**: Grado **A** (tutti 6 header verdi). Warning: CSP contiene `unsafe-inline`/`unsafe-eval` (necessari per Next.js e gli script di integrazione). Per A+ servirebbe CSP con nonce (miglioramento futuro).
 
 ### 8.5 Performance - VERIFICATO (parziale)
 - [x] **TTFB**: ~490ms (buono, sotto i 600ms)

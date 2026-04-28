@@ -116,7 +116,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 - **Logo:** `LabManager` — Playfair Display 20px
 - **Tagline:** `IL GESTIONALE PER PASTICCERI PROFESSIONISTI` — DM Sans 10px, `#a09880`, uppercase
 - **Link riga 1:** Sito Web (`pastrylabmanager.com`) · Download (`pastrylabmanager.com/download`) · Contatti (`mailto:labmanager.info@gmail.com`)
-- **Link riga 2:** Privacy Policy (`iubenda.com/privacy-policy/79608415`)
+- **Link riga 2:** Privacy Policy (`app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it`)
 - **Copyright:** `© 2026 LabManager. Tutti i diritti riservati.`
 - **Nota:** `Hai ricevuto questa email perche ti sei iscritto alla newsletter di LabManager.`
 
