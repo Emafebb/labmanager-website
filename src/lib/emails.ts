@@ -25,7 +25,7 @@ export function buildWelcomeEmail(name: string, unsubscribeUrl: string): string 
 <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; font-size: 15px; color: #1e1b18; line-height: 1.6;">
   <div style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <p>Ciao ${name},</p>
-    <p>grazie per esserti iscritto a LabManager.</p>
+    <p>grazie per esserti iscritto alla newsletter di LabManager.</p>
     <p>Ti scriverò quando ci sarà qualcosa di nuovo — aggiornamenti, nuove funzionalità.</p>
     <p>A presto,<br>Emanuele</p>
     <hr style="border: none; border-top: 1px solid #e8e3db; margin: 32px 0;">
