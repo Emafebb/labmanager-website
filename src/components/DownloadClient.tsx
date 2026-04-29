@@ -52,6 +52,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
       subtitle: "Smartphone & Tablet",
       label: "Scarica APK",
       href: androidUrl,
+      download: "labmanager.apk",
     },
     {
       icon: Monitor,
@@ -59,6 +60,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
       subtitle: "Desktop",
       label: "Scarica EXE",
       href: windowsUrl,
+      download: "LabManager.exe",
     },
   ];
 
@@ -95,7 +97,13 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {downloads.map((item) => (
-            <a key={item.name} href={item.href} className="group block" rel="noopener noreferrer">
+            <a
+              key={item.name}
+              href={item.href}
+              download={item.download}
+              className="group block"
+              rel="noopener noreferrer"
+            >
               <div className="h-full bg-white rounded-xl p-8 border border-card-border-light shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 text-center">
                 <div className="bg-icon/10 rounded-xl p-4 w-fit mx-auto mb-5">
                   <item.icon size={32} className="text-icon" strokeWidth={2} aria-hidden="true" />
