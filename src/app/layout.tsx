@@ -180,9 +180,10 @@ const structuredDataGraph = {
       description:
         "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline su Android e Windows. Trial gratuito di 14 giorni.",
       downloadUrl: [
-        "https://ndlsifytatricfutjsvu.supabase.co/storage/v1/object/public/releases/LabManager-Setup.exe",
+        "https://labmanager-downloads.labmanager-info.workers.dev/android",
+        "https://labmanager-downloads.labmanager-info.workers.dev/windows",
       ],
-      fileSize: "47185920",
+      fileSize: ["98468661", "19433664"],
       releaseNotes:
         "Importazione ricette da foto su Android e configurazione etichette più leggibile su tablet, con controlli più grandi e sezioni meno compresse.",
       datePublished: "2025-10-01",
