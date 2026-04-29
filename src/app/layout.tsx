@@ -184,10 +184,10 @@ const structuredDataGraph = {
       ],
       fileSize: "47185920",
       releaseNotes:
-        "Nuovo modulo magazzino: gestione giacenze multi-sede, ricevimento merci con tracciabilità lotti, scarico FIFO automatico, alert scadenze, anagrafica fornitori e trasferimenti tra sedi.",
+        "Importazione ricette da foto su Android e configurazione etichette più leggibile su tablet, con controlli più grandi e sezioni meno compresse.",
       datePublished: "2025-10-01",
-      dateModified: "2026-04-16",
-      softwareVersion: "0.0.6",
+      dateModified: "2026-04-27",
+      softwareVersion: "0.0.7",
       featureList: [
         "Gestione ricette digitali con ingredienti e procedimenti",
         "Calcolo automatico costi ricette e margini",

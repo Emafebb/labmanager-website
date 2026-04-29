@@ -14,6 +14,29 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "0.0.7",
+    date: "2026-04-27",
+    platforms: ["android", "windows"],
+    sections: [
+      {
+        title: "Importazione ricette da foto",
+        items: [
+          "Su Android puoi importare ricette partendo da una foto, una scheda stampata o un appunto scritto a mano",
+          "LabManager prova a riconoscere titolo, ingredienti, quantità e procedimento, poi abbina gli ingredienti al database",
+          "Prima del salvataggio puoi verificare e correggere nome, quantità, ingredienti mancanti e procedimento",
+        ],
+      },
+      {
+        title: "Etichette più leggibili su tablet",
+        items: [
+          "La configurazione delle etichette è stata riorganizzata per funzionare meglio su tablet Android",
+          "Chi lavora vicino al banco o prepara le stampe trova controlli più grandi, sezioni più leggibili e meno campi compressi",
+          "La configurazione segue meglio formato, denominazione di vendita, scadenza, lotto, conservazione, peso, e-mark, contaminazioni, prezzo, codice a barre, riciclo e sezioni visibili in etichetta",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.6",
     date: "2026-04-13",
     platforms: ["android", "windows"],

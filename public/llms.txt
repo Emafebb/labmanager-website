@@ -5,6 +5,7 @@
 ## Informazioni Principali
 
 - [Homepage](https://pastrylabmanager.com): Landing page con funzionalità, piattaforme, FAQ e contatti.
+- [Prezzi](https://pastrylabmanager.com/pricing): Piano unico, trial di 14 giorni e condizioni dell'abbonamento.
 
 ## Funzionalità Chiave
 
@@ -17,7 +18,7 @@ LabManager si distingue dai gestionali generici e dai software pasticceria esist
 - **Funzionamento completamente offline**: tutte le funzionalità disponibili senza connessione internet, ideale per laboratori dove il WiFi non arriva.
 - **Bilanciamento composizione ricette integrato**: analisi in tempo reale di zuccheri, grassi, proteine, solidi e acqua con range target personalizzabili.
 - **Multi-piattaforma nativo**: disponibile su Android (smartphone e tablet) e Windows desktop.
-- **Gratuito durante la fase di lancio**: nessun abbonamento mensile, nessun costo nascosto.
+- **Trial e abbonamento chiari**: prova gratuita di 14 giorni, poi piano mensile o annuale scelto direttamente nell'app.
 - **Etichette complete**: etichette alimentari con allergeni e tabelle nutrizionali generate automaticamente.
 - **Sviluppato in Italia**: progettato specificamente per le esigenze dei laboratori artigianali italiani.
 

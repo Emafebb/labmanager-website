@@ -1039,7 +1039,7 @@ Per ogni pagamento riuscito:
 
 #### 11.4 Limiti e follow-up
 
-- La verifica dei log email in Stripe Dashboard non e stata completata: il binario gstack browse installato non parte su Windows per errore `Cannot find server.ts`, quindi non e stato possibile navigare la Dashboard in headless.
+- La verifica dei log email in Stripe Dashboard non e stata completata: lo strumento di navigazione headless disponibile non parte su Windows per errore `Cannot find server.ts`, quindi non e stato possibile navigare la Dashboard in headless.
 - La CLI/API Stripe conferma invoice `paid`, `hosted_invoice_url` e `invoice_pdf`, ma non espone una prova equivalente al log email Dashboard.
 - Il replay manuale dell'evento `invoice.paid` `evt_1TPeOaQ5sgTMZ0uDlIOLFXGm` verso `we_1TOw1OQ5sgTMZ0uDeAVye5Op` e stato eseguito una volta per verifica endpoint; il DB e rimasto coerente su `active/annual`.
 - Prima del live servono ancora: decisione SdI scritta, dati fiscali minimi cliente, responsabile emissione e-fattura, conferma consegna email Stripe in live o fallback operativo.
