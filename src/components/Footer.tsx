@@ -22,15 +22,16 @@ const footerLinks: FooterSection[] = [
   {
     title: "Prodotto",
     links: [
-      { label: "Funzionalità", href: "#funzionalita" },
-      { label: "Piattaforme", href: "#piattaforme" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Funzionalità", href: "/#funzionalita" },
+      { label: "Piattaforme", href: "/#piattaforme" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
     title: "Supporto",
     links: [
-      { label: "Contatti", href: "#contatti" },
+      { label: "Contatti", href: "/#contatti" },
+      { label: "Newsletter", href: "/newsletter" },
     ],
   },
   {
