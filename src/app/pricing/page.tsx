@@ -207,7 +207,7 @@ export default function PricingPage() {
                   Accesso completo a tutte le funzionalità.
                 </p>
                 <a
-                  href={`https://wa.me/393806540619?text=Ciao!%20Vorrei%20provare%20LabManager%20gratuitamente%20per%20${PRICING.trialDays}%20giorni.`}
+                  href={`https://wa.me/393500424228?text=Ciao!%20Vorrei%20provare%20LabManager%20gratuitamente%20per%20${PRICING.trialDays}%20giorni.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-gray-900 text-white text-sm font-semibold py-3 px-6 rounded-xl hover:bg-gray-700 transition-colors duration-200"
