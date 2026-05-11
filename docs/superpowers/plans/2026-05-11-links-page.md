@@ -13,7 +13,7 @@
 ### Task 1: Creare la pagina `/links`
 
 **Files:**
-- Create: `src/app/links/page.tsx`
+- Create: `src/app/instagram/page.tsx`
 
 - [ ] **Step 1: Creare il file `src/app/links/page.tsx`** con il seguente contenuto:
 
@@ -100,7 +100,7 @@ export default function LinksPage() {
 npm run dev
 ```
 
-Aprire `http://localhost:3000/links` e verificare:
+Aprire `http://localhost:3000/instagram` e verificare:
 - Sfondo gradient viola visibile a schermo intero
 - Logo + nome "LabManager" + tagline centrati in cima
 - 4 bottoni visibili, ben spaziati, testo bianco
@@ -111,8 +111,8 @@ Aprire `http://localhost:3000/links` e verificare:
 - [ ] **Step 3: Commit**
 
 ```bash
-git add src/app/links/page.tsx
-git commit -m "feat(links): add link-in-bio page for Instagram"
+git add src/app/instagram/page.tsx
+git commit -m "feat(instagram): add link-in-bio page for Instagram"
 ```
 
 ---
@@ -131,7 +131,7 @@ Attendere che Vercel completi il deploy (1-2 minuti). Verificare che `https://pa
 
 1. Aprire il profilo Instagram di LabManager
 2. Toccare **Modifica profilo**
-3. Nel campo **Sito web** inserire: `https://pastrylabmanager.com/links`
+3. Nel campo **Sito web** inserire: `https://pastrylabmanager.com/instagram`
 4. Toccare **Fine** / **Salva**
 
 Il link sarà visibile nel profilo come "pastrylabmanager.com/links" e porterà alla pagina appena creata.

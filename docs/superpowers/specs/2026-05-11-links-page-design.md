@@ -1,4 +1,4 @@
-# Design Spec: Pagina Link-in-Bio `/links`
+# Design Spec: Pagina Link-in-Bio `/instagram`
 
 **Data:** 2026-05-11
 **Stato:** Approvato
@@ -9,8 +9,8 @@ Creare una pagina `pastrylabmanager.com/links` da inserire nel profilo Instagram
 
 ## URL e File
 
-- **Route:** `/links`
-- **File:** `src/app/links/page.tsx`
+- **Route:** `/instagram`
+- **File:** `src/app/instagram/page.tsx`
 - **Tipo:** Pagina statica Next.js App Router, nessun `"use client"`
 
 ## Layout
@@ -67,5 +67,5 @@ export const metadata: Metadata = {
 
 1. Aprire il profilo Instagram di LabManager
 2. Toccare **Modifica profilo**
-3. Nel campo **Sito web** inserire: `https://pastrylabmanager.com/links`
+3. Nel campo **Sito web** inserire: `https://pastrylabmanager.com/instagram`
 4. Salvare

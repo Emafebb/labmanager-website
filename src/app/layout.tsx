@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import Script from "next/script";
+import SiteScripts from "@/components/SiteScripts";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const BASE_URL = "https://pastrylabmanager.com";
-
-const TABNAV_WIDGET_CONFIG = {
-  language: "it",
-  color: "#405ec3",
-  buttonColor: "#3254c3",
-  buttonSize: "large",
-  widgetSize: "small",
-  widgetLocation: "left",
-  buttonLocation: "bottom",
-} as const;
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -286,30 +276,9 @@ export default function RootLayout({
           }}
         />
         {children}
-        <Script
-          id="legalblink-cmp"
-          type="text/javascript"
-          src="https://app.legalblink.it/api/scripts/cmp/loader.js"
-          strategy="afterInteractive"
-          data-license-id="69e89f282420950024cb1a5e"
-          data-blocking-mode="auto"
-          data-consent-mode="true"
-        />
         <Analytics />
         <SpeedInsights />
-        <Script
-          id="tabnav-accessibility-widget"
-          src="https://widget.tabnav.com/limited-widget.min.js.gz"
-          strategy="lazyOnload"
-          tnv-data-config={JSON.stringify(TABNAV_WIDGET_CONFIG)}
-        />
-        <noscript>
-          JavaScript is required for our{" "}
-          <a href="https://tabnav.com/accessibility-widget">
-            accessibility widget
-          </a>{" "}
-          to work properly.
-        </noscript>
+        <SiteScripts />
       </body>
     </html>
   );
