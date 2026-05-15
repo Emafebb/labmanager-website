@@ -14,6 +14,85 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "0.0.8",
+    date: "2026-05-14",
+    platforms: ["android", "windows"],
+    sections: [
+      {
+        title: "Dashboard Costi",
+        items: [
+          "Nuova area dedicata al controllo dei costi con vista unificata su vendite, produzioni, costi fissi, personale, spese e margini",
+          "Sezione Economico: fatturato, costo del venduto, costi fissi, personale, altre spese e risultato stimato del mese",
+          "Sezione Cassa: entrate e uscite effettive separate, inclusi ricevimenti merce e spese pagate",
+          "Sezione Prodotti: margini e risultati di ricette, assemblaggi e prodotti venduti",
+          "Sezione Spese: inserimento manuale di costi come manutenzioni, consulenze, materiali e servizi",
+          "Sezione Storico: confronto dei mesi e andamento annuale",
+        ],
+      },
+      {
+        title: "Vendita Prodotti Commerciali",
+        items: [
+          "Il Registro Vendite gestisce ora anche prodotti commerciali acquistati da terzi e rivenduti, senza doverli trasformare in ricette",
+          "Registrazione guidata con sede, prodotto, lotto consigliato, quantità, prezzo, IVA, cliente e documento",
+          "Scarico automatico del magazzino dal lotto corretto con costo d'acquisto e margine calcolati sulla vendita",
+          "Visibilità nella Dashboard Costi e nella tracciabilità lotto",
+        ],
+      },
+      {
+        title: "Registro Lotti Più Ordinato",
+        items: [
+          "I lotti interni generati dall'app hanno ora un registro dedicato per una tracciabilità più chiara",
+          "Le etichette definitive registrano il lotto solo alla stampa, PDF o export reale; la sola anteprima non crea lotti inutili",
+          "Puoi partire da una produzione già registrata e riusare il lotto corretto nelle etichette",
+          "Ricerca per lotto e data più comoda nei flussi collegati alle etichette",
+        ],
+      },
+      {
+        title: "Etichette Più Sicure Prima della Stampa",
+        items: [
+          "I preset verificano i dati minimi richiesti prima di generare un output definitivo: lotto, scadenza, quantità, conservazione, allergeni e valori nutrizionali",
+          "Distinzione migliorata tra operatore responsabile e stabilimento di produzione o confezionamento",
+          "Etichette interne di laboratorio con indicazione esplicita dell'uso interno e dell'operatore quando previsto",
+          "Allergeni e valori nutrizionali possono essere marcati come verificati; l'app avvisa prima dell'output se non lo sono",
+        ],
+      },
+      {
+        title: "Resa e Calo Peso nelle Ricette",
+        items: [
+          "Nelle ricette puoi indicare la resa: nessun calo, calo in percentuale, calo in grammi o peso finito misurato",
+          "Con resa verificata, etichette e valori nutrizionali usano il peso del prodotto finito come base di calcolo",
+          "L'app avvisa prima di generare un'etichetta definitiva se la resa di una ricetta non è ancora verificata",
+          "Utile per prodotti da forno, cotture, creme e ricette dove la lavorazione modifica il peso finale",
+        ],
+      },
+      {
+        title: "Valori Nutrizionali Più Coerenti",
+        items: [
+          "Valori nutrizionali e energia coerenti tra anteprima, PDF, stampa ed export",
+          "Il valore energetico in kJ già presente viene mantenuto come riferimento invece di ricalcolarlo dalle kcal",
+          "Con resa verificata, la normalizzazione dei valori nutrizionali usa il peso del prodotto finito",
+        ],
+      },
+      {
+        title: "Sede Operativa sul Dispositivo",
+        items: [
+          "Ogni dispositivo può avere una sede operativa predefinita, utile per tablet fissi in laboratorio o punto vendita",
+          "Preseleziona automaticamente la sede corretta in ricevimento merci, prelievi, produzione, inventario, vendite e storico movimenti",
+          "Non modifica la sede legale o quella usata come riferimento per le etichette ufficiali",
+        ],
+      },
+      {
+        title: "Magazzino e Uso Mobile",
+        items: [
+          "Inventario lotti più compatto su mobile con filtri migliorati per tipo prodotto e sede",
+          "Disponibilità magazzino e storico movimenti già orientati sulla sede operativa del dispositivo",
+          "Dialog di modifica movimento adattato a schermi stretti; colonne, badge e tabelle sistemati per evitare tagli",
+          "Lotti commerciali inclusi nelle viste di inventario e vendita",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.7",
     date: "2026-04-27",
     platforms: ["android", "windows"],
