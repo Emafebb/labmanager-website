@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ComponentType, SVGProps } from "react";
 import { Heart } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
 const COOKIE_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/cookie-policy-it";
+const INSTAGRAM_URL = "https://www.instagram.com/labmanager_gestionale/";
 
 type FooterLink = {
   label: string;
@@ -44,6 +46,35 @@ const footerLinks: FooterSection[] = [
   },
 ];
 
+function InstagramIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+type SocialLink = {
+  label: string;
+  href: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+};
+
+const socialLinks: SocialLink[] = [
+  { label: "Instagram", href: INSTAGRAM_URL, icon: InstagramIcon },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white" aria-label="Informazioni LabManager">
@@ -70,6 +101,29 @@ export default function Footer() {
               <p className="text-gray-400 leading-relaxed max-w-sm">
                 Il gestionale completo per pasticceria, panificio e ristorante: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione.
               </p>
+
+              <div className="mt-7">
+                <h3 className="text-xs font-bold text-white/45 tracking-[0.15em] mb-3">
+                  SEGUICI
+                </h3>
+                <div className="flex items-center gap-3">
+                  {socialLinks.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 touch-manipulation transition-[color,background-color,border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white hover:border-transparent hover:-translate-y-[3px] hover:scale-105 hover:bg-[linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)] hover:shadow-[0_10px_22px_-6px_rgba(220,39,67,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+                      >
+                        <Icon className="w-5 h-5" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-2 gap-8">
@@ -102,9 +156,6 @@ export default function Footer() {
               <div>
                 <p className="text-sm text-gray-400">
                   &copy; {currentYear} LabManager. Tutti i diritti riservati.
-                </p>
-                <p className="text-xs text-gray-500 mt-1">
-                  Ultimo aggiornamento: Febbraio 2026
                 </p>
               </div>
 
