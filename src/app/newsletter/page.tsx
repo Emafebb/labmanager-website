@@ -57,7 +57,7 @@ export default function NewsletterPage() {
         <section className="px-6 pb-20" aria-labelledby="newsletter-page-title">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_440px] gap-10 lg:gap-14 items-center">
             <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
+              <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
                 <Bell size={16} aria-hidden="true" />
                 <span>Newsletter LabManager</span>
               </div>
@@ -111,7 +111,7 @@ export default function NewsletterPage() {
                 </div>
               </div>
 
-              <div className="relative h-48 sm:h-64 max-w-2xl overflow-hidden rounded-2xl border border-card-border/25 bg-surface shadow-sm">
+              <div className="relative h-48 sm:h-64 max-w-2xl overflow-hidden rounded-2xl border border-gray-200 bg-surface shadow-sm">
                 <Image
                   src="/images/labmanager-homepage-screenshot.png"
                   alt="Schermata di LabManager con dashboard e gestione ricette"
@@ -124,7 +124,7 @@ export default function NewsletterPage() {
             </div>
 
             <aside
-              className="bg-white rounded-2xl border border-card-border/25 shadow-lg shadow-primary/5 p-6 sm:p-8 animate-fade-in-up"
+              className="bg-white rounded-2xl border border-gray-200 shadow-lg shadow-primary/5 p-6 sm:p-8 animate-fade-in-up"
               style={{ animationDelay: "0.08s" }}
               aria-labelledby="newsletter-form-title"
             >

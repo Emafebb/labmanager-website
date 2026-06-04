@@ -59,7 +59,7 @@ export default function PricingFAQ() {
             return (
               <div
                 key={faq.question}
-                className="bg-white rounded-xl border border-card-border/25 shadow-sm animate-fade-in-up"
+                className="bg-white rounded-xl border border-gray-200 shadow-sm animate-fade-in-up"
                 style={{ animationDelay: `${0.15 + index * 0.03}s` }}
               >
                 <button

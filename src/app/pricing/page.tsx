@@ -98,7 +98,7 @@ export default function PricingPage() {
       <main className="pt-28 pb-24">
         <section className="px-6 text-center mb-20">
           <div className="max-w-3xl mx-auto animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
+            <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
               <span>Prezzi</span>
             </div>
 
@@ -159,7 +159,7 @@ export default function PricingPage() {
                   {/* layout mobile: icona + freccia in riga, testo a destra */}
                   <div className="flex sm:flex-col sm:items-center gap-4 sm:gap-0 px-4">
                     <div className="flex flex-col items-center sm:hidden">
-                      <div className="w-14 h-14 rounded-full bg-white border-2 border-primary/20 flex items-center justify-center shadow-sm relative flex-shrink-0">
+                      <div className="w-14 h-14 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-sm relative flex-shrink-0">
                         <Icon size={24} className="text-primary" aria-hidden="true" />
                         <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center leading-none">
                           {step}
@@ -170,7 +170,7 @@ export default function PricingPage() {
                       )}
                     </div>
                     {/* cerchio desktop */}
-                    <div className="hidden sm:flex w-16 h-16 rounded-full bg-white border-2 border-primary/20 items-center justify-center mb-4 shadow-sm relative">
+                    <div className="hidden sm:flex w-16 h-16 rounded-full bg-white border-2 border-gray-200 items-center justify-center mb-4 shadow-sm relative">
                       <Icon size={26} className="text-primary" aria-hidden="true" />
                       <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center leading-none">
                         {step}
@@ -244,7 +244,7 @@ export default function PricingPage() {
                 </div>
               </div>
 
-              <div className="flex-1 bg-white rounded-2xl border-2 border-primary p-8 text-center relative flex flex-col">
+              <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-8 text-center relative flex flex-col shadow-sm">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">
                   Più scelto
                 </div>
@@ -293,7 +293,7 @@ export default function PricingPage() {
                     </span>
                   </li>
                 </ul>
-                <div className="rounded-xl border border-primary/15 bg-primary/5 px-4 py-4 text-left">
+                <div className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-4 text-left">
                   <p className="text-sm font-semibold text-primary">
                     Scelta piano direttamente in app
                   </p>
@@ -316,7 +316,7 @@ export default function PricingPage() {
 
         <section className="px-6 pb-20">
           <div
-            className="max-w-3xl mx-auto bg-primary/5 border border-primary/10 rounded-3xl p-10 sm:p-14 text-center animate-fade-in-up"
+            className="max-w-3xl mx-auto bg-gray-50 border border-gray-200 rounded-3xl p-10 sm:p-14 text-center animate-fade-in-up"
             style={{ animationDelay: "0.1s" }}
           >
             <p className="text-4xl sm:text-5xl font-bold text-primary mb-2">
@@ -343,7 +343,7 @@ export default function PricingPage() {
               ].map((review, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-2xl border border-card-border/25 p-8 shadow-sm"
+                  className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm"
                 >
                   <p className="text-gray-600 leading-relaxed mb-6 italic">
                     &ldquo;{review.quote}&rdquo;
@@ -372,7 +372,7 @@ export default function PricingPage() {
               {FEATURES.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="bg-white rounded-2xl border border-card-border/25 p-8 shadow-sm animate-fade-in-up"
+                  className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm animate-fade-in-up"
                   style={{ animationDelay: `${0.15 + index * 0.05}s` }}
                 >
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">

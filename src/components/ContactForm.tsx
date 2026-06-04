@@ -42,7 +42,7 @@ export default function ContactForm() {
     <section id="contatti" className="px-6 py-24 bg-surface" aria-labelledby="contact-heading">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
+          <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
             <Mail size={16} aria-hidden="true" />
             <span>CONTATTACI</span>
           </div>
@@ -66,7 +66,7 @@ export default function ContactForm() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
-            <div className="bg-white rounded-xl p-8 border border-card-border/25 shadow-sm">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
                 Perché contattarci?
               </h3>
@@ -88,7 +88,7 @@ export default function ContactForm() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-card-border/25 shadow-sm">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Altre informazioni</h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4">
                 Solitamente rispondiamo entro <strong className="text-gray-900">24 ore</strong> nei giorni lavorativi.
@@ -111,7 +111,7 @@ export default function ContactForm() {
 
           <div>
             {status === "success" ? (
-              <div role="status" className="bg-white rounded-xl p-12 border border-card-border/25 shadow-sm text-center animate-scale-in">
+              <div role="status" className="bg-white rounded-xl p-12 border border-gray-200 shadow-sm text-center animate-scale-in">
                 <div className="inline-flex p-5 rounded-full bg-green-100 mb-6">
                   <CheckCircle2 size={40} className="text-green-600" aria-hidden="true" />
                 </div>
@@ -128,7 +128,7 @@ export default function ContactForm() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 sm:p-10 border border-card-border/25 shadow-sm">
+              <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 sm:p-10 border border-gray-200 shadow-sm">
                 <div className="space-y-5">
                   <div>
                     <label htmlFor="name" className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
@@ -141,7 +141,7 @@ export default function ContactForm() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-icon focus:ring-4 focus:ring-icon/10 outline-none transition-all text-base bg-white"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base bg-white"
                       placeholder="Mario Rossi"
                     />
                   </div>
@@ -157,7 +157,7 @@ export default function ContactForm() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-icon focus:ring-4 focus:ring-icon/10 outline-none transition-all text-base bg-white"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base bg-white"
                       placeholder="mario.rossi@email.com"
                     />
                   </div>
@@ -173,7 +173,7 @@ export default function ContactForm() {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-icon focus:ring-4 focus:ring-icon/10 outline-none transition-all text-base resize-none bg-white"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base resize-none bg-white"
                       placeholder="Scrivi qui il tuo messaggio..."
                     />
                   </div>
@@ -184,7 +184,7 @@ export default function ContactForm() {
                       type="checkbox"
                       checked={privacyAccepted}
                       onChange={(e) => setPrivacyAccepted(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-icon/10"
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200"
                     />
                     <label htmlFor="privacy" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
                       Ho letto e accetto la{" "}
@@ -205,7 +205,7 @@ export default function ContactForm() {
                       type="checkbox"
                       checked={newsletterAccepted}
                       onChange={(e) => setNewsletterAccepted(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-icon/10"
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200"
                     />
                     <label htmlFor="newsletter" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
                       Acconsento a ricevere aggiornamenti e novità di LabManager via email.{" "}

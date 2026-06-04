@@ -48,7 +48,7 @@ export default function Platforms() {
               className="animate-fade-in-up"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="h-full bg-white rounded-xl p-8 border border-card-border-light shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center">
+              <div className="h-full bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center">
                 <div className="bg-icon/10 rounded-xl p-4 w-fit mx-auto mb-5">
                   <platform.icon size={28} className="text-icon" strokeWidth={2} aria-hidden="true" />
                 </div>

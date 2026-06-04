@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-16 lg:pt-36 lg:pb-20">
         {/* Top badge */}
         <div className="animate-fade-in flex justify-center lg:justify-start mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-primary/10 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
@@ -54,7 +54,7 @@ export default function Hero() {
             </p>
 
             {/* AI-extractable definition block */}
-            <div className="bg-white/60 border border-primary/10 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
+            <div className="bg-white/60 border border-gray-200 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
               <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed">
                 <strong>LabManager</strong> è il gestionale di pasticceria, panificio e ristorante che permette di gestire ricette, calcolare
                 costi e margini, creare etichette alimentari con allergeni e

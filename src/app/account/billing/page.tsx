@@ -32,7 +32,7 @@ export default function AccountBillingPage() {
             </div>
 
             <div
-              className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-primary/15 animate-fade-in-up"
+              className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200 animate-fade-in-up"
               style={{ animationDelay: "0.05s" }}
             >
               <span>Portale abbonamento</span>

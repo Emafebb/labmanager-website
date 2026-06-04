@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import BrandLogo from "@/components/BrandLogo";
 
 const navLinks = [
   { href: "/#funzionalita", label: "Funzionalità" },
@@ -45,48 +46,41 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center">
-          <a
+          <Link
             href="/"
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white"
           >
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200 ease-out">
-              <Image
-                src="/images/logo.png"
-                alt="LabManager"
-                width={28}
-                height={28}
-              />
-            </div>
+            <BrandLogo />
             <div className="flex flex-col">
               <span className="text-xl font-bold text-gray-900 tracking-tight">
                 LabManager
               </span>
             </div>
-          </a>
+          </Link>
 
           <ul className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
-                  className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200 ease-out"
+                  className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li className="ml-3">
-              <a
+              <Link
                 href="/#contatti"
-                className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-colors duration-200 ease-out"
+                className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Richiedi Info
-              </a>
+              </Link>
             </li>
           </ul>
 
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 ease-out"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Chiudi menu" : "Apri menu"}
             aria-expanded={mobileOpen}
@@ -111,23 +105,23 @@ export default function Navbar() {
           <ul className="px-6 py-4 space-y-1">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
-                  className="block px-4 py-3 text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200 ease-out"
+                  className="block px-4 py-3 text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li className="pt-3">
-              <a
+              <Link
                 href="/#contatti"
-                className="block text-center bg-primary text-white px-6 py-3 rounded-lg text-base font-bold hover:bg-primary-dark transition-colors duration-200 ease-out"
+                className="block text-center bg-primary text-white px-6 py-3 rounded-lg text-base font-bold hover:bg-primary-dark transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 onClick={() => setMobileOpen(false)}
               >
                 Richiedi Info
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

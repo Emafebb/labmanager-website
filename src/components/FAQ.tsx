@@ -145,7 +145,7 @@ export default function FAQ() {
       />
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
+          <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
             <HelpCircle size={16} aria-hidden="true" />
             <span>FAQ</span>
           </div>
@@ -166,7 +166,7 @@ export default function FAQ() {
             return (
               <div
                 key={faq.question}
-                className="bg-white rounded-xl border border-card-border/25 shadow-sm"
+                className="bg-white rounded-xl border border-gray-200 shadow-sm"
               >
                 <button
                   id={`faq-question-${index}`}

@@ -65,8 +65,8 @@ export default function NewsletterForm({
     ? "flex items-center gap-1.5 text-xs font-semibold text-gray-700 mb-1"
     : "flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2";
   const inputClassName = isPopup
-    ? "w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:border-primary/40 focus:ring-4 focus:ring-primary/5 outline-none transition-all text-sm bg-gray-50/50 placeholder:text-gray-400"
-    : "w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-icon focus:ring-4 focus:ring-icon/10 outline-none transition-all text-base bg-white placeholder:text-gray-400";
+    ? "w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-all text-sm bg-gray-50/50 placeholder:text-gray-400"
+    : "w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base bg-white placeholder:text-gray-400";
   const checkboxWrapClassName = isPopup
     ? "flex items-start gap-2.5 p-3 bg-gray-50 rounded-xl"
     : "flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200";
@@ -172,7 +172,7 @@ export default function NewsletterForm({
           type="checkbox"
           checked={privacyAccepted}
           onChange={(e) => setPrivacyAccepted(e.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/10 accent-primary"
+          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200 accent-primary"
         />
         <label htmlFor={`${id}-privacy`} className={privacyLabelClassName}>
           Acconsento a ricevere la newsletter di LabManager e ho letto la{" "}

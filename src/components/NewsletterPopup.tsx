@@ -103,7 +103,7 @@ export default function NewsletterPopup() {
             <div className="text-center mb-6">
               <div className="relative inline-flex mb-4">
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-lg" />
-                <div className="relative p-2.5 rounded-full bg-gradient-to-br from-primary/10 to-icon/10 border border-primary/10">
+                <div className="relative p-2.5 rounded-full bg-gradient-to-br from-primary/10 to-icon/10 border border-gray-200">
                   <Sparkles size={20} className="text-primary" aria-hidden="true" />
                 </div>
               </div>

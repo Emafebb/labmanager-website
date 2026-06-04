@@ -8,9 +8,9 @@
   --primary-dark: #3a0390;
   --primary-muted: rgba(68, 3, 175, 0.1);
   --primary-subtle: rgba(68, 3, 175, 0.05);
-  --icon-color: #5C6BC0;
-  --card-border: #80CBC4;
-  --card-border-light: rgba(128, 203, 196, 0.25);
+  --icon-color: var(--primary);
+  --card-border: #E5E7EB;
+  --card-border-light: rgba(229, 231, 235, 0.9);
   --success: #107C10;
   --warning: #E6A700;
   --error: #E81123;
@@ -55,6 +55,11 @@ body {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+}
+
+:where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid #D1D5DB;
+  outline-offset: 3px;
 }
 
 /* Subtle animations */

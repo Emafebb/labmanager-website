@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import { Heart } from "lucide-react";
+import BrandLogo from "@/components/BrandLogo";
 
 const currentYear = new Date().getFullYear();
 const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
@@ -82,15 +82,11 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-12">
             <div className="lg:col-span-5">
-              <Link href="/" className="group inline-flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                  <Image
-                    src="/images/logo.png"
-                    alt="LabManager"
-                    width={28}
-                    height={28}
-                  />
-                </div>
+              <Link
+                href="/"
+                className="group inline-flex items-center gap-3 mb-6 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-900"
+              >
+                <BrandLogo />
                 <div className="flex flex-col">
                   <span className="text-xl font-bold text-white tracking-tight">
                     LabManager

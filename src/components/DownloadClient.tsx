@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   Smartphone,
   Monitor,
@@ -68,7 +69,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
     <section id="download-app" className="px-6 py-24" aria-labelledby="download-heading">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-icon/10 text-icon px-4 py-2 rounded-full text-sm font-bold mb-6 border border-icon/20">
+          <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
             <DownloadIcon size={16} aria-hidden="true" />
             <span>SCARICA E PROVA GRATIS</span>
           </div>
@@ -86,7 +87,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
             {badges.map((badge) => (
               <span
                 key={badge}
-                className="inline-flex items-center gap-1.5 bg-primary/5 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/10"
+                className="inline-flex items-center gap-1.5 bg-white text-primary px-4 py-2 rounded-full text-sm font-semibold border border-gray-200"
               >
                 <span aria-hidden="true">&#10003;</span>
                 {badge}
@@ -104,7 +105,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
               className="group block"
               rel="noopener noreferrer"
             >
-              <div className="h-full bg-white rounded-xl p-8 border border-card-border-light shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 text-center">
+              <div className="h-full bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 text-center">
                 <div className="bg-icon/10 rounded-xl p-4 w-fit mx-auto mb-5">
                   <item.icon size={32} className="text-icon" strokeWidth={2} aria-hidden="true" />
                 </div>
@@ -179,9 +180,9 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
         </div>
 
         <div className="text-center mt-10">
-          <a href="/#contatti" className="text-sm text-gray-500 hover:text-primary transition-colors duration-200 underline underline-offset-2">
+          <Link href="/#contatti" className="text-sm text-gray-500 hover:text-primary transition-colors duration-200 underline underline-offset-2">
             Hai bisogno di aiuto con l&apos;installazione?
-          </a>
+          </Link>
         </div>
       </div>
     </section>
