@@ -14,6 +14,135 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "0.0.9",
+    date: "2026-06-04",
+    platforms: ["android", "windows"],
+    sections: [
+      {
+        title: "Ordini e piano di lavoro",
+        items: [
+          "Nuova area per gestire ordini clienti, ordini interni tra sedi e lavori di laboratorio pianificati",
+          "Inserimento rapido con cliente, telefono, sede, data, orario, ritiro o consegna",
+          "Più righe nello stesso ordine con note diverse, allergie dichiarate, dedica, colori, decorazioni, candele e note laboratorio",
+          "Viste per giorno, settimana, mese o stato, con filtri più comodi su desktop e mobile",
+          "Copia rapida del numero ordine quando serve comunicarlo o cercarlo",
+          "La vista aiuta a capire cosa va preparato oggi, cosa è già pronto, cosa è in ritardo e cosa deve essere consegnato o ritirato",
+        ],
+      },
+      {
+        title: "Produzione collegata agli ordini",
+        items: [
+          "Le righe ordine possono essere collegate a ricette o assemblaggi già presenti in LabManager",
+          "Collegamento tra richiesta cliente, prodotto preparato e lotto per evitare di riscrivere le stesse informazioni",
+          "Produzione programmata nel piano settimanale e lavori ricorrenti con titolo più chiaro",
+          "Lotto produzione mostrato nei dettagli dell'ordine quando disponibile",
+          "Annullamento della produzione collegata con conferma esplicita",
+          "Blocco della vendita manuale da una produzione già nata da ordine, per evitare doppioni",
+        ],
+      },
+      {
+        title: "Cassa, acconti e chiusura ordini",
+        items: [
+          "Il flusso ordini distingue meglio acconti, saldi, vendite e cassa",
+          "Un ordine può partire come non pagato, con acconto o saldato",
+          "Il dettaglio mostra acconto, residuo e stato pagamento",
+          "Alla consegna puoi scegliere se incassare il saldo o lasciarlo aperto",
+          "La vendita generata dall'ordine conserva numero ordine, cliente e sede",
+          "La Dashboard Cassa legge gli incassi reali e non solo il totale dell'ordine",
+          "Gli annulli di ordini incassati possono essere gestiti con storno o rimborso",
+          "Le vendite collegate a un ordine non si eliminano dal Registro Vendite, ma si gestiscono dall'ordine",
+        ],
+      },
+      {
+        title: "Report ordini ed export",
+        items: [
+          "Report Ordini più utile per controllo giornaliero, riepiloghi cliente e lavoro amministrativo",
+          "Lettura più chiara di numero ordini, stati, clienti serviti, prodotti, righe ordine, sedi, totali, acconti, residui e note operative",
+          "Filtri dedicati con esportazione in Excel o PDF",
+          "Utile per riepiloghi di giornata, controllo consegne e ritiri, passaggio informazioni al laboratorio e tracciamento ordini cliente",
+        ],
+      },
+      {
+        title: "Notifiche ordini",
+        items: [
+          "Notifiche sugli ordini più visibili e più adatte al lavoro su più postazioni",
+          "Avvisi quando arrivano o cambiano ordini importanti, quando un ordine viene completato in laboratorio e quando viene consegnato o ritirato",
+          "Su Android arrivano notifiche push",
+          "Su Windows sono stati aggiunti badge nella navigazione, indicatori NEW sulle righe ordine e un suono leggero",
+          "La postazione che ha appena eseguito l'azione non viene disturbata dalla propria notifica",
+        ],
+      },
+      {
+        title: "Storico etichette e ristampa",
+        items: [
+          "Le etichette definitive salvate sui lotti possono essere ritrovate nello Storico Etichette",
+          "Ristampa, salvataggio PDF, stampa o export senza ricostruire tutto da capo",
+          "Ricerca delle etichette partendo dai lotti usati",
+          "Dettagli salvati apribili in sola lettura per evitare modifiche accidentali ai dati correnti",
+          "Supporto anche per etichette salvate in formato più vecchio quando i dati sono sufficienti",
+          "Messaggi più comprensibili quando i dati salvati non bastano",
+        ],
+      },
+      {
+        title: "Etichette, imballaggi e contenuto",
+        items: [
+          "Etichettatura ambientale rafforzata con componente reale dell'imballaggio, codice materiale e istruzione di raccolta",
+          "Suggerimenti per compilare i dati di riciclo, mantenendo il campo libero per descrivere l'imballaggio realmente usato",
+          "Controlli di attenzione su additivi funzionali, origine o provenienza indicata, cacao, cioccolato e diciture delicate",
+          "Dati opzionali presi dalla scheda tecnica del fornitore",
+          "Controlli su leggibilità, contrasto e dimensioni del testo",
+          "Allergeni più evidenti e lotti e date più chiari nei PDF",
+          "Gli avvisi aiutano a fermarsi sui punti giusti prima di stampare, esportare o consegnare un'etichetta",
+        ],
+      },
+      {
+        title: "Stampa Bluetooth etichette",
+        items: [
+          "Su Android è disponibile la stampa diretta verso stampanti termiche Bluetooth compatibili",
+          "Dal flusso etichette puoi scegliere tra stampa PDF classica e stampante etichette Bluetooth",
+          "La configurazione della stampante viene salvata sul dispositivo",
+          "Puoi scegliere il numero di copie prima della stampa",
+          "La stampa PDF tradizionale resta disponibile",
+        ],
+      },
+      {
+        title: "Ricette, mobile e uso quotidiano",
+        items: [
+          "Pagina ricette più adattabile a schermi grandi e piccoli",
+          "Barra azioni ricetta più compatta su mobile",
+          "Righe ingredienti più gestibili quando lo spazio è stretto",
+          "Salvataggio export mobile nella cartella Download",
+          "Dettagli vendita più larghi e leggibili",
+          "Formattazione quantità vendita più corretta",
+          "Schermate e sezioni meno soggette a campi tagliati",
+        ],
+      },
+      {
+        title: "Vendite, tracciabilità e magazzino",
+        items: [
+          "Le vendite generate dagli ordini sono più riconoscibili nel Registro Vendite e nella tracciabilità",
+          "Ricerca vendita anche per numero ordine o cliente",
+          "Se una vendita nasce da un ordine, LabManager evita l'eliminazione diretta dal Registro Vendite e rimanda alla gestione dell'ordine",
+          "Tracciabilità lotto più chiara quando un lotto è stato distribuito tramite un ordine collegato a ricetta o assemblaggio",
+          "Più facile ricostruire il percorso del prodotto quando serve capire a quale cliente o documento è collegato",
+        ],
+      },
+      {
+        title: "Dopo l'aggiornamento",
+        items: [
+          "Crea un ordine di prova con acconto e residuo",
+          "Collega almeno una riga ordine a una ricetta o a un assemblaggio",
+          "Chiudi un ordine e controlla vendita, cassa e stato pagamento",
+          "Verifica il Report Ordini con un filtro giorno o settimana",
+          "Prova le notifiche sulle postazioni che usano ordini",
+          "Apri lo Storico Etichette e ristampa una vecchia etichetta",
+          "Se usi una stampante termica, configura la stampante Bluetooth su Android",
+          "Ricontrolla componenti imballaggio, allergeni e dati da scheda tecnica prima delle prime stampe reali",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.0.8",
     date: "2026-05-14",
     platforms: ["android", "windows"],
