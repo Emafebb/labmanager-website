@@ -5,11 +5,14 @@
 ## Informazioni Principali
 
 - [Homepage](https://pastrylabmanager.com): Landing page con funzionalità, piattaforme, FAQ e contatti.
+- [Ordini](https://pastrylabmanager.com/ordini): Pagina dedicata al modulo Ordini e Piano di Lavoro per ordini cliente, ordini interni, produzione collegata, acconti, residui, report ed export.
 - [Prezzi](https://pastrylabmanager.com/pricing): Piano unico, trial di 14 giorni e condizioni dell'abbonamento.
 
 ## Funzionalità Chiave
 
-LabManager offre: gestione ricette e assemblaggi, calcolo automatico costi e margini, bilanciamento composizione (zuccheri, grassi, proteine, lattosio), gestione inventario ingredienti, calcolatori professionali per laboratorio (bagne, calcolo W, gelato, stampi), tabelle nutrizionali automatiche, etichette alimentari con allergeni, dashboard produzione e vendite, tracciabilità lotti, esportazione PDF, funzionamento offline con sincronizzazione cloud, gestione team con ruoli.
+LabManager offre: gestione ricette e assemblaggi, Ordini e Piano di Lavoro, calcolo automatico costi e margini, bilanciamento composizione (zuccheri, grassi, proteine, lattosio), gestione inventario ingredienti, calcolatori professionali per laboratorio (bagne, calcolo W, gelato, stampi), tabelle nutrizionali automatiche, etichette alimentari con allergeni, dashboard produzione e vendite, tracciabilità lotti, esportazione PDF, funzionamento offline con sincronizzazione cloud, gestione team con ruoli.
+
+Il modulo ordini gestisce ordini cliente e interni, data evasione, ritiro/consegna, righe prodotto, produzione collegata, acconti, residui, report ed export.
 
 ## Differenziazione
 

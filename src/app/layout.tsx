@@ -123,7 +123,7 @@ const OFFERS = [
   },
 ] as const;
 
-const structuredDataGraph = {
+export const structuredDataGraph = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -175,10 +175,10 @@ const structuredDataGraph = {
       ],
       fileSize: ["98468661", "19433664"],
       releaseNotes:
-        "Importazione ricette da foto su Android e configurazione etichette più leggibile su tablet, con controlli più grandi e sezioni meno compresse.",
+        "Nuovo modulo Ordini e Piano di Lavoro con ordini cliente, ordini interni tra sedi, produzione collegata, acconti, residui, report ordini, export e notifiche operative.",
       datePublished: "2025-10-01",
-      dateModified: "2026-04-27",
-      softwareVersion: "0.0.7",
+      dateModified: "2026-06-04",
+      softwareVersion: "0.0.9",
       featureList: [
         "Gestione ricette digitali con ingredienti e procedimenti",
         "Calcolo automatico costi ricette e margini",
@@ -198,6 +198,11 @@ const structuredDataGraph = {
         "Alert configurabili per prodotti in scadenza",
         "Anagrafica fornitori con condizioni di pagamento e scontistica",
         "Trasferimenti merce tra sedi con tracciabilità completa",
+        "Gestione ordini cliente con ritiro, consegna, acconti e saldo",
+        "Ordini interni tra sedi e piano di lavoro del laboratorio",
+        "Produzione collegata a ricette, assemblaggi e lotti",
+        "Report Ordini con export Excel e PDF",
+        "Notifiche ordini su Android e Windows",
       ],
       screenshot: [
         {
