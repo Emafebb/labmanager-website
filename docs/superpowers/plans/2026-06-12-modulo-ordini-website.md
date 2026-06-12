@@ -59,7 +59,7 @@ Preserve the existing unrelated dirty change in `CLAUDE.md`. Do not revert it an
 **Files:**
 - Create: `src/app/ordini/page.test.tsx`
 
-- [ ] **Step 1: Create the failing page contract test**
+- [x] **Step 1: Create the failing page contract test**
 
 Create `src/app/ordini/page.test.tsx`:
 
@@ -184,7 +184,7 @@ describe("orders page", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and verify it fails**
+- [x] **Step 2: Run the test and verify it fails**
 
 Run:
 
@@ -194,7 +194,7 @@ npx vitest run src/app/ordini/page.test.tsx
 
 Expected: FAIL because `src/app/ordini/page.tsx` does not exist yet.
 
-- [ ] **Step 3: Commit the failing test**
+- [x] **Step 3: Commit the failing test**
 
 ```powershell
 git add -- src/app/ordini/page.test.tsx
