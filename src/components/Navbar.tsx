@@ -7,6 +7,7 @@ import BrandLogo from "@/components/BrandLogo";
 
 const navLinks = [
   { href: "/#funzionalita", label: "Funzionalità" },
+  { href: "/ordini", label: "Ordini" },
   { href: "/pricing", label: "Prezzi" },
   { href: "/#perche-labmanager", label: "Perché LabManager" },
   { href: "/#piattaforme", label: "Piattaforme" },
