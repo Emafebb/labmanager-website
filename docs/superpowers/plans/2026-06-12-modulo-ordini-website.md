@@ -22,6 +22,13 @@ The user updated the SEO title requirement to:
 title: "Gestione ordini dei tuoi clienti - LabManager"
 ```
 
+Post-implementation alignment decisions:
+
+- Do not include a "Scarica LabManager" CTA or `/download` link anywhere on `/ordini`.
+- Do not reuse the generic multi-device homepage screenshot in the `/ordini` hero.
+- The hero must describe the Piano di Lavoro explicitly with an orders/work-plan summary panel.
+- Reuse the existing shared `Footer` component exactly as the rest of the site does; do not add a custom pre-footer CTA band.
+
 Preserve the existing unrelated dirty change in `CLAUDE.md`. Do not revert it and do not include it in feature commits.
 
 ## File Structure
@@ -117,8 +124,8 @@ describe("orders page", () => {
       main.getByRole("link", { name: "Vedi come funziona" }),
     ).toHaveAttribute("href", "#flusso-ordine");
     expect(
-      main.getByRole("link", { name: "Scarica LabManager" }),
-    ).toHaveAttribute("href", "/download");
+      main.queryByRole("link", { name: "Scarica LabManager" }),
+    ).not.toBeInTheDocument();
   });
 
   it("renders extractable sections for orders, production, payments, notifications, and reports", () => {
@@ -211,13 +218,12 @@ Expected: commit succeeds and does not include `CLAUDE.md`.
 - Create: `src/app/ordini/page.tsx`
 - Test: `src/app/ordini/page.test.tsx`
 
-- [ ] **Step 1: Create the orders page**
+- [x] **Step 1: Create the orders page**
 
 Create `src/app/ordini/page.tsx` with this structure:
 
 ```tsx
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -225,10 +231,11 @@ import {
   CalendarDays,
   CheckCircle2,
   ClipboardList,
+  Clock3,
   FileSpreadsheet,
+  ListChecks,
   PackageCheck,
   ReceiptText,
-  Route,
   Wallet,
 } from "lucide-react";
 import Footer from "@/components/Footer";
@@ -327,6 +334,30 @@ const workSteps = [
   {
     title: "Chiudi consegna e incasso",
     text: "Alla consegna puoi incassare il saldo, lasciare un residuo aperto o generare la vendita collegata all'ordine.",
+  },
+];
+
+const planStats = [
+  { label: "Da preparare", value: "12", detail: "righe ordine" },
+  { label: "In produzione", value: "7", detail: "attivit\u00e0" },
+  { label: "Da consegnare", value: "5", detail: "ritiri e consegne" },
+];
+
+const workPlanPreview = [
+  {
+    time: "08:00",
+    title: "Basi e preparazioni",
+    text: "Le righe ordine collegate a ricette diventano attivit\u00e0 per il laboratorio.",
+  },
+  {
+    time: "11:30",
+    title: "Ordini cliente",
+    text: "Priorit\u00e0, fascia oraria, note prodotto e allergie restano visibili mentre lavori.",
+  },
+  {
+    time: "15:00",
+    title: "Ritiro, consegna o sede",
+    text: "Il piano separa ordini da ritirare, consegne e ordini interni tra sedi.",
   },
 ];
 
@@ -455,23 +486,51 @@ export default function OrdersPage() {
             </div>
 
             <div className="relative animate-fade-in">
-              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
-                <Image
-                  src="/images/labmanager-homepage-screenshot.png"
-                  alt="Schermata LabManager con dashboard operativa"
-                  width={1280}
-                  height={720}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
-              <div className="mt-4 grid grid-cols-3 gap-3">
-                {["Da preparare", "Pronto", "Residuo"].map((label) => (
-                  <div key={label} className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-center shadow-sm">
-                    <p className="text-xs font-semibold text-gray-500">{label}</p>
-                    <p className="mt-1 text-lg font-bold text-gray-900">Ordini</p>
+              <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-xl sm:p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">
+                      Piano di lavoro
+                    </p>
+                    <h2 className="text-2xl font-bold text-gray-900 text-pretty">
+                      Cosa va preparato, quando e per chi
+                    </h2>
                   </div>
-                ))}
+                  <div className="shrink-0 rounded-2xl bg-primary/10 p-3 text-primary">
+                    <ListChecks size={26} aria-hidden="true" />
+                  </div>
+                </div>
+
+                <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                  Il piano di lavoro traduce ogni ordine in attivit&agrave; operative:
+                  priorit&agrave;, fascia oraria, sede, stato di produzione, note
+                  laboratorio e collegamento alla richiesta cliente o interna.
+                </p>
+
+                <div className="mt-6 grid grid-cols-3 gap-3">
+                  {planStats.map((stat) => (
+                    <div key={stat.label} className="rounded-2xl border border-gray-100 bg-surface px-3 py-4 text-center">
+                      <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                      <p className="mt-1 break-words text-xs font-semibold text-gray-600">{stat.label}</p>
+                      <p className="mt-1 hidden text-xs text-gray-500 sm:block">{stat.detail}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 space-y-3">
+                  {workPlanPreview.map((item) => (
+                    <article key={item.time} className="flex gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                      <div className="flex min-w-14 items-center gap-1 text-sm font-bold text-primary">
+                        <Clock3 size={15} aria-hidden="true" />
+                        <span>{item.time}</span>
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-sm font-bold text-gray-900">{item.title}</h3>
+                        <p className="mt-1 text-sm leading-relaxed text-gray-600">{item.text}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -569,36 +628,6 @@ export default function OrdersPage() {
           </div>
         </section>
 
-        <section className="px-6 py-20 bg-gray-900 text-white">
-          <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-white/50 mb-3">
-                Prova gratuita
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-                Porta ordini, laboratorio e incassi nello stesso flusso.
-              </h2>
-              <p className="text-gray-300 leading-relaxed max-w-2xl">
-                Con LabManager lavori su Android e Windows, anche offline, con sincronizzazione cloud quando torni online.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <Link
-                href="/#contatti"
-                className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-6 py-3.5 rounded-xl text-base font-semibold transition-colors duration-200 hover:bg-gray-100"
-              >
-                Richiedi una prova gratuita
-                <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-              <Link
-                href="/download"
-                className="inline-flex items-center justify-center border border-white/20 text-white px-6 py-3.5 rounded-xl text-base font-semibold transition-colors duration-200 hover:bg-white/10"
-              >
-                Scarica LabManager
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
       <WhatsAppButton />
@@ -607,7 +636,7 @@ export default function OrdersPage() {
 }
 ```
 
-- [ ] **Step 2: Run the page test**
+- [x] **Step 2: Run the page test**
 
 Run:
 
@@ -617,7 +646,7 @@ npx vitest run src/app/ordini/page.test.tsx
 
 Expected: PASS.
 
-- [ ] **Step 3: Commit the page implementation**
+- [x] **Step 3: Commit the page implementation**
 
 ```powershell
 git add -- src/app/ordini/page.tsx src/app/ordini/page.test.tsx
@@ -1094,10 +1123,11 @@ Open `http://localhost:3000` in Browser and verify:
 Open `http://localhost:3000/ordini` in Browser and verify:
 
 - H1 is visible above the fold.
-- CTA links work: `/#contatti`, `#flusso-ordine`, `/download`.
+- CTA links work: `/#contatti`, `#flusso-ordine`.
+- No "Scarica LabManager" CTA or `/download` link is present on `/ordini`.
 - Sections are readable on desktop and mobile.
 - FAQ content is visible.
-- No text overlaps, no broken image is visible, and the page has no console runtime error.
+- No text overlaps, no generic multi-device screenshot is visible, and the page has no console runtime error.
 
 - [ ] **Step 7: Commit final verification note if any docs changed**
 
@@ -1118,4 +1148,4 @@ Expected: run only when a documentation correction was made during verification.
 - Scope: one website feature across page, navigation, and SEO assets. No separate subsystem split is needed.
 - Dirty worktree handling: `CLAUDE.md` is explicitly excluded from feature commits.
 - Test coverage: page rendering, metadata, JSON-LD, sitemap, `llms.txt`, preview, navigation, and existing billing navigation smoke tests.
-- Risk: the orders page uses an existing generic LabManager screenshot because no order-specific image asset was provided. The page copy must not imply fiscal accounting features.
+- Risk: the orders page uses a static work-plan summary panel instead of an order-specific product screenshot. The page copy must not imply fiscal accounting features.
