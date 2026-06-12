@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 
 const flowItems = [
   "Cliente anagrafica o rapido, telefono, sede, data evasione e fascia oraria.",
-  "Ritiro o consegna, con numero ordine progressivo nel formato operativo ORD-DD.MM.YYYY-001.",
+  "Ritiro o consegna, con numero ordine progressivo.",
   "Pi\u00f9 righe nello stesso ordine, ognuna con note prodotto, note laboratorio, allergie dichiarate, dedica, colori, decorazioni e candele.",
   "Ordini cliente e ordini interni tra sedi, letti per giorno, settimana, mese o stato.",
 ];

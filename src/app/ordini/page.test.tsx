@@ -65,7 +65,7 @@ describe("orders page", () => {
         name: "Come funziona la gestione ordini in LabManager?",
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/ORD-DD\.MM\.YYYY-001/)).toBeInTheDocument();
+    expect(screen.getByText(/numero ordine progressivo/i)).toBeInTheDocument();
     expect(screen.getByText(/cliente anagrafica o rapido/i)).toBeInTheDocument();
     expect(screen.getAllByText(/ordini interni tra sedi/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/ricette o assemblaggi/i).length).toBeGreaterThan(0);

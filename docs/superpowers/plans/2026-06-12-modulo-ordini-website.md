@@ -284,7 +284,7 @@ export const metadata: Metadata = {
 
 const flowItems = [
   "Cliente anagrafica o rapido, telefono, sede, data evasione e fascia oraria.",
-  "Ritiro o consegna, con numero ordine progressivo nel formato operativo ORD-DD.MM.YYYY-001.",
+  "Ritiro o consegna, con numero ordine progressivo.",
   "Più righe nello stesso ordine, ognuna con note prodotto, note laboratorio, allergie dichiarate, dedica, colori, decorazioni e candele.",
   "Ordini cliente e ordini interni tra sedi, letti per giorno, settimana, mese o stato.",
 ];
@@ -666,7 +666,7 @@ Expected: commit succeeds.
 - Modify: `src/components/Navbar.tsx`
 - Modify: `src/components/Footer.tsx`
 
-- [ ] **Step 1: Create the failing preview and navigation tests**
+- [x] **Step 1: Create the failing preview and navigation tests**
 
 Create `src/components/orders-preview-navigation.test.tsx`:
 
@@ -719,7 +719,7 @@ describe("orders preview and navigation", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and verify it fails**
+- [x] **Step 2: Run the test and verify it fails**
 
 Run:
 
@@ -729,7 +729,7 @@ npx vitest run src/components/orders-preview-navigation.test.tsx
 
 Expected: FAIL because `OrdersPreview` does not exist and navigation links are missing.
 
-- [ ] **Step 3: Implement `OrdersPreview`**
+- [x] **Step 3: Implement `OrdersPreview`**
 
 Create `src/components/OrdersPreview.tsx`:
 
@@ -815,7 +815,7 @@ export default function OrdersPreview() {
 }
 ```
 
-- [ ] **Step 4: Insert `OrdersPreview` in the homepage**
+- [x] **Step 4: Insert `OrdersPreview` in the homepage**
 
 Modify `src/app/page.tsx`:
 
@@ -832,7 +832,7 @@ Render it after `Features` and before `Warehouse`:
         <Warehouse />
 ```
 
-- [ ] **Step 5: Add `Ordini` to `Navbar`**
+- [x] **Step 5: Add `Ordini` to `Navbar`**
 
 Modify the `navLinks` array in `src/components/Navbar.tsx`:
 
@@ -848,7 +848,7 @@ const navLinks = [
 ];
 ```
 
-- [ ] **Step 6: Add `Ordini` to `Footer`**
+- [x] **Step 6: Add `Ordini` to `Footer`**
 
 Modify the `Prodotto` links in `src/components/Footer.tsx`:
 
@@ -864,7 +864,7 @@ Modify the `Prodotto` links in `src/components/Footer.tsx`:
   },
 ```
 
-- [ ] **Step 7: Run the preview/navigation test**
+- [x] **Step 7: Run the preview/navigation test**
 
 Run:
 
@@ -874,7 +874,7 @@ npx vitest run src/components/orders-preview-navigation.test.tsx
 
 Expected: PASS.
 
-- [ ] **Step 8: Commit homepage and navigation changes**
+- [x] **Step 8: Commit homepage and navigation changes**
 
 ```powershell
 git add -- src/components/OrdersPreview.tsx src/components/orders-preview-navigation.test.tsx src/app/page.tsx src/components/Navbar.tsx src/components/Footer.tsx
@@ -893,7 +893,7 @@ Expected: commit succeeds.
 - Modify: `src/app/layout.tsx`
 - Modify: `public/llms.txt`
 
-- [ ] **Step 1: Create SEO contract tests**
+- [x] **Step 1: Create SEO contract tests**
 
 Create `src/app/orders-seo.test.ts`:
 
@@ -965,7 +965,7 @@ describe("orders SEO plumbing", () => {
 });
 ```
 
-- [ ] **Step 2: Run the SEO test and verify it fails**
+- [x] **Step 2: Run the SEO test and verify it fails**
 
 Run:
 
@@ -975,7 +975,7 @@ npx vitest run src/app/orders-seo.test.ts
 
 Expected: FAIL because sitemap, structured data export, and `llms.txt` have not been updated.
 
-- [ ] **Step 3: Update sitemap**
+- [x] **Step 3: Update sitemap**
 
 Modify `src/app/sitemap.ts` and add this object after the home entry:
 
@@ -988,7 +988,7 @@ Modify `src/app/sitemap.ts` and add this object after the home entry:
     },
 ```
 
-- [ ] **Step 4: Export and update global structured data**
+- [x] **Step 4: Export and update global structured data**
 
 In `src/app/layout.tsx`, change:
 
@@ -1021,7 +1021,7 @@ Add these exact entries to `featureList`:
         "Notifiche ordini su Android e Windows",
 ```
 
-- [ ] **Step 5: Update `llms.txt`**
+- [x] **Step 5: Update `llms.txt`**
 
 Modify `public/llms.txt`:
 
@@ -1043,7 +1043,7 @@ Add this sentence after the feature paragraph:
 Il modulo ordini gestisce ordini cliente e interni, data evasione, ritiro/consegna, righe prodotto, produzione collegata, acconti, residui, report ed export.
 ```
 
-- [ ] **Step 6: Run SEO tests**
+- [x] **Step 6: Run SEO tests**
 
 Run:
 
@@ -1053,7 +1053,7 @@ npx vitest run src/app/orders-seo.test.ts
 
 Expected: PASS.
 
-- [ ] **Step 7: Commit SEO plumbing**
+- [x] **Step 7: Commit SEO plumbing**
 
 ```powershell
 git add -- src/app/orders-seo.test.ts src/app/sitemap.ts src/app/layout.tsx public/llms.txt
