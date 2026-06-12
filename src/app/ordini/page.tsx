@@ -272,12 +272,6 @@ export default function OrdersPage() {
                 >
                   Vedi come funziona
                 </Link>
-                <Link
-                  href="/download"
-                  className="inline-flex touch-manipulation items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-base font-semibold text-gray-700 transition-[border-color,box-shadow] duration-200 hover:border-gray-300 hover:shadow-md"
-                >
-                  Scarica LabManager
-                </Link>
               </div>
             </div>
 

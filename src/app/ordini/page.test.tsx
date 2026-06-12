@@ -53,8 +53,8 @@ describe("orders page", () => {
       main.getByRole("link", { name: "Vedi come funziona" }),
     ).toHaveAttribute("href", "#flusso-ordine");
     expect(
-      main.getByRole("link", { name: "Scarica LabManager" }),
-    ).toHaveAttribute("href", "/download");
+      main.queryByRole("link", { name: "Scarica LabManager" }),
+    ).not.toBeInTheDocument();
   });
 
   it("renders extractable sections for orders, production, payments, notifications, and reports", () => {
