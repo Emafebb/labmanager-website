@@ -153,7 +153,7 @@ La pagina `/ordini` deve essere una pagina indicizzabile e ottimizzata sia per m
 
 La pagina deve avere metadata dedicati:
 
-- `title`: "Gestione ordini per pasticceria e laboratorio - LabManager"
+- `title`: "Gestione ordini dei tuoi clienti - LabManager"
 - `description`: "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio."
 - `alternates.canonical`: `https://pastrylabmanager.com/ordini`
 - Open Graph e Twitter card dedicati, riusando un'immagine esistente se non viene fornito un asset specifico
