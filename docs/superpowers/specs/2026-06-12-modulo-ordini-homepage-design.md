@@ -11,17 +11,31 @@ La pagina deve parlare a pasticcerie, panifici, ristoranti e laboratori artigian
 
 ## Fonti contenuto
 
-I documenti prodotto forniti dall'utente saranno la fonte primaria per testi, esempi e priorita del modulo ordini. Il changelog `v0.0.9` in `src/data/changelog.ts` resta la fonte secondaria: se una parte non viene coperta dai documenti, si useranno le informazioni gia presenti nel changelog.
+Fonti lette per orientare i contenuti:
+
+- `README.md` della documentazione Ordini nel progetto app LabManager
+- `panoramica-tecnica-funzionale.md`
+- `situazione-pagamenti-cliente.md`
+
+Il changelog `v0.0.9` in `src/data/changelog.ts` resta la fonte secondaria per sintesi e wording gia pubblicato.
 
 La pagina non deve inventare funzionalita non presenti nei documenti prodotto o nel changelog esistente.
+
+Messaggi da rispettare:
+
+- il nome funzionale completo e "Ordini e Piano di Lavoro";
+- il modulo copre ordini cliente, ordini interni, piano lavoro, produzione collegata, report, export, notifiche e incassi ordine;
+- la Situazione pagamenti cliente e una vista operativa sugli incassi degli ordini, non un modulo contabile fiscale;
+- non promettere fatture, prima nota, scadenziario fiscale, credito cliente, solleciti automatici o riconciliazione bancaria.
 
 ## URL e file
 
 - **Route dedicata:** `/ordini`
 - **Pagina:** `src/app/ordini/page.tsx`
 - **Richiamo homepage:** nuovo componente `src/components/OrdersPreview.tsx`
-- **Composizione home:** inserire `OrdersPreview` in `src/app/page.tsx`, preferibilmente dopo `Features` e prima di `Warehouse`
-- **Navigazione:** valutare un link "Ordini" in `Navbar.tsx` o `Footer.tsx` solo se resta coerente con la navigazione attuale e non appesantisce il menu
+- **Composizione home:** inserire `OrdersPreview` in `src/app/page.tsx` dopo `Features` e prima di `Warehouse`
+- **Navigazione principale:** aggiungere il link "Ordini" in `Navbar.tsx`, dopo "Funzionalita" e prima di "Prezzi"
+- **Footer:** aggiungere il link "Ordini" nella sezione "Prodotto" di `Footer.tsx`
 
 La pagina `/ordini` deve essere una pagina statica Next.js App Router, senza stato client se non necessario.
 
@@ -32,12 +46,12 @@ La homepage deve ricevere una sezione breve, non una nuova landing dentro la lan
 Contenuto previsto:
 
 - badge "Nuovo modulo"
-- headline: "Gestione ordini collegata a produzione, cassa e laboratorio"
+- headline: "Ordini e piano di lavoro collegati a produzione, cassa e laboratorio"
 - testo breve orientato al beneficio: ordini cliente, ritiri/consegne, acconti, produzione collegata e report
 - tre punti forti:
-  - ordini con cliente, sede, data, ritiro o consegna
+  - ordini con cliente anagrafica o rapido, sede, data evasione, ritiro o consegna
   - collegamento a ricette, assemblaggi, lotti e piano di lavoro
-  - acconti, saldo, stato pagamento e report
+  - acconti, saldo, residuo cliente e report
 - CTA primaria: "Scopri il modulo ordini" verso `/ordini`
 
 Il richiamo deve essere visibile ma compatto: una sezione full-width coerente con le altre sezioni, evitando un blocco troppo lungo.
@@ -50,10 +64,10 @@ Il primo viewport deve comunicare subito che LabManager gestisce gli ordini.
 
 Contenuti:
 
-- H1: "Gestione ordini per pasticceria, panificio e laboratorio"
+- H1: "Gestione ordini e piano di lavoro per pasticceria, panificio e laboratorio"
 - sottotitolo: spiegare che gli ordini passano da richiesta cliente a lavoro di laboratorio, produzione, consegna/ritiro e incasso
-- CTA verso `#contatti` o pagina contatti/home contatti esistente
-- CTA secondaria verso `/aggiornamenti` o sezione dettagli, se utile
+- CTA primaria: "Richiedi una prova gratuita" verso `/#contatti`
+- CTA secondaria: "Vedi come funziona" verso la sezione interna `#flusso-ordine`
 
 ### Flusso ordine
 
@@ -61,6 +75,9 @@ Sezione dedicata all'inserimento e alla lettura dell'ordine:
 
 - cliente, telefono, sede, data e orario
 - ritiro o consegna
+- numero ordine progressivo leggibile, basato sulla data di evasione, nel formato operativo `ORD-DD.MM.YYYY-001`
+- cliente da anagrafica oppure cliente rapido
+- ordini cliente e ordini interni tra sedi
 - piu righe nello stesso ordine
 - note diverse per ogni riga
 - allergie dichiarate, dedica, colori, decorazioni, candele e note laboratorio
@@ -74,6 +91,7 @@ Sezione dedicata al collegamento tra ordine e laboratorio:
 
 - righe ordine collegate a ricette o assemblaggi
 - produzione programmata nel piano settimanale
+- piano lavoro manuale, lavori di laboratorio e produzione per scorta quando serve
 - lotto produzione visibile quando disponibile
 - riduzione della riscrittura manuale tra richiesta cliente e prodotto preparato
 - protezioni contro doppioni o vendite manuali scollegate quando la produzione nasce da ordine
@@ -88,6 +106,8 @@ Sezione dedicata alla parte economica:
 - vendita generata dall'ordine con numero ordine, cliente e sede
 - dashboard cassa basata sugli incassi reali
 - gestione di annulli con storno o rimborso quando l'ordine e gia incassato
+- Situazione pagamenti cliente dal Report Ordini, con totale ordini, incassato netto, residuo e giorni aperto numerici
+- registrazione manuale di un pagamento su un ordine con residuo, senza creare credito cliente o funzioni contabili fiscali
 
 ### Controllo operativo e notifiche
 
@@ -98,6 +118,8 @@ Sezione dedicata al lavoro quotidiano su piu postazioni:
 - notifiche quando arrivano o cambiano ordini importanti
 - notifiche quando un ordine viene completato in laboratorio o consegnato/ritirato
 - push Android e indicatori desktop Windows dove supportati
+- su Windows: badge in navigazione, chip `NEW` sulle righe e suono leggero
+- su Android: push OneSignal per nuovo ordine, modifica ordine, ordine completato e ordine consegnato
 
 ### Report ed export
 
@@ -105,18 +127,21 @@ Sezione dedicata al controllo e all'amministrazione:
 
 - report ordini per giornata o settimana
 - riepiloghi cliente
+- tab Prodotti, Clienti e Sedi
+- KPI operativi come ordini totali, clienti attivi, prodotti distinti e ordini completati
 - controllo consegne e ritiri
 - passaggio informazioni al laboratorio
 - export Excel o PDF
 - dati rilevanti: numero ordini, stati, clienti, prodotti, righe, sedi, totali, acconti, residui e note operative
+- export con dati cliente, contatti, indirizzi, righe prodotto, note operative, acconto e residuo quando disponibili
+- evitare di presentare il report come prima nota o contabilita fiscale
 
 ### CTA finale
 
 Chiudere con una CTA chiara:
 
-- richiesta prova gratuita
-- contatto commerciale
-- link a WhatsApp se gia presente nel sito e coerente con il flusso attuale
+- CTA primaria "Richiedi una prova gratuita" verso `/#contatti`
+- CTA secondaria "Scarica LabManager" verso `/download`
 
 La CTA deve mantenere il tono pratico del sito: non marketing generico, ma invito a vedere come il modulo si inserisce nel lavoro reale.
 
