@@ -147,10 +147,69 @@ La CTA deve mantenere il tono pratico del sito: non marketing generico, ma invit
 
 ## Metadata e SEO
 
+La pagina `/ordini` deve essere una pagina indicizzabile e ottimizzata sia per motori tradizionali sia per risposte AI/LLM.
+
+### Metadata pagina `/ordini`
+
 La pagina deve avere metadata dedicati:
 
 - `title`: "Gestione ordini per pasticceria e laboratorio - LabManager"
-- `description`: descrizione sintetica del modulo ordini con produzione, acconti, consegne, ritiri e report
+- `description`: "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio."
+- `alternates.canonical`: `https://pastrylabmanager.com/ordini`
+- Open Graph e Twitter card dedicati, riusando un'immagine esistente se non viene fornito un asset specifico
+
+### Sitemap
+
+Aggiornare `src/app/sitemap.ts` aggiungendo:
+
+- `https://pastrylabmanager.com/ordini`
+- `changeFrequency: "monthly"`
+- `priority: 0.85`
+
+La pagina `/ordini` deve avere priorita superiore a newsletter e inferiore alla home. Non aggiungere `/download`, perche e disallow in `robots.ts`.
+
+### Structured data
+
+Aggiungere structured data JSON-LD per rendere la pagina piu leggibile da Google e sistemi AI:
+
+- `WebPage` con nome, descrizione, URL, lingua `it-IT`, collegamento all'organizzazione esistente
+- `BreadcrumbList` con Home > Ordini
+- `FAQPage` se nella pagina vengono inserite FAQ specifiche sugli ordini
+
+Aggiornare anche lo structured data globale `SoftwareApplication` in `src/app/layout.tsx`:
+
+- `softwareVersion`: allineare alla versione corrente del changelog, `0.0.9`
+- `dateModified`: allineare a `2026-06-04`
+- `releaseNotes`: citare il modulo Ordini e Piano di Lavoro invece della vecchia nota su `0.0.7`
+- `featureList`: aggiungere voci su ordini cliente, ordini interni, piano di lavoro, produzione collegata, report ordini, acconti/residui e notifiche ordini
+
+### AI SEO e contenuto estraibile
+
+La pagina deve includere blocchi leggibili anche fuori contesto:
+
+- un paragrafo definizione entro le prime 150 parole: "LabManager include un modulo Ordini e Piano di Lavoro..."
+- sezioni con H2 formulati come query naturali, ad esempio "Come funziona la gestione ordini in LabManager?"
+- almeno una lista sintetica "Cosa puoi gestire con il modulo ordini"
+- FAQ finale con domande concrete:
+  - "LabManager gestisce ordini con acconto e saldo?"
+  - "Gli ordini possono essere collegati alle ricette?"
+  - "Posso vedere gli ordini da preparare oggi?"
+  - "Il report ordini esporta Excel o PDF?"
+  - "La gestione pagamenti cliente e un modulo contabile?"
+
+Le risposte FAQ devono essere brevi, autosufficienti e precise. La risposta sulla gestione pagamenti deve chiarire che e una vista operativa sugli incassi ordine, non contabilita fiscale.
+
+### `llms.txt`
+
+Aggiornare `public/llms.txt`:
+
+- aggiungere il link alla pagina `/ordini` nella sezione "Informazioni Principali"
+- aggiungere "Ordini e Piano di Lavoro" tra le funzionalita chiave
+- includere una frase sintetica: "Il modulo ordini gestisce ordini cliente e interni, data evasione, ritiro/consegna, righe prodotto, produzione collegata, acconti, residui, report ed export."
+
+### Robots
+
+`src/app/robots.ts` gia consente i principali crawler AI e non richiede modifiche per questa attivita. Verificare solo che `/ordini` non sia disallow.
 
 Keyword naturali da coprire nei testi:
 
@@ -159,6 +218,8 @@ Keyword naturali da coprire nei testi:
 - gestione ordini laboratorio
 - ordini clienti pasticceria
 - ordini con acconti, consegne e ritiri
+- software ordini laboratorio alimentare
+- piano di lavoro laboratorio pasticceria
 
 Le keyword devono essere integrate in frasi naturali, senza ripetizioni forzate.
 
