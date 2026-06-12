@@ -1,61 +1,14 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 
 ## Project Overview
 
-**LabManager Website** is a Next.js landing page for LabManager, a pastry management application. The site showcases features, enables app downloads, and provides a contact form for inquiries. The site is Italian-localized and deployed on Vercel.
+**LabManager Website**(C:\Users\emanu\Desktop\GitProjects\labmanager-website\src) is a Next.js landing page for LabManager, a pastry management application. The site showcases features, enables app downloads, and provides a contact form for inquiries. The site is Italian-localized and deployed on Vercel.
 
-## Tech Stack
 
-- **Framework**: Next.js 16.1.6 (App Router)
-- **Language**: TypeScript 5
-- **UI Framework**: React 19
-- **Styling**: Tailwind CSS 4 with custom design tokens
-- **Icons**: Lucide React
-- **Email Service**: Resend
-- **Backend Service**: Supabase (integrated but minimally used currently)
-- **Linting**: ESLint 9 with Next.js config
-- **Deployment**: Vercel
 
-## Project Structure
 
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout with metadata and fonts
-│   ├── page.tsx            # Home page composing all sections
-│   ├── globals.css         # Global styles, animations, CSS custom properties
-│   └── api/
-│       └── contact/
-│           └── route.ts    # POST endpoint for contact form email handling
-├── components/
-│   ├── Navbar.tsx          # Navigation header
-│   ├── Hero.tsx            # Hero section with main CTA
-│   ├── Features.tsx        # Feature showcase section
-│   ├── Platforms.tsx       # Platform/compatibility information
-│   ├── Download.tsx        # App download section
-│   ├── ContactForm.tsx     # Contact form with state management
-│   └── Footer.tsx          # Footer section
-public/                     # Static assets (images, screenshots)
-docs/plans/                 # Planning and design documents
-```
-
-## Key Development Commands
-
-```bash
-# Start development server (http://localhost:3000)
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm run start
-
-# Run ESLint
-npm run lint
-```
 
 ## Important Architecture Patterns
 
