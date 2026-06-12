@@ -1,0 +1,177 @@
+# Design Spec: Pagina Modulo Ordini `/ordini` e richiamo in homepage
+
+**Data:** 2026-06-12
+**Stato:** Approvato
+
+## Obiettivo
+
+Comunicare sul sito LabManager che l'app include il nuovo modulo ordini, senza allungare eccessivamente la homepage. La soluzione prevede una pagina dedicata `/ordini`, pensata per spiegare il valore del modulo in modo commerciale e operativo, e un richiamo compatto nella home con CTA verso la pagina.
+
+La pagina deve parlare a pasticcerie, panifici, ristoranti e laboratori artigianali che gestiscono prenotazioni, ordini cliente, ordini interni, consegne, ritiri, acconti e passaggi di lavoro tra banco, laboratorio e amministrazione.
+
+## Fonti contenuto
+
+I documenti prodotto forniti dall'utente saranno la fonte primaria per testi, esempi e priorita del modulo ordini. Il changelog `v0.0.9` in `src/data/changelog.ts` resta la fonte secondaria: se una parte non viene coperta dai documenti, si useranno le informazioni gia presenti nel changelog.
+
+La pagina non deve inventare funzionalita non presenti nei documenti prodotto o nel changelog esistente.
+
+## URL e file
+
+- **Route dedicata:** `/ordini`
+- **Pagina:** `src/app/ordini/page.tsx`
+- **Richiamo homepage:** nuovo componente `src/components/OrdersPreview.tsx`
+- **Composizione home:** inserire `OrdersPreview` in `src/app/page.tsx`, preferibilmente dopo `Features` e prima di `Warehouse`
+- **Navigazione:** valutare un link "Ordini" in `Navbar.tsx` o `Footer.tsx` solo se resta coerente con la navigazione attuale e non appesantisce il menu
+
+La pagina `/ordini` deve essere una pagina statica Next.js App Router, senza stato client se non necessario.
+
+## Richiamo in homepage
+
+La homepage deve ricevere una sezione breve, non una nuova landing dentro la landing.
+
+Contenuto previsto:
+
+- badge "Nuovo modulo"
+- headline: "Gestione ordini collegata a produzione, cassa e laboratorio"
+- testo breve orientato al beneficio: ordini cliente, ritiri/consegne, acconti, produzione collegata e report
+- tre punti forti:
+  - ordini con cliente, sede, data, ritiro o consegna
+  - collegamento a ricette, assemblaggi, lotti e piano di lavoro
+  - acconti, saldo, stato pagamento e report
+- CTA primaria: "Scopri il modulo ordini" verso `/ordini`
+
+Il richiamo deve essere visibile ma compatto: una sezione full-width coerente con le altre sezioni, evitando un blocco troppo lungo.
+
+## Pagina `/ordini`
+
+### Hero
+
+Il primo viewport deve comunicare subito che LabManager gestisce gli ordini.
+
+Contenuti:
+
+- H1: "Gestione ordini per pasticceria, panificio e laboratorio"
+- sottotitolo: spiegare che gli ordini passano da richiesta cliente a lavoro di laboratorio, produzione, consegna/ritiro e incasso
+- CTA verso `#contatti` o pagina contatti/home contatti esistente
+- CTA secondaria verso `/aggiornamenti` o sezione dettagli, se utile
+
+### Flusso ordine
+
+Sezione dedicata all'inserimento e alla lettura dell'ordine:
+
+- cliente, telefono, sede, data e orario
+- ritiro o consegna
+- piu righe nello stesso ordine
+- note diverse per ogni riga
+- allergie dichiarate, dedica, colori, decorazioni, candele e note laboratorio
+- viste per giorno, settimana, mese o stato
+
+Questa sezione deve far capire che il modulo non e solo una lista ordini, ma uno strumento operativo per organizzare il lavoro.
+
+### Produzione collegata
+
+Sezione dedicata al collegamento tra ordine e laboratorio:
+
+- righe ordine collegate a ricette o assemblaggi
+- produzione programmata nel piano settimanale
+- lotto produzione visibile quando disponibile
+- riduzione della riscrittura manuale tra richiesta cliente e prodotto preparato
+- protezioni contro doppioni o vendite manuali scollegate quando la produzione nasce da ordine
+
+### Cassa e chiusura ordine
+
+Sezione dedicata alla parte economica:
+
+- ordine non pagato, con acconto o saldato
+- dettaglio con acconto, residuo e stato pagamento
+- scelta alla consegna tra incassare saldo o lasciare aperto
+- vendita generata dall'ordine con numero ordine, cliente e sede
+- dashboard cassa basata sugli incassi reali
+- gestione di annulli con storno o rimborso quando l'ordine e gia incassato
+
+### Controllo operativo e notifiche
+
+Sezione dedicata al lavoro quotidiano su piu postazioni:
+
+- capire cosa va preparato oggi
+- distinguere pronto, in ritardo, da consegnare o da ritirare
+- notifiche quando arrivano o cambiano ordini importanti
+- notifiche quando un ordine viene completato in laboratorio o consegnato/ritirato
+- push Android e indicatori desktop Windows dove supportati
+
+### Report ed export
+
+Sezione dedicata al controllo e all'amministrazione:
+
+- report ordini per giornata o settimana
+- riepiloghi cliente
+- controllo consegne e ritiri
+- passaggio informazioni al laboratorio
+- export Excel o PDF
+- dati rilevanti: numero ordini, stati, clienti, prodotti, righe, sedi, totali, acconti, residui e note operative
+
+### CTA finale
+
+Chiudere con una CTA chiara:
+
+- richiesta prova gratuita
+- contatto commerciale
+- link a WhatsApp se gia presente nel sito e coerente con il flusso attuale
+
+La CTA deve mantenere il tono pratico del sito: non marketing generico, ma invito a vedere come il modulo si inserisce nel lavoro reale.
+
+## Metadata e SEO
+
+La pagina deve avere metadata dedicati:
+
+- `title`: "Gestione ordini per pasticceria e laboratorio - LabManager"
+- `description`: descrizione sintetica del modulo ordini con produzione, acconti, consegne, ritiri e report
+
+Keyword naturali da coprire nei testi:
+
+- gestionale ordini pasticceria
+- software gestione ordini pasticceria
+- gestione ordini laboratorio
+- ordini clienti pasticceria
+- ordini con acconti, consegne e ritiri
+
+Le keyword devono essere integrate in frasi naturali, senza ripetizioni forzate.
+
+## Stile visivo
+
+Seguire il sistema esistente:
+
+- Tailwind utility classes
+- colori da `src/app/globals.css`
+- icone `lucide-react`
+- card e sezioni coerenti con `Features`, `Warehouse` e `WhyLabManager`
+- layout mobile-first
+
+La pagina deve essere piu informativa della home, ma non deve diventare una lista changelog. Il tono deve essere commerciale, concreto e orientato ai flussi di lavoro.
+
+## Accessibilita e responsive
+
+- H1 unico nella pagina
+- heading gerarchici ordinati
+- link e CTA con testo comprensibile
+- icone decorative con `aria-hidden="true"`
+- card leggibili su mobile senza tabelle strette
+- nessun testo sovrapposto o troppo compresso su schermi piccoli
+
+## Test e verifica
+
+Verifiche previste dopo implementazione:
+
+- `npm run lint`, se disponibile nel progetto
+- `npm run build`, se il tempo di build e accettabile
+- controllo manuale di `http://localhost:3000`
+- controllo manuale di `http://localhost:3000/ordini`
+- verifica responsive desktop e mobile tramite browser
+
+## Fuori ambito
+
+- Non modificare il changelog `v0.0.9` salvo richiesta esplicita
+- Non creare form dedicati agli ordini
+- Non aggiungere immagini nuove se l'utente non fornisce screenshot o asset del modulo
+- Non modificare pricing, billing o download
+- Non cambiare il posizionamento generale del sito oltre al nuovo richiamo in home
