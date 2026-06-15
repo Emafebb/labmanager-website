@@ -19,7 +19,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 const BASE_URL = "https://pastrylabmanager.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
-const PAGE_TITLE = "Gestione ordini dei tuoi clienti - LabManager";
+const PAGE_TITLE = "Gestione Ordini";
 const PAGE_DESCRIPTION =
   "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio.";
 

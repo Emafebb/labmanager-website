@@ -17,7 +17,7 @@ vi.mock("next/image", () => ({
 
 describe("orders page", () => {
   it("exports indexable SEO metadata for the orders page", () => {
-    expect(metadata.title).toBe("Gestione ordini dei tuoi clienti - LabManager");
+    expect(metadata.title).toBe("Gestione Ordini");
     expect(metadata.description).toBe(
       "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio.",
     );
@@ -128,7 +128,7 @@ describe("orders page", () => {
         expect.objectContaining({
           "@type": "WebPage",
           "@id": "https://pastrylabmanager.com/ordini#webpage",
-          name: "Gestione ordini dei tuoi clienti - LabManager",
+          name: "Gestione Ordini",
         }),
         expect.objectContaining({
           "@type": "BreadcrumbList",
