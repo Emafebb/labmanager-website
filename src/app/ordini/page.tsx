@@ -21,7 +21,7 @@ const BASE_URL = "https://pastrylabmanager.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
 const PAGE_TITLE = "Gestione Ordini";
 const PAGE_DESCRIPTION =
-  "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio.";
+  "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -236,8 +236,8 @@ export default function OrdersPage() {
                 id="orders-heading"
                 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 text-pretty sm:text-5xl lg:text-6xl"
               >
-                Gestione ordini e piano di lavoro per pasticceria, panificio e
-                laboratorio
+                Gestione ordini e piano di lavoro per pasticceria, panificio,
+                gelateria e laboratorio
               </h1>
 
               <p className="mb-6 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">

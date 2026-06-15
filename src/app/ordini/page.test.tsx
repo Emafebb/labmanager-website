@@ -19,7 +19,7 @@ describe("orders page", () => {
   it("exports indexable SEO metadata for the orders page", () => {
     expect(metadata.title).toBe("Gestione Ordini");
     expect(metadata.description).toBe(
-      "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio.",
+      "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.",
     );
     expect(metadata.alternates?.canonical).toBe(
       "https://pastrylabmanager.com/ordini",
@@ -38,7 +38,7 @@ describe("orders page", () => {
     expect(
       main.getByRole("heading", {
         level: 1,
-        name: "Gestione ordini e piano di lavoro per pasticceria, panificio e laboratorio",
+        name: "Gestione ordini e piano di lavoro per pasticceria, panificio, gelateria e laboratorio",
       }),
     ).toBeInTheDocument();
     expect(

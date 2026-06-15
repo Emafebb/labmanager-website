@@ -79,7 +79,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Il gestionale per pasticceria, panificio e ristorante: scegli Android o Windows, funziona offline con sincronizzazione cloud.
+            Il gestionale per pasticceria, panificio, gelateria e ristorante: scegli Android o Windows, funziona offline con sincronizzazione cloud.
             Inizia subito a gestire ricette, costi ed etichette.
           </p>
 

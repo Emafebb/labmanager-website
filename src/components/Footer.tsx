@@ -96,7 +96,7 @@ export default function Footer() {
               </Link>
 
               <p className="text-gray-400 leading-relaxed max-w-sm">
-                Il gestionale completo per pasticceria, panificio e ristorante: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione.
+                Il gestionale completo per pasticceria, panificio, gelateria e ristorante: gestisci ricette, calcola costi, genera etichette alimentari e monitora la produzione.
               </p>
 
               <div className="mt-7">

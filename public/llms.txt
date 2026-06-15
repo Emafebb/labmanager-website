@@ -1,6 +1,6 @@
 # LabManager
 
-> LabManager è il software gestionale per pasticceria disponibile su Android e Windows. Permette di gestire ricette, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali, bilanciare la composizione di ricette (zuccheri, grassi, proteine) e gestire la produzione. Funziona completamente offline.
+> LabManager è il software gestionale per pasticceria, panificio, gelateria e ristorante disponibile su Android e Windows. Permette di gestire ricette, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali, bilanciare la composizione di ricette (zuccheri, grassi, proteine) e gestire la produzione. Funziona completamente offline.
 
 ## Informazioni Principali
 

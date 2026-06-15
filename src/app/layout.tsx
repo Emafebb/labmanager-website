@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | LabManager",
   },
   description:
-    "Gestionale per pasticceria, panificio e ristorante: ricette, costi, etichette con allergeni e magazzino. Funziona offline su Android e Windows. Trial gratuito 14 giorni.",
+    "Gestionale per pasticceria, panificio, gelateria e ristorante: ricette, costi, etichette allergeni e magazzino. Offline su Android e Windows. Prova 14 giorni.",
   keywords: [
     "gestionale pasticceria",
     "pasticceria",
@@ -42,6 +42,8 @@ export const metadata: Metadata = {
     "software offline pasticceria",
     "gestionale panificio",
     "gestionale ristorante",
+    "gestionale gelateria",
+    "software gelateria",
     "software laboratorio alimentare",
     "gestionale cucina professionale",
     "software ristorazione",
@@ -58,9 +60,9 @@ export const metadata: Metadata = {
   authors: [{ name: "LabManager" }],
   creator: "LabManager",
   openGraph: {
-    title: "Gestionale Pasticceria e Ristorante: Ricette, Costi, Allergeni | LabManager",
+    title: "Gestionale Pasticceria, Gelateria e Ristorante: Ricette, Costi, Allergeni | LabManager",
     description:
-      "App gestionale per pasticcerie, panifici e ristoranti: gestisci ricette, calcola costi e margini, genera etichette con allergeni. Funziona offline su Android e Windows.",
+      "App gestionale per pasticcerie, panifici, gelaterie e ristoranti: gestisci ricette, calcola costi e margini, genera etichette con allergeni. Funziona offline su Android e Windows.",
     url: BASE_URL,
     siteName: "LabManager",
     locale: "it_IT",
@@ -79,7 +81,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gestionale Pasticceria su Android & Windows | LabManager",
     description:
-      "Gestisci la tua pasticceria o ristorante con il gestionale completo: ricette, calcolo costi, etichette alimentari con allergeni. Funziona offline.",
+      "Gestisci la tua pasticceria, gelateria o ristorante con il gestionale completo: ricette, calcolo costi, etichette alimentari con allergeni. Funziona offline.",
     images: [`${BASE_URL}/images/og-image.png`],
   },
   robots: {
@@ -133,7 +135,7 @@ export const structuredDataGraph = {
       url: BASE_URL,
       inLanguage: "it-IT",
       description:
-        "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite.",
+        "Software gestionale per pasticceria, panificio, gelateria e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite.",
       publisher: { "@id": `${BASE_URL}/#organization` },
     },
     {
@@ -168,7 +170,7 @@ export const structuredDataGraph = {
       operatingSystem: ["Android", "Windows"],
       offers: OFFERS,
       description:
-        "Software gestionale per pasticceria, panificio e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline su Android e Windows. Trial gratuito di 14 giorni.",
+        "Software gestionale per pasticceria, panificio, gelateria e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline su Android e Windows. Trial gratuito di 14 giorni.",
       downloadUrl: [
         "https://labmanager-downloads.labmanager-info.workers.dev/android",
         "https://labmanager-downloads.labmanager-info.workers.dev/windows",

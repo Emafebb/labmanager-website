@@ -93,7 +93,7 @@ export default function Warehouse() {
             id="warehouse-heading"
             className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
           >
-            Gestione magazzino per pasticceria, panificio e ristorante
+            Gestione magazzino per pasticceria, panificio, gelateria e ristorante
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Carichi, prelevi, correggi, trasferisci. Ogni movimento è tracciato.

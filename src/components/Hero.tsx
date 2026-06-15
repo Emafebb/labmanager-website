@@ -43,12 +43,12 @@ export default function Hero() {
                 Gestionale Pasticceria
               </span>
               <span className="block text-[1.875rem] sm:text-[2.75rem] xl:text-[3.25rem]">
-                Panificio e Ristorante
+                Panificio, Gelateria e Ristorante
               </span>
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-6 leading-relaxed font-normal">
-              Gestisci ricette, costi, etichette alimentari e produzione del tuo laboratorio di pasticceria, panificio o ristorante.
+              Gestisci ricette, costi, etichette alimentari e produzione del tuo laboratorio di pasticceria, panificio, gelateria o ristorante.
               <span className="text-gray-700 font-medium"> Tutto in un&apos;unica app</span>,
               su Android e Windows.
             </p>
@@ -56,7 +56,7 @@ export default function Hero() {
             {/* AI-extractable definition block */}
             <div className="bg-white/60 border border-gray-200 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
               <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed">
-                <strong>LabManager</strong> è il gestionale di pasticceria, panificio e ristorante che permette di gestire ricette, calcolare
+                <strong>LabManager</strong> è il gestionale di pasticceria, panificio, gelateria e ristorante che permette di gestire ricette, calcolare
                 costi e margini, creare etichette alimentari con allergeni e
                 gestire il magazzino multi-sede con tracciabilità lotti e scadenze.
                 Disponibile su{" "}

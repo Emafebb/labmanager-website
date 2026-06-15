@@ -97,7 +97,7 @@ const faqs = [
       "Sì, LabManager consente di gestire i lotti di produzione associando ogni lavorazione agli ingredienti utilizzati con numero di lotto e data di scadenza. Questo garantisce piena tracciabilità della produzione per la sicurezza alimentare e il rispetto delle normative.",
   },
   {
-    question: "Esistono gestionali gratuiti per pasticceria, panificio o ristorante?",
+    question: "Esistono gestionali gratuiti per pasticceria, panificio, gelateria o ristorante?",
     answer:
       "LabManager offre una prova gratuita di 14 giorni. È un gestionale completo per pasticcerie, panifici e ristoranti che include gestione ricette, calcolo costi e margini, etichette alimentari con allergeni e tabelle nutrizionali. Funziona su Android e Windows, anche offline. Dopo il trial puoi scegliere il piano mensile (EUR 44,99/mese) o annuale (EUR 480/anno).",
   },
