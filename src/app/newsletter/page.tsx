@@ -12,7 +12,7 @@ const BASE_URL = "https://pastrylabmanager.com";
 export const metadata: Metadata = {
   title: "Newsletter",
   description:
-    "Iscriviti alla newsletter di LabManager per ricevere aggiornamenti sull'app, nuove funzionalita e disponibilita delle versioni Android e Windows.",
+    "Iscriviti alla newsletter di LabManager per ricevere aggiornamenti sull'app, nuove funzionalità e disponibilità delle versioni Android e Windows.",
   alternates: {
     canonical: `${BASE_URL}/newsletter`,
     languages: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Newsletter | LabManager",
     description:
-      "Ricevi aggiornamenti su LabManager, nuove funzionalita e disponibilita delle versioni Android e Windows.",
+      "Ricevi aggiornamenti su LabManager, nuove funzionalità e disponibilità delle versioni Android e Windows.",
     url: `${BASE_URL}/newsletter`,
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Newsletter | LabManager",
     description:
-      "Ricevi aggiornamenti su LabManager, nuove funzionalita e disponibilita delle versioni Android e Windows.",
+      "Ricevi aggiornamenti su LabManager, nuove funzionalità e disponibilità delle versioni Android e Windows.",
     images: [`${BASE_URL}/images/og-image.png`],
   },
 };
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 const UPDATE_ITEMS = [
   "Aggiornamenti sulle nuove versioni dell'app",
   "Novita su funzioni per ricette, costi, etichette e magazzino",
-  "Comunicazioni utili su Android, Windows e disponibilita future",
+  "Comunicazioni utili su Android, Windows e disponibilità future",
 ] as const;
 
 export default function NewsletterPage() {
@@ -72,7 +72,7 @@ export default function NewsletterPage() {
 
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mb-8">
                 Iscriviti per ricevere aggiornamenti sull&apos;app, nuove
-                funzionalita e comunicazioni utili per il tuo laboratorio.
+                funzionalità e comunicazioni utili per il tuo laboratorio.
               </p>
 
               <ul className="space-y-4 mb-8">
