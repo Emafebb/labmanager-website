@@ -318,12 +318,14 @@ git commit -m "feat: include gelateria across SEO copy and metadata"
 
 ## Task 3: Fix missing accents in newsletter metadata
 
+**Status:** Completed in commit `aed85ea` (`fix: add missing accents in newsletter metadata`).
+
 **Files:**
-- Modify: `src/app/newsletter/page.tsx` (3 string occurrences)
+- Modify: `src/app/newsletter/page.tsx` (3 metadata string occurrences; 2 visible-copy occurrences also corrected to satisfy grep verification)
 
 No new test: this is a pure orthographic fix on metadata strings, covered by the build and the existing suite. (Italian correctness is a project requirement; "funzionalita"/"disponibilita" are missing their accents.)
 
-- [ ] **Step 1: Replace the unaccented words**
+- [x] **Step 1: Replace the unaccented words**
 
 In `src/app/newsletter/page.tsx`, replace every `funzionalita` with `funzionalità` and every `disponibilita` with `disponibilità`. The three affected strings:
 
@@ -345,17 +347,17 @@ to:
       "Ricevi aggiornamenti su LabManager, nuove funzionalità e disponibilità delle versioni Android e Windows.",
 ```
 
-- [ ] **Step 2: Verify no unaccented forms remain**
+- [x] **Step 2: Verify no unaccented forms remain**
 
 Run: `git grep -n "funzionalita\|disponibilita" src/app/newsletter/page.tsx`
 Expected: no matches.
 
-- [ ] **Step 3: Run the full suite**
+- [x] **Step 3: Run the full suite**
 
 Run: `npx vitest run`
 Expected: PASS.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/app/newsletter/page.tsx
@@ -366,12 +368,14 @@ git commit -m "fix: add missing accents in newsletter metadata"
 
 ## Task 4: Sitemap with static per-page lastModified
 
+**Status:** Completed in commit `f5da66f` (`fix: use static lastModified dates in sitemap`).
+
 **Files:**
 - Modify: `src/app/sitemap.ts`
 
 Replace `new Date()` (changes every build → unreliable `lastmod`) with literal ISO dates per page, updated by hand when a page's content changes.
 
-- [ ] **Step 1: Rewrite the sitemap entries**
+- [x] **Step 1: Rewrite the sitemap entries**
 
 Replace the body of `src/app/sitemap.ts` from:
 ```ts
@@ -438,12 +442,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 }
 ```
 
-- [ ] **Step 2: Run the full suite**
+- [x] **Step 2: Run the full suite**
 
 Run: `npx vitest run`
 Expected: PASS — `orders-seo` sitemap test uses `toMatchObject` on url/changeFrequency/priority and is unaffected by the lastModified change.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app/sitemap.ts
@@ -454,12 +458,14 @@ git commit -m "fix: use static lastModified dates in sitemap"
 
 ## Task 5: Robots — stop blocking the crawl of /download
 
+**Status:** Completed in commit `c7c09b3` (`fix: allow crawl of /download so its noindex is honored`).
+
 **Files:**
 - Modify: `src/app/robots.ts`
 
 `/download` already sets `robots: { index: false, follow: false }` in its page metadata. Google can only read that `noindex` if the page is crawlable, so the robots.txt `Disallow: /download` is counterproductive. Remove it.
 
-- [ ] **Step 1: Remove the disallow**
+- [x] **Step 1: Remove the disallow**
 
 In `src/app/robots.ts`, ~line 6 — from:
 ```ts
@@ -470,12 +476,12 @@ to:
       { userAgent: "*", allow: "/" },
 ```
 
-- [ ] **Step 2: Run the full suite**
+- [x] **Step 2: Run the full suite**
 
 Run: `npx vitest run`
 Expected: PASS.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app/robots.ts
@@ -486,9 +492,10 @@ git commit -m "fix: allow crawl of /download so its noindex is honored"
 
 ## Post-implementation verification
 
-- [ ] `npx vitest run` is green.
-- [ ] `npm run build` completes without type errors.
-- [ ] `git log --oneline -5` shows the five separate commits.
+- [x] `npx vitest run` is green.
+- [x] `npm run build` completes without type errors.
+- [x] SEO commit verification completed: `git log --oneline -6` shows the five SEO commits, with the pre-existing Instagram commit interleaved.
+- [x] Merged locally into `master` via fast-forward and deleted branch `seo-quick-wins`.
 
 ## Out of scope (do not implement here)
 
