@@ -8,3 +8,9 @@ Repo-specific working rules for future agent sessions:
 - If the user asks to work on the currently checked out branch, make the changes there instead of creating a new branch or worktree.
 
 See [CLAUDE.md](C:\Users\emanu\Desktop\GitProjects\Labmanager\CLAUDE.md) for the full project guidance.
+
+## ACT Workflow
+
+ACT workflow storage for new Specs is configured in `.act/config.yaml`.
+
+ACT workflow semantics, Workflow Storage selection, artifact vocabulary, and domain-doc guidance are defined in `.act/workflow.md`.
