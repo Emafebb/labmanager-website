@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase-server";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { getResend } from "@/lib/resend-server";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -34,6 +32,7 @@ export async function GET(req: NextRequest) {
 
   // 2. Segna come unsubscribed su Resend Audience
   try {
+    const resend = getResend();
     const audienceId = process.env.RESEND_AUDIENCE_ID!;
     const { data: contacts } = await resend.contacts.list({ audienceId });
     const contact = contacts?.data?.find((c) => c.email === email.toLowerCase());

@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
+  images: {
+    unoptimized: true,
+  },
   async headers() {
     return [
       {
@@ -14,11 +18,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.legalblink.it https://va.vercel-scripts.com https://widget.tabnav.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.legalblink.it https://static.cloudflareinsights.com https://widget.tabnav.com",
               "style-src 'self' 'unsafe-inline' https://app.legalblink.it https://widget.tabnav.com",
               "img-src 'self' data: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://app.legalblink.it https://tabnav.com https://*.tabnav.com",
+              "connect-src 'self' https://cloudflareinsights.com https://app.legalblink.it https://tabnav.com https://*.tabnav.com",
               "frame-src 'self' https://app.legalblink.it https://tabnav.com https://*.tabnav.com",
               "object-src 'none'",
               "base-uri 'self'",
@@ -39,5 +43,7 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+
+initOpenNextCloudflareForDev();
 
 export default nextConfig;

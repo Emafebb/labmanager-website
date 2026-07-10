@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import CloudflareWebAnalytics from "@/components/CloudflareWebAnalytics";
 import SiteScripts from "@/components/SiteScripts";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const BASE_URL = "https://labmanagergestionale.com";
@@ -283,9 +282,8 @@ export default function RootLayout({
           }}
         />
         {children}
-        <Analytics />
-        <SpeedInsights />
         <SiteScripts />
+        <CloudflareWebAnalytics />
       </body>
     </html>
   );

@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase-server";
 import { buildWelcomeEmail, buildAdminSubscriberNotification } from "@/lib/emails";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { getResend } from "@/lib/resend-server";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -46,6 +44,7 @@ export async function POST(req: NextRequest) {
     const safeName = escapeHtml(rawName);
     const safeEmail = email.trim().toLowerCase();
     const rawBusinessType = businessType ? businessType.trim() : null;
+    const resend = getResend();
 
     // 1. Upsert to Supabase (dati grezzi, non HTML-escaped)
     const { error: dbError } = await supabaseAdmin

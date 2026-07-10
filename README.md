@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LabManager Website
 
-## Getting Started
+Landing page italiana di LabManager, realizzata con Next.js App Router e distribuita su Cloudflare Workers tramite `@opennextjs/cloudflare`.
 
-First, run the development server:
+## Sviluppo locale
+
+Richiede Node.js 22 o successivo.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Il server Next.js è disponibile su [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Preview Cloudflare Workers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+La preview esegue prima il build OpenNext e poi serve il risultato nel runtime workerd locale:
 
-## Learn More
+```bash
+npm run preview
+```
 
-To learn more about Next.js, take a look at the following resources:
+Il Worker locale è disponibile su [http://localhost:8787](http://localhost:8787). Il nome del Worker di produzione è `labmanager-website`; i Worker `labmanager` e `labmanager-downloads` e il progetto Pages `labmanager-web` sono risorse distinte e non devono essere modificati da questo repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Variabili d'ambiente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Configurare queste variabili/secrets nel Worker e, per la preview locale, in un file `.dev.vars` non versionato:
 
-## Deploy on Vercel
+```dotenv
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=LabManager <noreply@labmanagergestionale.com>
+RESEND_AUDIENCE_ID=
+CONTACT_EMAIL=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Cloudflare Web Analytics richiede inoltre questa variabile pubblica durante il build:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```dotenv
+NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN=
+```
+
+Il token viene copiato dallo snippet generato in Cloudflare Web Analytics. Se non è configurato, il beacon non viene renderizzato.
+
+## Build e deploy
+
+```bash
+npm run build
+npm run deploy
+```
+
+Per Workers Builds, collegare questo repository, usare `master` come branch di produzione e `npm run deploy` come comando di deploy. Il file `wrangler.jsonc` configura il Worker, la compatibility date, `nodejs_compat` e gli asset statici.
+
+Le immagini sono tutte locali e statiche. Per il primo deploy `next/image` usa intenzionalmente `images.unoptimized`; l'abilitazione futura del binding Cloudflare Images potrà sostituire questo fallback dopo la verifica della zona e dei relativi costi.
+
+## Verifica
+
+```bash
+npm run lint
+npx vitest run
+npm run build
+npx opennextjs-cloudflare build
+```
+
+Per misurare il bundle senza effettuare un deploy:
+
+```bash
+npx wrangler deploy --dry-run --outdir /tmp/labmanager-worker-bundle
+```
+
+Il bundle compresso deve restare entro il limite di 3 MiB del piano Workers Free.
