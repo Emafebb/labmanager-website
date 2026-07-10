@@ -123,7 +123,7 @@ Tutti i componenti sono stati completamente ridisegnati con lo stile dell'app Fl
 
 ### 8. Environment Variables su Vercel
 - `RESEND_API_KEY` - configurata
-- `RESEND_FROM_EMAIL` - `LabManager <noreply@pastrylabmanager.com>`
+- `RESEND_FROM_EMAIL` - `LabManager <noreply@labmanagergestionale.com>`
 - `CONTACT_EMAIL` - configurata
 - `NEXT_PUBLIC_APK_URL` - URL bucket releases_apk
 - `NEXT_PUBLIC_WINDOWS_URL` - URL bucket releases
