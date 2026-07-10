@@ -25,7 +25,7 @@ Come tracciare i risultati
 Per ogni query segna:
 
 Citato: LabManager appare nella risposta
-Link: il link a pastrylabmanager.com è incluso
+Link: il link a labmanagergestionale.com è incluso
 Posizione: menzionato per primo, nella lista, o alla fine
 Competitor citati: chi altro appare
 Aspettati che i primi risultati arrivino 4-8 settimane dopo il deploy, quando i crawler AI avranno re-indicizzato il sito. Perplexity tende a essere il più veloce, Google AI Overviews il più lento

@@ -1,7 +1,7 @@
 # Newsletter Popup — Design Spec
 
 **Data:** 2026-03-19
-**Progetto:** pastrylabmanager.com (labmanager-website)
+**Progetto:** labmanagergestionale.com (labmanager-website)
 **Stack:** Next.js 16 + Tailwind 4 + TypeScript + Resend + Supabase + Vercel
 
 ---

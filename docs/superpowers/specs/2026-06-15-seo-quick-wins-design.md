@@ -9,7 +9,7 @@ Applicare cinque interventi SEO puntuali emersi dall'audit del 2026-06-12, ciasc
 
 ## Contesto
 
-- Sito: landing page Next.js (App Router) di LabManager, deploy su Vercel, dominio `https://pastrylabmanager.com`.
+- Sito: landing page Next.js (App Router) di LabManager, deploy su Vercel, dominio `https://labmanagergestionale.com`.
 - Il modulo `/ordini` è in lavorazione su `master` (commit non ancora pushati + modifiche non committate). Il Fix 1 tocca il title di `/ordini`: va applicato prima del push del modulo, così il title sbagliato non raggiunge mai la produzione.
 - Decisioni dell'utente recepite in questa spec:
   - Title `/ordini`: settore-neutro ("Gestione Ordini"), per non escludere attività diverse dalla pasticceria.
@@ -42,7 +42,7 @@ La costante `PAGE_TITLE` alimenta anche `openGraph.title`, `twitter.title` e il 
 
 **Test da aggiornare** (`src/app/ordini/page.test.tsx`):
 - Asserzione su `metadata.title` (attualmente `"Gestione ordini dei tuoi clienti - LabManager"`).
-- Asserzione su `name` del nodo `WebPage` (`"https://pastrylabmanager.com/ordini#webpage"`), attualmente `"Gestione ordini dei tuoi clienti - LabManager"`.
+- Asserzione su `name` del nodo `WebPage` (`"https://labmanagergestionale.com/ordini#webpage"`), attualmente `"Gestione ordini dei tuoi clienti - LabManager"`.
 
 Entrambe le asserzioni diventano `"Gestione Ordini"`.
 

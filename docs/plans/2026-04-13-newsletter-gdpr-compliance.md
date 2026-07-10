@@ -37,7 +37,7 @@ Il progetto aveva già un `NewsletterPopup.tsx` con iscrizione dedicata, ma pres
 
 **Fix**:
 - Generazione token disiscrizione: `Buffer.from(email).toString("base64url")`
-- URL disiscrizione: `https://pastrylabmanager.com/api/unsubscribe?token=<token>`
+- URL disiscrizione: `https://labmanagergestionale.com/api/unsubscribe?token=<token>`
 - Firma della funzione aggiornata: `buildWelcomeEmail(name, unsubscribeUrl)`
 - Aggiunto link nel footer dell'email HTML:
   ```html

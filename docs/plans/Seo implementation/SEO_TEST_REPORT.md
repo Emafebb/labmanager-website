@@ -2,7 +2,7 @@
 
 **Data Test:** 12 Febbraio 2026
 **Eseguito da:** Claude Code
-**Sito:** https://pastrylabmanager.com
+**Sito:** https://labmanagergestionale.com
 
 ---
 

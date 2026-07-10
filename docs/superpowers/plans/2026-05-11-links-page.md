@@ -32,7 +32,7 @@ const LINKS = [
   {
     label: "Scopri LabManager",
     emoji: "🌐",
-    href: "https://pastrylabmanager.com",
+    href: "https://labmanagergestionale.com",
   },
   {
     label: "Scrivici su WhatsApp",
@@ -42,12 +42,12 @@ const LINKS = [
   {
     label: "Prezzi e piani",
     emoji: "💰",
-    href: "https://pastrylabmanager.com/pricing",
+    href: "https://labmanagergestionale.com/pricing",
   },
   {
     label: "Newsletter",
     emoji: "📧",
-    href: "https://pastrylabmanager.com/newsletter",
+    href: "https://labmanagergestionale.com/newsletter",
   },
 ];
 
@@ -125,13 +125,13 @@ git commit -m "feat(instagram): add link-in-bio page for Instagram"
 git push origin master
 ```
 
-Attendere che Vercel completi il deploy (1-2 minuti). Verificare che `https://pastrylabmanager.com/links` sia raggiungibile.
+Attendere che Vercel completi il deploy (1-2 minuti). Verificare che `https://labmanagergestionale.com/links` sia raggiungibile.
 
 - [ ] **Step 2: Inserire il link su Instagram**
 
 1. Aprire il profilo Instagram di LabManager
 2. Toccare **Modifica profilo**
-3. Nel campo **Sito web** inserire: `https://pastrylabmanager.com/instagram`
+3. Nel campo **Sito web** inserire: `https://labmanagergestionale.com/instagram`
 4. Toccare **Fine** / **Salva**
 
-Il link sarà visibile nel profilo come "pastrylabmanager.com/links" e porterà alla pagina appena creata.
+Il link sarà visibile nel profilo come "labmanagergestionale.com/links" e porterà alla pagina appena creata.

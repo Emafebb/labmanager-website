@@ -76,7 +76,7 @@ La landing page attuale ha un'estetica "AI slop" con gradienti aggressivi, blob 
 ### 5. Download → PAGINA SEPARATA `/download` ✅ DECISO
 - Route dedicata `src/app/download/page.tsx`
 - NON linkata dalla nav principale
-- Accessibile solo via URL diretto: `pastrylabmanager.com/download`
+- Accessibile solo via URL diretto: `labmanagergestionale.com/download`
 - Contenuto: card essenziali Android APK + Windows EXE (icona, nome, sottotitolo, bottone)
 - NO badge "CONSIGLIATO", NO liste funzionalità, NO benefit strip, NO versione/data aggiornamento
 - Da rendere pubblica in futuro quando si vorrà spingere il download
@@ -265,7 +265,7 @@ La landing page attuale ha un'estetica "AI slop" con gradienti aggressivi, blob 
 |--------|-----------|------|
 | ✅ Dev server | `Bash`: `npm run dev` | Verificato: `/` → 200, `/download` → 200, `/api/contact` → validazione OK |
 | ✅ Build | `Bash`: `npm run build` | Build OK senza errori |
-| ✅ Deploy | `vercel:deploy` skill | Deploy produzione OK → https://pastrylabmanager.com |
+| ✅ Deploy | `vercel:deploy` skill | Deploy produzione OK → https://labmanagergestionale.com |
 
 ---
 
@@ -304,7 +304,7 @@ STEP 5b - Compliance legale ✅ COMPLETATO
 STEP 6 - Verifica e Deploy ✅ COMPLETATO
   ├── npm run dev ✅ (tutte le route OK: /, /download, /api/contact)
   ├── npm run build ✅ (build OK)
-  └── vercel:deploy ✅ (produzione → pastrylabmanager.com)
+  └── vercel:deploy ✅ (produzione → labmanagergestionale.com)
 ```
 
 ---
@@ -331,4 +331,4 @@ STEP 6 - Verifica e Deploy ✅ COMPLETATO
 5. ✅ `/download` accessibile via URL diretto - confermato (HTTP 200)
 6. ✅ `/download` NON linkato dalla homepage/nav - confermato
 7. ✅ `npm run build` - build OK senza errori
-8. ✅ Deploy su Vercel via `vercel:deploy` - produzione live su https://pastrylabmanager.com
+8. ✅ Deploy su Vercel via `vercel:deploy` - produzione live su https://labmanagergestionale.com

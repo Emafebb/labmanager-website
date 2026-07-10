@@ -679,7 +679,7 @@ Evidenze chiave raccolte:
 
 - su `Windows`, il paywall applicativo si comporta correttamente
 - su `Chrome`, Stripe Checkout ha mostrato skeleton infinito; su `Edge`, la pagina Checkout ha renderizzato correttamente
-- il pagamento test annuale e arrivato fino alla pagina `https://pastrylabmanager.com/billing/success`
+- il pagamento test annuale e arrivato fino alla pagina `https://labmanagergestionale.com/billing/success`
 - in Stripe la subscription test risulta creata e attiva
 - durante l'indagine il webhook `checkout.session.completed` ha risposto prima `500`, poi `400 invalid_signature` durante i replay manuali
 - il replay finale del `23 aprile 2026` alle `10:52:47 CEST` e stato consegnato con `200` e body `{"received": true}`

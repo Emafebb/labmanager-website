@@ -20,7 +20,7 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "Skill(browse)",
       "Skill(browse:*)",
-      "WebFetch(domain:pastrylabmanager.com)",
+      "WebFetch(domain:labmanagergestionale.com)",
       "Bash(npx tsc *)"
     ]
   }

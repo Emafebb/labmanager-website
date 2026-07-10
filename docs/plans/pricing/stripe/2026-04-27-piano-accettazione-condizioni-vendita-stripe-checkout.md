@@ -29,7 +29,7 @@ Configurazione prudenziale per Stripe Dashboard:
 
 Raccomandazione futura:
 
-- pubblicare una pagina unica stabile su dominio LabManager, ad esempio `https://pastrylabmanager.com/condizioni-vendita`
+- pubblicare una pagina unica stabile su dominio LabManager, ad esempio `https://labmanagergestionale.com/condizioni-vendita`
 - la pagina deve contenere la regola di applicabilita e i link/documenti B2C e B2B
 - quando disponibile, usare questa pagina unica sia nel campo Stripe Dashboard "Terms of Service URL" sia nel testo del checkbox Checkout
 
@@ -80,13 +80,13 @@ In v1 i valori test e live coincidono perche i documenti LegalBlink pubblici son
 Pagina unica futura consigliata:
 
 ```text
-FUTURE_TERMS_OF_SALE_HUB_URL=https://pastrylabmanager.com/condizioni-vendita
+FUTURE_TERMS_OF_SALE_HUB_URL=https://labmanagergestionale.com/condizioni-vendita
 ```
 
 Requisiti pratici della pagina unica:
 
 - pagina raggiungibile senza login
-- URL stabile, preferibilmente su `https://pastrylabmanager.com/...`
+- URL stabile, preferibilmente su `https://labmanagergestionale.com/...`
 - testo versionato o almeno data di ultimo aggiornamento visibile
 - contenuto coerente con abbonamento SaaS LabManager, prezzo ricorrente, rinnovo, disdetta, assistenza e fatturazione
 - sezione B2C con informazioni precontrattuali consumer, diritto di recesso ove applicabile, durata, rinnovo, disdetta e assistenza
@@ -103,7 +103,7 @@ Nota: la pagina unica non e bloccante per la v1 se il legale approva il checkbox
 In Stripe Dashboard configurare i dettagli pubblici del business e le policy usate da Checkout:
 
 - Terms of Service URL v1: URL LegalBlink B2C
-- Terms of Service URL futuro: pagina unica `https://pastrylabmanager.com/condizioni-vendita`
+- Terms of Service URL futuro: pagina unica `https://labmanagergestionale.com/condizioni-vendita`
 - Privacy Policy URL: URL privacy policy gia in uso per LabManager
 - support email: email supporto LabManager
 - business website: sito pubblico LabManager

@@ -1,7 +1,7 @@
 # Welcome Email — Design Spec
 
 **Data:** 2026-03-19
-**Progetto:** pastrylabmanager.com (labmanager-website)
+**Progetto:** labmanagergestionale.com (labmanager-website)
 **Contesto:** Email di benvenuto inviata automaticamente dopo iscrizione alla newsletter via popup
 
 ---
@@ -74,7 +74,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 **Pulsante primario:**
 - Testo: `SCARICA LABMANAGER`
 - Stile: sfondo `#1e1b18`, testo bianco, DM Sans 12px uppercase, padding 16px 32px
-- Link: `https://pastrylabmanager.com/download`
+- Link: `https://labmanagergestionale.com/download`
 - Sotto-testo: `Disponibile per Android e Windows` — DM Sans 11px, `#b0a898`
 
 **Link secondario:**
@@ -115,7 +115,7 @@ Creare un'email di benvenuto che presenti LabManager ai nuovi iscritti in modo p
 - **Separazione:** linea singola `#1e1b18` 1px sopra; bottom-rule 3px `#1e1b18` (come reference email)
 - **Logo:** `LabManager` — Playfair Display 20px
 - **Tagline:** `IL GESTIONALE PER PASTICCERI PROFESSIONISTI` — DM Sans 10px, `#a09880`, uppercase
-- **Link riga 1:** Sito Web (`pastrylabmanager.com`) · Download (`pastrylabmanager.com/download`) · Contatti (`mailto:labmanager.info@gmail.com`)
+- **Link riga 1:** Sito Web (`labmanagergestionale.com`) · Download (`labmanagergestionale.com/download`) · Contatti (`mailto:labmanager.info@gmail.com`)
 - **Link riga 2:** Privacy Policy (`app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it`)
 - **Copyright:** `© 2026 LabManager. Tutti i diritti riservati.`
 - **Nota:** `Hai ricevuto questa email perche ti sei iscritto alla newsletter di LabManager.`

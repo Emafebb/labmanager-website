@@ -6,7 +6,7 @@
 
 ## Obiettivo
 
-Creare la pagina pubblica `pastrylabmanager.com/aggiornamenti` con la lista delle versioni rilasciate di LabManager, accessibile tramite link diretto (non indicizzata dai motori di ricerca).
+Creare la pagina pubblica `labmanagergestionale.com/aggiornamenti` con la lista delle versioni rilasciate di LabManager, accessibile tramite link diretto (non indicizzata dai motori di ricerca).
 
 ---
 

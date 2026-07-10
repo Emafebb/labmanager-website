@@ -40,7 +40,7 @@ export default function Hero() {
               className="font-display font-bold leading-[1.08] mb-4 text-foreground tracking-tight"
             >
               <span className="block text-[2.5rem] sm:text-[3.25rem] xl:text-[3.75rem] gradient-text">
-                Gestionale Pasticceria
+                Gestionale Pasticceria,
               </span>
               <span className="block text-[1.875rem] sm:text-[2.75rem] xl:text-[3.25rem]">
                 Panificio, Gelateria e Ristorante

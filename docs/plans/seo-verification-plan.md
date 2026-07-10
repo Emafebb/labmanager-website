@@ -1,8 +1,8 @@
-# Piano di Verifica e Correzione SEO - pastrylabmanager.com
+# Piano di Verifica e Correzione SEO - labmanagergestionale.com
 
 **Data**: 2026-02-14
 **Fonte report**: Seobility SEO Check
-**URL analizzato**: https://pastrylabmanager.com/
+**URL analizzato**: https://labmanagergestionale.com/
 **Ultimo aggiornamento**: 2026-02-14 16:00
 
 ---
@@ -10,13 +10,13 @@
 ## 1. REDIRECT www vs non-www - COMPLETATO
 
 ### Problema (RISOLTO)
-Il sito rispondeva sia su `www.pastrylabmanager.com` che su `pastrylabmanager.com` senza redirect.
+Il sito rispondeva sia su `www.labmanagergestionale.com` che su `labmanagergestionale.com` senza redirect.
 
 ### Azioni completate
-- [x] **Vercel Dashboard**: `www.pastrylabmanager.com` configurato come redirect 308 verso `pastrylabmanager.com`
+- [x] **Vercel Dashboard**: `www.labmanagergestionale.com` configurato come redirect 308 verso `labmanagergestionale.com`
 - [x] **DNS AWS Route 53**: aggiunto record CNAME `www` -> `1d3934a290b6a423.vercel-dns-017.com`
 - [x] **vercel.json**: creato con redirect 301 backup da www a non-www
-- [x] **Verifica**: `curl -sI` conferma `308 Permanent Redirect` con `Location: https://pastrylabmanager.com/`
+- [x] **Verifica**: `curl -sI` conferma `308 Permanent Redirect` con `Location: https://labmanagergestionale.com/`
 
 ---
 
@@ -84,14 +84,14 @@ La keyword "gestionale" appariva solo 6 volte in ~2.500 parole. Target: 12-15 oc
 ## 7. DEPLOY - COMPLETATO
 
 - [x] Deploy produzione su Vercel riuscito (2026-02-14)
-- [x] Sito live su https://pastrylabmanager.com
+- [x] Sito live su https://labmanagergestionale.com
 
 ---
 
 ## 8. TEST DI VERIFICA POST-DEPLOY
 
 ### 8.1 Redirect www - VERIFICATO
-- [x] `curl -sI https://www.pastrylabmanager.com` -> **308 Permanent Redirect**, `Location: https://pastrylabmanager.com/`
+- [x] `curl -sI https://www.labmanagergestionale.com` -> **308 Permanent Redirect**, `Location: https://labmanagergestionale.com/`
 - [x] Server: Vercel, HSTS attivo (`max-age=63072000`)
 
 ### 8.2 Meta tag e SEO on-page - VERIFICATO
@@ -99,7 +99,7 @@ La keyword "gestionale" appariva solo 6 volte in ~2.500 parole. Target: 12-15 oc
 - [x] **Description**: ~135 chars con verbi azione ("gestisci", "calcola", "crea"), <1000px
 - [x] **OG Title**: "Gestionale Pasticceria Completo: Ricette, Costi, Allergeni | LabManager" (keyword-first)
 - [x] **OG Description**: presente con keywords
-- [x] **OG Image**: https://pastrylabmanager.com/images/og-image.png (1200x630)
+- [x] **OG Image**: https://labmanagergestionale.com/images/og-image.png (1200x630)
 - [x] **OG Locale**: it_IT
 - [x] **Twitter Card**: summary_large_image
 - [x] **Twitter Title**: "Gestionale Pasticceria su Android & Windows | LabManager" (keyword-first)
@@ -142,12 +142,12 @@ La keyword "gestionale" appariva solo 6 volte in ~2.500 parole. Target: 12-15 oc
 - [x] **Page size**: ~121KB HTML (compatto)
 - [x] **Caching**: ETag presente, Cache-Control configurato
 - [ ] **Compressione gzip/brotli**: non rilevata negli header (da verificare con browser)
-- [ ] Testare con **Google PageSpeed Insights**: https://pagespeed.web.dev/?url=https://pastrylabmanager.com (manuale)
+- [ ] Testare con **Google PageSpeed Insights**: https://pagespeed.web.dev/?url=https://labmanagergestionale.com (manuale)
 - [ ] Verificare Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
 
 ### 8.6 Robots e Sitemap - VERIFICATO
 - [x] **robots.txt**: presente, `Allow: /`, `Disallow: /download`, sitemap referenziato
-- [x] **sitemap.xml**: presente con URL `https://pastrylabmanager.com`, priority 1, changefreq weekly
+- [x] **sitemap.xml**: presente con URL `https://labmanagergestionale.com`, priority 1, changefreq weekly
 - [x] Registrare/verificare il sito su **Google Search Console** (manuale)
 - [x] Inviare sitemap a Google Search Console (manuale)
 - [x] Richiedere indicizzazione della homepage (manuale)

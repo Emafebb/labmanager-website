@@ -95,10 +95,10 @@ describe("orders page", () => {
       "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio e laboratorio.",
     );
     expect(metadata.alternates?.canonical).toBe(
-      "https://pastrylabmanager.com/ordini",
+      "https://labmanagergestionale.com/ordini",
     );
     expect(metadata.openGraph?.url).toBe(
-      "https://pastrylabmanager.com/ordini",
+      "https://labmanagergestionale.com/ordini",
     );
     expect(metadata.robots).toBeUndefined();
   });
@@ -176,7 +176,7 @@ describe("orders page", () => {
       expect.arrayContaining([
         expect.objectContaining({
           "@type": "WebPage",
-          "@id": "https://pastrylabmanager.com/ordini#webpage",
+          "@id": "https://labmanagergestionale.com/ordini#webpage",
           name: "Gestione ordini dei tuoi clienti - LabManager",
         }),
         expect.objectContaining({
@@ -242,7 +242,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const BASE_URL = "https://pastrylabmanager.com";
+const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
 const PAGE_TITLE = "Gestione ordini dei tuoi clienti - LabManager";
 const PAGE_DESCRIPTION =
@@ -917,11 +917,11 @@ describe("orders SEO plumbing", () => {
   it("adds the orders page to the sitemap", () => {
     const entries = sitemap();
     const ordersEntry = entries.find(
-      (entry) => entry.url === "https://pastrylabmanager.com/ordini",
+      (entry) => entry.url === "https://labmanagergestionale.com/ordini",
     );
 
     expect(ordersEntry).toMatchObject({
-      url: "https://pastrylabmanager.com/ordini",
+      url: "https://labmanagergestionale.com/ordini",
       changeFrequency: "monthly",
       priority: 0.85,
     });
@@ -933,7 +933,7 @@ describe("orders SEO plumbing", () => {
     );
 
     expect(softwareApplication).toMatchObject({
-      "@id": "https://pastrylabmanager.com/#softwareapplication",
+      "@id": "https://labmanagergestionale.com/#softwareapplication",
       softwareVersion: "0.0.9",
       dateModified: "2026-06-04",
     });
@@ -955,7 +955,7 @@ describe("orders SEO plumbing", () => {
     const llms = readFileSync(join(process.cwd(), "public", "llms.txt"), "utf8");
 
     expect(llms).toContain(
-      "[Ordini](https://pastrylabmanager.com/ordini)",
+      "[Ordini](https://labmanagergestionale.com/ordini)",
     );
     expect(llms).toContain("Ordini e Piano di Lavoro");
     expect(llms).toContain(
@@ -1028,7 +1028,7 @@ Modify `public/llms.txt`:
 Under `## Informazioni Principali`, add:
 
 ```markdown
-- [Ordini](https://pastrylabmanager.com/ordini): Pagina dedicata al modulo Ordini e Piano di Lavoro per ordini cliente, ordini interni, produzione collegata, acconti, residui, report ed export.
+- [Ordini](https://labmanagergestionale.com/ordini): Pagina dedicata al modulo Ordini e Piano di Lavoro per ordini cliente, ordini interni, produzione collegata, acconti, residui, report ed export.
 ```
 
 In `## Funzionalità Chiave`, update the paragraph to include:

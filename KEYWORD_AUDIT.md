@@ -1,7 +1,7 @@
 # AUDIT SEO - ANALISI KEYWORDS LabManager
 
 **Data Analisi:** 11 Febbraio 2026
-**Sito:** https://pastrylabmanager.com
+**Sito:** https://labmanagergestionale.com
 **Mercato:** Italia - Software gestionale pasticceria
 **Lingua:** Italiano
 

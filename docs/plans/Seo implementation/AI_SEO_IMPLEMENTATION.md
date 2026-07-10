@@ -381,7 +381,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/download",
     },
-    sitemap: "https://pastrylabmanager.com/sitemap.xml",
+    sitemap: "https://labmanagergestionale.com/sitemap.xml",
   };
 }
 ```
@@ -407,7 +407,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "FacebookBot", allow: "/" },
       { userAgent: "cohere-ai", allow: "/" },
     ],
-    sitemap: "https://pastrylabmanager.com/sitemap.xml",
+    sitemap: "https://labmanagergestionale.com/sitemap.xml",
   };
 }
 ```

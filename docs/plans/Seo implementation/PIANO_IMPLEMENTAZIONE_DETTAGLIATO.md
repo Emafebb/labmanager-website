@@ -80,7 +80,7 @@
     - HowTo schema incompleto (totalTime/tool/supply sono opzionali)
   - Build: Successful ✓
   - Deploy Vercel: Production ✓
-  - URL: https://pastrylabmanager.com ✓
+  - URL: https://labmanagergestionale.com ✓
 
 ### ✅ IMPLEMENTAZIONE COMPLETATA
 - Fasi 1-5 + final review + deploy completati il 12 Febbraio 2026
@@ -92,7 +92,7 @@
 
 ## Context
 
-Il sito LabManager (https://pastrylabmanager.com) è una landing page Next.js per un'applicazione gestionale per pasticcerie. È stata completata un'analisi SEO comprensiva che ha identificato opportunità significative per migliorare la visibilità organica del sito.
+Il sito LabManager (https://labmanagergestionale.com) è una landing page Next.js per un'applicazione gestionale per pasticcerie. È stata completata un'analisi SEO comprensiva che ha identificato opportunità significative per migliorare la visibilità organica del sito.
 
 ### Problema da Risolvere
 Nonostante un'eccellente base tecnica, il sito presenta margini di ottimizzazione SEO non sfruttati che limitano il traffico organico e la visibilità nei motori di ricerca. L'analisi ha rilevato:
@@ -338,7 +338,7 @@ Implementare schema markup completi per migliorare la rappresentazione nelle SER
     price: "0",
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
-    url: "https://pastrylabmanager.com"
+    url: "https://labmanagergestionale.com"
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -362,7 +362,7 @@ Implementare schema markup completi per migliorare la rappresentazione nelle SER
 // AGGIUNGERE DENTRO SoftwareApplication schema:
 "downloadUrl": [
   "https://play.google.com/store/apps/details?id=com.labmanager",
-  "https://pastrylabmanager.com/downloads/LabManager-Setup.exe"
+  "https://labmanagergestionale.com/downloads/LabManager-Setup.exe"
 ],
 "fileSize": "45MB",
 "releaseNotes": "Nuove funzionalità: calcolo automatico costi, esportazione ricette PDF",
@@ -782,7 +782,7 @@ Ottimizzare la struttura HTML per aumentare le probabilità di acquisire 3-5 fea
 **File**: N/A (testing)
 **Actions**:
 1. Visitare Google Rich Results Test
-2. Testare URL produzione: https://pastrylabmanager.com
+2. Testare URL produzione: https://labmanagergestionale.com
 3. Verificare tutti gli schema markup:
    - Organization ✓
    - WebSite ✓
@@ -912,7 +912,7 @@ npm run dev      # → Local testing
 
 **2. Schema Markup Validation**
 - Google Rich Results Test: https://search.google.com/test/rich-results
-  - Testare URL: https://pastrylabmanager.com
+  - Testare URL: https://labmanagergestionale.com
   - Verificare: Organization, WebSite, SoftwareApplication, Product, HowTo, FAQPage, BreadcrumbList
   - Target: Zero errori, tutti green checkmarks
 

@@ -152,7 +152,7 @@ Date: 11 Febbraio 2026
 
 ```
 Sito: LabManager - Gestionale Pasticceria
-URL: https://pastrylabmanager.com
+URL: https://labmanagergestionale.com
 Framework: Next.js 16.1.6 + React 19 + TypeScript 5
 Components: 8 components analyzed
 Files: 10 files reviewed

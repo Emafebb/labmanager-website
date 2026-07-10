@@ -116,7 +116,7 @@ Tutti i componenti sono stati completamente ridisegnati con lo stile dell'app Fl
 - Repo: **https://github.com/Emafebb/labmanager-website**
 
 ### 7. Deploy su Vercel
-- Sito live su **https://pastrylabmanager.com**
+- Sito live su **https://labmanagergestionale.com**
 - URL Vercel: `labmanager-website.vercel.app`
 - Dominio collegato con record A su AWS Route 53 (`216.198.79.1`)
 - SSL attivo
@@ -132,7 +132,7 @@ Tutti i componenti sono stati completamente ridisegnati con lo stile dell'app Fl
 - File `labmanager.apk` nel bucket `releases_apk`
 
 ### 10. Resend configurato
-- Dominio `pastrylabmanager.com` verificato su Resend
+- Dominio `labmanagergestionale.com` verificato su Resend
 - Form contatti funzionante e testato
 
 ---
@@ -183,7 +183,7 @@ Tutti i componenti sono stati completamente ridisegnati con lo stile dell'app Fl
 
 | Risorsa | URL |
 |---|---|
-| Sito live | https://pastrylabmanager.com |
+| Sito live | https://labmanagergestionale.com |
 | Dev server locale | http://localhost:3000 |
 | Vercel dashboard | https://vercel.com/emanueles-projects-7c263101/labmanager-website |
 | GitHub repo | https://github.com/Emafebb/labmanager-website |
@@ -197,7 +197,7 @@ Tutti i componenti sono stati completamente ridisegnati con lo stile dell'app Fl
 | Vercel | Hobby | Gratis |
 | Supabase Storage | Free (1GB) | Gratis |
 | Resend | Free (100 email/giorno) | Gratis |
-| Dominio | pastrylabmanager.com | Già pagato |
+| Dominio | labmanagergestionale.com | Già pagato |
 
 ## 🚀 Come sviluppare in locale
 
@@ -232,7 +232,7 @@ git push origin master
 ### Verificare deploy
 1. Vai su https://vercel.com/emanueles-projects-7c263101/labmanager-website
 2. Controlla lo stato del deploy nella sezione "Deployments"
-3. Testa il sito live su https://pastrylabmanager.com
+3. Testa il sito live su https://labmanagergestionale.com
 
 ### Plugin Vercel per Claude Code
 Il progetto è collegato al plugin Vercel di Claude Code. Puoi usare questi comandi direttamente in chat:
@@ -318,7 +318,7 @@ npm run dev
 ### 2026-01-XX - Lancio Iniziale
 - 🚀 Creazione landing page base
 - 📤 Deploy su Vercel
-- 🔗 Collegamento dominio pastrylabmanager.com
+- 🔗 Collegamento dominio labmanagergestionale.com
 - 📧 Integrazione Resend per form contatti
 - 📦 Setup Supabase Storage per APK
 
@@ -326,4 +326,4 @@ npm run dev
 
 **Ultima modifica:** 2026-02-10
 **Versione:** 2.0 - Redesign Completo
-**Status:** ✅ Produzione (https://pastrylabmanager.com)
+**Status:** ✅ Produzione (https://labmanagergestionale.com)

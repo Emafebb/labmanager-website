@@ -376,7 +376,7 @@ The LabManager website has **excellent SEO foundations** with **strong technical
 
 - **Analysis Version:** 1.0
 - **Analysis Date:** February 11, 2026
-- **Website:** LabManager (pastrylabmanager.com)
+- **Website:** LabManager (labmanagergestionale.com)
 - **Framework:** Next.js 16.1.6
 - **Target Market:** Italian pastry shop owners
 - **Language:** Italian

@@ -347,9 +347,9 @@ Location: `src/app/layout.tsx` (lines 101-223)
 ```json
 {
   "@type": "WebSite",
-  "@id": "https://pastrylabmanager.com/#website",
+  "@id": "https://labmanagergestionale.com/#website",
   "name": "LabManager",
-  "url": "https://pastrylabmanager.com",
+  "url": "https://labmanagergestionale.com",
   "inLanguage": "it-IT",
   "description": "Software gestionale per pasticceria...",
   "publisher": { "@id": ".../#organization" }
@@ -362,9 +362,9 @@ Location: `src/app/layout.tsx` (lines 101-223)
 ```json
 {
   "@type": "Organization",
-  "@id": "https://pastrylabmanager.com/#organization",
+  "@id": "https://labmanagergestionale.com/#organization",
   "name": "LabManager",
-  "url": "https://pastrylabmanager.com",
+  "url": "https://labmanagergestionale.com",
   "logo": { "@type": "ImageObject", ... },
   "contactPoint": {
     "@type": "ContactPoint",
@@ -468,13 +468,13 @@ Location: `src/app/layout.tsx` (lines 101-223)
 ```json
 {
   "@type": "Product",
-  "@id": "https://pastrylabmanager.com/#product",
+  "@id": "https://labmanagergestionale.com/#product",
   "name": "LabManager",
   "description": "Software gestionale per pasticceria: gestisci ricette, costi, etichette alimentari e produzione",
-  "image": "https://pastrylabmanager.com/images/og-image.png",
+  "image": "https://labmanagergestionale.com/images/og-image.png",
   "brand": {
     "@type": "Brand",
-    "@id": "https://pastrylabmanager.com/#brand",
+    "@id": "https://labmanagergestionale.com/#brand",
     "name": "LabManager"
   },
   "category": ["Business Application", "Pastry Management"],
@@ -485,7 +485,7 @@ Location: `src/app/layout.tsx` (lines 101-223)
     "highPrice": "0",
     "offerCount": "1",
     "availability": "https://schema.org/InStock",
-    "url": "https://pastrylabmanager.com"
+    "url": "https://labmanagergestionale.com"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -522,7 +522,7 @@ Location: `src/app/layout.tsx` (lines 101-223)
   "@type": "HowTo",
   "name": "Come installare LabManager su Android",
   "description": "Procedura passo-passo per installare APK su dispositivi Android",
-  "image": "https://pastrylabmanager.com/images/installation-guide.png",
+  "image": "https://labmanagergestionale.com/images/installation-guide.png",
   "estimatedDuration": "PT5M",
   "step": [
     {
@@ -530,7 +530,7 @@ Location: `src/app/layout.tsx` (lines 101-223)
       "position": "1",
       "name": "Abilitare installazione da fonti sconosciute",
       "text": "Quando appare 'Installazione bloccata', tocca Impostazioni e attiva 'Consenti installazione da questa fonte' per il tuo browser",
-      "image": "https://pastrylabmanager.com/images/step-1.jpg"
+      "image": "https://labmanagergestionale.com/images/step-1.jpg"
     },
     {
       "@type": "HowToStep",
@@ -567,10 +567,10 @@ Location: `src/app/layout.tsx` (lines 101-223)
 ```json
 {
   "@type": "LocalBusiness",
-  "@id": "https://pastrylabmanager.com/#localbusiness",
+  "@id": "https://labmanagergestionale.com/#localbusiness",
   "name": "LabManager Team",
   "description": "Team di sviluppatori di software per pasticceria",
-  "image": "https://pastrylabmanager.com/images/team.jpg",
+  "image": "https://labmanagergestionale.com/images/team.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "IT",
@@ -579,7 +579,7 @@ Location: `src/app/layout.tsx` (lines 101-223)
   },
   "email": "labmanager.info@gmail.com",
   "telephone": "[Phone - if available]",
-  "url": "https://pastrylabmanager.com",
+  "url": "https://labmanagergestionale.com",
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
@@ -600,49 +600,49 @@ Location: `src/app/layout.tsx` (lines 101-223)
 ```json
 {
   "@type": "BreadcrumbList",
-  "@id": "https://pastrylabmanager.com/#breadcrumb",
+  "@id": "https://labmanagergestionale.com/#breadcrumb",
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://pastrylabmanager.com",
-      "@id": "https://pastrylabmanager.com/#breadcrumb-home"
+      "item": "https://labmanagergestionale.com",
+      "@id": "https://labmanagergestionale.com/#breadcrumb-home"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Funzionalità",
-      "item": "https://pastrylabmanager.com/#funzionalita",
-      "@id": "https://pastrylabmanager.com/#breadcrumb-features"
+      "item": "https://labmanagergestionale.com/#funzionalita",
+      "@id": "https://labmanagergestionale.com/#breadcrumb-features"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Piattaforme",
-      "item": "https://pastrylabmanager.com/#piattaforme",
-      "@id": "https://pastrylabmanager.com/#breadcrumb-platforms"
+      "item": "https://labmanagergestionale.com/#piattaforme",
+      "@id": "https://labmanagergestionale.com/#breadcrumb-platforms"
     },
     {
       "@type": "ListItem",
       "position": 4,
       "name": "Download",
-      "item": "https://pastrylabmanager.com/#download-app",
-      "@id": "https://pastrylabmanager.com/#breadcrumb-download"
+      "item": "https://labmanagergestionale.com/#download-app",
+      "@id": "https://labmanagergestionale.com/#breadcrumb-download"
     },
     {
       "@type": "ListItem",
       "position": 5,
       "name": "Contatti",
-      "item": "https://pastrylabmanager.com/#contatti",
-      "@id": "https://pastrylabmanager.com/#breadcrumb-contact"
+      "item": "https://labmanagergestionale.com/#contatti",
+      "@id": "https://labmanagergestionale.com/#breadcrumb-contact"
     },
     {
       "@type": "ListItem",
       "position": 6,
       "name": "FAQ",
-      "item": "https://pastrylabmanager.com/#faq",
-      "@id": "https://pastrylabmanager.com/#breadcrumb-faq"
+      "item": "https://labmanagergestionale.com/#faq",
+      "@id": "https://labmanagergestionale.com/#breadcrumb-faq"
     }
   ]
 }
@@ -1170,17 +1170,17 @@ SILO 4: RISORSE
 ```json
 {
   "@type": "Event",
-  "@id": "https://pastrylabmanager.com/#event-launch-2025",
+  "@id": "https://labmanagergestionale.com/#event-launch-2025",
   "name": "LabManager v2.0 - Lancio Ufficiale",
   "description": "Lancio della nuova versione con supporto iOS e funzionalità avanzate",
-  "image": "https://pastrylabmanager.com/images/v2-launch.jpg",
+  "image": "https://labmanagergestionale.com/images/v2-launch.jpg",
   "startDate": "2025-06-01",
   "endDate": "2025-06-01",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
   "location": {
     "@type": "VirtualLocation",
-    "url": "https://pastrylabmanager.com"
+    "url": "https://labmanagergestionale.com"
   }
 }
 ```

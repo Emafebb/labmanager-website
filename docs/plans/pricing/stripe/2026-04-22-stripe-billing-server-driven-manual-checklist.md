@@ -18,7 +18,7 @@
 | Android portal return URL | `labmanager://billing/portal-return` |
 | Prezzo mensile UI | `EUR 44,99 / mese` |
 | Prezzo annuale UI | `EUR 480 / anno` |
-| Dominio web disponibile per Windows | `https://pastrylabmanager.com` |
+| Dominio web disponibile per Windows | `https://labmanagergestionale.com` |
 
 Nota pratica:
 
@@ -121,14 +121,14 @@ Per il Customer Portal:
 
 Per Windows:
 
-1. scegli o pubblica le pagine HTTPS di ritorno sul dominio `https://pastrylabmanager.com`
+1. scegli o pubblica le pagine HTTPS di ritorno sul dominio `https://labmanagergestionale.com`
 2. non salvare URL Windows finche la pagina non risponde davvero in browser
 
 URL consigliati, ma da usare solo se realmente pubblicati:
 
-- `APP_BILLING_SUCCESS_URL_WINDOWS=https://pastrylabmanager.com/billing/success`
-- `APP_BILLING_CANCEL_URL_WINDOWS=https://pastrylabmanager.com/billing/cancel`
-- `APP_BILLING_RETURN_URL_WINDOWS=https://pastrylabmanager.com/account/billing`
+- `APP_BILLING_SUCCESS_URL_WINDOWS=https://labmanagergestionale.com/billing/success`
+- `APP_BILLING_CANCEL_URL_WINDOWS=https://labmanagergestionale.com/billing/cancel`
+- `APP_BILLING_RETURN_URL_WINDOWS=https://labmanagergestionale.com/account/billing`
 
 ---
 
@@ -176,11 +176,11 @@ supabase secrets set `
   STRIPE_SECRET_KEY=sk_test_... `
   STRIPE_PRICE_ID_MONTHLY=price_... `
   STRIPE_PRICE_ID_ANNUAL=price_... `
-  APP_BILLING_SUCCESS_URL_WINDOWS=https://pastrylabmanager.com/billing/success `
-  APP_BILLING_CANCEL_URL_WINDOWS=https://pastrylabmanager.com/billing/cancel `
+  APP_BILLING_SUCCESS_URL_WINDOWS=https://labmanagergestionale.com/billing/success `
+  APP_BILLING_CANCEL_URL_WINDOWS=https://labmanagergestionale.com/billing/cancel `
   APP_BILLING_SUCCESS_URL_ANDROID=labmanager://billing/success `
   APP_BILLING_CANCEL_URL_ANDROID=labmanager://billing/cancel `
-  APP_BILLING_RETURN_URL_WINDOWS=https://pastrylabmanager.com/account/billing `
+  APP_BILLING_RETURN_URL_WINDOWS=https://labmanagergestionale.com/account/billing `
   APP_BILLING_RETURN_URL_ANDROID=labmanager://billing/portal-return `
   STRIPE_CUSTOMER_PORTAL_CONFIGURATION_ID=bpc_... `
   --project-ref ndlsifytatricfutjsvu
@@ -302,11 +302,11 @@ supabase secrets set `
   STRIPE_PRICE_ID_MONTHLY_LIVE=price_live_mensile... `
   STRIPE_PRICE_ID_ANNUAL_LIVE=price_live_annuale... `
   STRIPE_WEBHOOK_SECRET_LIVE=whsec_live... `
-  APP_BILLING_SUCCESS_URL_WINDOWS=https://pastrylabmanager.com/billing/success `
-  APP_BILLING_CANCEL_URL_WINDOWS=https://pastrylabmanager.com/billing/cancel `
+  APP_BILLING_SUCCESS_URL_WINDOWS=https://labmanagergestionale.com/billing/success `
+  APP_BILLING_CANCEL_URL_WINDOWS=https://labmanagergestionale.com/billing/cancel `
   APP_BILLING_SUCCESS_URL_ANDROID=labmanager://billing/success `
   APP_BILLING_CANCEL_URL_ANDROID=labmanager://billing/cancel `
-  APP_BILLING_RETURN_URL_WINDOWS=https://pastrylabmanager.com/account/billing `
+  APP_BILLING_RETURN_URL_WINDOWS=https://labmanagergestionale.com/account/billing `
   APP_BILLING_RETURN_URL_ANDROID=labmanager://billing/portal-return `
   --project-ref ndlsifytatricfutjsvu
 ```

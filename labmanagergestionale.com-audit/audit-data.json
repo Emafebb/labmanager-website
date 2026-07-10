@@ -1,0 +1,221 @@
+{
+  "summary": {
+    "health_score": 86,
+    "business_type": "SaaS / Software product (SoftwareApplication) — gestionale for Italian food labs (pasticceria, panificio, gelateria, ristorante)",
+    "top_findings": [
+      "HTTP (port 80) serves 200 with full content and no 301 redirect to HTTPS — duplicate/insecure URL exposed to crawlers (HSTS on an HTTP response is ignored by browsers)",
+      "SoftwareApplication schema has offers but no aggregateRating/review — misses star-rating rich result eligibility",
+      "No editorial/blog content — topical authority and long-tail capture limited for a competitive keyword ('gestionale pasticceria')",
+      "llms.txt served as text/plain without charset=utf-8 — strict clients may render mojibake on accented Italian characters",
+      "Only 4 URLs indexed; internal linking is nav-only — little topical depth or supporting content"
+    ],
+    "quick_wins": [
+      "Enable Cloudflare 'Always Use HTTPS' so http:// 301s to https://",
+      "Add charset=utf-8 to the Content-Type of /llms.txt (and /robots.txt)",
+      "Fix H1 missing separator: 'Gestionale PasticceriaPanificio' -> 'Gestionale Pasticceria, Panificio'",
+      "Add lastmod freshness + confirm /newsletter belongs in sitemap (thin, likely low-priority)",
+      "Add descriptive alt text to the 2 images currently using empty alt"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 90,
+      "what_works": [
+        "HTTPS with valid canonical, HSTS (max-age 1y, includeSubDomains)",
+        "Full security header set: CSP, X-Content-Type-Options, X-Frame-Options SAMEORIGIN, Referrer-Policy, Permissions-Policy, X-XSS-Protection",
+        "Cloudflare edge + OpenNext prerender (x-nextjs-prerender:1), zstd compression, HTTP/3 (alt-svc h3), long s-maxage caching",
+        "robots.txt allows all + explicitly whitelists AI crawlers; sitemap.xml declared",
+        "www -> non-www 301; trailing-slash -> canonical 308; genuine 404 status on missing pages"
+      ],
+      "findings": [
+        {
+          "title": "HTTP not redirected to HTTPS",
+          "severity": "Medium",
+          "description": "http://labmanagergestionale.com/ returns HTTP/1.1 200 with the full 224KB page and no redirect. The Strict-Transport-Security header is present but browsers ignore HSTS delivered over plain HTTP, so first-time visitors and crawlers can load the insecure URL. Canonical points to HTTPS, limiting ranking risk, but this is a duplicate-content and security best-practice gap.",
+          "recommendation": "Enable Cloudflare 'Always Use HTTPS' (SSL/TLS -> Edge Certificates) or add a redirect rule so port 80 issues a 301 to https://. Consider HSTS preload once HTTP redirects cleanly."
+        },
+        {
+          "title": "CSP allows 'unsafe-inline' and 'unsafe-eval' in script-src",
+          "severity": "Low",
+          "description": "script-src includes 'unsafe-inline' 'unsafe-eval'. Common for Next.js hydration but weakens XSS protection.",
+          "recommendation": "Where feasible, move to nonce/hash-based CSP for scripts. Low priority; no SEO impact."
+        },
+        {
+          "title": "Sitemap uses bare-domain loc for homepage",
+          "severity": "Low",
+          "description": "Homepage <loc> is https://labmanagergestionale.com (no trailing slash) while the server serves / . Both resolve to 200; canonical matches the bare form, so this is consistent but worth keeping aligned.",
+          "recommendation": "Keep canonical, sitemap loc, and internal links on one URL form (current bare-domain form is fine). No action strictly required."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 78,
+      "what_works": [
+        "~2,276 words on the homepage with clear feature depth (recipes, costing, labelling, allergens, nutrition, ordini module)",
+        "Unique, on-topic content across /ordini, /pricing, /newsletter",
+        "Strong differentiation section (offline-first, composition balancing, made in Italy) — good for E-E-A-T and GEO",
+        "21-question FAQ demonstrates topical coverage and answers real buyer questions"
+      ],
+      "findings": [
+        {
+          "title": "No blog / editorial layer",
+          "severity": "Medium",
+          "description": "The site is a 4-page product site with no articles, guides, or glossary. 'Gestionale pasticceria' and adjacent terms are competitive; without supporting content the site captures little long-tail or informational intent and has thin topical authority signals.",
+          "recommendation": "Add a small guide/blog cluster (e.g. 'come calcolare il food cost in pasticceria', 'etichette allergeni obbligatorie', 'bilanciamento gelato') linking back to feature/pricing pages. Even 6-10 strong articles would materially expand coverage."
+        },
+        {
+          "title": "Limited Trust (E-E-A-T) signals",
+          "severity": "Medium",
+          "description": "Contact is a single Gmail address; there is no company/legal identity (P.IVA, registered address), no team/about, and no visible customer proof (reviews/testimonials/case studies).",
+          "recommendation": "Add an About/Chi siamo section with company identity and, if available, real customer testimonials. Feeds both trust and the schema aggregateRating gap below."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 88,
+      "what_works": [
+        "Homepage title 'LabManager: Gestionale Pasticceria | Android & Windows' (~52 chars) and 157-char meta description — both well within limits and keyword-led",
+        "Every page has a unique title, meta description, single H1, and self-referential canonical",
+        "Logical heading hierarchy (1x H1, 7x H2, feature H3s)",
+        "Complete Open Graph + Twitter card tags with og-image"
+      ],
+      "findings": [
+        {
+          "title": "H1 missing word separator",
+          "severity": "Low",
+          "description": "Homepage H1 renders as 'Gestionale PasticceriaPanificio, Gelateria e Ristorante' — 'Pasticceria' and 'Panificio' are joined (likely a styled line break without separating space/comma).",
+          "recommendation": "Insert a comma or space so the H1 reads 'Gestionale Pasticceria, Panificio, Gelateria e Ristorante'."
+        },
+        {
+          "title": "Deprecated meta keywords present",
+          "severity": "Low",
+          "description": "A long meta keywords tag is present. Ignored by Google; harmless but unnecessary.",
+          "recommendation": "Optional: remove to reduce markup. No ranking effect."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 90,
+      "what_works": [
+        "Rich @graph: WebSite, Organization (logo, contactPoint, areaServed IT), SoftwareApplication (offers 44.99/mo, 480/yr EUR), HowTo (APK install), BreadcrumbList",
+        "Separate FAQPage with 21 Question/Answer pairs",
+        "Subpages carry their own JSON-LD (/ordini has 4 blocks, /pricing 2)"
+      ],
+      "findings": [
+        {
+          "title": "SoftwareApplication has no aggregateRating",
+          "severity": "Medium",
+          "description": "The SoftwareApplication node declares offers but no aggregateRating or review. Star ratings are a major SoftwareApplication rich-result driver; without genuine reviews the site cannot earn them.",
+          "recommendation": "Collect real customer reviews and add a valid aggregateRating (never fabricate). Ties to the E-E-A-T testimonials recommendation."
+        },
+        {
+          "title": "FAQ rich results largely deprecated",
+          "severity": "Info",
+          "description": "Google restricts FAQ rich results to authoritative gov/health sites since 2023. The FAQPage schema still helps AI/GEO answer engines, so keep it — just don't expect FAQ rich snippets in Google.",
+          "recommendation": "Retain FAQPage for GEO value; no change needed."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 80,
+      "what_works": [
+        "Prerendered static HTML served from Cloudflare edge with long s-maxage",
+        "zstd compression, HTTP/3, self-hosted woff2 fonts, next/image usage",
+        "No render-blocking third-party bloat observed in markup"
+      ],
+      "findings": [
+        {
+          "title": "Core Web Vitals not measured (API quota / no key)",
+          "severity": "Info",
+          "description": "PageSpeed Insights returned HTTP 429 (shared-key daily quota) and no Google API credentials are configured, so LCP/INP/CLS could not be measured this run. Architecture strongly favours good CWV.",
+          "recommendation": "Configure a Google API key (PageSpeed/CrUX) and re-run for real LCP/INP/CLS field data, or check PageSpeed Insights manually."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 92,
+      "what_works": [
+        "Detailed llms.txt (summary, key features, differentiation, target audience, contacts)",
+        "robots.txt explicitly allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, anthropic-ai, PerplexityBot, Google-Extended, Applebot-Extended, cohere-ai, Bingbot",
+        "FAQPage + HowTo schema and a clear differentiation block make the brand highly citable by answer engines",
+        "Clear entity definition (what LabManager is, platforms, offline capability)"
+      ],
+      "findings": [
+        {
+          "title": "llms.txt lacks charset=utf-8",
+          "severity": "Low",
+          "description": "/llms.txt (and /robots.txt) are served as text/plain with no charset. The file bytes are valid UTF-8 (verified), but strict clients defaulting to Latin-1 will render accented characters as mojibake (e.g. 'è' -> 'Ã¨').",
+          "recommendation": "Set Content-Type: text/plain; charset=utf-8 for /llms.txt and /robots.txt."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 85,
+      "what_works": [
+        "All <img> tags carry an alt attribute (0 missing)",
+        "Descriptive, keyword-relevant image filenames (app-gestionale-pasticceria-android.jpg, etc.)",
+        "og-image.png present for social/AI preview"
+      ],
+      "findings": [
+        {
+          "title": "Two images use empty alt",
+          "severity": "Low",
+          "description": "2 of 5 images have empty alt=''. Acceptable if purely decorative; a loss if they are meaningful product screenshots.",
+          "recommendation": "Confirm intent — add descriptive alt to any content-bearing image; keep empty alt only for decorative ones."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical & Quick Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Enable Cloudflare 'Always Use HTTPS' so http:// 301s to https://",
+          "Add charset=utf-8 to Content-Type of /llms.txt and /robots.txt",
+          "Fix homepage H1 separator ('Pasticceria, Panificio')",
+          "Add descriptive alt text to the 2 empty-alt images"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Collect real customer reviews; add valid aggregateRating to SoftwareApplication schema",
+          "Add About/Chi siamo with company identity (P.IVA/address) and testimonials to strengthen E-E-A-T Trust",
+          "Configure Google API key and re-measure Core Web Vitals (LCP/INP/CLS)"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Launch a 6-10 article guide/blog cluster around food-cost, allergen labelling, gelato/recipe balancing, linking to feature and pricing pages",
+          "Expand internal linking from articles to /ordini and /pricing to build topical depth",
+          "Add the new content URLs to sitemap.xml with accurate lastmod"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Verify indexation and search performance in Google Search Console + Bing Webmaster",
+          "Track AI/LLM citations (ChatGPT, Perplexity) for 'gestionale pasticceria'",
+          "Keep sitemap lastmod and llms.txt in sync with content changes"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

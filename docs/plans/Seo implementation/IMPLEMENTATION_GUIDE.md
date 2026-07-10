@@ -103,7 +103,7 @@ Data: 11 Febbraio 2026
 BASE SCHEMA GRAPH
 ═════════════════════════════════════════
 
-pastrylabmanager.com/
+labmanagergestionale.com/
 ├── #website (WebSite)
 │   └── publisher: #organization
 │
@@ -503,7 +503,7 @@ const howtoJsonLd = {
   "@type": "HowTo",
   "name": "Come installare LabManager su Android da APK",
   "description": "Procedura passo-passo per installare APK su dispositivi Android quando il device blocca l'installazione da fonti sconosciute",
-  "image": `${process.env.NEXT_PUBLIC_BASE_URL || "https://pastrylabmanager.com"}/images/installation-guide.png`,
+  "image": `${process.env.NEXT_PUBLIC_BASE_URL || "https://labmanagergestionale.com"}/images/installation-guide.png`,
   "estimatedDuration": "PT5M",
   "step": [
     {

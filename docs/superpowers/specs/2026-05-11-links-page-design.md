@@ -5,7 +5,7 @@
 
 ## Obiettivo
 
-Creare una pagina `pastrylabmanager.com/links` da inserire nel profilo Instagram di LabManager. Sostituisce servizi terzi come Linktree ospitando i link direttamente sul dominio del brand.
+Creare una pagina `labmanagergestionale.com/links` da inserire nel profilo Instagram di LabManager. Sostituisce servizi terzi come Linktree ospitando i link direttamente sul dominio del brand.
 
 ## URL e File
 
@@ -35,10 +35,10 @@ Pagina autonoma senza Navbar e Footer del sito principale. Occupa tutta l'altezz
 
 | # | Etichetta | Destinazione |
 |---|-----------|-------------|
-| 1 | 🌐 Scopri LabManager | `https://pastrylabmanager.com` |
+| 1 | 🌐 Scopri LabManager | `https://labmanagergestionale.com` |
 | 2 | 💬 Scrivici su WhatsApp | `https://wa.me/393500424228?text=Ciao!%20Vorrei%20informazioni%20su%20LabManager` |
-| 3 | 💰 Prezzi e piani | `https://pastrylabmanager.com/pricing` |
-| 4 | 📧 Newsletter | `https://pastrylabmanager.com/newsletter` |
+| 3 | 💰 Prezzi e piani | `https://labmanagergestionale.com/pricing` |
+| 4 | 📧 Newsletter | `https://labmanagergestionale.com/newsletter` |
 
 Tutti i link aprono in `target="_blank" rel="noopener noreferrer"`.
 
@@ -67,5 +67,5 @@ export const metadata: Metadata = {
 
 1. Aprire il profilo Instagram di LabManager
 2. Toccare **Modifica profilo**
-3. Nel campo **Sito web** inserire: `https://pastrylabmanager.com/instagram`
+3. Nel campo **Sito web** inserire: `https://labmanagergestionale.com/instagram`
 4. Salvare

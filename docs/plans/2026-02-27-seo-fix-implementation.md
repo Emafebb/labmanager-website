@@ -1,4 +1,4 @@
-# Piano Implementazione Fix SEO - pastrylabmanager.com
+# Piano Implementazione Fix SEO - labmanagergestionale.com
 
 ## Contesto
 
@@ -86,7 +86,7 @@ File da aggiornare con i nuovi nomi:
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://pastrylabmanager.com"
+      "item": "https://labmanagergestionale.com"
     }]
   }
   ```

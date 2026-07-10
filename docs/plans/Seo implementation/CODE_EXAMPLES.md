@@ -352,7 +352,7 @@ const howtoJsonLd = {
   "@type": "HowTo",
   "name": "Come installare LabManager su Android da APK",
   "description": "Procedura passo-passo per installare APK su dispositivi Android quando il device blocca l'installazione da fonti sconosciute",
-  "image": `${process.env.NEXT_PUBLIC_BASE_URL || "https://pastrylabmanager.com"}/images/installation-guide.png`,
+  "image": `${process.env.NEXT_PUBLIC_BASE_URL || "https://labmanagergestionale.com"}/images/installation-guide.png`,
   "estimatedDuration": "PT5M",
   "step": [
     {
@@ -850,7 +850,7 @@ npm ls --depth=0
 
 1. Go to: https://search.google.com/test/rich-results
 2. Select "URL" tab
-3. Enter: https://pastrylabmanager.com
+3. Enter: https://labmanagergestionale.com
 4. Click "TEST URL"
 5. Verify no errors on:
    - FAQPage

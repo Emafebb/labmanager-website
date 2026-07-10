@@ -5,7 +5,7 @@
 A comprehensive keyword strategy analysis for the LabManager website (Italian pastry management software) has been completed. This document provides an index to all analysis deliverables and quick-start guidance.
 
 **Analysis Date:** February 11, 2026
-**Target:** pastrylabmanager.com (Italian market)
+**Target:** labmanagergestionale.com (Italian market)
 **Framework:** Next.js 16.1.6 with TypeScript
 **Analysis Scope:** 8 component files + metadata
 
@@ -494,6 +494,6 @@ The LabManager website has strong technical SEO foundations but significant oppo
 
 **Analysis Prepared By:** SEO Keyword Strategy Framework
 **Date:** February 11, 2026
-**Target Website:** LabManager (pastrylabmanager.com)
+**Target Website:** LabManager (labmanagergestionale.com)
 **Status:** Ready for Implementation
 

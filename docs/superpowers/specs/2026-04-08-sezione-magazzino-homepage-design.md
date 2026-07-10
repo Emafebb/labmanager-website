@@ -2,13 +2,13 @@
 
 **Data:** 2026-04-08  
 **Stato:** Approvato  
-**Progetto:** labmanager-website (pastrylabmanager.com)
+**Progetto:** labmanager-website (labmanagergestionale.com)
 
 ---
 
 ## Obiettivo
 
-Aggiungere una nuova sezione nella homepage di pastrylabmanager.com per annunciare il modulo Gestione Magazzino di LabManager, in coordinamento con l'invio dell'email di lancio (`email_annuncio_magazzino.html`).
+Aggiungere una nuova sezione nella homepage di labmanagergestionale.com per annunciare il modulo Gestione Magazzino di LabManager, in coordinamento con l'invio dell'email di lancio (`email_annuncio_magazzino.html`).
 
 ---
 

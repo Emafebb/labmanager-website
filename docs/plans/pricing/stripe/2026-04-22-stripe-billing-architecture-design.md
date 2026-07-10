@@ -601,7 +601,7 @@ Windows usa pagine web HTTPS di conferma e ritorno.
 
 Vincoli confermati:
 
-- dominio web disponibile: `https://pastrylabmanager.com`
+- dominio web disponibile: `https://labmanagergestionale.com`
 - niente deep link desktop aggressivi nella prima versione
 - l'utente puo tornare all'app manualmente dopo la pagina di conferma
 
