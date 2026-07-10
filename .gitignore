@@ -19,7 +19,7 @@
 
 # production
 /build
-
+claude-seo
 # misc
 .DS_Store
 *.pem
