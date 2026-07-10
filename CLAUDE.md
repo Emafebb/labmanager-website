@@ -4,11 +4,10 @@
 
 ## Project Overview
 
-**LabManager Website**(C:\Users\emanu\Desktop\GitProjects\labmanager-website\src) is a Next.js landing page for LabManager, a pastry management application. The site showcases features, enables app downloads, and provides a contact form for inquiries. The site is Italian-localized and deployed on Vercel.
 
 
 
-
+/Users/emanuele/Documents/github/labmanager-website
 
 ## Important Architecture Patterns
 
