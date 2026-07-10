@@ -17,7 +17,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const BASE_URL = "https://pastrylabmanager.com";
+const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
 const PAGE_TITLE = "Gestione Ordini";
 const PAGE_DESCRIPTION =

@@ -77,7 +77,7 @@ function buildPage(title: string, message: string): string {
   <div class="card">
     <h1>${title}</h1>
     <p>${message}</p>
-    <a href="https://pastrylabmanager.com">← Torna al sito</a>
+    <a href="https://labmanagergestionale.com">← Torna al sito</a>
   </div>
 </body>
 </html>`;

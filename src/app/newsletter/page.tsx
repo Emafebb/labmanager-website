@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import NewsletterForm from "@/components/NewsletterForm";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const BASE_URL = "https://pastrylabmanager.com";
+const BASE_URL = "https://labmanagergestionale.com";
 
 export const metadata: Metadata = {
   title: "Newsletter",

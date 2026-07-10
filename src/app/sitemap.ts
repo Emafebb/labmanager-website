@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://pastrylabmanager.com";
+const BASE_URL = "https://labmanagergestionale.com";
 
 // lastModified is a static per-page date. Update it by hand when the page's
 // content changes, so Google receives a reliable freshness signal.

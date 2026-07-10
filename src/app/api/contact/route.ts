@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
 
     await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "LabManager <onboarding@resend.dev>",
+      from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@labmanagergestionale.com>",
       to: process.env.CONTACT_EMAIL || "your-email@example.com",
       subject: `[LabManager Website] Messaggio da ${safeName}`,
       html: `
@@ -74,9 +74,9 @@ export async function POST(req: NextRequest) {
       }
       try {
         const unsubscribeToken = Buffer.from(safeEmailLower).toString("base64url");
-        const unsubscribeUrl = `https://pastrylabmanager.com/api/unsubscribe?token=${unsubscribeToken}`;
+        const unsubscribeUrl = `https://labmanagergestionale.com/api/unsubscribe?token=${unsubscribeToken}`;
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
+          from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@labmanagergestionale.com>",
           to: safeEmailLower,
           subject: "Benvenuto in LabManager!",
           html: buildWelcomeEmail(escapeHtml(rawName), unsubscribeUrl),
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
       }
       try {
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
+          from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@labmanagergestionale.com>",
           to: process.env.CONTACT_EMAIL || "labmanager.info@gmail.com",
           subject: `[LabManager] Nuovo iscritto: ${rawName}`,
           html: buildAdminSubscriberNotification(rawName, safeEmailLower, "contact_form"),

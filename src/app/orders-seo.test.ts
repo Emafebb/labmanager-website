@@ -23,11 +23,11 @@ describe("orders SEO plumbing", () => {
   it("adds the orders page to the sitemap", () => {
     const entries = sitemap();
     const ordersEntry = entries.find(
-      (entry) => entry.url === "https://pastrylabmanager.com/ordini",
+      (entry) => entry.url === "https://labmanagergestionale.com/ordini",
     );
 
     expect(ordersEntry).toMatchObject({
-      url: "https://pastrylabmanager.com/ordini",
+      url: "https://labmanagergestionale.com/ordini",
       changeFrequency: "monthly",
       priority: 0.85,
     });
@@ -39,7 +39,7 @@ describe("orders SEO plumbing", () => {
     );
 
     expect(softwareApplication).toMatchObject({
-      "@id": "https://pastrylabmanager.com/#softwareapplication",
+      "@id": "https://labmanagergestionale.com/#softwareapplication",
       softwareVersion: "0.0.9",
       dateModified: "2026-06-04",
     });
@@ -60,7 +60,9 @@ describe("orders SEO plumbing", () => {
   it("documents the orders page in llms.txt", () => {
     const llms = readFileSync(join(process.cwd(), "public", "llms.txt"), "utf8");
 
-    expect(llms).toContain("[Ordini](https://pastrylabmanager.com/ordini)");
+    expect(llms).toContain(
+      "[Ordini](https://labmanagergestionale.com/ordini)",
+    );
     expect(llms).toContain("Ordini e Piano di Lavoro");
     expect(llms).toContain(
       "Il modulo ordini gestisce ordini cliente e interni",

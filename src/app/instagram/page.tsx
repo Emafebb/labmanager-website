@@ -20,8 +20,8 @@ const WHATSAPP_HREF =
   "https://wa.me/393500424228?text=Ciao!%20Vorrei%20informazioni%20su%20LabManager";
 
 const LINKS = [
-  { label: "Scopri LabManager", href: "https://pastrylabmanager.com" },
-  { label: "Prezzi e piani", href: "https://pastrylabmanager.com/pricing" },
+  { label: "Scopri LabManager", href: "https://labmanagergestionale.com" },
+  { label: "Prezzi e piani", href: "https://labmanagergestionale.com/pricing" },
 ];
 
 function WhatsAppIcon() {
@@ -145,7 +145,7 @@ export default function InstagramPage() {
         </div>
 
         <a
-          href="https://pastrylabmanager.com/newsletter"
+          href="https://labmanagergestionale.com/newsletter"
           target="_blank"
           rel="noopener noreferrer"
           className="fu fu-6 -mt-4 text-[12px] tracking-wide text-white/45 hover:text-white/75 transition-colors border-b border-white/15 hover:border-white/40 pb-[2px]"

@@ -4,9 +4,9 @@
 
 ## Informazioni Principali
 
-- [Homepage](https://pastrylabmanager.com): Landing page con funzionalità, piattaforme, FAQ e contatti.
-- [Ordini](https://pastrylabmanager.com/ordini): Pagina dedicata al modulo Ordini e Piano di Lavoro per ordini cliente, ordini interni, produzione collegata, acconti, residui, report ed export.
-- [Prezzi](https://pastrylabmanager.com/pricing): Piano unico, trial di 14 giorni e condizioni dell'abbonamento.
+- [Homepage](https://labmanagergestionale.com): Landing page con funzionalità, piattaforme, FAQ e contatti.
+- [Ordini](https://labmanagergestionale.com/ordini): Pagina dedicata al modulo Ordini e Piano di Lavoro per ordini cliente, ordini interni, produzione collegata, acconti, residui, report ed export.
+- [Prezzi](https://labmanagergestionale.com/pricing): Piano unico, trial di 14 giorni e condizioni dell'abbonamento.
 
 ## Funzionalità Chiave
 
@@ -32,4 +32,4 @@ Pasticceri, panificatori, gelatieri e laboratori artigianali alimentari in Itali
 ## Contatti
 
 - Email: labmanager.info@gmail.com
-- Sito web: https://pastrylabmanager.com
+- Sito web: https://labmanagergestionale.com

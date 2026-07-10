@@ -22,10 +22,10 @@ describe("orders page", () => {
       "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.",
     );
     expect(metadata.alternates?.canonical).toBe(
-      "https://pastrylabmanager.com/ordini",
+      "https://labmanagergestionale.com/ordini",
     );
     expect(metadata.openGraph?.url).toBe(
-      "https://pastrylabmanager.com/ordini",
+      "https://labmanagergestionale.com/ordini",
     );
     expect(metadata.robots).toBeUndefined();
   });
@@ -127,7 +127,7 @@ describe("orders page", () => {
       expect.arrayContaining([
         expect.objectContaining({
           "@type": "WebPage",
-          "@id": "https://pastrylabmanager.com/ordini#webpage",
+          "@id": "https://labmanagergestionale.com/ordini#webpage",
           name: "Gestione Ordini",
         }),
         expect.objectContaining({

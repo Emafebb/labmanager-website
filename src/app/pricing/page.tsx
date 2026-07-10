@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   description:
     "Un solo piano, tutto incluso. LabManager ti aiuta a gestire ricette, costi, magazzino, etichette e team a €44,99/mese o €480/anno. Prova gratis 14 giorni.",
   alternates: {
-    canonical: "https://pastrylabmanager.com/pricing",
+    canonical: "https://labmanagergestionale.com/pricing",
     languages: {
-      it: "https://pastrylabmanager.com/pricing",
+      it: "https://labmanagergestionale.com/pricing",
     },
   },
   openGraph: {
     title: "Prezzi | LabManager",
     description:
       "Tutto quello che ti serve in un solo piano: €44,99/mese o €480/anno. Prova gratis 14 giorni, senza carta richiesta.",
-    url: "https://pastrylabmanager.com/pricing",
+    url: "https://labmanagergestionale.com/pricing",
     images: [
       {
-        url: "https://pastrylabmanager.com/images/pricing-og-image.png",
-        secureUrl: "https://pastrylabmanager.com/images/pricing-og-image.png",
+        url: "https://labmanagergestionale.com/images/pricing-og-image.png",
+        secureUrl: "https://labmanagergestionale.com/images/pricing-og-image.png",
         width: 1200,
         height: 630,
         alt: "LabManager - Un solo piano tutto incluso con prova gratis di 14 giorni",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Prezzi | LabManager",
     description:
       "Tutto quello che ti serve in un solo piano: €44,99/mese o €480/anno. Prova gratis 14 giorni, senza carta richiesta.",
-    images: ["https://pastrylabmanager.com/images/pricing-og-image.png"],
+    images: ["https://labmanagergestionale.com/images/pricing-og-image.png"],
   },
 };
 

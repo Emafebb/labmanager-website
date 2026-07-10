@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-const BASE_URL = "https://pastrylabmanager.com";
+const BASE_URL = "https://labmanagergestionale.com";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",

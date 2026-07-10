@@ -82,10 +82,10 @@ export async function POST(req: NextRequest) {
 
     // 3. Send welcome email
     const unsubscribeToken = Buffer.from(safeEmail).toString("base64url");
-    const unsubscribeUrl = `https://pastrylabmanager.com/api/unsubscribe?token=${unsubscribeToken}`;
+    const unsubscribeUrl = `https://labmanagergestionale.com/api/unsubscribe?token=${unsubscribeToken}`;
     try {
       await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
+        from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@labmanagergestionale.com>",
         to: safeEmail,
         subject: "Benvenuto in LabManager!",
         html: buildWelcomeEmail(safeName, unsubscribeUrl),
@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
     // 4. Notifica admin
     try {
       await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@pastrylabmanager.com>",
+        from: process.env.RESEND_FROM_EMAIL || "LabManager <noreply@labmanagergestionale.com>",
         to: process.env.CONTACT_EMAIL || "labmanager.info@gmail.com",
         subject: `[LabManager] Nuovo iscritto: ${rawName}`,
         html: buildAdminSubscriberNotification(rawName, safeEmail, "newsletter_popup"),
