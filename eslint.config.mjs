@@ -18,6 +18,7 @@ const eslintConfig = defineConfig([
     // are separate codebases and must not be linted by the website config.
     ".worktrees/**",
     "my-video/**",
+    "claude-seo/**",
   ]),
 ]);
 
