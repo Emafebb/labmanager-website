@@ -3,6 +3,7 @@ export type Platform = "android" | "windows";
 export interface ChangelogSection {
   title: string;
   items: string[];
+  magazzinoClaimIds?: readonly MagazzinoClaimId[];
 }
 
 export interface ChangelogEntry {
@@ -18,6 +19,11 @@ export const changelog: ChangelogEntry[] = [
     date: "2026-06-04",
     platforms: ["android", "windows"],
     sections: [
+      {
+        title: "Magazzino",
+        items: [MAGAZZINO_CANONICAL_COPY],
+        magazzinoClaimIds: MAGAZZINO_CLAIM_IDS,
+      },
       {
         title: "Ordini e piano di lavoro",
         items: [
@@ -118,7 +124,7 @@ export const changelog: ChangelogEntry[] = [
         ],
       },
       {
-        title: "Vendite, tracciabilità e magazzino",
+        title: "Vendite e tracciabilità",
         items: [
           "Le vendite generate dagli ordini sono più riconoscibili nel Registro Vendite e nella tracciabilità",
           "Ricerca vendita anche per numero ordine o cliente",
@@ -163,7 +169,6 @@ export const changelog: ChangelogEntry[] = [
         items: [
           "Il Registro Vendite gestisce ora anche prodotti commerciali acquistati da terzi e rivenduti, senza doverli trasformare in ricette",
           "Registrazione guidata con sede, prodotto, lotto consigliato, quantità, prezzo, IVA, cliente e documento",
-          "Scarico automatico del magazzino dal lotto corretto con costo d'acquisto e margine calcolati sulla vendita",
           "Visibilità nella Dashboard Costi e nella tracciabilità lotto",
         ],
       },
@@ -210,15 +215,6 @@ export const changelog: ChangelogEntry[] = [
           "Non modifica la sede legale o quella usata come riferimento per le etichette ufficiali",
         ],
       },
-      {
-        title: "Magazzino e Uso Mobile",
-        items: [
-          "Inventario lotti più compatto su mobile con filtri migliorati per tipo prodotto e sede",
-          "Disponibilità magazzino e storico movimenti già orientati sulla sede operativa del dispositivo",
-          "Dialog di modifica movimento adattato a schermi stretti; colonne, badge e tabelle sistemati per evitare tagli",
-          "Lotti commerciali inclusi nelle viste di inventario e vendita",
-        ],
-      },
     ],
   },
   {
@@ -261,46 +257,7 @@ export const changelog: ChangelogEntry[] = [
         items: [
           "Esporta la storia completa di un lotto (origine, produzione, vendita)",
           "Genera report per controlli interni e verifiche qualità",
-          "Include informazioni del fornitore e date chiave",
           "Formato PDF pronto per stampa e conservazione",
-        ],
-      },
-    ],
-  },
-  {
-    version: "0.0.5",
-    date: "2026-04-08",
-    platforms: ["android", "windows"],
-    sections: [
-      {
-        title: "Storico DDT",
-        items: [
-          "Archivio completo dei documenti di trasporto ricevuti, consultabile con filtri per sede, fornitore e data",
-          "Dettaglio di ogni riga: prodotto, quantità, lotto, scadenza e prezzo",
-        ],
-      },
-      {
-        title: "Scanner DDT più preciso",
-        items: [
-          "Ricostruzione delle righe basata sulla posizione nel documento, anche quando i testi sono disallineati",
-          "Lettura dei codici a barre GS1 Code-128 per identificare i prodotti",
-          "I PDF generati dallo scanner includono il nome della tua attività nell'intestazione",
-        ],
-      },
-      {
-        title: "Validazione in tempo reale",
-        items: [
-          "Quando salvi un ricevimento o un prelievo, l'app evidenzia in rosso ogni campo mancante riga per riga",
-          "Per i dati facoltativi come lotto e scadenza, ti chiede se vuoi procedere lo stesso senza bloccarti",
-        ],
-      },
-      {
-        title: "Miglioramenti magazzino",
-        items: [
-          "Nuova card Scaduti nella dashboard: vedi subito i prodotti oltre la data di scadenza, separati da quelli in scadenza",
-          "Le sedi ora includono il campo nazione, pre-compilato dall'indirizzo del profilo azienda",
-          "Gli avvisi di scadenza escludono i lotti con giacenza zero",
-          "Il calcolo Sotto soglia considera tutti i movimenti di magazzino, non solo i carichi",
         ],
       },
     ],
@@ -365,15 +322,6 @@ export const changelog: ChangelogEntry[] = [
     date: "2026-02-10",
     platforms: ["windows"],
     sections: [
-      {
-        title: "Inventario",
-        items: [
-          "Traccia i lotti di produzione con codice lotto automatico",
-          "Imposta la data di scadenza dei prodotti",
-          "Elimina lotti con avviso di sicurezza",
-          "Visualizzazione raggruppata dei lotti con righe espandibili",
-        ],
-      },
       {
         title: "Registro Vendite",
         items: [
@@ -472,3 +420,8 @@ export const changelog: ChangelogEntry[] = [
     ],
   },
 ];
+import type { MagazzinoClaimId } from "@/data/magazzino-capability-matrix";
+import {
+  MAGAZZINO_CANONICAL_COPY,
+  MAGAZZINO_CLAIM_IDS,
+} from "@/data/magazzino-capability-matrix";

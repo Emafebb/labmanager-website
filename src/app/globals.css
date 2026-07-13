@@ -62,6 +62,11 @@ html {
   outline-offset: 3px;
 }
 
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
 /* Subtle animations */
 @keyframes fadeInUp {
   from {

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Bell, CheckCircle2, MailCheck, ShieldCheck } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import NewsletterForm from "@/components/NewsletterForm";
+import { NEWSLETTER_ASSETS } from "@/data/responsive-images";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const BASE_URL = "https://labmanagergestionale.com";
@@ -112,14 +112,28 @@ export default function NewsletterPage() {
               </div>
 
               <div className="relative h-48 sm:h-64 max-w-2xl overflow-hidden rounded-2xl border border-gray-200 bg-surface shadow-sm">
-                <Image
-                  src="/images/labmanager-homepage-screenshot.png"
-                  alt="Schermata di LabManager con dashboard e gestione ricette"
-                  fill
-                  className="object-cover object-left-top"
-                  sizes="(min-width: 1024px) 640px, 100vw"
-                  priority
-                />
+                <picture data-newsletter-image>
+                  <source
+                    type="image/avif"
+                    srcSet={NEWSLETTER_ASSETS.avifSrcSet}
+                    sizes={NEWSLETTER_ASSETS.sizes}
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={NEWSLETTER_ASSETS.webpSrcSet}
+                    sizes={NEWSLETTER_ASSETS.sizes}
+                  />
+                  <img
+                    src={NEWSLETTER_ASSETS.fallbackSrc}
+                    srcSet={NEWSLETTER_ASSETS.webpSrcSet}
+                    sizes={NEWSLETTER_ASSETS.sizes}
+                    alt="Schermata di LabManager con dashboard e gestione ricette"
+                    width={1280}
+                    height={625}
+                    className="h-full w-full object-cover object-left-top"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
             </div>
 

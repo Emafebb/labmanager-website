@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import CloudflareWebAnalytics from "@/components/CloudflareWebAnalytics";
 import SiteScripts from "@/components/SiteScripts";
+import {
+  MAGAZZINO_CANONICAL_COPY,
+  MAGAZZINO_CAPABILITIES,
+} from "@/data/magazzino-capability-matrix";
 import "./globals.css";
 
 const BASE_URL = "https://labmanagergestionale.com";
@@ -49,7 +53,6 @@ export const metadata: Metadata = {
     "calcolo food cost ristorante",
     "gestione magazzino pasticceria",
     "magazzino multi-sede",
-    "gestione fornitori pasticceria",
     "scarico FIFO ingredienti",
     "alert scadenze ingredienti",
     "tracciabilità lotti",
@@ -82,23 +85,6 @@ export const metadata: Metadata = {
     description:
       "Gestisci la tua pasticceria, gelateria o ristorante con il gestionale completo: ricette, calcolo costi, etichette alimentari con allergeni. Funziona offline.",
     images: [`${BASE_URL}/images/og-image.png`],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: BASE_URL,
-    languages: {
-      "it": BASE_URL,
-    },
   },
   icons: {
     icon: "/favicon.ico",
@@ -184,7 +170,7 @@ export const structuredDataGraph = {
         "Gestione ricette digitali con ingredienti e procedimenti",
         "Calcolo automatico costi ricette e margini",
         "Bilanciamento composizione ricette (zuccheri, grassi, proteine)",
-        "Gestione inventario ingredienti e semilavorati",
+        MAGAZZINO_CANONICAL_COPY,
         "Creazione assemblaggi multi-ricetta",
         "Calcolo tabelle nutrizionali automatiche",
         "Generazione etichette alimentari con allergeni",
@@ -193,18 +179,18 @@ export const structuredDataGraph = {
         "Esportazione PDF e stampa documenti",
         "Tools professionali per laboratorio",
         "Gestione team con ruoli e permessi",
-        "Gestione magazzino multi-sede con disponibilità in tempo reale",
-        "Ricevimento merci con tracciabilità lotti e date di scadenza",
-        "Scarico FIFO automatico degli ingredienti",
-        "Alert configurabili per prodotti in scadenza",
-        "Anagrafica fornitori con condizioni di pagamento e scontistica",
-        "Trasferimenti merce tra sedi con tracciabilità completa",
         "Gestione ordini cliente con ritiro, consegna, acconti e saldo",
         "Ordini interni tra sedi e piano di lavoro del laboratorio",
         "Produzione collegata a ricette, assemblaggi e lotti",
         "Report Ordini con export Excel e PDF",
         "Notifiche ordini su Android e Windows",
       ],
+      additionalProperty: MAGAZZINO_CAPABILITIES.map((capability) => ({
+        "@type": "PropertyValue",
+        propertyID: capability.id,
+        name: capability.publicCopy,
+        value: "available-and-marketable",
+      })),
       screenshot: [
         {
           "@type": "ImageObject",

@@ -71,7 +71,10 @@ function TimelineEntry({ entry, isLast }: { entry: ChangelogEntry; isLast: boole
         {/* Sezioni changelog */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">
           {entry.sections.map((section) => (
-            <div key={section.title}>
+            <div
+              key={section.title}
+              data-magazzino-claim-ids={section.magazzinoClaimIds?.join(" ")}
+            >
               <h3 className="text-sm font-semibold text-gray-700 mb-2">{section.title}</h3>
               <ul className="space-y-1">
                 {section.items.map((item, i) => (

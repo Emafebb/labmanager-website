@@ -92,7 +92,7 @@ export default function NewsletterPopup() {
         {/* Close button */}
         <button
           onClick={closeAction}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-all"
+          className="touch-target absolute top-3 right-3 sm:top-4 sm:right-4 z-10 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-all"
           aria-label="Chiudi"
         >
           <X size={18} />

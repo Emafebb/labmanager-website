@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { HelpCircle, ChevronDown } from "lucide-react";
+import {
+  MAGAZZINO_CANONICAL_COPY,
+  MAGAZZINO_CLAIM_ID_ATTRIBUTE,
+} from "@/data/magazzino-capability-matrix";
 
 const LINK_CLASS = "text-primary underline hover:text-primary-dark";
 
@@ -82,9 +86,8 @@ const faqs = [
       "LabManager calcola automaticamente il costo di ogni ricetta sommando il prezzo degli ingredienti utilizzati, tenendo conto delle quantità esatte e degli scarti. Il sistema aggiorna i costi in tempo reale quando modifichi i prezzi di acquisto. Puoi monitorare i margini di guadagno e analizzare lo storico delle variazioni.",
   },
   {
-    question: "Come gestisco l'inventario ingredienti del laboratorio?",
-    answer:
-      "Con LabManager puoi già gestire tutti gli ingredienti del tuo laboratorio: registra prezzi di acquisto, quantità, valori nutrizionali e allergeni per ogni materia prima. Puoi creare semilavorati e ricette che utilizzano questi ingredienti, con aggiornamento automatico dei costi. La funzionalità di inventario ingredienti avanzato con gestione scorte, soglie di riordino e storico acquisti è attualmente in fase di sviluppo.",
+    question: "Come gestisce il magazzino LabManager?",
+    answer: MAGAZZINO_CANONICAL_COPY,
   },
   {
     question: "LabManager è adatto anche per ristoranti e cucine?",
@@ -109,7 +112,7 @@ const faqs = [
   {
     question: "LabManager funziona anche per panifici e ristoranti?",
     answer:
-      `Sì, LabManager è pensato per qualsiasi laboratorio alimentare professionale: pasticcerie, panifici, ristoranti e pizzerie. Gestione ricette, calcolo food cost, etichette con allergeni e magazzino multi-sede funzionano allo stesso modo per tutte le tipologie di attività. <a href='#contatti' class='${LINK_CLASS}'>Contattaci</a> per scoprire come adattarlo alla tua realtà.`,
+      `Sì, LabManager è pensato per qualsiasi laboratorio alimentare professionale: pasticcerie, panifici, ristoranti e pizzerie. Gestione ricette, calcolo food cost ed etichette con allergeni funzionano allo stesso modo per tutte le tipologie di attività. <a href='#contatti' class='${LINK_CLASS}'>Contattaci</a> per scoprire come adattarlo alla tua realtà.`,
   },
 ];
 
@@ -173,7 +176,12 @@ export default function FAQ() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
-                  className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
+                  data-magazzino-claim-ids={
+                    faq.question === "Come gestisce il magazzino LabManager?"
+                      ? MAGAZZINO_CLAIM_ID_ATTRIBUTE
+                      : undefined
+                  }
+                  className="touch-target w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
                 >
                   <h3 className="font-semibold text-gray-900 text-base">
                     {faq.question}

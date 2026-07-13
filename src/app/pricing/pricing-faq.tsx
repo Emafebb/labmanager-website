@@ -65,7 +65,7 @@ export default function PricingFAQ() {
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
+                  className="touch-target w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
                 >
                   <h3 className="font-semibold text-gray-900 text-base">
                     {faq.question}

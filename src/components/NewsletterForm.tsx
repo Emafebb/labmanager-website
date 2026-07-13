@@ -71,8 +71,8 @@ export default function NewsletterForm({
     ? "flex items-start gap-2.5 p-3 bg-gray-50 rounded-xl"
     : "flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200";
   const privacyLabelClassName = isPopup
-    ? "text-[11px] text-gray-500 leading-relaxed cursor-pointer"
-    : "text-sm text-gray-700 leading-relaxed cursor-pointer";
+    ? "touch-target text-[11px] text-gray-500 leading-relaxed cursor-pointer"
+    : "touch-target text-sm text-gray-700 leading-relaxed cursor-pointer";
   const buttonClassName = isPopup
     ? "w-full flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary-dark transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0"
     : "w-full inline-flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-lg text-base font-bold hover:bg-primary-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed";

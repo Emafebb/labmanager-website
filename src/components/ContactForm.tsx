@@ -186,7 +186,7 @@ export default function ContactForm() {
                       onChange={(e) => setPrivacyAccepted(e.target.checked)}
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200"
                     />
-                    <label htmlFor="privacy" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
+                    <label htmlFor="privacy" className="touch-target text-sm text-gray-700 leading-relaxed cursor-pointer">
                       Ho letto e accetto la{" "}
                       <a
                         href={PRIVACY_POLICY_URL}
@@ -207,7 +207,7 @@ export default function ContactForm() {
                       onChange={(e) => setNewsletterAccepted(e.target.checked)}
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200"
                     />
-                    <label htmlFor="newsletter" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
+                    <label htmlFor="newsletter" className="touch-target text-sm text-gray-700 leading-relaxed cursor-pointer">
                       Acconsento a ricevere aggiornamenti e novità di LabManager via email.{" "}
                       <span className="text-gray-400 text-xs">(opzionale)</span>
                     </label>

@@ -11,6 +11,15 @@ import Footer from "@/components/Footer";
 import NewsletterPopup from "@/components/NewsletterPopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://labmanagergestionale.com",
+    languages: {
+      it: "https://labmanagergestionale.com",
+    },
+  },
+};
+
 export default function Home() {
   return (
     <>
@@ -32,3 +41,4 @@ export default function Home() {
     </>
   );
 }
+import type { Metadata } from "next";

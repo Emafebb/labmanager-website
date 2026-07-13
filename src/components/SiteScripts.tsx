@@ -15,15 +15,16 @@ const TABNAV_WIDGET_CONFIG = {
 
 const STANDALONE_ROUTES = ["/instagram"];
 
-const EXTERNAL_WIDGET_THEME_SCRIPT = `
+export const EXTERNAL_WIDGET_THEME_SCRIPT = `
 (function () {
   var legalBlinkCss = [
     ':host{--primary:#4403af!important;--primary-foreground:#fff!important;--ring:#d1d5db!important;--border:#e5e7eb!important;--input:#e5e7eb!important;}',
-    'button,[role="button"]{box-shadow:none!important;}',
+    'button,[role="button"]{box-shadow:none!important;min-width:44px!important;min-height:44px!important;}',
     'button:focus-visible,[role="button"]:focus-visible{outline:2px solid #d1d5db!important;outline-offset:2px!important;box-shadow:none!important;}'
   ].join('');
 
   var tabNavCss = [
+    '.tr-button{min-width:44px!important;min-height:44px!important;}',
     '.tr-button:focus-visible{outline:2px solid #d1d5db!important;outline-offset:2px!important;}'
   ].join('');
 

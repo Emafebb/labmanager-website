@@ -4,6 +4,11 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { PRICING } from "@/lib/pricing";
+import {
+  MAGAZZINO_CANONICAL_COPY,
+  MAGAZZINO_CAPABILITIES,
+  MAGAZZINO_CLAIM_IDS,
+} from "@/data/magazzino-capability-matrix";
 import PricingFAQ from "./pricing-faq";
 
 export const metadata: Metadata = {
@@ -40,6 +45,14 @@ export const metadata: Metadata = {
   },
 };
 
+export const pricingMagazzinoFeature = {
+  icon: Warehouse,
+  title: "Hai il magazzino sotto controllo",
+  summary: MAGAZZINO_CANONICAL_COPY,
+  items: MAGAZZINO_CAPABILITIES.map(({ publicCopy }) => publicCopy),
+  claimIds: MAGAZZINO_CLAIM_IDS,
+};
+
 const FEATURES = [
   {
     icon: ChefHat,
@@ -53,18 +66,7 @@ const FEATURES = [
       "Produzione giornaliera più facile da pianificare",
     ],
   },
-  {
-    icon: Warehouse,
-    title: "Hai il magazzino sotto controllo",
-    summary:
-      "Vedi cosa entra, cosa esce e cosa sta finendo senza rincorrere fogli o appunti sparsi.",
-    items: [
-      "Magazzino sempre aggiornato, anche su più sedi",
-      "Scadenze e movimenti facili da consultare",
-      "Entrata merce più veloce con barcode",
-      "Storico disponibile quando ti serve",
-    ],
-  },
+  pricingMagazzinoFeature,
   {
     icon: FileCheck,
     title: "Dalle ricette alle etichette, senza rifare il lavoro",
@@ -374,6 +376,9 @@ export default function PricingPage() {
                   key={feature.title}
                   className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm animate-fade-in-up"
                   style={{ animationDelay: `${0.15 + index * 0.05}s` }}
+                  data-magazzino-claim-ids={
+                    "claimIds" in feature ? feature.claimIds.join(" ") : undefined
+                  }
                 >
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
                     <feature.icon

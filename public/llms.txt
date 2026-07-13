@@ -10,7 +10,11 @@
 
 ## Funzionalità Chiave
 
-LabManager offre: gestione ricette e assemblaggi, Ordini e Piano di Lavoro, calcolo automatico costi e margini, bilanciamento composizione (zuccheri, grassi, proteine, lattosio), gestione inventario ingredienti, calcolatori professionali per laboratorio (bagne, calcolo W, gelato, stampi), tabelle nutrizionali automatiche, etichette alimentari con allergeni, dashboard produzione e vendite, tracciabilità lotti, esportazione PDF, funzionamento offline con sincronizzazione cloud, gestione team con ruoli.
+LabManager offre: gestione ricette e assemblaggi, Ordini e Piano di Lavoro, calcolo automatico costi e margini, bilanciamento composizione (zuccheri, grassi, proteine, lattosio), calcolatori professionali per laboratorio (bagne, calcolo W, gelato, stampi), tabelle nutrizionali automatiche, etichette alimentari con allergeni, dashboard produzione e vendite, tracciabilità lotti, esportazione PDF, funzionamento offline con sincronizzazione cloud, gestione team con ruoli.
+
+Gestione magazzino con ricevimento merci, giacenze per sede, soglie configurabili, scarico FIFO, alert scadenze e trasferimenti tra sedi.
+
+Claim Magazzino approvati: `magazzino.ricevimento-merci`, `magazzino.giacenze-per-sede`, `magazzino.soglie-configurabili`, `magazzino.scarico-fifo`, `magazzino.alert-scadenze`, `magazzino.trasferimenti-tra-sedi`.
 
 Il modulo ordini gestisce ordini cliente e interni, data evasione, ritiro/consegna, righe prodotto, produzione collegata, acconti, residui, report ed export.
 
