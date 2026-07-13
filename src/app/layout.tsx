@@ -93,23 +93,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const OFFERS = [
-  {
-    "@type": "Offer",
-    price: "44.99",
-    priceCurrency: "EUR",
-    availability: "https://schema.org/InStock",
-    name: "Piano Mensile",
-  },
-  {
-    "@type": "Offer",
-    price: "480.00",
-    priceCurrency: "EUR",
-    availability: "https://schema.org/InStock",
-    name: "Piano Annuale",
-  },
-] as const;
-
 export const structuredDataGraph = {
   "@context": "https://schema.org",
   "@graph": [
@@ -153,13 +136,8 @@ export const structuredDataGraph = {
       applicationCategory: "BusinessApplication",
       applicationSubCategory: "Gestionale Pasticceria e Ristorazione",
       operatingSystem: ["Android", "Windows"],
-      offers: OFFERS,
       description:
         "Software gestionale per pasticceria, panificio, gelateria e ristorante: gestisci ricette, ingredienti, costi, etichette alimentari, produzione e vendite. Funziona offline su Android e Windows. Trial gratuito di 14 giorni.",
-      downloadUrl: [
-        "https://labmanager-downloads.labmanager-info.workers.dev/android",
-        "https://labmanager-downloads.labmanager-info.workers.dev/windows",
-      ],
       fileSize: ["98468661", "19433664"],
       releaseNotes:
         "Nuovo modulo Ordini e Piano di Lavoro con ordini cliente, ordini interni tra sedi, produzione collegata, acconti, residui, report ordini, export e notifiche operative.",
@@ -211,44 +189,6 @@ export const structuredDataGraph = {
       availableOnDevice: ["Desktop", "Mobile", "Tablet"],
       countriesSupported: "IT",
       provider: { "@id": `${BASE_URL}/#organization` },
-    },
-    
-    {
-      "@type": "HowTo",
-      "@id": `${BASE_URL}/#howto-install-apk`,
-      name: "Come installare LabManager APK su Android",
-      description: "Guida completa per installare l'app LabManager da file APK su dispositivi Android",
-      step: [
-        {
-          "@type": "HowToStep",
-          position: 1,
-          name: "Scarica il file APK",
-          text: "Scarica il file APK di LabManager dal link fornito",
-        },
-        {
-          "@type": "HowToStep",
-          position: 2,
-          name: "Abilita origini sconosciute",
-          text: "Vai in Impostazioni > Sicurezza e abilita 'Origini sconosciute' o 'Installa app sconosciute'",
-        },
-        {
-          "@type": "HowToStep",
-          position: 3,
-          name: "Installa l'APK",
-          text: "Apri il file APK scaricato e segui le istruzioni per completare l'installazione",
-        },
-      ],
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: BASE_URL,
-        },
-      ],
     },
   ],
 };

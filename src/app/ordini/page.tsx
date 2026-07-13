@@ -16,6 +16,7 @@ import {
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
@@ -178,23 +179,6 @@ export const ordersPageStructuredData = {
       about: { "@id": `${BASE_URL}/#softwareapplication` },
     },
     {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: BASE_URL,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Ordini",
-          item: PAGE_URL,
-        },
-      ],
-    },
-    {
       "@type": "FAQPage",
       mainEntity: faqs.map((faq) => ({
         "@type": "Question",
@@ -255,7 +239,7 @@ export default function OrdersPage() {
 
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
-                  href="/#contatti"
+                  href={TRIAL_ACCESS_APP_HREF}
                   className="inline-flex touch-manipulation items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-white transition-[background-color,box-shadow] duration-200 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
                 >
                   Richiedi una prova gratuita

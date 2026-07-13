@@ -20,6 +20,18 @@ type JsonLdNode = {
 };
 
 describe("orders SEO plumbing", () => {
+  it("limits the global graph to shared entities without route-specific data", () => {
+    expect(structuredDataGraph["@graph"].map((node) => node["@type"])).toEqual([
+      "WebSite",
+      "Organization",
+      "SoftwareApplication",
+    ]);
+
+    const serializedGraph = JSON.stringify(structuredDataGraph);
+    expect(serializedGraph).not.toMatch(/HowTo|BreadcrumbList|"Offer"/);
+    expect(serializedGraph).not.toMatch(/"offers"|"downloadUrl"/);
+  });
+
   it("adds the orders page to the sitemap", () => {
     const entries = sitemap();
     const ordersEntry = entries.find(

@@ -6,6 +6,7 @@ import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CLAIM_ID_ATTRIBUTE,
 } from "@/data/magazzino-capability-matrix";
+import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
 const LINK_CLASS = "text-primary underline hover:text-primary-dark";
 
@@ -38,7 +39,7 @@ const faqs = [
   {
     question: "Come posso provare l'app?",
     answer:
-      `Contattaci tramite il <a href='#contatti' class='${LINK_CLASS}'>modulo contatti</a> per richiedere accesso al trial gratuito di 14 giorni. Dopo il periodo di prova puoi attivare il tuo abbonamento direttamente dall'app.`,
+      `<a href='${TRIAL_ACCESS_APP_HREF}' class='${LINK_CLASS}'>Registrati nella web app</a>, verifica il tuo indirizzo email e accedi: la prova completa di 14 giorni, senza carta, inizia al primo login riuscito. Dopo il periodo di prova puoi attivare il tuo abbonamento direttamente dall'app.`,
   },
   {
     question: "Quanto costa LabManager?",
@@ -73,7 +74,7 @@ const faqs = [
   {
     question: "Sarà disponibile per iPhone/iPad?",
     answer:
-      `Attualmente LabManager è disponibile per Android e Windows. <a href='#contatti' class='${LINK_CLASS}'>Contattaci</a> per richiedere l'accesso. Il supporto iOS è in fase di valutazione per il futuro.`,
+      `Attualmente LabManager è disponibile per Android e Windows. <a href='${TRIAL_ACCESS_APP_HREF}' class='${LINK_CLASS}'>Accedi alla web app</a> per registrarti e usare LabManager sulle piattaforme disponibili. Il supporto iOS è in fase di valutazione per il futuro.`,
   },
   {
     question: "I miei dati sono al sicuro?",

@@ -9,23 +9,29 @@ import {
   MAGAZZINO_CAPABILITIES,
   MAGAZZINO_CLAIM_IDS,
 } from "@/data/magazzino-capability-matrix";
+import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 import PricingFAQ from "./pricing-faq";
 
+const BASE_URL = "https://labmanagergestionale.com";
+const PAGE_URL = `${BASE_URL}/pricing`;
+const PAGE_TITLE = "Prezzi";
+const PAGE_DESCRIPTION =
+  "Un solo piano, tutto incluso. LabManager ti aiuta a gestire ricette, costi, magazzino, etichette e team a €44,99/mese o €480/anno. Prova gratis 14 giorni.";
+
 export const metadata: Metadata = {
-  title: "Prezzi",
-  description:
-    "Un solo piano, tutto incluso. LabManager ti aiuta a gestire ricette, costi, magazzino, etichette e team a €44,99/mese o €480/anno. Prova gratis 14 giorni.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
-    canonical: "https://labmanagergestionale.com/pricing",
+    canonical: PAGE_URL,
     languages: {
-      it: "https://labmanagergestionale.com/pricing",
+      it: PAGE_URL,
     },
   },
   openGraph: {
     title: "Prezzi | LabManager",
     description:
       "Tutto quello che ti serve in un solo piano: €44,99/mese o €480/anno. Prova gratis 14 giorni, senza carta richiesta.",
-    url: "https://labmanagergestionale.com/pricing",
+    url: PAGE_URL,
     images: [
       {
         url: "https://labmanagergestionale.com/images/pricing-og-image.png",
@@ -43,6 +49,18 @@ export const metadata: Metadata = {
       "Tutto quello che ti serve in un solo piano: €44,99/mese o €480/anno. Prova gratis 14 giorni, senza carta richiesta.",
     images: ["https://labmanagergestionale.com/images/pricing-og-image.png"],
   },
+};
+
+export const pricingPageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${PAGE_URL}#webpage`,
+  url: PAGE_URL,
+  name: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  inLanguage: "it-IT",
+  isPartOf: { "@id": `${BASE_URL}/#website` },
+  about: { "@id": `${BASE_URL}/#softwareapplication` },
 };
 
 export const pricingMagazzinoFeature = {
@@ -98,6 +116,12 @@ export default function PricingPage() {
     <>
       <Navbar />
       <main className="pt-28 pb-24">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(pricingPageStructuredData),
+          }}
+        />
         <section className="px-6 text-center mb-20">
           <div className="max-w-3xl mx-auto animate-fade-in-up">
             <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
@@ -209,7 +233,7 @@ export default function PricingPage() {
                   Accesso completo a tutte le funzionalità.
                 </p>
                 <a
-                  href={`https://wa.me/393500424228?text=Ciao!%20Vorrei%20provare%20LabManager%20gratuitamente%20per%20${PRICING.trialDays}%20giorni.`}
+                  href={TRIAL_ACCESS_APP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-gray-900 text-white text-sm font-semibold py-3 px-6 rounded-xl hover:bg-gray-700 transition-colors duration-200"

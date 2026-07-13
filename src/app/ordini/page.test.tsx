@@ -5,6 +5,7 @@ import OrdersPage, {
   metadata,
   ordersPageStructuredData,
 } from "@/app/ordini/page";
+import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
 vi.mock("next/image", () => ({
   default: ({
@@ -48,7 +49,7 @@ describe("orders page", () => {
       main
         .getAllByRole("link", { name: "Richiedi una prova gratuita" })
         .map((link) => link.getAttribute("href")),
-    ).toContain("/#contatti");
+    ).toContain(TRIAL_ACCESS_APP_HREF);
     expect(
       main.getByRole("link", { name: "Vedi come funziona" }),
     ).toHaveAttribute("href", "#flusso-ordine");
@@ -107,7 +108,7 @@ describe("orders page", () => {
     ).toBeInTheDocument();
   });
 
-  it("exports webpage, breadcrumb, and FAQ structured data", () => {
+  it("exports webpage and FAQ structured data without a breadcrumb", () => {
     expect(ordersPageStructuredData["@context"]).toBe("https://schema.org");
     const graph = ordersPageStructuredData["@graph"];
     type FaqNode = {
@@ -123,6 +124,10 @@ describe("orders page", () => {
       (node): node is FaqNode => node["@type"] === "FAQPage",
     );
 
+    expect(graph.map((node) => node["@type"])).toEqual([
+      "WebPage",
+      "FAQPage",
+    ]);
     expect(graph).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -131,12 +136,12 @@ describe("orders page", () => {
           name: "Gestione Ordini",
         }),
         expect.objectContaining({
-          "@type": "BreadcrumbList",
-        }),
-        expect.objectContaining({
           "@type": "FAQPage",
         }),
       ]),
+    );
+    expect(JSON.stringify(graph)).not.toMatch(
+      /BreadcrumbList|"Offer"|"offers"/,
     );
     expect(faqPage?.mainEntity).toEqual(
       expect.arrayContaining([

@@ -8,22 +8,25 @@ import { NEWSLETTER_ASSETS } from "@/data/responsive-images";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const BASE_URL = "https://labmanagergestionale.com";
+const PAGE_URL = `${BASE_URL}/newsletter`;
+const PAGE_TITLE = "Newsletter";
+const PAGE_DESCRIPTION =
+  "Iscriviti alla newsletter di LabManager per ricevere aggiornamenti sull'app, nuove funzionalità e disponibilità delle versioni Android e Windows.";
 
 export const metadata: Metadata = {
-  title: "Newsletter",
-  description:
-    "Iscriviti alla newsletter di LabManager per ricevere aggiornamenti sull'app, nuove funzionalità e disponibilità delle versioni Android e Windows.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
-    canonical: `${BASE_URL}/newsletter`,
+    canonical: PAGE_URL,
     languages: {
-      it: `${BASE_URL}/newsletter`,
+      it: PAGE_URL,
     },
   },
   openGraph: {
     title: "Newsletter | LabManager",
     description:
       "Ricevi aggiornamenti su LabManager, nuove funzionalità e disponibilità delle versioni Android e Windows.",
-    url: `${BASE_URL}/newsletter`,
+    url: PAGE_URL,
     images: [
       {
         url: `${BASE_URL}/images/og-image.png`,
@@ -43,6 +46,18 @@ export const metadata: Metadata = {
   },
 };
 
+export const newsletterPageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${PAGE_URL}#webpage`,
+  url: PAGE_URL,
+  name: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  inLanguage: "it-IT",
+  isPartOf: { "@id": `${BASE_URL}/#website` },
+  about: { "@id": `${BASE_URL}/#softwareapplication` },
+};
+
 const UPDATE_ITEMS = [
   "Aggiornamenti sulle nuove versioni dell'app",
   "Novita su funzioni per ricette, costi, etichette e magazzino",
@@ -54,6 +69,12 @@ export default function NewsletterPage() {
     <>
       <Navbar />
       <main className="pt-28">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(newsletterPageStructuredData),
+          }}
+        />
         <section className="px-6 pb-20" aria-labelledby="newsletter-page-title">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_440px] gap-10 lg:gap-14 items-center">
             <div className="animate-fade-in-up">
