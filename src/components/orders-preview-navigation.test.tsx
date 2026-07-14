@@ -14,11 +14,12 @@ describe("orders preview and navigation", () => {
     expect(screen.getByText("Nuovo modulo")).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
-        name: "Ordini e piano di lavoro collegati a produzione, cassa e laboratorio",
+        name: "Ordini e Piano di Lavoro",
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/cliente anagrafica o rapido/i)).toBeInTheDocument();
-    expect(screen.getByText(/residuo cliente e report/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/ordini cliente e interni/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/acconti e report operativi/i).length).toBeGreaterThan(0);
+    expect(document.body).not.toHaveTextContent(/cassa|fattur|contabil/i);
     expect(
       screen.getByRole("link", { name: "Scopri il modulo ordini" }),
     ).toHaveAttribute("href", "/ordini");

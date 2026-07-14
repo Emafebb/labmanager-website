@@ -21,7 +21,7 @@ describe("orders page", () => {
       absolute: "Gestione ordini e piano di lavoro | LabManager",
     });
     expect(metadata.description).toBe(
-      "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.",
+      "Organizza ordini, ritiri, consegne, acconti e produzione collegata, senza separare il banco dal laboratorio.",
     );
     expect(metadata.alternates?.canonical).toBe(
       "https://labmanagergestionale.com/ordini",
@@ -29,23 +29,34 @@ describe("orders page", () => {
     expect(metadata.openGraph?.url).toBe(
       "https://labmanagergestionale.com/ordini",
     );
+    expect(metadata.openGraph?.description).toBe(metadata.description);
+    expect(metadata.twitter?.description).toBe(metadata.description);
     expect(metadata.robots).toBeUndefined();
   });
 
-  it("renders the core product story and CTAs", () => {
+  it("renders only the approved product story and commercial CTA", () => {
     render(<OrdersPage />);
 
-    const main = within(screen.getByRole("main"));
+    const mainElement = screen.getByRole("main");
+    const main = within(mainElement);
 
     expect(
       main.getByRole("heading", {
         level: 1,
-        name: "Gestione ordini e piano di lavoro per pasticceria, panificio, gelateria e laboratorio",
+        name: "Gestione ordini e piano di lavoro",
       }),
     ).toBeInTheDocument();
-    expect(
-      main.getByText(/LabManager include un modulo Ordini e Piano di Lavoro/i),
-    ).toBeInTheDocument();
+    for (const approvedCapability of [
+      /ordini cliente/i,
+      /ordini interni/i,
+      /produzione collegata/i,
+      /ritiro/i,
+      /consegna/i,
+      /acconti/i,
+      /report operativi/i,
+    ]) {
+      expect(main.getAllByText(approvedCapability).length).toBeGreaterThan(0);
+    }
     expect(
       main.getByRole("link", { name: "Scopri i prezzi" }),
     ).toHaveAttribute("href", "/pricing");
@@ -53,64 +64,19 @@ describe("orders page", () => {
       main.queryByRole("link", { name: /prova gratuita/i }),
     ).not.toBeInTheDocument();
     expect(
-      main.getByRole("link", { name: "Vedi come funziona" }),
-    ).toHaveAttribute("href", "#flusso-ordine");
-    expect(
       main.queryByRole("link", { name: "Scarica LabManager" }),
     ).not.toBeInTheDocument();
+    expect(main.getByRole("link", { name: "Vedi come funziona" })).toHaveAttribute(
+      "href",
+      "#flusso-ordine",
+    );
+    expect(mainElement).not.toHaveTextContent(
+      /android|windows|offline|\bpwa\b|notifich|cassa|contabil|fattur|prima nota|export|excel|pdf/i,
+    );
   });
 
-  it("renders extractable sections for orders, production, payments, notifications, and reports", () => {
-    render(<OrdersPage />);
-
-    expect(
-      screen.getByRole("heading", {
-        name: "Come funziona la gestione ordini in LabManager?",
-      }),
-    ).toBeInTheDocument();
-    expect(screen.getByText(/numero ordine progressivo/i)).toBeInTheDocument();
-    expect(screen.getByText(/cliente anagrafica o rapido/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/ordini interni tra sedi/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/ricette o assemblaggi/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/totale ordini, incassato netto, residuo/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/badge in navigazione, chip NEW/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/export Excel o PDF/i).length).toBeGreaterThan(0);
-  });
-
-  it("renders FAQ answers that are safe for AI extraction", () => {
-    render(<OrdersPage />);
-
-    expect(
-      screen.getByRole("heading", {
-        name: "LabManager gestisce ordini con acconto e saldo?",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", {
-        name: "Gli ordini possono essere collegati alle ricette?",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", {
-        name: "Posso vedere gli ordini da preparare oggi?",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", {
-        name: "Il report ordini esporta Excel o PDF?",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", {
-        name: "La gestione pagamenti cliente è un modulo contabile?",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/non è un modulo contabile fiscale/i),
-    ).toBeInTheDocument();
-  });
-
-  it("exports webpage and FAQ structured data without a breadcrumb", () => {
+  it("exports visible webpage and FAQ data without prohibited commercial schema", () => {
+    const { container } = render(<OrdersPage />);
     expect(ordersPageStructuredData["@context"]).toBe("https://schema.org");
     const graph = ordersPageStructuredData["@graph"];
     type FaqNode = {
@@ -135,7 +101,7 @@ describe("orders page", () => {
         expect.objectContaining({
           "@type": "WebPage",
           "@id": "https://labmanagergestionale.com/ordini#webpage",
-          name: "Gestione Ordini",
+          name: "Gestione ordini e piano di lavoro",
         }),
         expect.objectContaining({
           "@type": "FAQPage",
@@ -143,32 +109,22 @@ describe("orders page", () => {
       ]),
     );
     expect(JSON.stringify(graph)).not.toMatch(
-      /BreadcrumbList|"Offer"|"offers"/,
+      /BreadcrumbList|"Offer"|"offers"|android|windows|offline|notific|cassa|contabil|fattur|prima nota|export|excel|pdf/i,
     );
-    expect(faqPage?.mainEntity).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          name: "LabManager gestisce ordini con acconto e saldo?",
-          acceptedAnswer: expect.objectContaining({
-            text: expect.stringMatching(/acconto, residuo e stato pagamento/i),
-          }),
-        }),
-        expect.objectContaining({
-          name: "Gli ordini possono essere collegati alle ricette?",
-        }),
-        expect.objectContaining({
-          name: "Posso vedere gli ordini da preparare oggi?",
-        }),
-        expect.objectContaining({
-          name: "Il report ordini esporta Excel o PDF?",
-        }),
-        expect.objectContaining({
-          name: "La gestione pagamenti cliente è un modulo contabile?",
-          acceptedAnswer: expect.objectContaining({
-            text: expect.stringMatching(/non è un modulo contabile fiscale/i),
-          }),
-        }),
-      ]),
+
+    const faqSection = container.querySelector(
+      'section[aria-labelledby="orders-faq-heading"]',
     );
+    const visibleFaqs = Array.from(
+      faqSection?.querySelectorAll("article") ?? [],
+    ).map((article) => ({
+      name: article.querySelector("h3")?.textContent,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: article.querySelector("p")?.textContent,
+      },
+      "@type": "Question",
+    }));
+    expect(faqPage?.mainEntity).toEqual(visibleFaqs);
   });
 });

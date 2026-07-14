@@ -4,8 +4,6 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import OrdersPreview from "@/components/OrdersPreview";
 import Warehouse from "@/components/Warehouse";
-import WhyLabManager from "@/components/WhyLabManager";
-import Platforms from "@/components/Platforms";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -35,8 +33,6 @@ export default function Home() {
         <Features />
         <OrdersPreview />
         <Warehouse />
-        <WhyLabManager />
-        <Platforms />
         <ContactForm />
         <FAQ />
       </main>

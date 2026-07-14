@@ -35,7 +35,7 @@ describe("responsive static asset contract", () => {
     }
   });
 
-  it("uses mutually exclusive Android and desktop picture sources for the hero", () => {
+  it("uses mutually exclusive mobile and desktop picture sources for the hero", () => {
     const { container } = render(<Hero />);
     const picture = container.querySelector("picture[data-hero-lcp]");
 
@@ -63,6 +63,10 @@ describe("responsive static asset contract", () => {
     expect(picture?.querySelector("img")).toHaveAttribute(
       "sizes",
       HERO_ASSETS.sizes,
+    );
+    expect(picture?.querySelector("img")).toHaveAttribute(
+      "alt",
+      "Anteprima di LabManager su telefono e desktop",
     );
   });
 

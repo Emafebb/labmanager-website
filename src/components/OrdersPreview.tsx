@@ -4,18 +4,18 @@ import { ArrowRight, CalendarDays, PackageCheck, Wallet } from "lucide-react";
 const highlights = [
   {
     icon: CalendarDays,
-    title: "Ordini chiari",
-    text: "Cliente anagrafica o rapido, sede, data evasione, ritiro o consegna.",
+    title: "Ordini cliente e interni",
+    text: "Organizza richieste cliente e ordini interni, con ritiro o consegna.",
   },
   {
     icon: PackageCheck,
     title: "Produzione collegata",
-    text: "Ricette, assemblaggi, lotti e piano di lavoro restano nello stesso flusso.",
+    text: "Collega il lavoro di produzione agli ordini e al piano di lavoro.",
   },
   {
     icon: Wallet,
-    title: "Incassi sotto controllo",
-    text: "Acconti, saldo, residuo cliente e report per seguire consegne e pagamenti.",
+    title: "Acconti e report operativi",
+    text: "Segui acconti, saldi e report operativi legati agli ordini.",
   },
 ];
 
@@ -43,13 +43,12 @@ export default function OrdersPreview() {
               id="orders-preview-heading"
               className="mb-4 text-3xl font-bold text-foreground sm:text-4xl"
             >
-              Ordini e piano di lavoro collegati a produzione, cassa e
-              laboratorio
+              Ordini e Piano di Lavoro
             </h2>
 
             <p className="mb-7 text-lg leading-relaxed text-gray-600">
-              Gestisci ordini cliente, ritiri, consegne, acconti e report senza
-              separare il lavoro del banco da quello del laboratorio.
+              Organizza ordini cliente e interni, produzione collegata, ritiro
+              e consegna, acconti e report operativi.
             </p>
 
             <Link

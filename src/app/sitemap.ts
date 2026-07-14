@@ -8,13 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: "2026-07-13",
+      lastModified: "2026-07-14",
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${BASE_URL}/ordini`,
-      lastModified: "2026-06-15",
+      lastModified: "2026-07-14",
       changeFrequency: "monthly",
       priority: 0.85,
     },

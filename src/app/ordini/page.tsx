@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  BellRing,
+  BarChart3,
   CalendarDays,
   CheckCircle2,
   ClipboardList,
   Clock3,
-  FileSpreadsheet,
   ListChecks,
   PackageCheck,
-  ReceiptText,
+  Truck,
   Wallet,
 } from "lucide-react";
 import Footer from "@/components/Footer";
@@ -20,10 +19,10 @@ import { getCommercialCta } from "@/data/trial-access-cta-inventory";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
-const PAGE_TITLE = "Gestione Ordini";
+const PAGE_TITLE = "Gestione ordini e piano di lavoro";
 const PAGE_METADATA_TITLE = "Gestione ordini e piano di lavoro | LabManager";
 const PAGE_DESCRIPTION =
-  "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.";
+  "Organizza ordini, ritiri, consegne, acconti e produzione collegata, senza separare il banco dal laboratorio.";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_METADATA_TITLE },
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: PAGE_TITLE,
+    title: PAGE_METADATA_TITLE,
     description: PAGE_DESCRIPTION,
     url: PAGE_URL,
     siteName: "LabManager",
@@ -47,13 +46,13 @@ export const metadata: Metadata = {
         secureUrl: `${BASE_URL}/images/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "LabManager - Gestione ordini cliente, produzione e report",
+        alt: "LabManager - Gestione ordini e piano di lavoro",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: PAGE_TITLE,
+    title: PAGE_METADATA_TITLE,
     description: PAGE_DESCRIPTION,
     images: [`${BASE_URL}/images/og-image.png`],
   },
@@ -62,57 +61,52 @@ export const metadata: Metadata = {
 const ordersPricingCta = getCommercialCta("orders-pricing");
 
 const flowItems = [
-  "Cliente anagrafica o rapido, telefono, sede, data evasione e fascia oraria.",
-  "Ritiro o consegna, con numero ordine progressivo.",
-  "Pi\u00f9 righe nello stesso ordine, ognuna con note prodotto, note laboratorio, allergie dichiarate, dedica, colori, decorazioni e candele.",
-  "Ordini cliente e ordini interni tra sedi, letti per giorno, settimana, mese o stato.",
+  "Ordini cliente organizzati nel piano di lavoro.",
+  "Ordini interni collegati al lavoro del laboratorio.",
+  "Ritiro o consegna associati a ogni ordine.",
+  "Acconti, saldi e report operativi per seguire il lavoro.",
 ];
 
 const capabilityCards = [
   {
     icon: CalendarDays,
-    title: "Ordini e agenda di lavoro",
-    text: "Ogni ordine porta con s\u00e9 cliente, data evasione, ritiro o consegna, sede e righe operative. Il laboratorio vede cosa va preparato oggi e cosa sta arrivando nei giorni successivi.",
+    title: "Ordini cliente e interni",
+    text: "Riunisci ordini cliente e ordini interni in un piano di lavoro condiviso con il laboratorio.",
   },
   {
     icon: PackageCheck,
     title: "Produzione collegata",
-    text: "Le righe ordine possono essere collegate a ricette o assemblaggi. Quando la produzione viene registrata, il lotto resta collegato alla richiesta cliente.",
+    text: "Collega gli ordini alla produzione per sapere cosa preparare e seguire l'avanzamento del lavoro.",
+  },
+  {
+    icon: Truck,
+    title: "Ritiro e consegna",
+    text: "Indica per ogni ordine se è previsto il ritiro oppure la consegna e organizzalo nel piano di lavoro.",
   },
   {
     icon: Wallet,
-    title: "Acconti, saldo e residuo",
-    text: "L'ordine pu\u00f2 partire non pagato, con acconto o saldato. La vista cliente mostra totale ordini, incassato netto, residuo e giorni aperto.",
+    title: "Acconti e saldi",
+    text: "Registra acconti e saldi come informazioni operative collegate all'ordine.",
   },
   {
-    icon: BellRing,
-    title: "Notifiche operative",
-    text: "Su Android arrivano notifiche push. Su Windows sono disponibili badge in navigazione, chip NEW sulle righe ordine e un suono leggero.",
-  },
-  {
-    icon: FileSpreadsheet,
-    title: "Report ed export",
-    text: "Il Report Ordini include tab Prodotti, Clienti e Sedi, KPI operativi, riepiloghi cliente ed export Excel o PDF.",
-  },
-  {
-    icon: ReceiptText,
-    title: "Cassa collegata all'ordine",
-    text: "La vendita generata dall'ordine conserva numero ordine, cliente e sede. La dashboard cassa legge gli incassi reali, non solo il totale ordine.",
+    icon: BarChart3,
+    title: "Report operativi",
+    text: "Consulta report operativi sugli ordini per controllare il lavoro completato e quello ancora da organizzare.",
   },
 ];
 
 const workSteps = [
   {
-    title: "Inserisci la richiesta",
-    text: "Registra cliente, sede, data evasione, orario, ritiro o consegna e tutte le righe prodotto richieste.",
+    title: "Registra l'ordine",
+    text: "Inserisci un ordine cliente o interno e indica se prevede ritiro o consegna.",
   },
   {
-    title: "Prepara il laboratorio",
-    text: "Collega le righe a ricette o assemblaggi, pianifica il lavoro settimanale e mantieni note e allergie visibili.",
+    title: "Collega la produzione",
+    text: "Trasforma l'ordine in lavoro da preparare e segui la produzione collegata.",
   },
   {
-    title: "Chiudi consegna e incasso",
-    text: "Alla consegna puoi incassare il saldo, lasciare un residuo aperto o generare la vendita collegata all'ordine.",
+    title: "Segui la chiusura",
+    text: "Organizza ritiro o consegna e aggiorna acconti e saldi dell'ordine.",
   },
 ];
 
@@ -126,12 +120,12 @@ const workPlanPreview = [
   {
     time: "08:00",
     title: "Basi e preparazioni",
-    text: "Le righe ordine collegate a ricette diventano attivit\u00e0 per il laboratorio.",
+    text: "Gli ordini collegati alla produzione diventano attività per il laboratorio.",
   },
   {
     time: "11:30",
     title: "Ordini cliente",
-    text: "Priorit\u00e0, fascia oraria, note prodotto e allergie restano visibili mentre lavori.",
+    text: "Il piano di lavoro mostra quali ordini cliente devono essere preparati.",
   },
   {
     time: "15:00",
@@ -142,29 +136,24 @@ const workPlanPreview = [
 
 const faqs = [
   {
-    question: "LabManager gestisce ordini con acconto e saldo?",
+    question: "Posso gestire ordini cliente e ordini interni?",
     answer:
-      "S\u00ec. Un ordine pu\u00f2 essere non pagato, con acconto o saldato. Il dettaglio mostra acconto, residuo e stato pagamento, cos\u00ec sai subito cosa resta da incassare.",
+      "Sì. LabManager organizza sia gli ordini cliente sia gli ordini interni e li inserisce nel piano di lavoro del laboratorio.",
   },
   {
-    question: "Gli ordini possono essere collegati alle ricette?",
+    question: "Come si collega la produzione agli ordini?",
     answer:
-      "S\u00ec. Le righe ordine possono essere collegate a ricette o assemblaggi gi\u00e0 presenti in LabManager, riducendo la riscrittura tra richiesta cliente e produzione.",
+      "Gli ordini possono essere collegati alla produzione, così il laboratorio vede cosa preparare e può seguirne l'avanzamento.",
   },
   {
-    question: "Posso vedere gli ordini da preparare oggi?",
+    question: "Posso organizzare ritiro e consegna?",
     answer:
-      "S\u00ec. Le viste per giorno, settimana, mese e stato aiutano a distinguere cosa va preparato oggi, cosa \u00e8 pronto, cosa \u00e8 in ritardo e cosa deve essere ritirato o consegnato.",
+      "Sì. Ogni ordine può indicare ritiro o consegna, in modo che il piano di lavoro rifletta come deve essere completato.",
   },
   {
-    question: "Il report ordini esporta Excel o PDF?",
+    question: "Come vengono gestiti acconti e report?",
     answer:
-      "S\u00ec. Il Report Ordini permette export Excel o PDF con clienti, prodotti, sedi, righe ordine, note operative, acconti e residui quando disponibili.",
-  },
-  {
-    question: "La gestione pagamenti cliente \u00e8 un modulo contabile?",
-    answer:
-      "No. \u00c8 una vista operativa sugli incassi degli ordini: mostra totale ordini, incassato netto, residuo e giorni aperto. Non \u00e8 un modulo contabile fiscale, non crea fatture, prima nota o credito cliente.",
+      "Acconti e saldi restano informazioni operative dell'ordine. I report operativi aiutano a controllare il lavoro completato e quello ancora da organizzare.",
   },
 ];
 
@@ -223,21 +212,16 @@ export default function OrdersPage() {
                 id="orders-heading"
                 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 text-pretty sm:text-5xl lg:text-6xl"
               >
-                Gestione ordini e piano di lavoro per pasticceria, panificio,
-                gelateria e laboratorio
+                Gestione ordini e piano di lavoro
               </h1>
 
               <p className="mb-6 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
-                LabManager include un modulo Ordini e Piano di Lavoro per
-                trasformare una richiesta cliente in attivit&agrave; di
-                laboratorio, produzione collegata, consegna o ritiro e incasso.
+                {PAGE_DESCRIPTION}
               </p>
 
               <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-600">
-                &Egrave; pensato per chi gestisce ordini clienti, ordini interni
-                tra sedi, acconti, saldi, note operative, allergie dichiarate e
-                report giornalieri senza separare banco, laboratorio e
-                amministrazione.
+                Riunisci ordini cliente e interni, produzione collegata, ritiro
+                e consegna, acconti, saldi e report operativi in un solo flusso.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -275,9 +259,8 @@ export default function OrdersPage() {
 
                 <p className="mt-4 text-sm leading-relaxed text-gray-600">
                   Il piano di lavoro traduce ogni ordine in attivit&agrave;
-                  operative: priorit&agrave;, fascia oraria, sede, stato di
-                  produzione, note laboratorio e collegamento alla richiesta
-                  cliente o interna.
+                  operative e mantiene collegati ordine cliente o interno,
+                  produzione, ritiro o consegna.
                 </p>
 
                 <div className="mt-6 grid grid-cols-3 gap-3">
@@ -343,7 +326,7 @@ export default function OrdersPage() {
               </h2>
               <p className="mx-auto max-w-2xl text-lg text-gray-600">
                 L&apos;ordine non resta isolato: accompagna il lavoro dal banco al
-                laboratorio, fino alla consegna e al controllo degli incassi.
+                laboratorio, fino al ritiro o alla consegna.
               </p>
             </div>
 
@@ -396,17 +379,17 @@ export default function OrdersPage() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-12 text-center">
               <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
-                Produzione, cassa e report
+                Ordini e operatività
               </p>
               <h2
                 id="orders-capabilities-heading"
                 className="mb-4 text-3xl font-bold text-gray-900 text-pretty sm:text-4xl"
               >
-                Dal numero ordine al report di giornata
+                Tutto il flusso ordini in un solo piano di lavoro
               </h2>
               <p className="mx-auto max-w-2xl text-lg text-gray-600">
-                Il gestionale ordini pasticceria di LabManager collega richieste
-                cliente, lavorazioni, incassi e riepiloghi senza duplicare dati.
+                LabManager collega ordini cliente e interni, produzione,
+                ritiro o consegna, acconti e report operativi.
               </p>
             </div>
 

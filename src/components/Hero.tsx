@@ -1,4 +1,4 @@
-import { ArrowRight, Monitor, WifiOff, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { preload } from "react-dom";
 import {
   MAGAZZINO_CANONICAL_COPY,
@@ -50,33 +50,22 @@ export default function Hero() {
           <div className="animate-fade-in-up lg:flex-1 text-center lg:text-left mb-16 lg:mb-0 max-w-2xl mx-auto lg:mx-0">
             <h1
               id="hero-heading"
-              className="font-display font-bold leading-[1.08] mb-4 text-foreground tracking-tight"
+              className="gradient-text mb-4 text-[2.5rem] font-bold leading-[1.08] tracking-tight text-foreground sm:text-[3.25rem] xl:text-[3.75rem]"
             >
-              <span className="block text-[2.5rem] sm:text-[3.25rem] xl:text-[3.75rem] gradient-text">
-                Gestionale Pasticceria,
-              </span>
-              <span className="block text-[1.875rem] sm:text-[2.75rem] xl:text-[3.25rem]">
-                Panificio, Gelateria e Ristorante
-              </span>
+              Il gestionale per laboratori artigianali alimentari
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-6 leading-relaxed font-normal">
-              Gestisci ricette, costi, etichette alimentari e produzione del tuo laboratorio di pasticceria, panificio, gelateria o ristorante.
-              <span className="text-gray-700 font-medium"> Tutto in un&apos;unica app</span>,
-              su Android e Windows.
+              Ricette, food cost, produzione, etichette, magazzino e ordini:
+              tutto ciò che serve per organizzare il lavoro del laboratorio.
             </p>
 
-            {/* AI-extractable definition block */}
             <div className="bg-white/60 border border-gray-200 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
               <p
                 className="text-sm sm:text-[15px] text-gray-700 leading-relaxed"
                 data-magazzino-claim-ids={MAGAZZINO_CLAIM_ID_ATTRIBUTE}
               >
-                <strong>LabManager</strong> è il gestionale di pasticceria, panificio, gelateria e ristorante che permette di gestire ricette, calcolare
-                costi e margini e creare etichette alimentari con allergeni. {MAGAZZINO_CANONICAL_COPY}{" "}
-                Disponibile su{" "}
-                <strong>Android e Windows</strong>, funziona completamente{" "}
-                <strong>offline</strong> e si sincronizza automaticamente con il cloud.
+                <strong>Magazzino.</strong> {MAGAZZINO_CANONICAL_COPY}
               </p>
             </div>
 
@@ -97,22 +86,6 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Feature pills */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-              {[
-                { icon: Monitor, label: "Android + Windows" },
-                { icon: WifiOff, label: "Funziona Offline" },
-                { icon: Shield, label: "Dati sicuri su Cloud" },
-              ].map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-gray-100 shadow-sm text-sm text-gray-600"
-                >
-                  <Icon size={15} className="text-icon" />
-                  <span>{label}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right column - Device mockups */}
@@ -121,7 +94,7 @@ export default function Hero() {
             style={{ animationDelay: "0.15s" }}
           >
             <div className="relative w-full max-w-[540px] pb-0 sm:pb-20">
-              {/* Android is the LCP artwork below 640px; desktop is the LCP artwork above it. */}
+              {/* The phone artwork is the LCP below 640px; desktop is the LCP above it. */}
               <div className="relative z-20 hero-device-desktop mx-auto max-w-[260px] sm:max-w-none sm:mx-6">
                 <div className="bg-gray-900 rounded-3xl sm:rounded-xl p-1.5 shadow-2xl overflow-hidden">
                   <picture data-hero-lcp>
@@ -153,7 +126,7 @@ export default function Hero() {
                       src={HERO_ASSETS.desktop.fallbackSrc}
                       srcSet={HERO_ASSETS.desktop.webpSrcSet}
                       sizes={HERO_ASSETS.sizes}
-                      alt="LabManager su Android e desktop con dashboard, ricette e costi"
+                      alt="Anteprima di LabManager su telefono e desktop"
                       width={1440}
                       height={857}
                       className="w-full h-auto rounded-[1.25rem] sm:rounded-lg"

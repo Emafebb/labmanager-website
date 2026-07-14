@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, Sparkles, MessageCircle } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/data/support-links";
 
 const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
@@ -48,19 +48,12 @@ export default function ContactForm() {
           </div>
 
           <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Hai domande sul gestionale? <span className="text-primary">Scrivici</span>
+            Hai domande? <span className="text-primary">Parla con noi</span>
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hai domande sul gestionale per la tua pasticceria? Scopri di più sulle{" "}
-            <a href="#funzionalita" className="text-primary underline hover:text-primary-dark">
-              funzionalità
-            </a>{" "}
-            o sulle{" "}
-            <a href="#piattaforme" className="text-primary underline hover:text-primary-dark">
-              piattaforme disponibili
-            </a>?
-            Il nostro team è pronto ad aiutarti. Compila il form e ti risponderemo al più presto.
+            Scrivici per domande su LabManager, sul piano o sul suo utilizzo nel
+            tuo laboratorio. Puoi compilare il form o contattarci su WhatsApp.
           </p>
         </div>
 
@@ -68,15 +61,15 @@ export default function ContactForm() {
           <div className="space-y-6">
             <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Perché contattarci?
+                Come possiamo aiutarti?
               </h3>
 
               <ul className="space-y-4">
                 {[
-                  { icon: Sparkles, text: "Richiedi una demo" },
-                  { icon: Mail, text: "Informazioni generali sull'app" },
-                  { icon: AlertCircle, text: "Segnala un problema tecnico" },
-                  { icon: MessageSquare, text: "Suggerisci una funzionalità" },
+                  { icon: Mail, text: "Informazioni su LabManager" },
+                  { icon: MessageSquare, text: "Domande sul piano" },
+                  { icon: AlertCircle, text: "Assistenza sull'utilizzo" },
+                  { icon: MessageSquare, text: "Suggerimenti e feedback" },
                 ].map((item) => (
                   <li key={item.text} className="flex items-center gap-4">
                     <div className="flex-shrink-0 p-2.5 rounded-lg bg-icon/10">
@@ -89,14 +82,11 @@ export default function ContactForm() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Altre informazioni</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">WhatsApp</h3>
               <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                Solitamente rispondiamo entro <strong className="text-gray-900">24 ore</strong> nei giorni lavorativi.
+                Preferisci un messaggio diretto? Usa WhatsApp per parlare con
+                noi di LabManager.
               </p>
-              <div className="flex items-center gap-2 text-sm text-icon font-semibold mb-5">
-                <div className="w-2 h-2 bg-green-500 rounded-full" />
-                <span>Team disponibile</span>
-              </div>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"

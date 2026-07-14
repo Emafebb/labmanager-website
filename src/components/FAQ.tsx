@@ -7,118 +7,37 @@ import {
   MAGAZZINO_CLAIM_ID_ATTRIBUTE,
 } from "@/data/magazzino-capability-matrix";
 
-const LINK_CLASS = "text-primary underline hover:text-primary-dark";
-
 const faqs = [
   {
-    question: "Qual è il miglior software gestionale per pasticceria?",
+    question: "A chi è rivolto LabManager?",
     answer:
-      "LabManager è un software gestionale completo progettato per pasticcerie, panifici, ristoranti e laboratori artigianali alimentari. Permette di gestire ricette e assemblaggi, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali e bilanciare la composizione delle preparazioni. Disponibile su Android e Windows, funziona anche offline. Prova gratuita di 14 giorni.",
+      "LabManager è pensato per laboratori artigianali alimentari, in particolare pasticcerie, panifici e gelaterie.",
   },
   {
-    question: "Quale app usare per gestire una pasticceria?",
+    question: "Cosa include il piano LabManager?",
     answer:
-      `LabManager è l'app per la gestione completa del laboratorio di pasticceria. Disponibile su Android e Windows, consente di: creare e organizzare ricette con ingredienti e procedimenti, calcolare automaticamente costi e margini di ogni preparazione, generare etichette alimentari e tabelle nutrizionali, monitorare produzione e vendite. Funziona completamente offline con sincronizzazione cloud automatica. <a href='#funzionalita' class='${LINK_CLASS}'>Scopri tutte le funzionalità</a>.`,
+      "Il piano include Ricette e Food Cost, Produzione ed Etichette, Magazzino, Ordini e Piano di Lavoro.",
   },
   {
-    question: "Esistono software gratuiti per gestire una pasticceria?",
+    question: "Come funziona la prova gratuita?",
     answer:
-      "LabManager offre una prova gratuita di 14 giorni. È un gestionale completo per pasticceria che include gestione ricette, calcolo costi, etichette con allergeni, tabelle nutrizionali e bilanciamento composizione. Funziona su Android e Windows, anche senza connessione internet. Dopo il trial puoi scegliere il piano mensile (EUR 44,99/mese) o annuale (EUR 480/anno) direttamente dall'app.",
+      "La prova dura 14 giorni e non richiede una carta. Registrati nella web app e accedi: la prova inizia al primo login riuscito.",
   },
   {
-    question: "Come calcolare il food cost in pasticceria?",
+    question: "Quanto costa LabManager e come funziona la disdetta?",
     answer:
-      "LabManager calcola automaticamente il food cost di ogni ricetta sommando il costo degli ingredienti per le quantità effettive utilizzate, considerando gli scarti. Il sistema aggiorna i costi in tempo reale alla variazione dei prezzi di acquisto. Puoi analizzare margini di guadagno, confrontare versioni diverse della stessa ricetta e monitorare l'andamento dei costi nel tempo.",
-  },
-  {
-    question: "Come creare etichette alimentari per prodotti di pasticceria?",
-    answer:
-      "Con LabManager puoi generare automaticamente etichette alimentari. Il software calcola la lista ingredienti in ordine decrescente, evidenzia gli allergeni in grassetto e genera la tabella nutrizionale completa. Le etichette sono pronte per la stampa direttamente dall'app, su Android o Windows.",
-  },
-  {
-    question: "Come posso provare l'app?",
-    answer:
-      "Registrati nella web app, verifica il tuo indirizzo email e accedi: la prova completa di 14 giorni, senza carta, inizia al primo login riuscito. Dopo il periodo di prova puoi attivare il tuo abbonamento direttamente dall'app.",
-  },
-  {
-    question: "Quanto costa LabManager?",
-    answer:
-      "LabManager è disponibile con un piano mensile a EUR 44,99/mese o un piano annuale a EUR 480/anno (pari a circa EUR 40/mese). Prima di scegliere puoi provare gratis per 14 giorni. L'attivazione dell'abbonamento avviene direttamente dall'app.",
-  },
-  {
-    question: "Funziona senza internet?",
-    answer:
-      `Sì, LabManager è progettato per funzionare offline: ricette, ingredienti, costi, etichette e tutti gli strumenti sono sempre disponibili anche senza connessione. Scopri tutte le <a href='#funzionalita' class='${LINK_CLASS}'>funzionalità disponibili</a>. La connessione è richiesta solo per la registrazione, il login e la sincronizzazione dei dati tra dispositivi. Quando torni online, tutto si aggiorna automaticamente.`,
-  },
-  {
-    question: "Su quanti dispositivi posso usarlo?",
-    answer:
-      "Puoi usare LabManager contemporaneamente su 2 dispositivi. Non si tratta di un limite ai dispositivi che puoi usare nel tempo, ma del numero di accessi simultanei inclusi. I dati si sincronizzano in tempo reale tra i dispositivi. Se hai bisogno di più di 2 dispositivi contemporaneamente, contattaci e troveremo la soluzione adatta a te.",
-  },
-  {
-    question: "Posso esportare ricette e documenti?",
-    answer:
-      `Sì, puoi esportare ricette in PDF ed Excel, incluse tabelle nutrizionali, etichette e report. Vedi la sezione <a href='#funzionalita' class='${LINK_CLASS}'>Funzionalità</a> per maggiori dettagli. I documenti sono pronti per la stampa.`,
-  },
-  {
-    question: "L'app genera etichette alimentari?",
-    answer:
-      "Sì, LabManager genera etichette alimentari con lista ingredienti, allergeni evidenziati e tabella nutrizionale. Le etichette sono pensate come supporto al tuo lavoro: verifica sempre la correttezza dei dati prima dell'utilizzo, in quanto non ci assumiamo responsabilità per eventuali errori.",
-  },
-  {
-    question: "Posso usarlo con il mio team?",
-    answer:
-      "Sì, puoi aggiungere i tuoi dipendenti con accesso tramite PIN e ruoli diversi (pasticcere, banconista, ecc.). Le ricette e gli assemblaggi possono essere condivisi tra gli utenti del team.",
-  },
-  {
-    question: "Sarà disponibile per iPhone/iPad?",
-    answer:
-      "Attualmente LabManager è disponibile per Android e Windows. Accedi alla web app per registrarti e usare LabManager sulle piattaforme disponibili. Il supporto iOS è in fase di valutazione per il futuro.",
-  },
-  {
-    question: "I miei dati sono al sicuro?",
-    answer:
-      "Assolutamente sì. I tuoi dati sono protetti con crittografia e salvati su server cloud sicuri. Ogni account è isolato: nessun altro utente può vedere le tue ricette o i tuoi dati. Anche senza connessione internet, tutto resta salvato sul tuo dispositivo e si sincronizza automaticamente appena torni online.",
-  },
-  {
-    question: "Come funziona il calcolo costi ricetta in LabManager?",
-    answer:
-      "LabManager calcola automaticamente il costo di ogni ricetta sommando il prezzo degli ingredienti utilizzati, tenendo conto delle quantità esatte e degli scarti. Il sistema aggiorna i costi in tempo reale quando modifichi i prezzi di acquisto. Puoi monitorare i margini di guadagno e analizzare lo storico delle variazioni.",
+      "Il piano costa €44,99 al mese oppure €480 all'anno. Puoi disdire quando vuoi; in caso di cancellazione a fine periodo, l'accesso resta attivo fino alla scadenza prevista.",
   },
   {
     question: "Come gestisce il magazzino LabManager?",
     answer: MAGAZZINO_CANONICAL_COPY,
   },
   {
-    question: "LabManager è adatto anche per ristoranti e cucine?",
+    question: "Come posso contattare LabManager?",
     answer:
-      "Sì, LabManager è pensato per qualsiasi attività alimentare: pasticcerie, panifici, ristoranti, pizzerie e laboratori artigianali. Le funzionalità di gestione ricette, calcolo costi, etichette con allergeni e tabelle nutrizionali sono utili in ogni cucina professionale. Se lavori nella ristorazione, puoi gestire i tuoi piatti esattamente come un pasticcere gestisce le sue ricette.",
+      "Puoi usare il form nella sezione Contatti oppure scriverci su WhatsApp.",
   },
-  {
-    question: "Posso tracciare i lotti di produzione?",
-    answer:
-      "Sì, LabManager consente di gestire i lotti di produzione associando ogni lavorazione agli ingredienti utilizzati con numero di lotto e data di scadenza. Questo garantisce piena tracciabilità della produzione per la sicurezza alimentare e il rispetto delle normative.",
-  },
-  {
-    question: "Esistono gestionali gratuiti per pasticceria, panificio, gelateria o ristorante?",
-    answer:
-      "LabManager offre una prova gratuita di 14 giorni. È un gestionale completo per pasticcerie, panifici e ristoranti che include gestione ricette, calcolo costi e margini, etichette alimentari con allergeni e tabelle nutrizionali. Funziona su Android e Windows, anche offline. Dopo il trial puoi scegliere il piano mensile (EUR 44,99/mese) o annuale (EUR 480/anno).",
-  },
-  {
-    question: "Come scegliere il software gestionale giusto per il mio laboratorio?",
-    answer:
-      "Dipende dal tipo di attività. Un buon gestionale per laboratorio alimentare deve coprire ricette e semilavorati, calcolo automatico dei costi, etichette con allergeni conformi alla normativa e funzionamento offline. LabManager è progettato specificamente per pasticcerie, panifici e ristoranti: tutte queste funzionalità sono integrate in un'unica app su Android e Windows.",
-  },
-  {
-    question: "LabManager funziona anche per panifici e ristoranti?",
-    answer:
-      `Sì, LabManager è pensato per qualsiasi laboratorio alimentare professionale: pasticcerie, panifici, ristoranti e pizzerie. Gestione ricette, calcolo food cost ed etichette con allergeni funzionano allo stesso modo per tutte le tipologie di attività. <a href='#contatti' class='${LINK_CLASS}'>Contattaci</a> per scoprire come adattarlo alla tua realtà.`,
-  },
-];
-
-function stripHtmlTags(html: string): string {
-  return html.replace(/<[^>]*>/g, "");
-}
+] as const;
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -135,29 +54,29 @@ export default function FAQ() {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: stripHtmlTags(faq.answer),
+        text: faq.answer,
       },
     })),
   };
 
   return (
-    <section id="faq" className="px-6 py-24 bg-white" aria-labelledby="faq-heading">
+    <section id="faq" className="bg-white px-6 py-24" aria-labelledby="faq-heading">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
+      <div className="mx-auto max-w-3xl">
+        <div className="mb-14 text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-primary">
             <HelpCircle size={16} aria-hidden="true" />
             <span>FAQ</span>
           </div>
 
-          <h2 id="faq-heading" className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5">
-            Domande Frequenti
+          <h2 id="faq-heading" className="mb-5 text-4xl font-bold text-gray-900 sm:text-5xl">
+            Domande frequenti
           </h2>
 
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg leading-relaxed text-gray-600">
             Trova risposta alle domande più comuni su LabManager.
           </p>
         </div>
@@ -169,7 +88,7 @@ export default function FAQ() {
             return (
               <div
                 key={faq.question}
-                className="bg-white rounded-xl border border-gray-200 shadow-sm"
+                className="rounded-xl border border-gray-200 bg-white shadow-sm"
               >
                 <button
                   id={`faq-question-${index}`}
@@ -181,9 +100,9 @@ export default function FAQ() {
                       ? MAGAZZINO_CLAIM_ID_ATTRIBUTE
                       : undefined
                   }
-                  className="touch-target w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
+                  className="touch-target flex w-full items-center justify-between gap-4 rounded-xl p-6 text-left transition-colors duration-200 hover:bg-gray-50"
                 >
-                  <h3 className="font-semibold text-gray-900 text-base">
+                  <h3 className="text-base font-semibold text-gray-900">
                     {faq.question}
                   </h3>
                   <ChevronDown
@@ -203,10 +122,9 @@ export default function FAQ() {
                     isOpen ? "max-h-[600px]" : "max-h-0"
                   }`}
                 >
-                  <div
-                    className="px-6 pb-6 text-gray-600 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: faq.answer }}
-                  />
+                  <p className="px-6 pb-6 leading-relaxed text-gray-600">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             );

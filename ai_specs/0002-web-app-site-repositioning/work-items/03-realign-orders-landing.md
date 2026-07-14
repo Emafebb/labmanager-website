@@ -13,15 +13,15 @@ Riposizionare `/ordini` come landing SEO dedicata a ordini cliente e interni, pr
 - Questo Work Item prepara e verifica modifiche locali; non autorizza deploy o pubblicazione.
 
 ## Acceptance criteria
-- [ ] La pagina descrive soltanto ordini cliente/interni, produzione collegata, ritiro/consegna, acconti e report operativi entro i confini del requisito 14.
-- [ ] Notifiche Android/Windows, claim di cassa o contabilità, fatturazione e altre promesse escluse non compaiono nel DOM, nelle FAQ o nei dati strutturati.
-- [ ] L'unica CTA commerciale della route è “Scopri i prezzi” e punta a `/pricing`; la pagina non offre prova, download o accesso nativo.
-- [ ] Il title è esattamente “Gestione ordini e piano di lavoro | LabManager” e la description è esattamente quella del requisito 26.
-- [ ] Canonical, Open Graph URL, Open Graph description e Twitter sono coerenti con `/ordini` e con il copy approvato.
-- [ ] WebPage e l'eventuale FAQPage derivano da contenuto visibile e non contengono BreadcrumbList invisibili, `Offer` o dettagli più ampi della pagina.
-- [ ] Test dedicati verificano metadata, CTA, confini funzionali, assenza dei claim proibiti e coerenza tra contenuto visibile e JSON-LD.
-- [ ] `npx vitest run`, `npm run lint`, `npm run build` e `npx opennextjs-cloudflare build` passano.
-- [ ] Dopo build o preview, i title HTML di Home, Ordini e Prezzi corrispondono esattamente alla Spec, senza doppio suffisso `| LabManager`.
+- [x] La pagina descrive soltanto ordini cliente/interni, produzione collegata, ritiro/consegna, acconti e report operativi entro i confini del requisito 14.
+- [x] Notifiche Android/Windows, claim di cassa o contabilità, fatturazione e altre promesse escluse non compaiono nel DOM, nelle FAQ o nei dati strutturati.
+- [x] L'unica CTA commerciale della route è “Scopri i prezzi” e punta a `/pricing`; la pagina non offre prova, download o accesso nativo.
+- [x] Il title è esattamente “Gestione ordini e piano di lavoro | LabManager” e la description è esattamente quella del requisito 26.
+- [x] Canonical, Open Graph URL, Open Graph description e Twitter sono coerenti con `/ordini` e con il copy approvato.
+- [x] WebPage e l'eventuale FAQPage derivano da contenuto visibile e non contengono BreadcrumbList invisibili, `Offer` o dettagli più ampi della pagina.
+- [x] Test dedicati verificano metadata, CTA, confini funzionali, assenza dei claim proibiti e coerenza tra contenuto visibile e JSON-LD.
+- [x] `npx vitest run`, `npm run lint`, `npm run build` e `npx opennextjs-cloudflare build` passano.
+- [x] Dopo build o preview, i title HTML di Home, Ordini e Prezzi corrispondono esattamente alla Spec, senza doppio suffisso `| LabManager`.
 
 ## Covers
 - User Stories: 4

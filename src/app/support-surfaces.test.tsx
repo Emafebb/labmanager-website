@@ -172,7 +172,7 @@ describe("support surface roles and discovery", () => {
     expect(
       main.getByRole("heading", {
         level: 1,
-        name: "Supporto per installazioni legacy",
+        name: "Supporto per installazioni",
       }),
     ).toBeInTheDocument();
     expect(main.getByText(/utenti che usano già LabManager/i)).toBeInTheDocument();

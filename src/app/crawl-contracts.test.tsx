@@ -76,8 +76,8 @@ describe("crawl boundaries and text response ownership", () => {
     );
 
     expect(byUrl).toMatchObject({
-      "https://labmanagergestionale.com": "2026-07-13",
-      "https://labmanagergestionale.com/ordini": "2026-06-15",
+      "https://labmanagergestionale.com": "2026-07-14",
+      "https://labmanagergestionale.com/ordini": "2026-07-14",
       "https://labmanagergestionale.com/pricing": "2026-07-13",
     });
   });
