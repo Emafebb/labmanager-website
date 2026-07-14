@@ -161,7 +161,7 @@ export default function NewsletterForm({
           <option value="">Seleziona...</option>
           <option value="Pasticceria">Pasticceria</option>
           <option value="Panificio">Panificio</option>
-          <option value="Ristorante">Ristorante</option>
+          <option value="Gelateria">Gelateria</option>
           <option value="Altro">Altro</option>
         </select>
       </div>

@@ -63,9 +63,10 @@ describe("crawl boundaries and text response ownership", () => {
       "https://labmanagergestionale.com",
       "https://labmanagergestionale.com/ordini",
       "https://labmanagergestionale.com/pricing",
-      "https://labmanagergestionale.com/newsletter",
     ]);
-    expect(urls.join(" ")).not.toMatch(/aggiornamenti|billing|download/);
+    expect(urls.join(" ")).not.toMatch(
+      /newsletter|aggiornamenti|billing|download/,
+    );
     expect(updatesMetadata.robots).toEqual({ index: false, follow: false });
   });
 
@@ -78,7 +79,6 @@ describe("crawl boundaries and text response ownership", () => {
       "https://labmanagergestionale.com": "2026-07-13",
       "https://labmanagergestionale.com/ordini": "2026-06-15",
       "https://labmanagergestionale.com/pricing": "2026-07-13",
-      "https://labmanagergestionale.com/newsletter": "2026-07-13",
     });
   });
 

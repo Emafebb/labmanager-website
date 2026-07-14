@@ -24,11 +24,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: `${BASE_URL}/newsletter`,
-      lastModified: "2026-07-13",
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
   ];
 }

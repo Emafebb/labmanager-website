@@ -1,27 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { changelog, type ChangelogEntry, type Platform } from "@/data/changelog";
+import { changelog, type ChangelogEntry } from "@/data/changelog";
 import Footer from "@/components/Footer";
 import BrandLogo from "@/components/BrandLogo";
 
+const PAGE_URL = "https://labmanagergestionale.com/aggiornamenti";
+const PAGE_DESCRIPTION =
+  "Archivio delle note di rilascio di LabManager per gli utenti esistenti.";
+
 export const metadata: Metadata = {
-  title: "Aggiornamenti - LabManager",
-  description: "Cronologia degli aggiornamenti di LabManager.",
+  title: "Aggiornamenti",
+  description: PAGE_DESCRIPTION,
+  keywords: null,
   robots: {
     index: false,
     follow: false,
   },
-};
-
-const platformLabel: Record<Platform, string> = {
-  android: "Android",
-  windows: "Windows",
-};
-
-const platformStyle: Record<Platform, string> = {
-  android: "bg-green-100 text-green-800",
-  windows: "bg-gray-100 text-gray-700",
+  openGraph: {
+    title: "Aggiornamenti | LabManager",
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    siteName: "LabManager",
+    locale: "it_IT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Aggiornamenti | LabManager",
+    description: PAGE_DESCRIPTION,
+  },
 };
 
 function formatDate(iso: string): string {
@@ -31,16 +39,6 @@ function formatDate(iso: string): string {
     month: "long",
     day: "numeric",
   });
-}
-
-function PlatformBadge({ platform }: { platform: Platform }) {
-  return (
-    <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${platformStyle[platform]}`}
-    >
-      {platformLabel[platform]}
-    </span>
-  );
 }
 
 function TimelineEntry({ entry, isLast }: { entry: ChangelogEntry; isLast: boolean }) {
@@ -61,11 +59,6 @@ function TimelineEntry({ entry, isLast }: { entry: ChangelogEntry; isLast: boole
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <span className="text-xl font-bold text-gray-900">v{entry.version}</span>
           <span className="text-sm text-gray-500">{formatDate(entry.date)}</span>
-          <div className="flex gap-1.5">
-            {entry.platforms.map((p) => (
-              <PlatformBadge key={p} platform={p} />
-            ))}
-          </div>
         </div>
 
         {/* Sezioni changelog */}
@@ -119,7 +112,9 @@ export default function AggiornamentiPage() {
           {/* Header */}
           <div className="mb-10">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Aggiornamenti</h1>
-            <p className="text-gray-500">Tutte le versioni rilasciate di LabManager</p>
+            <p className="text-gray-500">
+              Cronologia delle modifiche rilasciate in LabManager
+            </p>
           </div>
 
           {/* Timeline */}

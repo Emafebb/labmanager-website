@@ -9,19 +9,36 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 });
 
+const PAGE_URL = "https://labmanagergestionale.com/instagram";
+const PAGE_DESCRIPTION =
+  "I link di LabManager per laboratori artigianali alimentari.";
+
 export const metadata: Metadata = {
-  title: "LabManager | Links",
-  description:
-    "Tutti i link di LabManager - il gestionale per il settore alimentare e ristorativo.",
+  title: "Links",
+  description: PAGE_DESCRIPTION,
+  keywords: null,
   robots: { index: false },
+  openGraph: {
+    title: "Links | LabManager",
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    siteName: "LabManager",
+    locale: "it_IT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Links | LabManager",
+    description: PAGE_DESCRIPTION,
+  },
 };
 
 const WHATSAPP_HREF =
   "https://wa.me/393500424228?text=Ciao!%20Vorrei%20informazioni%20su%20LabManager";
 
 const LINKS = [
-  { label: "Scopri LabManager", href: "https://labmanagergestionale.com" },
-  { label: "Prezzi e piani", href: "https://labmanagergestionale.com/pricing" },
+  { label: "Home", href: "https://labmanagergestionale.com" },
+  { label: "Prezzi", href: "https://labmanagergestionale.com/pricing" },
 ];
 
 function WhatsAppIcon() {
@@ -103,7 +120,7 @@ export default function InstagramPage() {
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/30" />
             </div>
             <p className="text-[10px] tracking-[0.25em] uppercase text-white/45 font-medium">
-              Gestionale per il settore alimentare e ristorativo
+              Laboratori artigianali alimentari
             </p>
           </div>
         </div>

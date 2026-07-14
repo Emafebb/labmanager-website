@@ -11,11 +11,16 @@ const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/newsletter`;
 const PAGE_TITLE = "Newsletter";
 const PAGE_DESCRIPTION =
-  "Iscriviti alla newsletter di LabManager per ricevere aggiornamenti sull'app, nuove funzionalità e disponibilità delle versioni Android e Windows.";
+  "Aggiornamenti su LabManager, nuove funzionalità e consigli scelti editorialmente per il lavoro in laboratorio.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
+  keywords: null,
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: PAGE_URL,
     languages: {
@@ -24,24 +29,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Newsletter | LabManager",
-    description:
-      "Ricevi aggiornamenti su LabManager, nuove funzionalità e disponibilità delle versioni Android e Windows.",
+    description: PAGE_DESCRIPTION,
     url: PAGE_URL,
+    siteName: "LabManager",
+    locale: "it_IT",
+    type: "website",
     images: [
       {
         url: `${BASE_URL}/images/og-image.png`,
         secureUrl: `${BASE_URL}/images/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "LabManager - Newsletter aggiornamenti app",
+        alt: "Newsletter LabManager",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Newsletter | LabManager",
-    description:
-      "Ricevi aggiornamenti su LabManager, nuove funzionalità e disponibilità delle versioni Android e Windows.",
+    description: PAGE_DESCRIPTION,
     images: [`${BASE_URL}/images/og-image.png`],
   },
 };
@@ -59,9 +65,9 @@ export const newsletterPageStructuredData = {
 };
 
 const UPDATE_ITEMS = [
-  "Aggiornamenti sulle nuove versioni dell'app",
-  "Novita su funzioni per ricette, costi, etichette e magazzino",
-  "Comunicazioni utili su Android, Windows e disponibilità future",
+  "Una selezione delle modifiche più utili",
+  "Approfondimenti sulle funzionalità già disponibili",
+  "Consigli pratici per ricette, Food Cost, produzione e organizzazione",
 ] as const;
 
 export default function NewsletterPage() {
@@ -92,8 +98,9 @@ export default function NewsletterPage() {
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mb-8">
-                Iscriviti per ricevere aggiornamenti sull&apos;app, nuove
-                funzionalità e comunicazioni utili per il tuo laboratorio.
+                Iscriviti per ricevere aggiornamenti su LabManager, nuove
+                funzionalità e consigli scelti editorialmente per il lavoro in
+                laboratorio.
               </p>
 
               <ul className="space-y-4 mb-8">
@@ -186,8 +193,7 @@ export default function NewsletterPage() {
                 Vuoi anche parlare con noi?
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Per domande sull&apos;app o sulla prova gratuita puoi usare il
-                form contatti del sito.
+                Per domande su LabManager puoi usare il form contatti del sito.
               </p>
             </div>
             <Link

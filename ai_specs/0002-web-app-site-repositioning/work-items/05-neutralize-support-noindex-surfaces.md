@@ -14,18 +14,18 @@ Riallineare Newsletter, Aggiornamenti, Instagram e Download ai rispettivi ruoli.
 - Questo Work Item prepara e verifica modifiche locali; non autorizza deploy o pubblicazione.
 
 ## Acceptance criteria
-- [ ] `/newsletter` parla di aggiornamenti LabManager, nuove funzionalità e consigli scelti editorialmente senza promettere campagne automatiche o disponibilità native.
-- [ ] Iscrizione Newsletter e opt-in facoltativo del form contatti mantengono il comportamento esistente.
-- [ ] `/newsletter` emette `noindex`, resta raggiungibile dal footer ed è esclusa dalla sitemap.
-- [ ] `/aggiornamenti` resta noindex, fuori da navbar, footer e sitemap e usa introduzione, badge e metadata neutrali rispetto ad Android e Windows.
-- [ ] Le menzioni storiche native nelle singole release sono conservate soltanto quando descrivono fatti legacy e non diventano CTA, badge o copy introduttivo.
-- [ ] `/instagram` resta noindex, conserva esclusivamente i link Home, Prezzi, WhatsApp e Newsletter e usa “laboratori artigianali alimentari” senza ristorazione o piattaforme native.
-- [ ] `/download` resta noindex, accessibile senza autenticazione via URL diretto e non collegata da navbar, footer o sitemap.
-- [ ] Metadata e copy di acquisizione di Download non promuovono Android/Windows, download o prova ai nuovi visitatori; le sole istruzioni native rimaste sono chiaramente di supporto legacy.
-- [ ] Nessuna superficie crea automazioni Newsletter, broadcast WhatsApp o una voce/badge “Novità” nella web app.
-- [ ] Test di rendering e metadata verificano ruoli, link, direttive noindex, eccezioni legacy consentite e assenza dei claim proibiti.
-- [ ] `npx vitest run`, `npm run lint`, `npm run build` e `npx opennextjs-cloudflare build` passano.
-- [ ] Dopo build o preview, i title HTML di Home, Ordini e Prezzi corrispondono esattamente alla Spec, senza doppio suffisso `| LabManager`.
+- [x] `/newsletter` parla di aggiornamenti LabManager, nuove funzionalità e consigli scelti editorialmente senza promettere campagne automatiche o disponibilità native.
+- [x] Iscrizione Newsletter e opt-in facoltativo del form contatti mantengono il comportamento esistente.
+- [x] `/newsletter` emette `noindex`, resta raggiungibile dal footer ed è esclusa dalla sitemap.
+- [x] `/aggiornamenti` resta noindex, fuori da navbar, footer e sitemap e usa introduzione, badge e metadata neutrali rispetto ad Android e Windows.
+- [x] Le menzioni storiche native nelle singole release sono conservate soltanto quando descrivono fatti legacy e non diventano CTA, badge o copy introduttivo.
+- [x] `/instagram` resta noindex, conserva esclusivamente i link Home, Prezzi, WhatsApp e Newsletter e usa “laboratori artigianali alimentari” senza ristorazione o piattaforme native.
+- [x] `/download` resta noindex, accessibile senza autenticazione via URL diretto e non collegata da navbar, footer o sitemap.
+- [x] Metadata e copy di acquisizione di Download non promuovono Android/Windows, download o prova ai nuovi visitatori; le sole istruzioni native rimaste sono chiaramente di supporto legacy.
+- [x] Nessuna superficie crea automazioni Newsletter, broadcast WhatsApp o una voce/badge “Novità” nella web app.
+- [x] Test di rendering e metadata verificano ruoli, link, direttive noindex, eccezioni legacy consentite e assenza dei claim proibiti.
+- [x] `npx vitest run`, `npm run lint`, `npm run build` e `npx opennextjs-cloudflare build` passano.
+- [x] Dopo build o preview, i title HTML di Home, Ordini e Prezzi corrispondono esattamente alla Spec, senza doppio suffisso `| LabManager`.
 
 ## Covers
 - User Stories: 6

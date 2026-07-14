@@ -5,13 +5,30 @@ import Download from "@/components/Download";
 import Footer from "@/components/Footer";
 import BrandLogo from "@/components/BrandLogo";
 
+const PAGE_URL = "https://labmanagergestionale.com/download";
+const PAGE_DESCRIPTION =
+  "Pagina di assistenza per gli utenti esistenti di LabManager.";
+
 export const metadata: Metadata = {
-  title: "Download - LabManager",
-  description:
-    "Scarica LabManager per Android o Windows. L'app completa per gestire la tua pasticceria.",
+  title: "Supporto installazioni legacy",
+  description: PAGE_DESCRIPTION,
+  keywords: null,
   robots: {
     index: false,
     follow: false,
+  },
+  openGraph: {
+    title: "Supporto installazioni legacy | LabManager",
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    siteName: "LabManager",
+    locale: "it_IT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Supporto installazioni legacy | LabManager",
+    description: PAGE_DESCRIPTION,
   },
 };
 

@@ -10,13 +10,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-const badges = [
-  "Trial Gratuito 14 Giorni",
-  "Funziona Offline",
-  "Multi-utente",
-  "Supporto Diretto",
-];
-
 const installSteps = [
   'Quando appare "Installazione bloccata", tocca **Impostazioni**',
   'Attiva **Consenti installazione da questa fonte** per il browser',
@@ -51,7 +44,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
       icon: Smartphone,
       name: "Android",
       subtitle: "Smartphone & Tablet",
-      label: "Scarica APK",
+      label: "Pacchetto APK",
       href: androidUrl,
       download: "labmanager.apk",
     },
@@ -59,7 +52,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
       icon: Monitor,
       name: "Windows",
       subtitle: "Desktop",
-      label: "Scarica EXE",
+      label: "Pacchetto EXE",
       href: windowsUrl,
       download: "LabManager.exe",
     },
@@ -71,29 +64,18 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
             <DownloadIcon size={16} aria-hidden="true" />
-            <span>SCARICA E PROVA GRATIS</span>
+            <span>SUPPORTO LEGACY</span>
           </div>
 
-          <h2 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            Scarica il <span className="text-primary">Gestionale</span> per Pasticceria, Panificio e Ristorante
-          </h2>
+          <h1 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+            Supporto per installazioni legacy
+          </h1>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Il gestionale per pasticceria, panificio, gelateria e ristorante: scegli Android o Windows, funziona offline con sincronizzazione cloud.
-            Inizia subito a gestire ricette, costi ed etichette.
+            Questa pagina è riservata agli utenti che usano già LabManager.
+            Se il supporto ti ha fornito questo link, scegli esclusivamente il
+            pacchetto che ti è stato indicato.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {badges.map((badge) => (
-              <span
-                key={badge}
-                className="inline-flex items-center gap-1.5 bg-white text-primary px-4 py-2 rounded-full text-sm font-semibold border border-gray-200"
-              >
-                <span aria-hidden="true">&#10003;</span>
-                {badge}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -122,7 +104,9 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
 
         {/* Banner collassabile: guida installazione APK */}
         <div className="max-w-3xl mx-auto bg-amber-50 border border-amber-200/60 rounded-xl p-5 sm:p-6 mt-8">
-          <h3 id="installation-guide-heading" className="sr-only">Guida all&apos;installazione APK</h3>
+          <h3 id="installation-guide-heading" className="sr-only">
+            Assistenza installazione APK
+          </h3>
           <button
             id="installation-guide-button"
             type="button"
@@ -137,7 +121,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
 
             <div className="flex-1 min-w-0">
               <h4 className="text-base font-bold text-amber-900 mb-1">
-                Problemi con l&apos;installazione dell&apos;APK?
+                Assistenza installazione APK per utenti esistenti
               </h4>
               <p className="text-sm text-amber-800/80 leading-relaxed">
                 Il tuo dispositivo Android potrebbe bloccare l&apos;installazione perch&eacute;
@@ -181,7 +165,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
 
         <div className="text-center mt-10">
           <Link href="/#contatti" className="text-sm text-gray-500 hover:text-primary transition-colors duration-200 underline underline-offset-2">
-            Hai bisogno di aiuto con l&apos;installazione?
+            Contatta l&apos;assistenza per l&apos;installazione
           </Link>
         </div>
       </div>
