@@ -13,10 +13,7 @@ vi.mock("next/font/google", () => ({
 type JsonLdNode = {
   "@id"?: string;
   "@type"?: string;
-  dateModified?: string;
   featureList?: string[];
-  releaseNotes?: string;
-  softwareVersion?: string;
 };
 
 describe("orders SEO plumbing", () => {
@@ -45,28 +42,20 @@ describe("orders SEO plumbing", () => {
     });
   });
 
-  it("updates global SoftwareApplication structured data for version 0.0.9", () => {
+  it("keeps orders data page-scoped instead of publishing release details globally", () => {
     const softwareApplication = structuredDataGraph["@graph"].find(
       (node): node is JsonLdNode => node["@type"] === "SoftwareApplication",
     );
 
     expect(softwareApplication).toMatchObject({
       "@id": "https://labmanagergestionale.com/#softwareapplication",
-      softwareVersion: "0.0.9",
-      dateModified: "2026-06-04",
     });
-    expect(softwareApplication?.releaseNotes).toContain(
-      "Ordini e Piano di Lavoro",
+    expect(softwareApplication?.featureList).toContain(
+      "Ordini e Piano di Lavoro: ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.",
     );
-    expect(softwareApplication?.featureList).toEqual(
-      expect.arrayContaining([
-        "Gestione ordini cliente con ritiro, consegna, acconti e saldo",
-        "Ordini interni tra sedi e piano di lavoro del laboratorio",
-        "Produzione collegata a ricette, assemblaggi e lotti",
-        "Report Ordini con export Excel e PDF",
-        "Notifiche ordini su Android e Windows",
-      ]),
-    );
+    expect(softwareApplication).not.toHaveProperty("releaseNotes");
+    expect(softwareApplication).not.toHaveProperty("softwareVersion");
+    expect(softwareApplication).not.toHaveProperty("dateModified");
   });
 
   it("documents the orders page in llms.txt", () => {
