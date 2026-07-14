@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { ChefHat, FileCheck, Users, Warehouse, Download, UserPlus, PlayCircle, CheckCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  ChefHat,
+  ClipboardList,
+  FileCheck,
+  Warehouse,
+} from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -14,9 +20,10 @@ import PricingFAQ from "./pricing-faq";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/pricing`;
-const PAGE_METADATA_TITLE = "Prezzi e prova gratuita | LabManager";
+const PAGE_TITLE = "Prezzi e prova gratuita";
+const PAGE_METADATA_TITLE = `${PAGE_TITLE} | LabManager`;
 const PAGE_DESCRIPTION =
-  "Un solo piano, tutto incluso. LabManager ti aiuta a gestire ricette, costi, magazzino, etichette e team a €44,99/mese o €480/anno. Prova gratis 14 giorni.";
+  "Scopri il piano LabManager con prova gratuita di 14 giorni senza carta.";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_METADATA_TITLE },
@@ -28,26 +35,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Prezzi | LabManager",
-    description:
-      "Tutto quello che ti serve in un solo piano: €44,99/mese o €480/anno. Prova gratis 14 giorni, senza carta richiesta.",
+    title: PAGE_METADATA_TITLE,
+    description: PAGE_DESCRIPTION,
     url: PAGE_URL,
+    siteName: "LabManager",
+    locale: "it_IT",
+    type: "website",
     images: [
       {
-        url: "https://labmanagergestionale.com/images/pricing-og-image.png",
-        secureUrl: "https://labmanagergestionale.com/images/pricing-og-image.png",
+        url: `${BASE_URL}/images/pricing-og-image.png`,
+        secureUrl: `${BASE_URL}/images/pricing-og-image.png`,
         width: 1200,
         height: 630,
-        alt: "LabManager - Un solo piano tutto incluso con prova gratis di 14 giorni",
+        alt: "LabManager - Prezzi e prova gratuita",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prezzi | LabManager",
-    description:
-      "Tutto quello che ti serve in un solo piano: €44,99/mese o €480/anno. Prova gratis 14 giorni, senza carta richiesta.",
-    images: ["https://labmanagergestionale.com/images/pricing-og-image.png"],
+    title: PAGE_METADATA_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [`${BASE_URL}/images/pricing-og-image.png`],
   },
 };
 
@@ -58,7 +66,7 @@ export const pricingPageStructuredData = {
   "@type": "WebPage",
   "@id": `${PAGE_URL}#webpage`,
   url: PAGE_URL,
-  name: PAGE_METADATA_TITLE,
+  name: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   inLanguage: "it-IT",
   isPartOf: { "@id": `${BASE_URL}/#website` },
@@ -67,7 +75,7 @@ export const pricingPageStructuredData = {
 
 export const pricingMagazzinoFeature = {
   icon: Warehouse,
-  title: "Hai il magazzino sotto controllo",
+  title: "Magazzino",
   summary: MAGAZZINO_CANONICAL_COPY,
   items: MAGAZZINO_CAPABILITIES.map(({ publicCopy }) => publicCopy),
   claimIds: MAGAZZINO_CLAIM_IDS,
@@ -76,364 +84,251 @@ export const pricingMagazzinoFeature = {
 const FEATURES = [
   {
     icon: ChefHat,
-    title: "Tieni ricette, costi e produzione sotto controllo",
+    title: "Ricette e Food Cost",
     summary:
-      "Ricette, quantità e costi restano allineati, così decidi meglio e sprechi meno.",
+      "Organizza ricette e ingredienti, calcola costi e margini delle preparazioni.",
     items: [
-      "Ricette con costi aggiornati automaticamente",
-      "Food cost su ogni preparazione",
-      "Calcolatori dedicati per gelato, pasticceria, pane e lievito madre",
-      "Produzione giornaliera più facile da pianificare",
+      "Ricette con costi aggiornati",
+      "Food Cost per ogni preparazione",
+      "Quantità e produzione organizzate",
+    ],
+  },
+  {
+    icon: FileCheck,
+    title: "Produzione ed Etichette",
+    summary:
+      "Organizza la produzione e prepara etichette con allergeni e documenti PDF.",
+    items: [
+      "Produzione giornaliera pianificata",
+      "Etichette con allergeni",
+      "Documenti PDF pronti per il lavoro",
     ],
   },
   pricingMagazzinoFeature,
   {
-    icon: FileCheck,
-    title: "Dalle ricette alle etichette, senza rifare il lavoro",
+    icon: ClipboardList,
+    title: "Ordini e Piano di Lavoro",
     summary:
-      "Parti dalle tue ricette e ottieni subito quello che ti serve, senza rifare il lavoro da zero.",
+      "Organizza ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.",
     items: [
-      "Etichette pronte in pochi clic",
-      "Allergeni evidenziati automaticamente",
-      "PDF e report sempre disponibili",
-      "Scegli il formato più adatto al tuo lavoro",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Il team lavora bene anche offline",
-    summary:
-      "Il laboratorio continua a lavorare, i dati si allineano da soli e ognuno vede solo quello che serve.",
-    items: [
-      "Accesso da Android e Windows",
-      "Funziona offline - sincronizzazione automatica",
-      "2 dispositivi simultanei inclusi",
-      "Ogni membro del team ha il suo profilo con accessi personalizzabili",
+      "Ordini cliente e interni",
+      "Produzione collegata",
+      "Ritiri, consegne, acconti e report operativi",
     ],
   },
 ];
+
+const monthlyPrice = PRICING.monthly.price.toFixed(2).replace(".", ",");
 
 export default function PricingPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 pb-24">
+      <main id="main-content" className="pb-24 pt-28">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(pricingPageStructuredData),
           }}
         />
-        <section className="px-6 text-center mb-20">
-          <div className="max-w-3xl mx-auto animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
-              <span>Prezzi</span>
-            </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Un solo piano. Tutto incluso.{" "}
-              <span className="gradient-text">Nessuna sorpresa.</span>
+        <section className="mb-16 px-6 text-center">
+          <div className="mx-auto max-w-3xl animate-fade-in-up">
+            <p className="mb-6 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-primary">
+              Prezzi
+            </p>
+            <h1 className="mb-6 text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
+              Prezzi e prova gratuita
             </h1>
-
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Con un solo piano hai tutto quello che serve per lavorare meglio
-              ogni giorno: ricette, costi, magazzino, etichette e team, senza
-              moduli extra o versioni ridotte.
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+              Un piano completo per organizzare il lavoro del laboratorio, con
+              modalità mensile o annuale e 14 giorni per provarlo senza carta.
             </p>
           </div>
         </section>
 
-        {/* Come funziona — roadmap */}
-        <section className="px-6 mb-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-12 animate-fade-in-up">
-              Come iniziare
-            </h2>
-            <div className="relative flex flex-col sm:flex-row items-start sm:items-stretch gap-0">
-              {/* linea connettore orizzontale (desktop) */}
-              <div className="hidden sm:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gray-200 z-0" />
-
-              {[
-                {
-                  icon: Download,
-                  step: "1",
-                  title: "Scarica l'app",
-                  desc: "Disponibile su Android e Windows. Installa LabManager sul tuo dispositivo.",
-                },
-                {
-                  icon: UserPlus,
-                  step: "2",
-                  title: "Registrati",
-                  desc: "Crea il tuo account in pochi secondi. Nessuna carta richiesta.",
-                },
-                {
-                  icon: PlayCircle,
-                  step: "3",
-                  title: "Prova gratis",
-                  desc: "14 giorni di accesso completo a tutte le funzionalità, senza impegni.",
-                },
-                {
-                  icon: CheckCircle,
-                  step: "4",
-                  title: "Scegli il piano",
-                  desc: "Al termine della prova attivi mensile o annuale direttamente nell'app.",
-                },
-              ].map(({ icon: Icon, step, title, desc }, i, arr) => (
-                <div
-                  key={step}
-                  className="relative z-10 flex-1 flex flex-col sm:items-center sm:text-center animate-fade-in-up"
-                  style={{ animationDelay: `${0.1 + i * 0.08}s` }}
-                >
-                  {/* layout mobile: icona + freccia in riga, testo a destra */}
-                  <div className="flex sm:flex-col sm:items-center gap-4 sm:gap-0 px-4">
-                    <div className="flex flex-col items-center sm:hidden">
-                      <div className="w-14 h-14 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-sm relative flex-shrink-0">
-                        <Icon size={24} className="text-primary" aria-hidden="true" />
-                        <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center leading-none">
-                          {step}
-                        </span>
-                      </div>
-                      {i < arr.length - 1 && (
-                        <div className="w-px h-8 bg-gray-200 mt-2" />
-                      )}
-                    </div>
-                    {/* cerchio desktop */}
-                    <div className="hidden sm:flex w-16 h-16 rounded-full bg-white border-2 border-gray-200 items-center justify-center mb-4 shadow-sm relative">
-                      <Icon size={26} className="text-primary" aria-hidden="true" />
-                      <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center leading-none">
-                        {step}
-                      </span>
-                    </div>
-                    <div className="pb-6 sm:pb-0">
-                      <p className="text-base font-bold text-gray-900 mb-1">{title}</p>
-                      <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 mb-20">
-          <div className="max-w-5xl mx-auto">
-            <div
-              className="flex flex-col sm:flex-row gap-6 justify-center items-stretch animate-fade-in-up"
-              style={{ animationDelay: "0.1s" }}
-            >
-              <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-8 text-center flex flex-col">
-                <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
-                  Prova gratuita
-                </div>
-                <div className="text-5xl font-bold text-gray-900 mb-1">
-                  14 giorni
-                </div>
-                <div className="text-sm text-gray-500 mb-6">
-                  Gratis - nessuna carta richiesta
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed mb-8 flex-1">
-                  Accesso completo a tutte le funzionalità.
+        <section
+          className="mb-20 px-6"
+          aria-labelledby="pricing-plan-heading"
+        >
+          <article
+            data-pricing-plan="complete"
+            className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl"
+          >
+            <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
+              <div>
+                <p className="mb-3 text-sm font-bold uppercase tracking-wider text-primary">
+                  Piano LabManager
                 </p>
+                <h2
+                  id="pricing-plan-heading"
+                  className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl"
+                >
+                  Piano completo
+                </h2>
+                <p className="mb-7 leading-relaxed text-gray-600">
+                  Tutte le funzionalità dell&apos;offerta corrente, senza moduli
+                  aggiuntivi.
+                </p>
+
+                <div className="mb-7 rounded-2xl bg-primary/5 p-5">
+                  <p className="text-lg font-bold text-primary">
+                    {PRICING.trialDays} giorni di prova gratuita
+                  </p>
+                  <p className="mt-1 text-sm text-gray-600">
+                    Accesso completo, senza carta e senza costi di attivazione.
+                  </p>
+                </div>
+
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-500">
+                  Sempre incluso
+                </h3>
+                <ul className="space-y-3 text-gray-700">
+                  {[
+                    "Ricette, Food Cost, produzione ed etichette",
+                    "Magazzino, ordini e piano di lavoro",
+                    "2 sessioni attive simultanee",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2
+                        size={19}
+                        className="mt-0.5 shrink-0 text-primary"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-col">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <section
+                    data-payment-mode="monthly"
+                    aria-labelledby="monthly-mode-heading"
+                    className="rounded-2xl border border-gray-200 p-6"
+                  >
+                    <h3
+                      id="monthly-mode-heading"
+                      className="text-sm font-bold uppercase tracking-wider text-gray-500"
+                    >
+                      Modalità mensile
+                    </h3>
+                    <p className="mt-4 text-3xl font-bold text-gray-900">
+                      €{monthlyPrice}/mese
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                      Puoi disdire quando vuoi.
+                    </p>
+                  </section>
+
+                  <section
+                    data-payment-mode="annual"
+                    aria-labelledby="annual-mode-heading"
+                    className="rounded-2xl border-2 border-primary bg-primary/5 p-6"
+                  >
+                    <h3
+                      id="annual-mode-heading"
+                      className="text-sm font-bold uppercase tracking-wider text-primary"
+                    >
+                      Modalità annuale
+                    </h3>
+                    <p className="mt-4 text-3xl font-bold text-primary">
+                      €{PRICING.yearly.price}/anno
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-primary">
+                      Risparmi €{PRICING.yearly.saving} in un anno
+                    </p>
+                    <ul className="mt-5 space-y-3 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2
+                          size={17}
+                          className="mt-0.5 shrink-0 text-primary"
+                          aria-hidden="true"
+                        />
+                        <span>
+                          <strong>2 sessioni private 1:1</strong> dedicate al
+                          tuo utilizzo di LabManager
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2
+                          size={17}
+                          className="mt-0.5 shrink-0 text-primary"
+                          aria-hidden="true"
+                        />
+                        <strong>Supporto prioritario</strong>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+
                 <a
                   href={pricingTrialCta.destination}
-                  className="block w-full bg-gray-900 text-white text-sm font-semibold py-3 px-6 rounded-xl hover:bg-gray-700 transition-colors duration-200"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-primary px-6 py-4 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-primary-dark"
                 >
                   {pricingTrialCta.label}
                 </a>
-              </div>
-
-              <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-8 text-center flex flex-col">
-                <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
-                  Mensile
-                </div>
-                <div className="text-5xl font-bold text-gray-900 mb-1">
-                  €{PRICING.monthly.price.toFixed(2).replace(".", ",")}
-                  <span className="text-lg font-normal text-gray-500">
-                    /mese
-                  </span>
-                </div>
-                <div className="text-sm text-gray-500 mb-6">
-                  Puoi disdire quando vuoi
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed mb-8 flex-1">
-                  Ideale se vuoi iniziare senza impegni. Tutte le funzionalità
-                  incluse.
+                <p className="mt-3 text-center text-sm text-gray-500">
+                  La modalità di pagamento si sceglie al termine della prova.
                 </p>
-                <div className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-4 text-left">
-                  <p className="text-sm font-semibold text-gray-900">
-                    Scelta piano direttamente in app
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-gray-600">
-                    Dopo la prova gratuita,per continuare ad usare LabManager,
-                    puoi attivare il piano che preferisci.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-8 text-center relative flex flex-col shadow-sm">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">
-                  Più scelto
-                </div>
-                <div className="text-sm font-bold text-primary uppercase tracking-wider mb-4">
-                  Annuale
-                </div>
-                <div className="text-lg text-gray-400 line-through mb-1">
-                  €{PRICING.monthly.price.toFixed(2).replace(".", ",")}/mese
-                </div>
-                <div className="text-5xl font-bold text-primary mb-1">
-                  €{PRICING.yearly.monthlyEquivalent}
-                  <span className="text-lg font-normal text-gray-500">
-                    /mese
-                  </span>
-                </div>
-                <div className="text-sm font-semibold text-primary mb-6">
-                  €{PRICING.yearly.price}/anno - risparmi €
-                  {PRICING.yearly.saving}
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">
-                  Pagamento unico anticipato. La scelta di chi usa LabManager
-                  tutto l&apos;anno.
-                </p>
-                <ul className="space-y-2 mb-8 text-left">
-                  <li className="flex items-start gap-2 text-sm text-gray-700">
-                    <span
-                      className="text-primary font-bold mt-0.5 flex-shrink-0"
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                    <span>
-                      <strong>2 sessioni private 1:1</strong> - onboarding e
-                      revisione con il team
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-700">
-                    <span
-                      className="text-primary font-bold mt-0.5 flex-shrink-0"
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                    <span>
-                      <strong>Supporto prioritario</strong>
-                    </span>
-                  </li>
-                </ul>
-                <div className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-4 text-left">
-                  <p className="text-sm font-semibold text-primary">
-                    Scelta piano direttamente in app
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-gray-600">
-                    Dopo la prova gratuita,per continuare ad usare LabManager,
-                    puoi attivare il piano che preferisci.
-                  </p>
-                </div>
               </div>
             </div>
-
-            <p
-              className="text-center text-sm text-gray-500 mt-8 animate-fade-in-up"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Nessun costo di attivazione
-            </p>
-          </div>
+          </article>
         </section>
 
-        <section className="px-6 pb-20">
-          <div
-            className="max-w-3xl mx-auto bg-gray-50 border border-gray-200 rounded-3xl p-10 sm:p-14 text-center animate-fade-in-up"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <p className="text-4xl sm:text-5xl font-bold text-primary mb-2">
-              Meno di €{PRICING.dailyCost} al giorno.
-            </p>
-            <p className="text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
-              Meno di un caffè al bar.
-            </p>
-            <p className="text-gray-600 leading-relaxed max-w-xl mx-auto">
-              Tieni sotto controllo ricette, costi e magazzino - tutto per meno
-              di €{PRICING.dailyCost} al giorno.
-            </p>
-          </div>
-        </section>
-
-        {/*
-        <section className="px-6 mb-20">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid sm:grid-cols-3 gap-6">
-              {[
-                { quote: "Recensione...", name: "Nome", role: "Ruolo / Attività" },
-                { quote: "Recensione...", name: "Nome", role: "Ruolo / Attività" },
-                { quote: "Recensione...", name: "Nome", role: "Ruolo / Attività" },
-              ].map((review, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm"
-                >
-                  <p className="text-gray-600 leading-relaxed mb-6 italic">
-                    &ldquo;{review.quote}&rdquo;
-                  </p>
-                  <div>
-                    <p className="font-semibold text-gray-900">{review.name}</p>
-                    <p className="text-sm text-gray-500">{review.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        */}
-
-        <section className="px-6 py-20 bg-surface">
-          <div className="max-w-5xl mx-auto">
+        <section
+          className="bg-surface px-6 py-20"
+          aria-labelledby="pricing-features-heading"
+        >
+          <div className="mx-auto max-w-5xl">
             <h2
-              className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-14 animate-fade-in-up"
-              style={{ animationDelay: "0.1s" }}
+              id="pricing-features-heading"
+              className="mb-14 text-center text-3xl font-bold text-gray-900 sm:text-4xl"
             >
-              Tutto quello che ti serve, dal primo giorno
+              Tutto quello che serve al laboratorio
             </h2>
 
-            <div className="grid sm:grid-cols-2 gap-8">
-              {FEATURES.map((feature, index) => (
-                <div
+            <div className="grid gap-8 sm:grid-cols-2">
+              {FEATURES.map((feature) => (
+                <article
                   key={feature.title}
-                  className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm animate-fade-in-up"
-                  style={{ animationDelay: `${0.15 + index * 0.05}s` }}
+                  className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
                   data-magazzino-claim-ids={
-                    "claimIds" in feature ? feature.claimIds.join(" ") : undefined
+                    "claimIds" in feature
+                      ? feature.claimIds.join(" ")
+                      : undefined
                   }
                 >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                     <feature.icon
                       size={24}
                       className="text-primary"
                       aria-hidden="true"
                     />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  <h3 className="mb-3 text-lg font-bold text-gray-900">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  <p className="mb-4 text-sm leading-relaxed text-gray-600">
                     {feature.summary}
                   </p>
                   <ul className="space-y-2.5">
                     {feature.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2.5 text-sm text-gray-600 leading-relaxed"
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600"
                       >
-                        <span
-                          className="text-primary mt-0.5 flex-shrink-0"
+                        <CheckCircle2
+                          size={17}
+                          className="mt-0.5 shrink-0 text-primary"
                           aria-hidden="true"
-                        >
-                          ✓
-                        </span>
-                        {item}
+                        />
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </article>
               ))}
             </div>
           </div>

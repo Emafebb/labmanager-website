@@ -3,92 +3,88 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const FAQS = [
+export const PRICING_FAQS = [
   {
-    question: "Posso cambiare da mensile ad annuale?",
+    question: "Come funziona la prova gratuita?",
     answer:
-      "Sì, in qualsiasi momento. Se parti dal mensile puoi passare all'annuale quando vuoi, e la differenza viene calcolata sul periodo già pagato.",
+      "Hai 14 giorni per provare tutte le funzionalità di LabManager senza inserire una carta.",
   },
   {
-    question: "È adatto anche a ristoranti e pizzerie?",
+    question: "Quali modalità di pagamento posso scegliere?",
     answer:
-      "Sì. Se lavori con ricette, ingredienti e costi, LabManager ti aiuta a tenere tutto sotto controllo anche in cucina, non solo in laboratorio.",
+      "Il piano completo costa €44,99 al mese oppure €480 all'anno. Scegli la modalità di pagamento al termine della prova gratuita.",
   },
   {
-    question: "Posso usarlo senza connessione internet?",
+    question: "Cosa include la modalità annuale?",
     answer:
-      "Sì. Puoi continuare a lavorare anche senza connessione e i dati si sincronizzano automaticamente appena torni online.",
+      "La modalità annuale include 2 sessioni private 1:1 dedicate al tuo utilizzo di LabManager e il supporto prioritario.",
   },
   {
-    question: "Quanti utenti posso aggiungere?",
-    answer:
-      "Puoi far accedere il tuo team e assegnare a ogni persona il profilo più adatto, così ognuno vede solo quello che gli serve e quello che tu vuoi.",
+    question: "Quante sessioni posso usare contemporaneamente?",
+    answer: "Il piano include 2 sessioni attive simultanee.",
   },
   {
-    question: "Quanti dispositivi sono inclusi nell'abbonamento?",
+    question: "Posso disdire quando voglio?",
     answer:
-      "Il piano include 2 dispositivi utilizzabili contemporaneamente. Non è un limite ai dispositivi che puoi usare nel tempo, ma agli accessi attivi nello stesso momento. Se te ne servono di più, scrivici e troviamo la soluzione giusta.",
+      "Sì. In caso di cancellazione a fine periodo, l'accesso resta attivo fino alla scadenza prevista.",
   },
-];
+] as const;
 
 export default function PricingFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="px-6 py-20 bg-surface">
-      <div className="max-w-3xl mx-auto">
+    <section
+      className="bg-white px-6 py-20"
+      aria-labelledby="pricing-faq-heading"
+    >
+      <div className="mx-auto max-w-3xl">
         <h2
-          className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-4 animate-fade-in-up"
-          style={{ animationDelay: "0.1s" }}
+          id="pricing-faq-heading"
+          className="mb-4 text-center text-3xl font-bold text-gray-900 sm:text-4xl"
         >
           Domande prima di iniziare?
         </h2>
 
-        <p
-          className="text-center text-gray-600 leading-relaxed mb-14 animate-fade-in-up"
-          style={{ animationDelay: "0.12s" }}
-        >
-          Qui trovi le risposte rapide ai dubbi più comuni su prova, abbonamento
-          e utilizzo quotidiano.
+        <p className="mb-14 text-center leading-relaxed text-gray-600">
+          Le risposte essenziali su prova, pagamento e utilizzo del piano.
         </p>
 
         <div className="space-y-3">
-          {FAQS.map((faq, index) => {
+          {PRICING_FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
+            const answerId = `pricing-faq-answer-${index}`;
 
             return (
-              <div
+              <article
                 key={faq.question}
-                className="bg-white rounded-xl border border-gray-200 shadow-sm animate-fade-in-up"
-                style={{ animationDelay: `${0.15 + index * 0.03}s` }}
+                className="rounded-xl border border-gray-200 bg-white shadow-sm"
               >
                 <button
+                  type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
-                  className="touch-target w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-gray-50 rounded-xl transition-colors duration-200"
+                  aria-controls={answerId}
+                  className="touch-target flex w-full items-center justify-between gap-4 rounded-xl p-6 text-left transition-colors duration-200 hover:bg-gray-50"
                 >
-                  <h3 className="font-semibold text-gray-900 text-base">
+                  <span className="text-base font-semibold text-gray-900">
                     {faq.question}
-                  </h3>
+                  </span>
                   <ChevronDown
                     size={20}
                     aria-hidden="true"
-                    className={`flex-shrink-0 text-icon transition-transform duration-200 ${
+                    className={`shrink-0 text-icon transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
-                <div
-                  className={`overflow-hidden transition-all duration-200 ${
-                    isOpen ? "max-h-[300px]" : "max-h-0"
-                  }`}
-                >
-                  <p className="px-6 pb-6 text-gray-600 leading-relaxed">
+                <div id={answerId} hidden={!isOpen}>
+                  <p className="px-6 pb-6 leading-relaxed text-gray-600">
                     {faq.answer}
                   </p>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

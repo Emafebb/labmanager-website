@@ -43,13 +43,14 @@ function expectPageScopedGraph(
   structuredData: PageStructuredData | undefined,
   metadata: RouteModule["metadata"],
   expectedUrl: string,
+  expectedName = resolveMetadataTitle(metadata.title),
 ) {
   expect(structuredData).toMatchObject({
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${expectedUrl}#webpage`,
     url: expectedUrl,
-    name: resolveMetadataTitle(metadata.title),
+    name: expectedName,
     description: metadata.description,
     inLanguage: "it-IT",
     isPartOf: { "@id": "https://labmanagergestionale.com/#website" },
@@ -83,6 +84,7 @@ describe("route-scoped structured data", () => {
       pricing.pricingPageStructuredData,
       pricing.metadata,
       "https://labmanagergestionale.com/pricing",
+      "Prezzi e prova gratuita",
     );
     expectRenderedGraph(pricing.default, pricing.pricingPageStructuredData);
   });
