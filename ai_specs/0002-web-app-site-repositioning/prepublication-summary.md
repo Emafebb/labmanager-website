@@ -4,12 +4,22 @@
 
 - Data verifica: 2026-07-14
 - Commit candidato del sito: `3020ecb61446a459569f9081b781086f96179400`
+- Commit documentazione candidata: `99bbd7261f1d76a4cb38717b1fe68fe19f1706c4`
 - Next.js: `16.2.10`
 - OpenNext for Cloudflare: `1.20.1`
-- Stato approvazione pubblicazione: **IN ATTESA DI APPROVAZIONE DEL COMMITTENTE**
-- Deploy, rilascio pubblico, push remoto e attività Search Console eseguiti: **nessuno**
+- Stato approvazione pubblicazione: **APPROVATO DAL COMMITTENTE**
+- Push e deploy di produzione: **AUTORIZZATI, NON ANCORA ESEGUITI**
+- Attività Search Console eseguite: **nessuna**
 
 Il candidato riscrive `public/llms.txt`, neutralizza il copy legacy residuo nel footer e aggiunge regressioni cross-surface. `src/app/sitemap.ts`, `public/robots.txt`, `public/_headers` e i contenuti delle tre route indicizzabili non sono stati modificati da questo Work Item.
+
+## Approvazione alla pubblicazione
+
+- Approvata da: committente
+- Data approvazione: 2026-07-14
+- Versione approvata: candidato applicativo `3020ecb`, documentato in `99bbd72`
+- Autorizzazione esplicita: push di `master` e deploy in produzione
+- Attività successive: il committente procederà separatamente con il Work Item 08 dopo la notifica di deploy completato
 
 ## Contratti di indicizzazione
 
@@ -137,10 +147,10 @@ Non viene suggerito nuovo schema per questo rilascio: conservare WebPage e il gr
 
 - Nessun dato Search Console, GA4, CrUX o Core Web Vitals di campo è stato consultato.
 - La verifica riguarda la build locale candidata; non sostituisce la verifica live post-deploy.
-- Le attività sul dominio storico e Search Console appartengono al Work Item 08 e restano bloccate fino all'approvazione alla pubblicazione.
+- Le attività sul dominio storico e Search Console appartengono al Work Item 08 e non vengono eseguite durante questo deploy.
 
 ## Gate di pubblicazione
 
-**PENDING — nessun deploy autorizzato.**
+**APPROVED — push e deploy di produzione autorizzati il 2026-07-14.**
 
-Questo documento presenta al committente il commit candidato e le evidenze richieste. Il superamento dei test e delle verifiche locali non autorizza pubblicazione, push, rilascio pubblico o attività Search Console. Per procedere serve un'approvazione esplicita separata del committente.
+Il committente ha approvato esplicitamente il candidato applicativo `3020ecb`, documentato in `99bbd72`, e ha autorizzato push e deploy. Questa approvazione non estende l'esecuzione alle attività Search Console o alle verifiche della migrazione storica del Work Item 08.
