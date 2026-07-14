@@ -184,6 +184,8 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 34. Questa Spec sostituisce le decisioni di copy, pubblico, CTA, metadata, sitemap e scoperta organica incompatibili con ai_specs/0001-seo-remediation-growth. Non annulla i suoi requisiti tecnici ancora validi, inclusi HTTP → HTTPS, matrix Magazzino, canonical/404, header robots/llms e verifiche Cloudflare. In caso di conflitto, questa Spec prevale per il comportamento e il linguaggio del sito visibili al cliente. [L1] [L4] [L5] [L12] [L13]
 
+35. Prima di pubblicare il riposizionamento, presentare al committente la versione candidata e le evidenze di test, build, preview e verifica browser. Implementazione e verifiche locali possono essere completate senza ulteriore autorizzazione, ma nessun deploy, rilascio pubblico o attività Search Console post-deploy può iniziare prima dell'approvazione esplicita del committente. [L16]
+
 ## Technical Decisions
 
 1. La migrazione è realizzata nel repository Next.js App Router del sito. Non modifica il repository Flutter della web app, i suoi meccanismi di autenticazione, abbonamento, PWA, aggiornamento o piattaforma.
@@ -203,6 +205,8 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 6. Non aggiungere un nuovo framework test end-to-end per questo rilascio. Vitest, Testing Library, build Next e build OpenNext/Cloudflare sono i contratti automatizzati esistenti; i redirect cross-domain e Search Console richiedono evidenza manuale di ambiente live.
 
+7. L'approvazione alla decomposizione o all'implementazione non equivale all'approvazione alla pubblicazione. Il gate umano del requisito 35 deve rimanere esplicito e non può essere sostituito dal solo superamento dei test o automatizzato dal workflow.
+
 ## Testing Strategy
 
 1. Aggiornare o aggiungere test di rendering Home per verificare H1, testo hero, quattro pilastri, copy canonico Magazzino nella Hero, assenza della sezione Piattaforme/Perché legacy, CTA e immagine telefono + desktop con alt neutro. Il test deve controllare il DOM pubblico, non filename interni degli asset. [L4] [L7]
@@ -220,6 +224,8 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 7. Per ogni Work Item che modifica il sito, eseguire npx vitest run, npm run lint, npm run build e npx opennextjs-cloudflare build. Dopo la build o in preview, verificare nell'HTML finale i title esatti di Home, Ordini e Prezzi. Eseguire inoltre una verifica browser manuale della Home e della navbar a viewport mobile e desktop, compresi focus, menu mobile e CTA.
 
 8. Documentare verifica manuale live per tutte le varianti di pastrylabmanager.com su almeno /, /ordini e un URL con query: status iniziale 301, Location path/query-preserving, singolo hop e canonical finale labmanagergestionale.com. Dopo il deploy, archiviare data, proprietà Search Console usata, invio sitemap, richiesta indicizzazione e stato osservato; non dichiarare il risultato SEO completato prima che Search Console lo confermi. [L14]
+
+9. Prima del deploy, raccogliere in un riepilogo pre-pubblicazione gli esiti dei test automatizzati, delle build Next/OpenNext, dei title HTML e della verifica browser mobile/desktop. Presentare il riepilogo al committente e attendere la sua approvazione esplicita prima di procedere con qualsiasi pubblicazione. [L16]
 
 ## Out of Scope
 

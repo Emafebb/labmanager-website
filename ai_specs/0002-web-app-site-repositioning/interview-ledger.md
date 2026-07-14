@@ -196,3 +196,15 @@ Answer: Ottimizzare e consolidare le pagine esistenti, senza creare ora articoli
 Decision: Il rilascio non crea nuove landing SEO, risorse editoriali, automazioni newsletter, stream “Novità” in app o nuovi piani pubblici.
 
 Source: Intervista utente, 14 luglio 2026.
+
+### L16
+
+Status: current
+
+Question: Quale approvazione deve precedere la pubblicazione del riposizionamento?
+
+Answer: Prima di pubblicare il sito con queste modifiche, il committente deve esaminare il risultato verificato e fornire un'approvazione esplicita.
+
+Decision: Implementazione, test, build e preview possono essere completati senza pubblicare. Nessun deploy, rilascio pubblico o avvio delle attività Search Console post-deploy può avvenire finché il committente non approva esplicitamente la versione candidata sulla base delle evidenze pre-pubblicazione.
+
+Source: Approvazione della decomposizione, 14 luglio 2026.
