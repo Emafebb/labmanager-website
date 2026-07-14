@@ -4,16 +4,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
+import { getCommercialCta } from "@/data/trial-access-cta-inventory";
 
 const navLinks = [
   { href: "/#funzionalita", label: "Funzionalità" },
   { href: "/ordini", label: "Ordini" },
   { href: "/pricing", label: "Prezzi" },
-  { href: "/#perche-labmanager", label: "Perché LabManager" },
-  { href: "/#piattaforme", label: "Piattaforme" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contatti", label: "Contatti" },
 ];
+
+const accessCta = getCommercialCta("navbar-access");
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -59,7 +58,10 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <ul className="hidden lg:flex items-center gap-1">
+          <ul
+            aria-label="Navigazione desktop"
+            className="hidden lg:flex items-center gap-1"
+          >
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -72,10 +74,10 @@ export default function Navbar() {
             ))}
             <li className="ml-3">
               <Link
-                href="/#contatti"
+                href={accessCta.destination}
                 className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
-                Richiedi Info
+                {accessCta.label}
               </Link>
             </li>
           </ul>
@@ -103,7 +105,7 @@ export default function Navbar() {
         }`}
       >
         <div className="bg-white border-t border-gray-200 mt-3">
-          <ul className="px-6 py-4 space-y-1">
+          <ul aria-label="Navigazione mobile" className="px-6 py-4 space-y-1">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -117,11 +119,11 @@ export default function Navbar() {
             ))}
             <li className="pt-3">
               <Link
-                href="/#contatti"
+                href={accessCta.destination}
                 className="block text-center bg-primary text-white px-6 py-3 rounded-lg text-base font-bold hover:bg-primary-dark transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 onClick={() => setMobileOpen(false)}
               >
-                Richiedi Info
+                {accessCta.label}
               </Link>
             </li>
           </ul>

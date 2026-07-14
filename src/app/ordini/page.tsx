@@ -16,16 +16,17 @@ import {
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
+import { getCommercialCta } from "@/data/trial-access-cta-inventory";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/ordini`;
 const PAGE_TITLE = "Gestione Ordini";
+const PAGE_METADATA_TITLE = "Gestione ordini e piano di lavoro | LabManager";
 const PAGE_DESCRIPTION =
   "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.";
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_METADATA_TITLE },
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: PAGE_URL,
@@ -57,6 +58,8 @@ export const metadata: Metadata = {
     images: [`${BASE_URL}/images/og-image.png`],
   },
 };
+
+const ordersPricingCta = getCommercialCta("orders-pricing");
 
 const flowItems = [
   "Cliente anagrafica o rapido, telefono, sede, data evasione e fascia oraria.",
@@ -239,10 +242,10 @@ export default function OrdersPage() {
 
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
-                  href={TRIAL_ACCESS_APP_HREF}
+                  href={ordersPricingCta.destination}
                   className="inline-flex touch-manipulation items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-white transition-[background-color,box-shadow] duration-200 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
                 >
-                  Richiedi una prova gratuita
+                  {ordersPricingCta.label}
                   <ArrowRight size={18} aria-hidden="true" />
                 </Link>
                 <Link

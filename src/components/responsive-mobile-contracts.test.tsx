@@ -139,10 +139,10 @@ describe("shared 44px touch-target contract", () => {
     navbar.unmount();
 
     const hero = render(<Hero />);
-    expect(screen.getByRole("link", { name: /Scopri Funzionalità/ })).toHaveClass(
+    expect(screen.getByRole("link", { name: "Registrati per una prova gratuita" })).toHaveClass(
       "touch-target",
     );
-    expect(screen.getByRole("link", { name: "Contattaci" })).toHaveClass(
+    expect(screen.getByRole("link", { name: /Scopri le funzionalità/ })).toHaveClass(
       "touch-target",
     );
     hero.unmount();

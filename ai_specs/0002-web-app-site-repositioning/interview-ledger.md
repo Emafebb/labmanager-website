@@ -75,7 +75,7 @@ Status: current
 
 Question: Come devono funzionare CTA e percorso della prova per i nuovi utenti?
 
-Answer: “Inizia la prova gratuita” appare soltanto in Home e Prezzi. Il click porta direttamente alla web app; registrazione, verifica email e primo login avviano la prova completa di 14 giorni senza carta. La pagina Ordini usa invece “Scopri i prezzi” verso il sito.
+Answer: “Registrati per una prova gratuita” appare soltanto in Home e Prezzi. Il click porta direttamente alla web app; registrazione, verifica email e primo login avviano la prova completa di 14 giorni senza carta. La pagina Ordini usa invece “Scopri i prezzi” verso il sito.
 
 Decision: Il sito non modifica registrazione, verifica, timer della prova, piani o entitlement della web app. Le CTA di prova dirette alla web app sono limitate a Home e Prezzi; Ordini conduce internamente a `/pricing`.
 
@@ -87,7 +87,7 @@ Status: current
 
 Question: Quali elementi di navigazione e quale esperienza Home sono approvati?
 
-Answer: La navbar contiene, nell'ordine, “Funzionalità”, “Ordini”, “Prezzi” e “Accedi”; non contiene CTA prova, FAQ, Contatti o Piattaforme. La hero usa l'H1 “Il gestionale per laboratori artigianali alimentari”, il testo “Ricette, food cost, produzione, etichette, magazzino e ordini: tutto ciò che serve per organizzare il lavoro del laboratorio.” e le CTA “Inizia la prova gratuita” e “Scopri le funzionalità”.
+Answer: La navbar contiene, nell'ordine, “Funzionalità”, “Ordini”, “Prezzi” e “Accedi”; non contiene CTA prova, FAQ, Contatti o Piattaforme. La hero usa l'H1 “Il gestionale per laboratori artigianali alimentari”, il testo “Ricette, food cost, produzione, etichette, magazzino e ordini: tutto ciò che serve per organizzare il lavoro del laboratorio.” e le CTA “Registrati per una prova gratuita” e “Scopri le funzionalità”.
 
 Decision: Rimuovere la navigazione e i pulsanti legacy. Conservare l'immagine hero telefono + desktop perché comunica versatilità, ma rendere copy, alt e segnali semantici neutrali rispetto a Android e Windows.
 

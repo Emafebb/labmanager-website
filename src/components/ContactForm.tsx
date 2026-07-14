@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, Sparkles, MessageCircle } from "lucide-react";
-import { WHATSAPP_URL } from "./WhatsAppButton";
+import { WHATSAPP_URL } from "@/data/support-links";
 
 const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
 

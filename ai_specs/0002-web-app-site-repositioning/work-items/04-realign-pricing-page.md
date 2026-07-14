@@ -19,7 +19,7 @@ Rendere `/pricing` la valutazione completa dell'offerta corrente: un solo piano,
 - [ ] “2 sessioni attive simultanee” compare soltanto nel contenuto Prezzi e nella sua FAQ, con la dicitura esatta e mai come “2 dispositivi”.
 - [ ] Piano Light, confronti tra piani, CTA o dati strutturati relativi a un secondo piano sono assenti.
 - [ ] Download, installazione, Android, Windows, offline, sincronizzazione, team e compatibilità per dispositivo sono assenti dalle superfici pubbliche della route.
-- [ ] “Inizia la prova gratuita” punta direttamente alla web app nella stessa scheda.
+- [ ] “Registrati per una prova gratuita” punta direttamente alla web app nella stessa scheda.
 - [ ] Il title è esattamente “Prezzi e prova gratuita | LabManager” e la description è esattamente quella del requisito 27.
 - [ ] Description, Open Graph e Twitter non includono prezzi, numero di piani o benefici annuali; canonical e Open Graph URL identificano `/pricing`.
 - [ ] Il WebPage page-scoped rappresenta il contenuto visibile, non emette `Offer` e conserva i claim Magazzino approvati.

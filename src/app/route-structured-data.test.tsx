@@ -26,7 +26,7 @@ type PageStructuredData = {
 type RouteModule = {
   default: React.ComponentType;
   metadata: {
-    title?: string;
+    title?: string | { absolute: string };
     description?: string;
     alternates?: { canonical?: string };
     openGraph?: { url?: string };
@@ -34,6 +34,10 @@ type RouteModule = {
   pricingPageStructuredData?: PageStructuredData;
   newsletterPageStructuredData?: PageStructuredData;
 };
+
+function resolveMetadataTitle(title: RouteModule["metadata"]["title"]) {
+  return typeof title === "string" ? title : title?.absolute;
+}
 
 function expectPageScopedGraph(
   structuredData: PageStructuredData | undefined,
@@ -45,7 +49,7 @@ function expectPageScopedGraph(
     "@type": "WebPage",
     "@id": `${expectedUrl}#webpage`,
     url: expectedUrl,
-    name: metadata.title,
+    name: resolveMetadataTitle(metadata.title),
     description: metadata.description,
     inLanguage: "it-IT",
     isPartOf: { "@id": "https://labmanagergestionale.com/#website" },

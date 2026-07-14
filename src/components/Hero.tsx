@@ -5,6 +5,10 @@ import {
   MAGAZZINO_CLAIM_ID_ATTRIBUTE,
 } from "@/data/magazzino-capability-matrix";
 import { HERO_ASSETS } from "@/data/responsive-images";
+import { getCommercialCta } from "@/data/trial-access-cta-inventory";
+
+const homeTrialCta = getCommercialCta("home-trial");
+const homeFeaturesCta = getCommercialCta("home-features");
 
 export default function Hero() {
   preload(HERO_ASSETS.android.preloadHref, {
@@ -41,19 +45,6 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-16 lg:pt-36 lg:pb-20">
-        {/* Top badge */}
-        <div className="animate-fade-in flex justify-center lg:justify-start mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-            </span>
-            <span className="text-sm font-medium text-gray-600">
-              Richiedi una prova gratuita
-            </span>
-          </div>
-        </div>
-
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-20">
           {/* Left column - Text content */}
           <div className="animate-fade-in-up lg:flex-1 text-center lg:text-left mb-16 lg:mb-0 max-w-2xl mx-auto lg:mx-0">
@@ -92,17 +83,17 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mb-10 justify-center lg:justify-start">
               <a
-                href="#funzionalita"
+                href={homeTrialCta.destination}
                 className="touch-target group inline-flex items-center justify-center gap-2 bg-primary text-white px-7 py-3.5 rounded-xl text-base font-semibold transition-all duration-200 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
               >
-                Scopri Funzionalità
+                {homeTrialCta.label}
                 <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="#contatti"
+                href={homeFeaturesCta.destination}
                 className="touch-target inline-flex items-center justify-center border border-gray-200 bg-white text-gray-700 px-7 py-3.5 rounded-xl text-base font-semibold transition-all duration-200 hover:border-gray-300 hover:shadow-md hover:-translate-y-0.5"
               >
-                Contattaci
+                {homeFeaturesCta.label}
               </a>
             </div>
 

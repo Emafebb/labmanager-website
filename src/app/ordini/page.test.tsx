@@ -5,7 +5,6 @@ import OrdersPage, {
   metadata,
   ordersPageStructuredData,
 } from "@/app/ordini/page";
-import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
 vi.mock("next/image", () => ({
   default: ({
@@ -18,7 +17,9 @@ vi.mock("next/image", () => ({
 
 describe("orders page", () => {
   it("exports indexable SEO metadata for the orders page", () => {
-    expect(metadata.title).toBe("Gestione Ordini");
+    expect(metadata.title).toEqual({
+      absolute: "Gestione ordini e piano di lavoro | LabManager",
+    });
     expect(metadata.description).toBe(
       "Gestisci ordini cliente, ritiri, consegne, acconti, produzione collegata, piano di lavoro e report con LabManager per pasticceria, panificio, gelateria e laboratorio.",
     );
@@ -46,10 +47,11 @@ describe("orders page", () => {
       main.getByText(/LabManager include un modulo Ordini e Piano di Lavoro/i),
     ).toBeInTheDocument();
     expect(
-      main
-        .getAllByRole("link", { name: "Richiedi una prova gratuita" })
-        .map((link) => link.getAttribute("href")),
-    ).toContain(TRIAL_ACCESS_APP_HREF);
+      main.getByRole("link", { name: "Scopri i prezzi" }),
+    ).toHaveAttribute("href", "/pricing");
+    expect(
+      main.queryByRole("link", { name: /prova gratuita/i }),
+    ).not.toBeInTheDocument();
     expect(
       main.getByRole("link", { name: "Vedi come funziona" }),
     ).toHaveAttribute("href", "#flusso-ordine");

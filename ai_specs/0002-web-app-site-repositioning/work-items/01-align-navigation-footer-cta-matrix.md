@@ -13,16 +13,16 @@ Rendere Navbar desktop/mobile, footer e inventario CTA conformi alla matrice com
 - Questo Work Item prepara e verifica modifiche locali; non autorizza deploy o pubblicazione.
 
 ## Acceptance criteria
-- [ ] Navbar desktop e mobile contengono, nello stesso ordine, soltanto “Funzionalità”, “Ordini”, “Prezzi” e “Accedi”.
-- [ ] “Accedi” punta direttamente a `https://app.labmanagergestionale.com` senza `target="_blank"`, pagine ponte o duplicazioni locali.
-- [ ] La Home espone “Inizia la prova gratuita” verso la web app e “Scopri le funzionalità” verso la sezione Funzionalità.
-- [ ] Prezzi espone “Inizia la prova gratuita” verso la web app e Ordini espone “Scopri i prezzi” verso `/pricing`.
-- [ ] Nessuna CTA di Ordini, FAQ, Newsletter, Download, WhatsApp o footer promette una prova o un accesso alla web app fuori dalla matrice approvata.
-- [ ] L'inventario CTA tipizzato contiene esattamente le azioni approvate con route, intento, label, destinazione e comportamento di apertura verificabili.
-- [ ] Il footer contiene Prodotto (Funzionalità, Ordini, Prezzi), Supporto (Contatti, Newsletter, WhatsApp) e i contenuti Legale esistenti; Piattaforme, FAQ e Aggiornamenti sono assenti.
-- [ ] Test di rendering verificano la struttura desktop/mobile, l'ordine delle voci, le destinazioni, l'assenza di `target="_blank"` sulle azioni web app e il ruolo di assistenza di WhatsApp.
-- [ ] `npx vitest run`, `npm run lint`, `npm run build` e `npx opennextjs-cloudflare build` passano.
-- [ ] Dopo build o preview, i title HTML di Home, Ordini e Prezzi corrispondono esattamente alla Spec, senza doppio suffisso `| LabManager`.
+- [x] Navbar desktop e mobile contengono, nello stesso ordine, soltanto “Funzionalità”, “Ordini”, “Prezzi” e “Accedi”.
+- [x] “Accedi” punta direttamente a `https://app.labmanagergestionale.com` senza `target="_blank"`, pagine ponte o duplicazioni locali.
+- [x] La Home espone “Registrati per una prova gratuita” verso la web app e “Scopri le funzionalità” verso la sezione Funzionalità.
+- [x] Prezzi espone “Registrati per una prova gratuita” verso la web app e Ordini espone “Scopri i prezzi” verso `/pricing`.
+- [x] Nessuna CTA di Ordini, FAQ, Newsletter, Download, WhatsApp o footer promette una prova o un accesso alla web app fuori dalla matrice approvata.
+- [x] L'inventario CTA tipizzato contiene esattamente le azioni approvate con route, intento, label, destinazione e comportamento di apertura verificabili.
+- [x] Il footer contiene Prodotto (Funzionalità, Ordini, Prezzi), Supporto (Contatti, Newsletter, WhatsApp) e i contenuti Legale esistenti; Piattaforme, FAQ e Aggiornamenti sono assenti.
+- [x] Test di rendering verificano la struttura desktop/mobile, l'ordine delle voci, le destinazioni, l'assenza di `target="_blank"` sulle azioni web app e il ruolo di assistenza di WhatsApp.
+- [x] `npx vitest run`, `npm run lint`, `npm run build` e `npx opennextjs-cloudflare build` passano.
+- [x] Dopo build o preview, i title HTML di Home, Ordini e Prezzi corrispondono esattamente alla Spec, senza doppio suffisso `| LabManager`.
 
 ## Covers
 - User Stories: 2-4

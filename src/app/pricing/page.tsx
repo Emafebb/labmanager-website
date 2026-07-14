@@ -9,17 +9,17 @@ import {
   MAGAZZINO_CAPABILITIES,
   MAGAZZINO_CLAIM_IDS,
 } from "@/data/magazzino-capability-matrix";
-import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
+import { getCommercialCta } from "@/data/trial-access-cta-inventory";
 import PricingFAQ from "./pricing-faq";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/pricing`;
-const PAGE_TITLE = "Prezzi";
+const PAGE_METADATA_TITLE = "Prezzi e prova gratuita | LabManager";
 const PAGE_DESCRIPTION =
   "Un solo piano, tutto incluso. LabManager ti aiuta a gestire ricette, costi, magazzino, etichette e team a €44,99/mese o €480/anno. Prova gratis 14 giorni.";
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_METADATA_TITLE },
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: PAGE_URL,
@@ -51,12 +51,14 @@ export const metadata: Metadata = {
   },
 };
 
+const pricingTrialCta = getCommercialCta("pricing-trial");
+
 export const pricingPageStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": `${PAGE_URL}#webpage`,
   url: PAGE_URL,
-  name: PAGE_TITLE,
+  name: PAGE_METADATA_TITLE,
   description: PAGE_DESCRIPTION,
   inLanguage: "it-IT",
   isPartOf: { "@id": `${BASE_URL}/#website` },
@@ -233,12 +235,10 @@ export default function PricingPage() {
                   Accesso completo a tutte le funzionalità.
                 </p>
                 <a
-                  href={TRIAL_ACCESS_APP_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={pricingTrialCta.destination}
                   className="block w-full bg-gray-900 text-white text-sm font-semibold py-3 px-6 rounded-xl hover:bg-gray-700 transition-colors duration-200"
                 >
-                  Inizia la prova gratis
+                  {pricingTrialCta.label}
                 </a>
               </div>
 

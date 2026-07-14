@@ -1,9 +1,7 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
-
-const WHATSAPP_URL =
-  "https://wa.me/393500424228?text=Ciao!%20Vorrei%20informazioni%20su%20LabManager";
+import { WHATSAPP_URL } from "@/data/support-links";
 
 export default function WhatsAppButton() {
   return (
@@ -19,4 +17,4 @@ export default function WhatsAppButton() {
   );
 }
 
-export { WHATSAPP_URL };
+export { WHATSAPP_URL } from "@/data/support-links";

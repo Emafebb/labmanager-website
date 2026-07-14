@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import { Heart } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
+import { WHATSAPP_URL } from "@/data/support-links";
 
 const currentYear = new Date().getFullYear();
 const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
@@ -26,8 +27,7 @@ const footerLinks: FooterSection[] = [
     links: [
       { label: "Funzionalità", href: "/#funzionalita" },
       { label: "Ordini", href: "/ordini" },
-      { label: "Piattaforme", href: "/#piattaforme" },
-      { label: "FAQ", href: "/#faq" },
+      { label: "Prezzi", href: "/pricing" },
     ],
   },
   {
@@ -35,6 +35,7 @@ const footerLinks: FooterSection[] = [
     links: [
       { label: "Contatti", href: "/#contatti" },
       { label: "Newsletter", href: "/newsletter" },
+      { label: "WhatsApp", href: WHATSAPP_URL, external: true },
     ],
   },
   {
@@ -123,11 +124,14 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="lg:col-span-7 grid grid-cols-2 gap-8">
-              {footerLinks.map((section) => (
-                <div key={section.title}>
-                  <h3 className="text-sm font-bold text-white mb-4 tracking-wider">
-                    {section.title.toUpperCase()}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {footerLinks.map((section) => {
+                const headingId = `footer-${section.title.toLowerCase()}`;
+
+                return (
+                <nav key={section.title} aria-labelledby={headingId}>
+                  <h3 id={headingId} className="text-sm font-bold text-white mb-4 tracking-wider uppercase">
+                    {section.title}
                   </h3>
                   <ul className="space-y-3">
                     {section.links.map((link) => (
@@ -143,8 +147,9 @@ export default function Footer() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              ))}
+                </nav>
+                );
+              })}
             </div>
           </div>
 

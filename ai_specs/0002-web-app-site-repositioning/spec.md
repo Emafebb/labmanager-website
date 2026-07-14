@@ -60,7 +60,7 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
    - H1: “Il gestionale per laboratori artigianali alimentari”.
    - Testo: “Ricette, food cost, produzione, etichette, magazzino e ordini: tutto ciò che serve per organizzare il lavoro del laboratorio.”
-   - CTA primaria: “Inizia la prova gratuita”, diretta a https://app.labmanagergestionale.com nella stessa scheda.
+   - CTA primaria: “Registrati per una prova gratuita”, diretta a https://app.labmanagergestionale.com nella stessa scheda.
    - CTA secondaria: “Scopri le funzionalità”, diretta alla sezione funzionalità della Home.
 
    Il blocco di supporto della Hero che descrive Magazzino deve continuare a derivare dalla matrice e usare il suo copy canonico, senza aggiungere claim di piattaforma o compatibilità. Rimuovere badge, pillole e testi che promuovono Android, Windows, offline, cloud o prova con formulazioni legacy. [L4] [L6] [L7]
@@ -73,15 +73,15 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 10. “Accedi” è l'unico invito globale per chi possiede già un account. Deve puntare direttamente a https://app.labmanagergestionale.com nella stessa scheda; non deve comparire come “Area riservata”, né essere ripetuto in CTA locali, FAQ o footer. [L5]
 
-11. “Inizia la prova gratuita” è consentita solo in Home e Prezzi e deve puntare direttamente alla web app nella stessa scheda. Nessuna CTA di Ordini, Newsletter, Download, WhatsApp, footer o altra pagina può usare una promessa di prova. [L6]
+11. “Registrati per una prova gratuita” è consentita solo in Home e Prezzi e deve puntare direttamente alla web app nella stessa scheda. Nessuna CTA di Ordini, Newsletter, Download, WhatsApp, footer o altra pagina può usare una promessa di prova. [L6]
 
 12. La matrice di navigazione commerciale deve essere:
 
 | Superficie | Azione | Destinazione |
 | --- | --- | --- |
-| Home | Inizia la prova gratuita | https://app.labmanagergestionale.com, stessa scheda |
+| Home | Registrati per una prova gratuita | https://app.labmanagergestionale.com, stessa scheda |
 | Home | Scopri le funzionalità | sezione Funzionalità della Home |
-| Prezzi | Inizia la prova gratuita | https://app.labmanagergestionale.com, stessa scheda |
+| Prezzi | Registrati per una prova gratuita | https://app.labmanagergestionale.com, stessa scheda |
 | Ordini | Scopri i prezzi | /pricing |
 | Navbar desktop/mobile | Accedi | https://app.labmanagergestionale.com, stessa scheda |
 
@@ -251,5 +251,6 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 ## Notes
 
 - Vocabolario canonico: GLOSSARY.md.
+- La decisione di raffinamento del 14 luglio 2026 adotta “Registrati per una prova gratuita” come etichetta CTA canonica e sostituisce le formulazioni legacy “Inizia la prova gratuita” e “Richiedi una prova gratuita”; superfici consentite, destinazione e comportamento di apertura restano invariati.
 - Superfici principali: src/app/page.tsx, src/app/layout.tsx, src/app/ordini/page.tsx, src/app/pricing/page.tsx, src/app/newsletter/page.tsx, Navbar, Footer, Hero, FAQ, ContactForm, llms.txt e sitemap.ts.
 - Il risultato legacy osservato è un URL storico, non una seconda pagina attiva: la correzione richiede sia copy canonico sia consolidamento del redirect/indice. [L12] [L14]
