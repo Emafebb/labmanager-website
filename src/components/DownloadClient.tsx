@@ -68,7 +68,7 @@ export default function DownloadClient({ androidUrl, windowsUrl }: Props) {
           </div>
 
           <h1 id="download-heading" className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            Supporto per installazioni legacy
+            Supporto per installazioni
           </h1>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">

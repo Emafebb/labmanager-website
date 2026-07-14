@@ -7,7 +7,7 @@ import BrandLogo from "@/components/BrandLogo";
 
 const PAGE_URL = "https://labmanagergestionale.com/download";
 const PAGE_DESCRIPTION =
-  "Pagina di assistenza per gli utenti esistenti di LabManager.";
+  "Pagina di assistenza per gli utenti di LabManager.";
 
 export const metadata: Metadata = {
   title: "Supporto installazioni legacy",
