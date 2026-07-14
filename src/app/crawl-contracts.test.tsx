@@ -9,10 +9,19 @@ import NotFound, {
   notFoundPageStructuredData,
 } from "@/app/not-found";
 import { metadata as updatesMetadata } from "@/app/aggiornamenti/page";
+import { metadata as accountBillingMetadata } from "@/app/account/billing/page";
+import { metadata as cancelMetadata } from "@/app/billing/cancel/page";
+import { metadata as successMetadata } from "@/app/billing/success/page";
+import { metadata as downloadMetadata } from "@/app/download/page";
+import { metadata as instagramMetadata } from "@/app/instagram/page";
+import { metadata as newsletterMetadata } from "@/app/newsletter/page";
+import { metadata as ordersMetadata } from "@/app/ordini/page";
+import { metadata as pricingMetadata } from "@/app/pricing/page";
 import sitemap from "@/app/sitemap";
 
 vi.mock("next/font/google", () => ({
   DM_Sans: () => ({ variable: "font-dm-sans" }),
+  Playfair_Display: () => ({ variable: "font-playfair" }),
 }));
 
 describe("404 metadata and document contract", () => {
@@ -55,7 +64,7 @@ describe("404 metadata and document contract", () => {
 });
 
 describe("crawl boundaries and text response ownership", () => {
-  it("keeps noindex, billing and download routes out of the sitemap", () => {
+  it("limits indexable routes and the sitemap to Home, Ordini and Prezzi", () => {
     const entries = sitemap();
     const urls = entries.map(({ url }) => url);
 
@@ -67,7 +76,23 @@ describe("crawl boundaries and text response ownership", () => {
     expect(urls.join(" ")).not.toMatch(
       /newsletter|aggiornamenti|billing|download/,
     );
+    for (const metadata of [homeMetadata, ordersMetadata, pricingMetadata]) {
+      expect(metadata.robots).toBeUndefined();
+    }
+  });
+
+  it("preserves every agreed noindex contract outside the sitemap", () => {
+    expect(newsletterMetadata.robots).toEqual({ index: false, follow: true });
     expect(updatesMetadata.robots).toEqual({ index: false, follow: false });
+    expect(instagramMetadata.robots).toEqual({ index: false });
+    for (const metadata of [
+      downloadMetadata,
+      accountBillingMetadata,
+      successMetadata,
+      cancelMetadata,
+    ]) {
+      expect(metadata.robots).toEqual({ index: false, follow: false });
+    }
   });
 
   it("changes lastModified only on routes whose content changed in this slice", () => {
@@ -75,7 +100,7 @@ describe("crawl boundaries and text response ownership", () => {
       sitemap().map(({ url, lastModified }) => [url, lastModified]),
     );
 
-    expect(byUrl).toMatchObject({
+    expect(byUrl).toEqual({
       "https://labmanagergestionale.com": "2026-07-14",
       "https://labmanagergestionale.com/ordini": "2026-07-14",
       "https://labmanagergestionale.com/pricing": "2026-07-14",
@@ -94,6 +119,8 @@ describe("crawl boundaries and text response ownership", () => {
     expect(robots).toContain(
       "Sitemap: https://labmanagergestionale.com/sitemap.xml",
     );
+    expect(robots).not.toMatch(/^Disallow:/m);
+    expect(robots).not.toMatch(/pastrylabmanager\.com|www\.labmanagergestionale\.com/i);
     expect(llms).toContain("# LabManager");
     expect(headers).toMatch(
       /\/llms\.txt\s+Content-Type: text\/plain; charset=utf-8/,

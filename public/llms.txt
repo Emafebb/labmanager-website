@@ -1,37 +1,36 @@
 # LabManager
 
-> LabManager è il software gestionale per pasticceria, panificio, gelateria e ristorante disponibile su Android e Windows. Permette di gestire ricette, calcolare costi e margini, creare etichette alimentari con allergeni, calcolare tabelle nutrizionali, bilanciare la composizione di ricette (zuccheri, grassi, proteine) e gestire la produzione. Funziona completamente offline.
+> LabManager è il gestionale per laboratori artigianali alimentari, pensato per pasticcerie, panifici e gelaterie. Riunisce ricette e food cost, produzione ed etichette, magazzino, ordini e piano di lavoro.
 
-## Informazioni Principali
+## Pagine SEO principali
 
-- [Homepage](https://labmanagergestionale.com): Landing page con funzionalità, piattaforme, FAQ e contatti.
-- [Ordini](https://labmanagergestionale.com/ordini): Pagina dedicata al modulo Ordini e Piano di Lavoro per ordini cliente, ordini interni, produzione collegata, acconti, residui, report ed export.
-- [Prezzi](https://labmanagergestionale.com/pricing): Piano unico, trial di 14 giorni e condizioni dell'abbonamento.
+- [Home](https://labmanagergestionale.com): Presentazione di LabManager e prova gratuita di 14 giorni.
+- [Ordini](https://labmanagergestionale.com/ordini): Gestione di ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.
+- [Prezzi](https://labmanagergestionale.com/pricing): Piano LabManager e prova gratuita di 14 giorni senza carta.
 
-## Funzionalità Chiave
+## Pubblico
 
-LabManager offre: gestione ricette e assemblaggi, Ordini e Piano di Lavoro, calcolo automatico costi e margini, bilanciamento composizione (zuccheri, grassi, proteine, lattosio), calcolatori professionali per laboratorio (bagne, calcolo W, gelato, stampi), tabelle nutrizionali automatiche, etichette alimentari con allergeni, dashboard produzione e vendite, tracciabilità lotti, esportazione PDF, funzionamento offline con sincronizzazione cloud, gestione team con ruoli.
+LabManager si rivolge ai laboratori artigianali alimentari in Italia, in particolare a pasticcerie, panifici e gelaterie.
+
+## I quattro pilastri
+
+### Ricette e Food Cost
+
+Gestione di ricette, ingredienti, costi e margini.
+
+### Produzione ed Etichette
+
+Organizzazione della produzione, etichette alimentari, allergeni ed esportazione PDF.
+
+### Magazzino
 
 Gestione magazzino con ricevimento merci, giacenze per sede, soglie configurabili, scarico FIFO, alert scadenze e trasferimenti tra sedi.
 
 Claim Magazzino approvati: `magazzino.ricevimento-merci`, `magazzino.giacenze-per-sede`, `magazzino.soglie-configurabili`, `magazzino.scarico-fifo`, `magazzino.alert-scadenze`, `magazzino.trasferimenti-tra-sedi`.
 
-Il modulo ordini gestisce ordini cliente e interni, data evasione, ritiro/consegna, righe prodotto, produzione collegata, acconti, residui, report ed export.
+### Ordini e Piano di Lavoro
 
-## Differenziazione
-
-LabManager si distingue dai gestionali generici e dai software pasticceria esistenti per:
-
-- **Funzionamento completamente offline**: tutte le funzionalità disponibili senza connessione internet, ideale per laboratori dove il WiFi non arriva.
-- **Bilanciamento composizione ricette integrato**: analisi in tempo reale di zuccheri, grassi, proteine, solidi e acqua con range target personalizzabili.
-- **Multi-piattaforma nativo**: disponibile su Android (smartphone e tablet) e Windows desktop.
-- **Trial e abbonamento chiari**: prova gratuita di 14 giorni, poi piano mensile o annuale scelto direttamente nell'app.
-- **Etichette complete**: etichette alimentari con allergeni e tabelle nutrizionali generate automaticamente.
-- **Sviluppato in Italia**: progettato specificamente per le esigenze dei laboratori artigianali italiani.
-
-## Pubblico Target
-
-Pasticceri, panificatori, gelatieri e laboratori artigianali alimentari in Italia.
+Il modulo ordini gestisce ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.
 
 ## Contatti
 
