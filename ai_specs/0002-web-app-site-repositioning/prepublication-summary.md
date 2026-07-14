@@ -8,7 +8,7 @@
 - Next.js: `16.2.10`
 - OpenNext for Cloudflare: `1.20.1`
 - Stato approvazione pubblicazione: **APPROVATO DAL COMMITTENTE**
-- Push e deploy di produzione: **AUTORIZZATI, NON ANCORA ESEGUITI**
+- Push e deploy di produzione: **COMPLETATI**
 - Attività Search Console eseguite: **nessuna**
 
 Il candidato riscrive `public/llms.txt`, neutralizza il copy legacy residuo nel footer e aggiunge regressioni cross-surface. `src/app/sitemap.ts`, `public/robots.txt`, `public/_headers` e i contenuti delle tre route indicizzabili non sono stati modificati da questo Work Item.
@@ -20,6 +20,26 @@ Il candidato riscrive `public/llms.txt`, neutralizza il copy legacy residuo nel 
 - Versione approvata: candidato applicativo `3020ecb`, documentato in `99bbd72`
 - Autorizzazione esplicita: push di `master` e deploy in produzione
 - Attività successive: il committente procederà separatamente con il Work Item 08 dopo la notifica di deploy completato
+
+## Evidenza deploy di produzione
+
+- Commit pubblicato e presente su `origin/master`: `365aa2e6937a98c63234a86b04fa177fdca68b4f`
+- Comando: `npm run deploy`
+- Worker Cloudflare: `labmanager-website`
+- Versione Cloudflare attiva al 100%: `afee073a-b42d-4f7e-8f79-0d54d3051cfe`
+- Creazione versione: `2026-07-14T15:05:23.216Z`
+- Attività Work Item 08 o Search Console eseguite durante il deploy: **nessuna**
+
+Smoke test sul dominio canonico dopo il deploy:
+
+| Risorsa | Verifica live | Esito |
+| --- | --- | --- |
+| `/` | HTTP 200, title Home esatto, footer aggiornato | PASS |
+| `/ordini` | HTTP 200, title Ordini esatto, footer aggiornato | PASS |
+| `/pricing` | HTTP 200, title Prezzi esatto, footer aggiornato | PASS |
+| `/llms.txt` | HTTP 200, `text/plain; charset=utf-8`, pubblico aggiornato, termini proibiti assenti | PASS |
+| `/robots.txt` | HTTP 200, `text/plain; charset=utf-8`, sitemap canonica, nessun `Disallow` | PASS |
+| `/sitemap.xml` | HTTP 200, esattamente Home, Ordini e Prezzi | PASS |
 
 ## Contratti di indicizzazione
 
@@ -146,11 +166,11 @@ Non viene suggerito nuovo schema per questo rilascio: conservare WebPage e il gr
 ## Limitazioni
 
 - Nessun dato Search Console, GA4, CrUX o Core Web Vitals di campo è stato consultato.
-- La verifica riguarda la build locale candidata; non sostituisce la verifica live post-deploy.
+- La verifica pre-pubblicazione locale è affiancata da uno smoke test live; non sostituisce la verifica completa della migrazione storica prevista dal Work Item 08.
 - Le attività sul dominio storico e Search Console appartengono al Work Item 08 e non vengono eseguite durante questo deploy.
 
 ## Gate di pubblicazione
 
-**APPROVED — push e deploy di produzione autorizzati il 2026-07-14.**
+**DEPLOYED — approvato e pubblicato in produzione il 2026-07-14.**
 
-Il committente ha approvato esplicitamente il candidato applicativo `3020ecb`, documentato in `99bbd72`, e ha autorizzato push e deploy. Questa approvazione non estende l'esecuzione alle attività Search Console o alle verifiche della migrazione storica del Work Item 08.
+Il committente ha approvato esplicitamente il candidato applicativo `3020ecb`, documentato in `99bbd72`, e ha autorizzato push e deploy. Il deploy è stato completato con la versione Cloudflare `afee073a-b42d-4f7e-8f79-0d54d3051cfe`. Le attività Search Console e le verifiche della migrazione storica restano nel Work Item 08.
