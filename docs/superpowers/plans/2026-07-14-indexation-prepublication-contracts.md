@@ -31,7 +31,7 @@
 - Consumes: route components and exported metadata/JSON-LD, `sitemap()`, `public/llms.txt`, `public/robots.txt`, and `public/_headers`.
 - Produces: a regression boundary that checks prohibited terms across public marketing artifacts and exact crawl/indexation behavior across all governed routes.
 
-- [ ] **Step 1: Add the failing cross-surface test**
+- [x] **Step 1: Add the failing cross-surface test**
 
 Create a test that renders Home, Ordini, Prezzi, and Newsletter one at a time; serializes the approved route metadata and JSON-LD; reads `llms.txt`; and serializes the sitemap. Replace technical image URLs with a neutral marker before applying this prohibition:
 
@@ -46,11 +46,11 @@ for (const [surface, value] of Object.entries(publicSurfaces)) {
 
 The same file must assert that `llms.txt` exposes exactly the Home, Ordini, and Prezzi Markdown links, includes the approved audience, four pillar headings, warehouse canonical copy, and every stable warehouse claim ID.
 
-- [ ] **Step 2: Strengthen the crawl policy test**
+- [x] **Step 2: Strengthen the crawl policy test**
 
 Import Newsletter, Aggiornamenti, Instagram, Download, account billing, billing success, and billing cancel metadata. Assert their exact current `robots` values, exact sitemap URLs/dates, absence of every governed route from `Disallow`, canonical sitemap ownership, and both plain-text header rules.
 
-- [ ] **Step 3: Run the focused tests and verify RED**
+- [x] **Step 3: Run the focused tests and verify RED**
 
 Run:
 
@@ -69,7 +69,7 @@ Expected result: the new `llms.txt` positioning assertions fail because the curr
 - Consumes: approved requirements 3, 25, and 30 plus `MAGAZZINO_CANONICAL_COPY` and `MAGAZZINO_CLAIM_IDS`.
 - Produces: a plain-text AI discovery document aligned with the same public positioning as Home, Ordini, and Prezzi.
 
-- [ ] **Step 1: Replace the legacy positioning**
+- [x] **Step 1: Replace the legacy positioning**
 
 Write `llms.txt` with these sections and no additional landing links:
 
@@ -87,11 +87,11 @@ Write `llms.txt` with these sections and no additional landing links:
 
 Then document exactly the four approved pillars, the canonical warehouse sentence, all six stable claim IDs, and neutral contact details. Do not mention Newsletter as a landing or any excluded platform/capability claim.
 
-- [ ] **Step 2: Run the focused tests and verify GREEN**
+- [x] **Step 2: Run the focused tests and verify GREEN**
 
 Run the same focused Vitest command from Task 1. Expected result: all selected files and tests pass with no warnings.
 
-- [ ] **Step 3: Review the production diff**
+- [x] **Step 3: Review the production diff**
 
 Run `git diff -- public/llms.txt src/app/prepublication-contracts.test.tsx src/app/crawl-contracts.test.tsx src/app/sitemap.ts public/robots.txt public/_headers` and confirm the only production-file change is the intended `llms.txt` rewrite; sitemap, robots, headers, and route content remain unchanged.
 
@@ -106,7 +106,7 @@ Run `git diff -- public/llms.txt src/app/prepublication-contracts.test.tsx src/a
 - Consumes: the candidate commit, command exit codes, built HTML, browser observations, and fresh local SEO evidence.
 - Produces: a reviewable prepublication record and an explicit publication gate that remains closed.
 
-- [ ] **Step 1: Run all required automated gates**
+- [x] **Step 1: Run all required automated gates**
 
 Run each command independently and retain its exit code and concise result:
 
@@ -119,15 +119,15 @@ npx opennextjs-cloudflare build
 
 Expected result: every command exits `0`.
 
-- [ ] **Step 2: Verify final HTML and browser behavior**
+- [x] **Step 2: Verify final HTML and browser behavior**
 
 Serve the built candidate locally. Read the actual `<title>` from `/`, `/ordini`, and `/pricing` and compare it byte-for-byte with requirements 25–27. At desktop and mobile viewports, verify Home rendering, keyboard focus, desktop/mobile navbar, mobile menu open/close, CTA destinations, and absence of relevant console errors.
 
-- [ ] **Step 3: Apply the single-page SEO checks to all three indexable pages**
+- [x] **Step 3: Apply the single-page SEO checks to all three indexable pages**
 
 Inspect title, description, H1/headings, canonical, robots, Open Graph/Twitter, schema, images, content, internal links, and likely Core Web Vitals risks from the built HTML. Write concise ignored cache summaries with current timestamps and tool limitations; prefer fresh evidence over the 2026-07-11 cache where they conflict.
 
-- [ ] **Step 4: Commit the candidate implementation**
+- [x] **Step 4: Commit the candidate implementation**
 
 Stage only the plan, tests, and `public/llms.txt`, then commit with:
 
@@ -135,7 +135,7 @@ Stage only the plan, tests, and `public/llms.txt`, then commit with:
 git commit -m "feat(seo): consolidate indexation contracts"
 ```
 
-- [ ] **Step 5: Record and commit the prepublication evidence**
+- [x] **Step 5: Record and commit the prepublication evidence**
 
 Write the candidate commit hash, command results, exact HTML titles, browser matrix, SEO scorecards, limitations, and `Publication approval: PENDING — no deploy authorized` in the summary. Check every acceptance criterion in Work Item 07, stage only the summary and work-item file, and commit with:
 
@@ -143,6 +143,6 @@ Write the candidate commit hash, command results, exact HTML titles, browser mat
 git commit -m "docs(seo): record prepublication candidate"
 ```
 
-- [ ] **Step 6: Confirm scope and gate**
+- [x] **Step 6: Confirm scope and gate**
 
 Run `git status --short --branch` and `git log -2 --oneline`. Confirm the worktree is clean, only intended commits were added, and no deploy, release, Search Console action, or remote push occurred.
