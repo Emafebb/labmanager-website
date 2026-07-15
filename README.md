@@ -48,12 +48,29 @@ Il token viene copiato dallo snippet generato in Cloudflare Web Analytics. Se no
 
 ## Build e deploy
 
+Verificare prima che la build di produzione termini correttamente:
+
 ```bash
 npm run build
+```
+
+> **ATTENZIONE — PRODUZIONE:** `npm run deploy` esegue build OpenNext, inizializza la cache remota necessaria e pubblica immediatamente la nuova versione al 100% del traffico.
+
+Eseguire il deploy soltanto dopo il completamento documentato della checklist nel runbook, l'approvazione prevista dalla Spec e la conferma che `wrangler.jsonc` punti a `labmanager-website`.
+
+```bash
 npm run deploy
 ```
 
-Per Workers Builds, collegare questo repository, usare `master` come branch di produzione e `npm run deploy` come comando di deploy. Il file `wrangler.jsonc` configura il Worker, la compatibility date, `nodejs_compat` e gli asset statici.
+Per Workers Builds, collegare questo repository e usare questi valori esatti:
+
+```text
+Production branch: master
+Build command: npx @opennextjs/cloudflare build
+Deploy command: npx @opennextjs/cloudflare deploy
+```
+
+Il file `wrangler.jsonc` configura il Worker, la compatibility date, `nodejs_compat` e gli asset statici.
 
 Le immagini sono tutte locali e statiche. Per il primo deploy `next/image` usa intenzionalmente `images.unoptimized`; l'abilitazione futura del binding Cloudflare Images potrà sostituire questo fallback dopo la verifica della zona e dei relativi costi.
 

@@ -12,7 +12,7 @@ Tutti i comandi Wrangler eseguiti dalla radice del repository usano `wrangler.js
 
 ## Comandi rapidi: dall'installazione al deploy
 
-Questa è la procedura essenziale da seguire in ordine. Esegui ogni comando dalla cartella principale del progetto. I dettagli e la risoluzione dei problemi sono spiegati nelle sezioni successive.
+Questa procedura è compatibile con macOS. Esegui i comandi nell'app **Terminale**, dalla cartella principale del progetto, seguendo i passaggi in ordine. Su Mac, `Ctrl-C` significa premere **Control + C**, non **Command + C**. I dettagli e la risoluzione dei problemi sono spiegati nelle sezioni successive.
 
 ### 1. Installa il progetto
 
@@ -76,7 +76,9 @@ Questo controllo prepara il bundle ma non modifica il sito online.
 npx wrangler whoami
 ```
 
-Verifica di essere nell'account corretto e che il Worker sia `labmanager-website`.
+Verifica che identità, account e membership siano quelli previsti. Questo comando non mostra quale Worker è configurato dal repository.
+
+Apri separatamente `wrangler.jsonc` in un editor di testo e verifica che il campo `name` sia esattamente `labmanager-website`. Non proseguire se il nome è diverso.
 
 ### 9. Pubblica il sito
 
@@ -90,9 +92,11 @@ Dopo la pubblicazione, esegui lo smoke test descritto più avanti in questa guid
 
 ## Prerequisiti e autenticazione
 
+- Node.js 22 o successivo (`node --version`).
 - Checkout del repository e dipendenze installate con `npm install`.
 - Accesso all'account Cloudflare; per questa procedura è in scope esclusivamente il Worker `labmanager-website`.
 - Wrangler locale compatibile con il progetto (`npx wrangler --version`; il progetto usa Wrangler 4.x).
+- `curl` e ripgrep (`rg`) disponibili per i controlli read-only dei title HTML (`curl --version` e `rg --version`).
 - Configurazione verificata in `wrangler.jsonc`: `name` uguale a `labmanager-website`, entry point `worker.ts`, asset OpenNext e osservabilità attiva.
 - Autorizzazione esplicita del committente prima di deploy, rollout o rollback. Test, build, dry-run e preview locali non pubblicano nulla.
 
@@ -239,7 +243,12 @@ do
 done
 ```
 
-Richiedere HTTP 200, poi verificare i tre title e canonical, contenuto e `Content-Type` di `robots.txt` e `llms.txt`, e validità della sitemap. Ripetere il controllo visuale essenziale a desktop e mobile, verificare CTA e console, quindi annotare esiti e timestamp. Non inviare form di produzione come parte dello smoke test senza un'autorizzazione specifica.
+Richiedere HTTP 200, poi verificare i tre title e canonical, contenuto e `Content-Type` di `robots.txt` e `llms.txt`, e validità della sitemap. Ripetere il controllo visuale essenziale a desktop e mobile, verificare CTA e console, quindi annotare esiti e timestamp.
+
+Per i form di contatto e newsletter distinguere sempre questi due casi:
+
+- **Senza autorizzazione specifica:** controllare che i form siano presenti, che i campi richiesti siano indicati e che la validazione client blocchi dati mancanti o non validi, senza inviare dati. Nel resoconto registrare esplicitamente: `invio form saltato — non autorizzato`.
+- **Con autorizzazione specifica all'invio:** usare soltanto dati di test non personali, eseguire un solo invio controllato sul form autorizzato, verificare il messaggio di esito e i log correlati, quindi annotare risultato e timestamp. Non esporre nei log o nel resoconto valori sensibili, payload completi o secrets.
 
 ## Log e osservabilità
 
@@ -256,6 +265,15 @@ npx wrangler tail labmanager-website --format json
 ```
 
 I comandi rimangono in ascolto finché non vengono interrotti con `Ctrl-C`. Non riportare nei log payload di form, email, token o valori dei secrets. Durante lo smoke test controllare eccezioni, status inattesi e richieste fallite; per lo storico usare **Worker > Observability** nel dashboard.
+
+Per ogni incidente raccogliere almeno questa checklist, rimuovendo dati personali e secrets prima di condividerla:
+
+- timestamp e timezone;
+- route, metodo HTTP e status;
+- impatto osservato;
+- commit, versione Worker o deployment coinvolto;
+- passi di riproduzione;
+- estratto dell'errore oppure request ID, già ripulito da dati personali e secrets.
 
 ## Versioni e rollback
 
