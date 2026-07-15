@@ -2,6 +2,8 @@
 
 Landing page italiana di LabManager, realizzata con Next.js App Router e distribuita su Cloudflare Workers tramite `@opennextjs/cloudflare`.
 
+Per preview nel runtime Workers, deploy, secrets, smoke test, log e rollback consulta il [Runbook operativo Cloudflare](docs/CLOUDFLARE_RUNBOOK.md).
+
 ## Sviluppo locale
 
 Richiede Node.js 22 o successivo.
