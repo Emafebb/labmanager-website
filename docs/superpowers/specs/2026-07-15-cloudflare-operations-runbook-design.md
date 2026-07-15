@@ -12,17 +12,34 @@ Creare una guida operativa unica e consultabile per sviluppare, verificare, pubb
 
 ## Struttura del runbook
 
-1. Architettura e risorse in scope: Next.js, OpenNext, Worker `labmanager-website`, dominio canonico e risorse Cloudflare da non modificare.
-2. Prerequisiti locali e autenticazione: Node.js, dipendenze, Wrangler e verifica dell'account.
-3. Variabili e secrets: distinzione tra build-time, runtime e sviluppo locale, senza includere valori reali.
-4. Sviluppo e preview: differenza tra `npm run dev`, build Next e preview nel runtime Workers.
-5. Checklist pre-deploy: stato Git, test, lint, build Next/OpenNext, title HTML e verifica visuale mobile/desktop.
-6. Deploy manuale e Workers Builds: procedura ordinaria, gate umano previsto dalla Spec e distinzione tra `deploy` e `upload`.
-7. Smoke test post-deploy: route principali, metadata, file testuali, sitemap, form e controllo degli errori.
-8. Osservabilità: log live con Wrangler, Dashboard e informazioni minime da raccogliere durante un incidente.
-9. Versioni e rollback: identificazione della versione attiva, scelta della versione stabile, rollback e verifica successiva.
-10. Manutenzione periodica: compatibility date, dipendenze, limiti del Worker, secrets e controllo delle risorse collegate.
-11. Troubleshooting sintetico e riferimenti ufficiali.
+1. Percorso essenziale iniziale: una procedura numerata dall'installazione al deploy, con una spiegazione breve per ogni comando e un avviso evidente prima della pubblicazione in produzione.
+2. Architettura e risorse in scope: Next.js, OpenNext, Worker `labmanager-website`, dominio canonico e risorse Cloudflare da non modificare.
+3. Prerequisiti locali e autenticazione: Node.js, dipendenze, Wrangler e verifica dell'account.
+4. Variabili e secrets: distinzione tra build-time, runtime e sviluppo locale, senza includere valori reali.
+5. Sviluppo e preview: differenza tra `npm run dev`, build Next e preview nel runtime Workers.
+6. Checklist pre-deploy: stato Git, test, lint, build Next/OpenNext, title HTML e verifica visuale mobile/desktop.
+7. Deploy manuale e Workers Builds: procedura ordinaria, gate umano previsto dalla Spec e distinzione tra `deploy` e `upload`.
+8. Smoke test post-deploy: route principali, metadata, file testuali, sitemap, form e controllo degli errori.
+9. Osservabilità: log live con Wrangler, Dashboard e informazioni minime da raccogliere durante un incidente.
+10. Versioni e rollback: identificazione della versione attiva, scelta della versione stabile, rollback e verifica successiva.
+11. Manutenzione periodica: compatibility date, dipendenze, limiti del Worker, secrets e controllo delle risorse collegate.
+12. Troubleshooting sintetico e riferimenti ufficiali.
+
+### Percorso essenziale iniziale
+
+La sezione iniziale deve essere comprensibile anche senza conoscere Wrangler o OpenNext e deve guidare l'operatore, in ordine, attraverso:
+
+1. installazione con `npm install`;
+2. sviluppo con `npm run dev`, spiegando che il server resta attivo fino a `Ctrl-C`;
+3. test con `npx vitest run`;
+4. controllo del codice con `npm run lint`;
+5. build con `npm run build`;
+6. preview Cloudflare con `npm run preview`, anch'essa da interrompere con `Ctrl-C`;
+7. controllo finale senza pubblicazione con `npx wrangler deploy --dry-run --outdir /tmp/labmanager-worker-bundle`;
+8. verifica dell'account con `npx wrangler whoami`;
+9. deploy con `npm run deploy`, separato visivamente dagli altri comandi e marcato come pubblicazione immediata in produzione.
+
+Questa apertura è una guida rapida, non un unico blocco da copiare: i server interattivi impedirebbero ai comandi successivi di partire e il deploy non deve essere eseguito accidentalmente. Le spiegazioni tecniche, le variabili, i log, il rollback e il troubleshooting restano nelle sezioni successive.
 
 ## Regole di sicurezza operativa
 
@@ -43,6 +60,7 @@ Il problema rilevato nella sessione corrente è ambientale e non appartiene al c
 - Ogni comando documentato esiste nelle versioni installate di Wrangler e OpenNext oppure è collegato alla documentazione ufficiale corrente.
 - La procedura distingue chiaramente controlli locali, operazioni remote read-only e mutazioni di produzione.
 - La guida copre il ciclo completo: preparazione, preview, approvazione, deploy, verifica, log e rollback.
+- L'apertura guida un operatore dall'installazione al deploy senza richiedere la lettura preventiva delle sezioni tecniche.
 - Il README collega il runbook senza duplicarne le sezioni operative.
 - Link, comandi e riferimenti ai file del repository vengono verificati prima del commit.
 
