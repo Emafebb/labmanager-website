@@ -10,22 +10,83 @@ Fuori scope: Worker labmanager, Worker labmanager-downloads, progetto Pages labm
 
 Tutti i comandi Wrangler eseguiti dalla radice del repository usano `wrangler.jsonc`, il cui campo `name` deve restare `labmanager-website`. Prima di qualsiasi operazione remota, ricontrollare questo nome. Non aggiungere `--name` per puntare ad altre risorse e non modificare i componenti fuori scope.
 
-## Comandi rapidi
+## Comandi rapidi: dall'installazione al deploy
 
-Eseguire i comandi dalla radice del repository. I server `dev` e `preview` sono processi interattivi da avviare separatamente; gli altri comandi compongono il gate locale.
+Questa è la procedura essenziale da seguire in ordine. Esegui ogni comando dalla cartella principale del progetto. I dettagli e la risoluzione dei problemi sono spiegati nelle sezioni successive.
+
+### 1. Installa il progetto
+
+Da eseguire la prima volta o quando cambiano le dipendenze:
 
 ```bash
 npm install
+```
+
+### 2. Avvia il sito per lavorare
+
+```bash
 npm run dev
-npm run preview
-npm run lint
+```
+
+Apri http://localhost:3000. Quando hai terminato, interrompi il server con `Ctrl-C`.
+
+### 3. Esegui i test
+
+```bash
 npx vitest run
+```
+
+Continua soltanto se tutti i test passano.
+
+### 4. Controlla il codice
+
+```bash
+npm run lint
+```
+
+Continua soltanto se il controllo termina senza errori.
+
+### 5. Crea la build
+
+```bash
 npm run build
-npx opennextjs-cloudflare build
+```
+
+Questo verifica che il sito possa essere compilato per la produzione.
+
+### 6. Controlla la versione Cloudflare in locale
+
+```bash
+npm run preview
+```
+
+Apri http://localhost:8787 e controlla il sito. Quando hai terminato, interrompi la preview con `Ctrl-C`.
+
+### 7. Simula il deploy senza pubblicare
+
+```bash
 npx wrangler deploy --dry-run --outdir /tmp/labmanager-worker-bundle
 ```
 
-Il `dry-run` compila e controlla il bundle senza caricarlo su Cloudflare. Non sostituisce test, lint, build OpenNext o preview workerd.
+Questo controllo prepara il bundle ma non modifica il sito online.
+
+### 8. Controlla l'account Cloudflare
+
+```bash
+npx wrangler whoami
+```
+
+Verifica di essere nell'account corretto e che il Worker sia `labmanager-website`.
+
+### 9. Pubblica il sito
+
+> **ATTENZIONE — PRODUZIONE:** il comando seguente pubblica immediatamente la nuova versione del sito. Eseguilo soltanto dopo tutti i controlli precedenti e dopo l'approvazione richiesta.
+
+```bash
+npm run deploy
+```
+
+Dopo la pubblicazione, esegui lo smoke test descritto più avanti in questa guida.
 
 ## Prerequisiti e autenticazione
 
