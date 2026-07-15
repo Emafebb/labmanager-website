@@ -6,10 +6,7 @@ import Home from "@/app/page";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
-import {
-  MAGAZZINO_CANONICAL_COPY,
-  MAGAZZINO_CLAIM_ID_ATTRIBUTE,
-} from "@/data/magazzino-capability-matrix";
+import { MAGAZZINO_CANONICAL_COPY } from "@/data/magazzino-capability-matrix";
 
 vi.mock("next/image", () => ({
   default: ({
@@ -59,16 +56,13 @@ describe("home repositioning", () => {
     ).toHaveAttribute("href", "/ordini");
   });
 
-  it("keeps the responsive hero artwork with neutral semantics and governed warehouse copy", () => {
+  it("keeps the responsive hero artwork without repeating the detailed warehouse copy", () => {
     const { container } = render(<Hero />);
 
-    expect(container).toHaveTextContent(MAGAZZINO_CANONICAL_COPY);
+    expect(container).not.toHaveTextContent(MAGAZZINO_CANONICAL_COPY);
     expect(
       container.querySelector("[data-magazzino-claim-ids]"),
-    ).toHaveAttribute(
-      "data-magazzino-claim-ids",
-      MAGAZZINO_CLAIM_ID_ATTRIBUTE,
-    );
+    ).toBeNull();
     expect(container.querySelector("picture[data-hero-lcp]")).not.toBeNull();
     expect(
       screen.getByAltText("Anteprima di LabManager su telefono e desktop"),

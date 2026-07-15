@@ -1,6 +1,5 @@
 export const MAGAZZINO_REQUIRED_SURFACES = [
   "warehouse",
-  "hero",
   "faq",
   "pricing",
   "changelog",

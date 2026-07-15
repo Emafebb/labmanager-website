@@ -10,7 +10,6 @@ import PricingPage, {
   pricingMagazzinoFeature,
 } from "@/app/pricing/page";
 import FAQ from "@/components/FAQ";
-import Hero from "@/components/Hero";
 import Warehouse from "@/components/Warehouse";
 import { changelog } from "@/data/changelog";
 import {
@@ -48,6 +47,14 @@ describe("Magazzino capability matrix v1", () => {
   it("contains only the six approved, public capabilities with stable governance fields", () => {
     expect(MAGAZZINO_CAPABILITIES.map(({ id }) => id)).toEqual(EXPECTED_IDS);
     expect(MAGAZZINO_CLAIM_IDS).toEqual(EXPECTED_IDS);
+    expect(MAGAZZINO_REQUIRED_SURFACES).toEqual([
+      "warehouse",
+      "faq",
+      "pricing",
+      "changelog",
+      "llms",
+      "software-application",
+    ]);
 
     for (const capability of MAGAZZINO_CAPABILITIES) {
       expect(capability).toMatchObject({
@@ -67,7 +74,7 @@ describe("Magazzino capability matrix v1", () => {
     );
   });
 
-  it("maps visible Warehouse, Hero, FAQ and pricing claims to every matrix ID", async () => {
+  it("maps visible Warehouse, FAQ and pricing claims to every matrix ID", async () => {
     const user = userEvent.setup();
 
     const warehouse = render(<Warehouse />);
@@ -76,13 +83,6 @@ describe("Magazzino capability matrix v1", () => {
       warehouse.container.querySelector("[data-magazzino-claim-ids]"),
     ).toHaveAttribute("data-magazzino-claim-ids", claimIdAttribute);
     warehouse.unmount();
-
-    const hero = render(<Hero />);
-    expect(hero.container).toHaveTextContent(MAGAZZINO_CANONICAL_COPY);
-    expect(
-      hero.container.querySelector("[data-magazzino-claim-ids]"),
-    ).toHaveAttribute("data-magazzino-claim-ids", claimIdAttribute);
-    hero.unmount();
 
     const faq = render(<FAQ />);
     const warehouseQuestion = screen.getByRole("button", {

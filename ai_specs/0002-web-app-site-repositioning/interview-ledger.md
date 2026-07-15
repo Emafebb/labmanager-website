@@ -208,3 +208,15 @@ Answer: Prima di pubblicare il sito con queste modifiche, il committente deve es
 Decision: Implementazione, test, build e preview possono essere completati senza pubblicare. Nessun deploy, rilascio pubblico o avvio delle attività Search Console post-deploy può avvenire finché il committente non approva esplicitamente la versione candidata sulla base delle evidenze pre-pubblicazione.
 
 Source: Approvazione della decomposizione, 14 luglio 2026.
+
+### L17
+
+Status: current
+
+Question: Il dettaglio canonico del Magazzino deve essere ripetuto anche nella Hero?
+
+Answer: No. Il riquadro con la descrizione del Magazzino nella Hero è superfluo e fuori contesto perché la stessa area funzionale viene descritta più avanti nella Home.
+
+Decision: La Hero conserva “magazzino” nel testo generale approvato, ma non rende il riquadro di dettaglio, il copy canonico o gli attributi di governance dei sei claim. La sezione Magazzino e la relativa FAQ continuano a usare la matrice e il copy canonico approvato; `hero` viene rimossa dalle superfici obbligatorie della matrice senza modificare i sei claim.
+
+Source: Feedback e approvazione del committente, 15 luglio 2026.

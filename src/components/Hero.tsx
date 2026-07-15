@@ -1,9 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import { preload } from "react-dom";
-import {
-  MAGAZZINO_CANONICAL_COPY,
-  MAGAZZINO_CLAIM_ID_ATTRIBUTE,
-} from "@/data/magazzino-capability-matrix";
 import { HERO_ASSETS } from "@/data/responsive-images";
 import { getCommercialCta } from "@/data/trial-access-cta-inventory";
 
@@ -55,19 +51,10 @@ export default function Hero() {
               Il gestionale per laboratori artigianali alimentari
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-6 leading-relaxed font-normal">
+            <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed font-normal">
               Ricette, food cost, produzione, etichette, magazzino e ordini:
               tutto ciò che serve per organizzare il lavoro del laboratorio.
             </p>
-
-            <div className="bg-white/60 border border-gray-200 rounded-xl px-5 py-4 mb-8 max-w-lg mx-auto lg:mx-0">
-              <p
-                className="text-sm sm:text-[15px] text-gray-700 leading-relaxed"
-                data-magazzino-claim-ids={MAGAZZINO_CLAIM_ID_ATTRIBUTE}
-              >
-                <strong>Magazzino.</strong> {MAGAZZINO_CANONICAL_COPY}
-              </p>
-            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mb-10 justify-center lg:justify-start">

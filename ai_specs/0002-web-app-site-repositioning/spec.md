@@ -50,7 +50,7 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 4. La matrice Magazzino v1 già presente rimane l'autorità dei sei claim approvati. Ogni superficie che descrive Magazzino deve usare esclusivamente il suo copy canonico o claim mappati; nessun claim su fornitori, barcode, collocazioni, prelievi, team, sincronizzazione o altre funzioni non approvate può essere reintrodotto implicitamente. [L4]
 
-   L'elenco `requiredSurfaces` della matrice rimane invariato: la Home continua quindi a esporre il copy canonico Magazzino sia nella Hero sia nella relativa FAQ, oltre alle altre superfici già governate dalla matrice. Il riallineamento del copy non modifica i sei ID, il testo canonico o la governance della matrice.
+   L'elenco `requiredSurfaces` non include più la Hero. La Home continua a esporre il copy canonico Magazzino nella sezione dedicata e nella relativa FAQ, oltre alle altre superfici già governate dalla matrice. Questa decisione non modifica i sei ID, il testo canonico o la governance delle superfici rimanenti. [L17]
 
 5. “Food Cost” resta un pilastro già comunicabile, ma non viene trasformato in una nuova pagina o in un nuovo modulo commerciale durante questo rilascio. [L4] [L15]
 
@@ -63,7 +63,7 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
    - CTA primaria: “Registrati per una prova gratuita”, diretta a https://app.labmanagergestionale.com nella stessa scheda.
    - CTA secondaria: “Scopri le funzionalità”, diretta alla sezione funzionalità della Home.
 
-   Il blocco di supporto della Hero che descrive Magazzino deve continuare a derivare dalla matrice e usare il suo copy canonico, senza aggiungere claim di piattaforma o compatibilità. Rimuovere badge, pillole e testi che promuovono Android, Windows, offline, cloud o prova con formulazioni legacy. [L4] [L6] [L7]
+   La Hero non deve contenere un blocco di supporto dedicato al Magazzino né ripetere il relativo copy canonico, già presentato più avanti nella Home. Rimuovere badge, pillole e testi che promuovono Android, Windows, offline, cloud o prova con formulazioni legacy. [L4] [L6] [L7] [L17]
 
 7. L'immagine hero con telefono e desktop deve rimanere. I file tecnici e il contratto responsive/preload possono restare, ma alt text, commenti visibili e dati semantici devono descrivere un'anteprima di LabManager su mobile e desktop senza nominare sistemi operativi o fare promesse di compatibilità. [L2] [L7]
 
@@ -209,7 +209,7 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 ## Testing Strategy
 
-1. Aggiornare o aggiungere test di rendering Home per verificare H1, testo hero, quattro pilastri, copy canonico Magazzino nella Hero, assenza della sezione Piattaforme/Perché legacy, CTA e immagine telefono + desktop con alt neutro. Il test deve controllare il DOM pubblico, non filename interni degli asset. [L4] [L7]
+1. Aggiornare o aggiungere test di rendering Home per verificare H1, testo hero, quattro pilastri, assenza del blocco e del copy canonico Magazzino nella Hero, assenza della sezione Piattaforme/Perché legacy, CTA e immagine telefono + desktop con alt neutro. Il test deve controllare il DOM pubblico, non filename interni degli asset. [L4] [L7] [L17]
 
 2. Estendere i test di Navbar, footer e inventario CTA per verificare esattamente le quattro voci di navigazione, “Accedi” diretto alla web app nella stessa scheda, prova solo su Home/Prezzi, Ordini → /pricing e assenza di Piattaforme/FAQ/Aggiornamenti dalle aree proibite. Includere WhatsApp come percorso di assistenza, non di prova. [L5] [L6] [L9]
 
@@ -219,7 +219,7 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 5. Aggiornare crawl-contracts e sitemap per verificare che solo Home, Ordini e Prezzi siano indexable e inclusi nella sitemap; Newsletter, Download, Aggiornamenti e billing restano esclusi e con i robots concordati. Conservare il test che assicura content type text/plain per robots.txt e llms.txt. [L10] [L11] [L13]
 
-6. Aggiornare i test della matrice Magazzino e delle FAQ affinché continuino a proteggere i sei claim approvati nella Hero, nella FAQ Magazzino della Home e nelle altre superfici obbligatorie già dichiarate dalla matrice. Verificare che “2 sessioni attive simultanee” sia assente dalla Home e presente soltanto in Prezzi e nella sua FAQ. Il JSON-LD FAQ della Home deve derivare dalla stessa sorgente del testo visibile e la risposta su prezzo e disdetta deve usare soltanto la formulazione approvata nel requisito 18. [L4] [L8] [L9]
+6. Aggiornare i test della matrice Magazzino e delle FAQ affinché continuino a proteggere i sei claim approvati nella sezione Magazzino, nella FAQ della Home e nelle altre superfici obbligatorie dichiarate dalla matrice, verificando al contempo che la Hero non renda il copy canonico o i relativi attributi. Verificare che “2 sessioni attive simultanee” sia assente dalla Home e presente soltanto in Prezzi e nella sua FAQ. Il JSON-LD FAQ della Home deve derivare dalla stessa sorgente del testo visibile e la risposta su prezzo e disdetta deve usare soltanto la formulazione approvata nel requisito 18. [L4] [L8] [L9] [L17]
 
 7. Per ogni Work Item che modifica il sito, eseguire npx vitest run, npm run lint, npm run build e npx opennextjs-cloudflare build. Dopo la build o in preview, verificare nell'HTML finale i title esatti di Home, Ordini e Prezzi. Eseguire inoltre una verifica browser manuale della Home e della navbar a viewport mobile e desktop, compresi focus, menu mobile e CTA.
 
@@ -252,5 +252,6 @@ La ricerca organica viene consolidata su tre sole pagine indicizzabili del domin
 
 - Vocabolario canonico: GLOSSARY.md.
 - La decisione di raffinamento del 14 luglio 2026 adotta “Registrati per una prova gratuita” come etichetta CTA canonica e sostituisce le formulazioni legacy “Inizia la prova gratuita” e “Richiedi una prova gratuita”; superfici consentite, destinazione e comportamento di apertura restano invariati.
+- La decisione del 15 luglio 2026 rimuove dalla Hero il riquadro di dettaglio Magazzino e `hero` dalle superfici obbligatorie della matrice; la sezione dedicata e la FAQ restano governate dal copy canonico. [L17]
 - Superfici principali: src/app/page.tsx, src/app/layout.tsx, src/app/ordini/page.tsx, src/app/pricing/page.tsx, src/app/newsletter/page.tsx, Navbar, Footer, Hero, FAQ, ContactForm, llms.txt e sitemap.ts.
 - Il risultato legacy osservato è un URL storico, non una seconda pagina attiva: la correzione richiede sia copy canonico sia consolidamento del redirect/indice. [L12] [L14]
