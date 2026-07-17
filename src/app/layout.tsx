@@ -129,6 +129,7 @@ export default function RootLayout({
   return (
     <html lang="it" className={dmSans.variable}>
       <body className="font-sans antialiased">
+        <SiteScripts />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -136,7 +137,6 @@ export default function RootLayout({
           }}
         />
         {children}
-        <SiteScripts />
         <CloudflareWebAnalytics />
       </body>
     </html>
