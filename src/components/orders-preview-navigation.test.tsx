@@ -1,6 +1,6 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import OrdersPreview from "@/components/OrdersPreview";
@@ -91,6 +91,11 @@ describe("orders preview and navigation", () => {
     ]);
     expect(within(legal).getAllByRole("link")).toHaveLength(3);
     expect(
+      within(legal).getByRole("link", {
+        name: "Aggiorna preferenze cookie",
+      }),
+    ).toHaveClass("lb-cs-settings-link");
+    expect(
       footer.queryByRole("link", {
         name: /Piattaforme|FAQ|Aggiornamenti|Accedi|prova/i,
       }),
@@ -98,6 +103,33 @@ describe("orders preview and navigation", () => {
     expect(
       within(support).getByRole("link", { name: "WhatsApp" }),
     ).toHaveAttribute("target", "_blank");
+  });
+
+  it("forwards cookie settings clicks to the persistent LegalBlink trigger after a footer remount", () => {
+    const onTrigger = vi.fn();
+    render(
+      <button
+        id="legalblink-cookie-settings-trigger"
+        type="button"
+        onClick={onTrigger}
+      />,
+    );
+    const firstFooter = render(<Footer />);
+    firstFooter.unmount();
+    render(<Footer />);
+
+    const link = screen.getByRole("link", {
+      name: "Aggiorna preferenze cookie",
+    });
+    const click = new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+    });
+
+    fireEvent(link, click);
+
+    expect(click.defaultPrevented).toBe(true);
+    expect(onTrigger).toHaveBeenCalledOnce();
   });
 
   it("keeps WhatsApp an assistance path rather than a trial action", () => {

@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Script from "next/script";
+import { LEGALBLINK_COOKIE_SETTINGS_TRIGGER_ID } from "@/lib/legalblink";
 
 const TABNAV_WIDGET_CONFIG = {
   language: "it",
@@ -81,6 +82,14 @@ export default function SiteScripts() {
 
   return (
     <>
+      <button
+        id={LEGALBLINK_COOKIE_SETTINGS_TRIGGER_ID}
+        type="button"
+        data-lb="c-settings"
+        hidden
+        aria-hidden="true"
+        tabIndex={-1}
+      />
       <Script
         id="legalblink-cmp"
         type="text/javascript"

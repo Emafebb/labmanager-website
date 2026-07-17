@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import { Heart } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
+import CookieSettingsLink from "@/components/CookieSettingsLink";
 import { WHATSAPP_URL } from "@/data/support-links";
 
 const currentYear = new Date().getFullYear();
@@ -13,7 +14,7 @@ type FooterLink = {
   label: string;
   href: string;
   external?: boolean;
-  dataLb?: string;
+  cookieSettings?: boolean;
 };
 
 type FooterSection = {
@@ -43,7 +44,7 @@ const footerLinks: FooterSection[] = [
     links: [
       { label: "Privacy Policy", href: PRIVACY_POLICY_URL, external: true },
       { label: "Cookie Policy", href: COOKIE_POLICY_URL, external: true },
-      { label: "Aggiorna preferenze cookie", href: "#", dataLb: "c-settings" },
+      { label: "Aggiorna preferenze cookie", href: "#", cookieSettings: true },
     ],
   },
 ];
@@ -76,6 +77,9 @@ type SocialLink = {
 const socialLinks: SocialLink[] = [
   { label: "Instagram", href: INSTAGRAM_URL, icon: InstagramIcon },
 ];
+
+const FOOTER_LINK_CLASS_NAME =
+  "text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-block py-2";
 
 export default function Footer() {
   return (
@@ -137,14 +141,19 @@ export default function Footer() {
                   <ul className="space-y-3">
                     {section.links.map((link) => (
                       <li key={link.label}>
-                        <a
-                          href={link.href}
-                          {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                          {...(link.dataLb ? { "data-lb": link.dataLb } : {})}
-                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-block py-2"
-                        >
-                          {link.label}
-                        </a>
+                        {link.cookieSettings ? (
+                          <CookieSettingsLink className={FOOTER_LINK_CLASS_NAME}>
+                            {link.label}
+                          </CookieSettingsLink>
+                        ) : (
+                          <a
+                            href={link.href}
+                            {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                            className={FOOTER_LINK_CLASS_NAME}
+                          >
+                            {link.label}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

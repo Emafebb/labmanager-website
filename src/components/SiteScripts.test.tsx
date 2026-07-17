@@ -43,6 +43,20 @@ describe("SiteScripts", () => {
     expect(script).toHaveAttribute("data-tcf-enabled", "true");
   });
 
+  it("keeps a persistent LegalBlink settings trigger ahead of the loader", () => {
+    const { container } = render(<SiteScripts />);
+    const trigger = container.querySelector(
+      "#legalblink-cookie-settings-trigger",
+    );
+    const loader = container.querySelector("#legalblink-cmp");
+
+    expect(trigger).toHaveAttribute("data-lb", "c-settings");
+    expect(trigger).toHaveAttribute("hidden");
+    expect(
+      trigger?.compareDocumentPosition(loader as Node) ?? 0,
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
   it("renders both official Google Tag Manager snippets with the shared container ID", () => {
     const { container } = render(<SiteScripts />);
     const script = container.querySelector("#google-tag-manager");
