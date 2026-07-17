@@ -87,6 +87,7 @@ export default function SiteScripts() {
         data-license-id="69e89f282420950024cb1a5e"
         data-blocking-mode="auto"
         data-consent-mode="true"
+        data-tcf-enabled="true"
       />
       <Script id="external-widget-theme" strategy="afterInteractive">
         {EXTERNAL_WIDGET_THEME_SCRIPT}
