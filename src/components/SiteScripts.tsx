@@ -2,17 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Script from "next/script";
-import { useState } from "react";
-
-const GOOGLE_TAG_MANAGER_ID = "GTM-TCZR8HQP";
-
-const GOOGLE_TAG_MANAGER_SCRIPT = `
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GOOGLE_TAG_MANAGER_ID}');
-`;
 
 const TABNAV_WIDGET_CONFIG = {
   language: "it",
@@ -86,7 +75,6 @@ export const EXTERNAL_WIDGET_THEME_SCRIPT = `
 
 export default function SiteScripts() {
   const pathname = usePathname();
-  const [canLoadTagManager, setCanLoadTagManager] = useState(false);
   if (STANDALONE_ROUTES.includes(pathname)) return null;
 
   return (
@@ -99,22 +87,7 @@ export default function SiteScripts() {
         data-license-id="69e89f282420950024cb1a5e"
         data-blocking-mode="auto"
         data-consent-mode="true"
-        onReady={() => setCanLoadTagManager(true)}
       />
-      {canLoadTagManager && (
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {GOOGLE_TAG_MANAGER_SCRIPT}
-        </Script>
-      )}
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${GOOGLE_TAG_MANAGER_ID}`}
-          height="0"
-          width="0"
-          style={{ display: "none", visibility: "hidden" }}
-          title="Google Tag Manager"
-        />
-      </noscript>
       <Script id="external-widget-theme" strategy="afterInteractive">
         {EXTERNAL_WIDGET_THEME_SCRIPT}
       </Script>
