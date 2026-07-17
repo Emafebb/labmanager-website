@@ -18,11 +18,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.legalblink.it https://www.googletagmanager.com https://static.cloudflareinsights.com https://widget.tabnav.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.legalblink.it https://www.googletagmanager.com https://connect.facebook.net https://static.cloudflareinsights.com https://widget.tabnav.com",
               "style-src 'self' 'unsafe-inline' https://app.legalblink.it https://widget.tabnav.com",
               "img-src 'self' data: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://cloudflareinsights.com https://app.legalblink.it https://tabnav.com https://*.tabnav.com",
+              "connect-src 'self' https://cloudflareinsights.com https://app.legalblink.it https://connect.facebook.net https://www.facebook.com https://tabnav.com https://*.tabnav.com",
               "frame-src 'self' https://app.legalblink.it https://www.googletagmanager.com https://tabnav.com https://*.tabnav.com",
               "object-src 'none'",
               "base-uri 'self'",
