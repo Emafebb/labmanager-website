@@ -98,7 +98,6 @@ export default function SiteScripts() {
         data-license-id="69e89f282420950024cb1a5e"
         data-blocking-mode="auto"
         data-consent-mode="true"
-        data-tcf-enabled="true"
       />
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

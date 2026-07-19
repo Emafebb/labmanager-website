@@ -26,7 +26,7 @@ describe("SiteScripts", () => {
     pathnameState.value = "/";
   });
 
-  it("renders the official LegalBlink CMP attributes", () => {
+  it("keeps Consent Mode enabled without the advertising TCF banner", () => {
     const { container } = render(<SiteScripts />);
     const script = container.querySelector("#legalblink-cmp");
 
@@ -40,7 +40,7 @@ describe("SiteScripts", () => {
     );
     expect(script).toHaveAttribute("data-blocking-mode", "auto");
     expect(script).toHaveAttribute("data-consent-mode", "true");
-    expect(script).toHaveAttribute("data-tcf-enabled", "true");
+    expect(script).not.toHaveAttribute("data-tcf-enabled");
   });
 
   it("keeps a persistent LegalBlink settings trigger ahead of the loader", () => {
