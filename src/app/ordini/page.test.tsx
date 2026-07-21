@@ -89,8 +89,8 @@ describe("orders page", () => {
       }>;
     };
     const faqPage = graph.find(
-      (node): node is FaqNode => node["@type"] === "FAQPage",
-    );
+      (node) => node["@type"] === "FAQPage",
+    ) as FaqNode | undefined;
 
     expect(graph.map((node) => node["@type"])).toEqual([
       "WebPage",

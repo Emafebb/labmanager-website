@@ -48,7 +48,7 @@ describe("commercial CTA inventory", () => {
         id: "pricing-trial",
         route: "/pricing",
         placements: ["pricing"],
-        label: "Registrati per una prova gratuita",
+        label: "Prova gratis 14 giorni",
         intent: "start-trial",
         destination: "https://app.labmanagergestionale.com",
         openingBehavior: "same-tab",
@@ -109,12 +109,13 @@ describe("commercial CTA inventory", () => {
     const cta = getInventoryItem("pricing-trial");
     render(<PricingPage />);
 
-    expectSameTabLink(
-      within(screen.getByRole("main")).getByRole("link", {
-        name: cta.label,
-      }),
-      cta.destination,
-    );
+    const links = within(screen.getByRole("main")).getAllByRole("link", {
+      name: cta.label,
+    });
+    expect(links).toHaveLength(2);
+    for (const link of links) {
+      expectSameTabLink(link, cta.destination);
+    }
   });
 
   it("keeps FAQ actions outside the app trial and access matrix", () => {
@@ -135,7 +136,7 @@ describe("commercial CTA inventory", () => {
       absolute: "Gestione ordini e piano di lavoro | LabManager",
     });
     expect(pricingMetadata.title).toEqual({
-      absolute: "Prezzi e prova gratuita | LabManager",
+      absolute: "Prezzi Light e Plus | LabManager",
     });
   });
 });

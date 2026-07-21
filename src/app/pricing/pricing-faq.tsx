@@ -2,26 +2,35 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import {
+  TRIAL_EXPLANATION,
+  commercialPriceSummary,
+  describeOfferSupport,
+  getCommercialLevel,
+  getCommercialOffer,
+} from "@/lib/pricing";
 
 export const PRICING_FAQS = [
   {
     question: "Come funziona la prova gratuita?",
-    answer:
-      "Hai 14 giorni per provare tutte le funzionalità di LabManager senza inserire una carta.",
+    answer: `${TRIAL_EXPLANATION} Non serve inserire una carta.`,
   },
   {
-    question: "Quali modalità di pagamento posso scegliere?",
-    answer:
-      "Il piano completo costa €44,99 al mese oppure €480 all'anno. Scegli la modalità di pagamento al termine della prova gratuita.",
+    question: "Quanto costano Light e Plus?",
+    answer: `${commercialPriceSummary()} La scelta e il pagamento avvengono nell'app, non su questo sito.`,
   },
   {
-    question: "Cosa include la modalità annuale?",
-    answer:
-      "La modalità annuale include 2 sessioni private 1:1 dedicate al tuo utilizzo di LabManager e il supporto prioritario.",
+    question: "Come cambia il supporto?",
+    answer: `Light include sempre ${describeOfferSupport(getCommercialOffer("Light", "mensile")).toLowerCase()}. Plus mensile include ${describeOfferSupport(getCommercialOffer("Plus", "mensile")).toLowerCase()}; Plus annuale include ${describeOfferSupport(getCommercialOffer("Plus", "annuale")).toLowerCase()}.`,
   },
   {
-    question: "Quante sessioni posso usare contemporaneamente?",
-    answer: "Il piano include 2 sessioni attive simultanee.",
+    question: "Quanti dispositivi posso usare contemporaneamente?",
+    answer: `Light include ${getCommercialLevel("Light").sessioniSimultanee} dispositivi simultanei e Plus ${getCommercialLevel("Plus").sessioniSimultanee}. Hai bisogno di più dispositivi? Contattaci.`,
+  },
+  {
+    question: "Posso acquistare dal sito?",
+    answer:
+      "No. Il sito presenta l'offerta e conduce alla registrazione della prova senza carta. La scelta e il pagamento si gestiscono nell'app autenticata.",
   },
   {
     question: "Posso disdire quando voglio?",

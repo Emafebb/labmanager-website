@@ -6,6 +6,10 @@ import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CLAIM_ID_ATTRIBUTE,
 } from "@/data/magazzino-capability-matrix";
+import {
+  TRIAL_EXPLANATION,
+  commercialPriceSummary,
+} from "@/lib/pricing";
 
 const faqs = [
   {
@@ -14,19 +18,19 @@ const faqs = [
       "LabManager è pensato per laboratori artigianali alimentari, in particolare pasticcerie, panifici e gelaterie.",
   },
   {
-    question: "Cosa include il piano LabManager?",
+    question: "Qual è la differenza tra Light e Plus?",
     answer:
-      "Il piano include Ricette e Food Cost, Produzione ed Etichette, Magazzino, Ordini e Piano di Lavoro.",
+      "Light include gli strumenti tecnici come ricette, food cost della ricetta, bilanciamento, etichette e team. Plus aggiunge produzione, ordini, vendite, Costi aziendali e magazzino con DDT.",
   },
   {
     question: "Come funziona la prova gratuita?",
     answer:
-      "La prova dura 14 giorni e non richiede una carta. Registrati nella web app e accedi: la prova inizia al primo login riuscito.",
+      `${TRIAL_EXPLANATION} Non serve una carta: registrati nella web app e accedi per iniziare.`,
   },
   {
     question: "Quanto costa LabManager e come funziona la disdetta?",
     answer:
-      "Il piano costa €44,99 al mese oppure €480 all'anno. Puoi disdire quando vuoi; in caso di cancellazione a fine periodo, l'accesso resta attivo fino alla scadenza prevista.",
+      `${commercialPriceSummary()} Puoi disdire quando vuoi; in caso di cancellazione a fine periodo, l'accesso resta attivo fino alla scadenza prevista.`,
   },
   {
     question: "Come gestisce il magazzino LabManager?",

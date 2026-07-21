@@ -44,8 +44,8 @@ describe("orders SEO plumbing", () => {
 
   it("keeps orders data page-scoped instead of publishing release details globally", () => {
     const softwareApplication = structuredDataGraph["@graph"].find(
-      (node): node is JsonLdNode => node["@type"] === "SoftwareApplication",
-    );
+      (node) => node["@type"] === "SoftwareApplication",
+    ) as JsonLdNode | undefined;
 
     expect(softwareApplication).toMatchObject({
       "@id": "https://labmanagergestionale.com/#softwareapplication",

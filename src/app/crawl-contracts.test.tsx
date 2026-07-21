@@ -101,9 +101,9 @@ describe("crawl boundaries and text response ownership", () => {
     );
 
     expect(byUrl).toEqual({
-      "https://labmanagergestionale.com": "2026-07-14",
+      "https://labmanagergestionale.com": "2026-07-21",
       "https://labmanagergestionale.com/ordini": "2026-07-14",
-      "https://labmanagergestionale.com/pricing": "2026-07-14",
+      "https://labmanagergestionale.com/pricing": "2026-07-21",
     });
   });
 

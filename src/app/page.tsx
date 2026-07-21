@@ -14,7 +14,7 @@ const BASE_URL = "https://labmanagergestionale.com";
 const HOME_TITLE =
   "Gestionale per pasticcerie, panifici e gelaterie | LabManager";
 const HOME_DESCRIPTION =
-  "Il gestionale per laboratori artigianali alimentari: ricette, food cost, produzione, etichette, magazzino e ordini. Prova gratuita di 14 giorni.";
+  "Il gestionale Light e Plus per laboratori artigianali alimentari: ricette, food cost, produzione, etichette, magazzino e ordini. Prova gratuita di 14 giorni.";
 
 export const metadata: Metadata = {
   title: {

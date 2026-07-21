@@ -84,7 +84,7 @@ describe("route-scoped structured data", () => {
       pricing.pricingPageStructuredData,
       pricing.metadata,
       "https://labmanagergestionale.com/pricing",
-      "Prezzi e prova gratuita",
+      "Prezzi Light e Plus",
     );
     expectRenderedGraph(pricing.default, pricing.pricingPageStructuredData);
   });

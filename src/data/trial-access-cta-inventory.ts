@@ -1,3 +1,5 @@
+import { TRIAL_CTA_LABEL } from "@/lib/pricing";
+
 export const TRIAL_ACCESS_APP_HREF =
   "https://app.labmanagergestionale.com" as const;
 
@@ -54,7 +56,7 @@ export const TRIAL_ACCESS_CTA_INVENTORY = [
     id: "pricing-trial",
     route: "/pricing",
     placements: ["pricing"],
-    label: "Registrati per una prova gratuita",
+    label: TRIAL_CTA_LABEL,
     intent: "start-trial",
     destination: TRIAL_ACCESS_APP_HREF,
     openingBehavior: "same-tab",

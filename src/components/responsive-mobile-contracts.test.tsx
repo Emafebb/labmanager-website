@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import NewsletterForm from "@/components/NewsletterForm";
 import ContactForm from "@/components/ContactForm";
 import PricingFAQ from "@/app/pricing/pricing-faq";
+import PricingSelector from "@/app/pricing/pricing-selector";
 import { EXTERNAL_WIDGET_THEME_SCRIPT } from "@/components/SiteScripts";
 import {
   HERO_ASSETS,
@@ -131,8 +132,8 @@ describe("shared 44px touch-target contract", () => {
       join(process.cwd(), "src", "app", "globals.css"),
       "utf8",
     );
-    expect(css).toMatch(/\.touch-target\s*\{[^}]*min-width:\s*44px/s);
-    expect(css).toMatch(/\.touch-target\s*\{[^}]*min-height:\s*44px/s);
+    expect(css).toMatch(/\.touch-target\s*\{[^}]*min-width:\s*44px/);
+    expect(css).toMatch(/\.touch-target\s*\{[^}]*min-height:\s*44px/);
   });
 
   it("applies the utility to the mobile menu, hero CTAs and FAQ buttons", () => {
@@ -162,6 +163,17 @@ describe("shared 44px touch-target contract", () => {
       expect(button).toHaveClass("touch-target");
     }
     pricingFaq.unmount();
+
+    const pricingSelector = render(<PricingSelector />);
+    for (const button of screen.getAllByRole("button")) {
+      expect(button).toHaveClass("touch-target");
+    }
+    for (const link of screen.getAllByRole("link", {
+      name: "Prova gratis 14 giorni",
+    })) {
+      expect(link).toHaveClass("touch-target");
+    }
+    pricingSelector.unmount();
   });
 
   it("applies the utility to the newsletter consent label and external consent controls", () => {

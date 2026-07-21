@@ -122,7 +122,7 @@ describe("home FAQ contract", () => {
       expect.objectContaining({
         name: "Quanto costa LabManager e come funziona la disdetta?",
         acceptedAnswer: expect.objectContaining({
-          text: `Il piano costa €44,99 al mese oppure €480 all'anno. ${CANCELLATION_COPY}`,
+          text: `Light costa €19,99 al mese o €200 all'anno; Plus costa €44,99 al mese o €480 all'anno. ${CANCELLATION_COPY}`,
         }),
       }),
     );

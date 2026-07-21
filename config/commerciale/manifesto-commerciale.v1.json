@@ -1,0 +1,534 @@
+{
+  "$schema": "./manifesto-commerciale.schema.json",
+  "schemaVersion": 1,
+  "version": "1.1.0",
+  "versioneCatalogoEntitlement": 1,
+  "valuta": "EUR",
+  "fusoOrarioQuoteAi": "Europe/Rome",
+  "ambitoQuoteAi": "account",
+  "tier": [
+    "Light",
+    "Plus"
+  ],
+  "periodicita": [
+    "mensile",
+    "annuale"
+  ],
+  "operazioni": [
+    "read",
+    "write",
+    "export",
+    "server_side"
+  ],
+  "livelli": [
+    {
+      "tier": "Light",
+      "featureIds": [
+        "ricette_archivio",
+        "confronto_ricette",
+        "food_cost_ricetta",
+        "bilanciamento",
+        "ingredienti_semilavorati",
+        "assemblaggi",
+        "tabelle_nutrizionali",
+        "etichette_storico",
+        "tools_laboratorio",
+        "team_dipendenti",
+        "pin_ruoli_permessi_light",
+        "impostazioni_gestione_abbonamento"
+      ],
+      "sessioniSimultanee": 2,
+      "quoteAiGiornaliere": {
+        "recipe": 5,
+        "ddt": 0
+      },
+      "esportazioni": {
+        "moduliInclusi": "illimitate",
+        "watermark": false,
+        "contatore": false
+      }
+    },
+    {
+      "tier": "Plus",
+      "featureIds": [
+        "ricette_archivio",
+        "confronto_ricette",
+        "food_cost_ricetta",
+        "bilanciamento",
+        "ingredienti_semilavorati",
+        "assemblaggi",
+        "tabelle_nutrizionali",
+        "etichette_storico",
+        "tools_laboratorio",
+        "team_dipendenti",
+        "pin_ruoli_permessi_light",
+        "impostazioni_gestione_abbonamento",
+        "registro_produzione",
+        "ordini_piano_lavoro",
+        "vendite",
+        "costi_aziendali",
+        "magazzino_ddt"
+      ],
+      "sessioniSimultanee": 3,
+      "quoteAiGiornaliere": {
+        "recipe": 15,
+        "ddt": 15
+      },
+      "esportazioni": {
+        "moduliInclusi": "illimitate",
+        "watermark": false,
+        "contatore": false
+      }
+    }
+  ],
+  "capacita": [
+    {
+      "id": "ricette_archivio",
+      "nome": "Ricette e archivio",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export", "server_side"],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["ricette.visualizza"],
+        "write": ["ricette.modifica", "ricette.crea", "ricette.elimina"],
+        "export": ["ricette.visualizza"],
+        "server_side": ["ricette.visualizza"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Ricette e archivio",
+        "descrizione": "Creazione, consultazione ed esportazione delle ricette.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "confronto_ricette",
+      "nome": "Confronto ricette",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "export", "server_side"],
+        "Plus": ["read", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["ricette.visualizza"],
+        "write": [],
+        "export": ["ricette.visualizza"],
+        "server_side": ["ricette.visualizza"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Confronto ricette",
+        "descrizione": "Confronto tecnico ed esportazione delle ricette.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "food_cost_ricetta",
+      "nome": "Food cost della ricetta",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export", "server_side"],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["foodCost.visualizza"],
+        "write": ["foodCost.modifica"],
+        "export": ["foodCost.visualizza"],
+        "server_side": ["foodCost.visualizza"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Food cost della ricetta",
+        "descrizione": "Calcolo e storico del costo della singola ricetta.",
+        "testoBlocco": "Disponibile con Plus"
+      },
+      "dipendenzeCondivise": {
+        "Light": [
+          {"risorsa": "ricette", "operazioni": ["read"]},
+          {"risorsa": "ingredienti", "operazioni": ["read"]},
+          {
+            "risorsa": "costi_operativi_proiezione_calcolo",
+            "operazioni": ["read"]
+          }
+        ],
+        "Plus": [
+          {"risorsa": "ricette", "operazioni": ["read"]},
+          {"risorsa": "ingredienti", "operazioni": ["read"]},
+          {
+            "risorsa": "costi_operativi_proiezione_calcolo",
+            "operazioni": ["read"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bilanciamento",
+      "nome": "Bilanciamento",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export"],
+        "Plus": ["read", "write", "export"]
+      },
+      "permessiPerOperazione": {
+        "read": ["bilanciamento.visualizza"],
+        "write": ["bilanciamento.visualizza"],
+        "export": ["bilanciamento.visualizza"],
+        "server_side": []
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Bilanciamento",
+        "descrizione": "Strumenti di bilanciamento delle ricette.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "ingredienti_semilavorati",
+      "nome": "Ingredienti e semilavorati",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export", "server_side"],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["ingredienti.visualizza", "semilavorati.visualizza"],
+        "write": ["ingredienti.modifica", "semilavorati.modifica", "fornitori.gestione"],
+        "export": ["ingredienti.visualizza", "semilavorati.visualizza"],
+        "server_side": ["ingredienti.visualizza", "semilavorati.visualizza"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Ingredienti e semilavorati",
+        "descrizione": "Anagrafiche tecniche, fornitori e semilavorati.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "assemblaggi",
+      "nome": "Assemblaggi",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export", "server_side"],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["assemblaggi.visualizza"],
+        "write": ["assemblaggi.modifica"],
+        "export": ["assemblaggi.visualizza"],
+        "server_side": ["assemblaggi.visualizza"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Assemblaggi",
+        "descrizione": "Creazione e archivio degli assemblaggi.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "tabelle_nutrizionali",
+      "nome": "Tabelle nutrizionali",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export"],
+        "Plus": ["read", "write", "export"]
+      },
+      "permessiPerOperazione": {
+        "read": ["ricette.visualizza"],
+        "write": ["ricette.modifica"],
+        "export": ["ricette.visualizza"],
+        "server_side": []
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Tabelle nutrizionali",
+        "descrizione": "Calcolo ed esportazione delle tabelle nutrizionali.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "etichette_storico",
+      "nome": "Etichette e storico etichette",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export", "server_side"],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["etichette.stampa"],
+        "write": ["etichette.stampa"],
+        "export": ["etichette.stampa"],
+        "server_side": ["etichette.stampa"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Etichette e storico etichette",
+        "descrizione": "Generazione, stampa e consultazione delle etichette.",
+        "testoBlocco": "Disponibile con Plus"
+      },
+      "dipendenzeCondivise": {
+        "Light": [
+          {"risorsa": "etichette", "operazioni": ["read", "write"]},
+          {
+            "risorsa": "registro_lotti_origine_storico_etichette",
+            "operazioni": ["read", "write"]
+          }
+        ],
+        "Plus": [
+          {"risorsa": "etichette", "operazioni": ["read", "write"]},
+          {
+            "risorsa": "registro_lotti_origine_storico_etichette",
+            "operazioni": ["read", "write"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tools_laboratorio",
+      "nome": "Tools di laboratorio",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "export"],
+        "Plus": ["read", "write", "export"]
+      },
+      "permessiPerOperazione": {
+        "read": [],
+        "write": [],
+        "export": [],
+        "server_side": []
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Tools di laboratorio",
+        "descrizione": "Strumenti tecnici di supporto al laboratorio.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "team_dipendenti",
+      "nome": "Team e dipendenti",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "server_side"],
+        "Plus": ["read", "write", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["personale.visualizza"],
+        "write": ["personale.modifica"],
+        "export": [],
+        "server_side": ["personale.modifica"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Team e dipendenti",
+        "descrizione": "Gestione dei collaboratori e dei relativi accessi.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "pin_ruoli_permessi_light",
+      "nome": "PIN, ruoli e permessi delle funzioni Light",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "server_side"],
+        "Plus": ["read", "write", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["permessi.accesso"],
+        "write": ["permessi.accesso"],
+        "export": [],
+        "server_side": ["permessi.accesso"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "PIN, ruoli e permessi",
+        "descrizione": "Configurazione degli accessi alle funzioni incluse.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "impostazioni_gestione_abbonamento",
+      "nome": "Impostazioni e gestione abbonamento",
+      "tierMinimo": "Light",
+      "operazioniPerTier": {
+        "Light": ["read", "write", "server_side"],
+        "Plus": ["read", "write", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["anagrafica.visualizza"],
+        "write": ["anagrafica.modifica"],
+        "export": [],
+        "server_side": ["anagrafica.modifica"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Impostazioni e abbonamento",
+        "descrizione": "Dati aziendali, impostazioni e gestione abbonamento.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "registro_produzione",
+      "nome": "Registro produzione",
+      "tierMinimo": "Plus",
+      "operazioniPerTier": {
+        "Light": [],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["produzione.visualizza"],
+        "write": ["produzione.registra", "produzione.elimina"],
+        "export": ["produzione.visualizza"],
+        "server_side": ["produzione.registra"]
+      },
+      "aliasPermessoLegacy": {
+        "dashboard.storicoProduzione": "produzione.visualizza",
+        "dashboard.visualizza": "produzione.visualizza"
+      },
+      "metadatiUi": {
+        "titolo": "Registro produzione",
+        "descrizione": "Registrazione e storico delle produzioni e dei lotti.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "ordini_piano_lavoro",
+      "nome": "Ordini e piano di lavoro",
+      "tierMinimo": "Plus",
+      "operazioniPerTier": {
+        "Light": [],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["ordini.visualizza"],
+        "write": ["ordini.crea", "ordini.modifica", "ordini.produzione"],
+        "export": ["ordini.visualizza", "ordini.report"],
+        "server_side": ["ordini.produzione"]
+      },
+      "aliasPermessoLegacy": {},
+      "metadatiUi": {
+        "titolo": "Ordini e piano di lavoro",
+        "descrizione": "Gestione ordini, avanzamento e report operativi.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "vendite",
+      "nome": "Vendite",
+      "tierMinimo": "Plus",
+      "operazioniPerTier": {
+        "Light": [],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["vendite.visualizza"],
+        "write": ["vendite.registra"],
+        "export": ["vendite.visualizza"],
+        "server_side": ["vendite.registra"]
+      },
+      "aliasPermessoLegacy": {
+        "dashboard.registroVendite": "vendite.visualizza",
+        "dashboard.visualizza": "vendite.visualizza"
+      },
+      "metadatiUi": {
+        "titolo": "Vendite",
+        "descrizione": "Registrazione, storico ed esportazione delle vendite.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "costi_aziendali",
+      "nome": "Dashboard Costi aziendali",
+      "tierMinimo": "Plus",
+      "operazioniPerTier": {
+        "Light": [],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["costi.visualizza"],
+        "write": ["costi.modifica"],
+        "export": ["costi.visualizza"],
+        "server_side": ["costi.modifica"]
+      },
+      "aliasPermessoLegacy": {
+        "dashboard.margini": "costi.visualizza"
+      },
+      "metadatiUi": {
+        "titolo": "Costi aziendali",
+        "descrizione": "Dashboard e configurazione dei costi operativi.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    },
+    {
+      "id": "magazzino_ddt",
+      "nome": "Magazzino e DDT",
+      "tierMinimo": "Plus",
+      "operazioniPerTier": {
+        "Light": [],
+        "Plus": ["read", "write", "export", "server_side"]
+      },
+      "permessiPerOperazione": {
+        "read": ["magazzino.disponibilita", "magazzino.storico", "magazzino.ddt"],
+        "write": ["magazzino.ricevimento", "magazzino.prelievo", "magazzino.modificaMovimento", "sedi.gestione"],
+        "export": ["magazzino.storico", "magazzino.ddt"],
+        "server_side": ["magazzino.ricevimento", "magazzino.prelievo"]
+      },
+      "aliasPermessoLegacy": {
+        "dashboard.inventario": "magazzino.disponibilita",
+        "dashboard.visualizza": "magazzino.disponibilita"
+      },
+      "metadatiUi": {
+        "titolo": "Magazzino e DDT",
+        "descrizione": "Giacenze, movimenti, lotti, sedi e documenti di trasporto.",
+        "testoBlocco": "Disponibile con Plus"
+      }
+    }
+  ],
+  "offerte": [
+    {
+      "id": "light-mensile",
+      "tier": "Light",
+      "periodicita": "mensile",
+      "prezzo": {"importoMinore": 1999, "valuta": "EUR"},
+      "costoAttivazioneMinore": 0,
+      "supporto": {
+        "livello": "email_standard",
+        "sessioniIndividuali": []
+      }
+    },
+    {
+      "id": "light-annuale",
+      "tier": "Light",
+      "periodicita": "annuale",
+      "prezzo": {"importoMinore": 20000, "valuta": "EUR"},
+      "costoAttivazioneMinore": 0,
+      "supporto": {
+        "livello": "email_standard",
+        "sessioniIndividuali": []
+      }
+    },
+    {
+      "id": "plus-mensile",
+      "tier": "Plus",
+      "periodicita": "mensile",
+      "prezzo": {"importoMinore": 4499, "valuta": "EUR"},
+      "costoAttivazioneMinore": 0,
+      "supporto": {
+        "livello": "prioritario",
+        "sessioniIndividuali": []
+      }
+    },
+    {
+      "id": "plus-annuale",
+      "tier": "Plus",
+      "periodicita": "annuale",
+      "prezzo": {"importoMinore": 48000, "valuta": "EUR"},
+      "costoAttivazioneMinore": 0,
+      "supporto": {
+        "livello": "prioritario",
+        "sessioniIndividuali": ["iniziale", "revisione"]
+      }
+    }
+  ]
+}

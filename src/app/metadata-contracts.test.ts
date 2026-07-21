@@ -30,7 +30,7 @@ const BASE_URL = "https://labmanagergestionale.com";
 const HOME_TITLE =
   "Gestionale per pasticcerie, panifici e gelaterie | LabManager";
 const HOME_DESCRIPTION =
-  "Il gestionale per laboratori artigianali alimentari: ricette, food cost, produzione, etichette, magazzino e ordini. Prova gratuita di 14 giorni.";
+  "Il gestionale Light e Plus per laboratori artigianali alimentari: ricette, food cost, produzione, etichette, magazzino e ordini. Prova gratuita di 14 giorni.";
 
 const FORBIDDEN_PUBLIC_CLAIMS =
   /android|windows|offline|\bpwa\b|ristorant|sincronizz|compatibilit[aà] per dispositivo/i;
@@ -48,7 +48,9 @@ function serializePublicData(value: unknown) {
 }
 
 function absoluteTitle(metadata: typeof homeMetadata) {
-  return typeof metadata.title === "object" && metadata.title !== null
+  return typeof metadata.title === "object" &&
+    metadata.title !== null &&
+    "absolute" in metadata.title
     ? metadata.title.absolute
     : undefined;
 }
@@ -103,7 +105,7 @@ describe("route metadata contracts", () => {
       },
       {
         metadata: pricingMetadata,
-        title: "Prezzi e prova gratuita | LabManager",
+        title: "Prezzi Light e Plus | LabManager",
         canonical: `${BASE_URL}/pricing`,
       },
     ];
@@ -214,6 +216,7 @@ describe("structured data contracts", () => {
           additionalProperty?: Array<{
             propertyID?: string;
             name?: string;
+            value?: string;
           }>;
         }
       | undefined;
@@ -235,13 +238,20 @@ describe("structured data contracts", () => {
     expect(softwareApplication?.featureList).toContain(
       MAGAZZINO_CANONICAL_COPY,
     );
+    expect(softwareApplication?.additionalProperty?.[0]).toMatchObject({
+      propertyID: "livelli-commerciali",
+      name: "Livelli commerciali",
+      value: "Light, Plus",
+    });
     expect(
-      softwareApplication?.additionalProperty?.map(({ propertyID }) =>
-        propertyID,
-      ),
+      softwareApplication?.additionalProperty
+        ?.slice(1)
+        .map(({ propertyID }) => propertyID),
     ).toEqual(MAGAZZINO_CLAIM_IDS);
     expect(
-      softwareApplication?.additionalProperty?.map(({ name }) => name),
+      softwareApplication?.additionalProperty
+        ?.slice(1)
+        .map(({ name }) => name),
     ).toEqual(MAGAZZINO_CAPABILITIES.map(({ publicCopy }) => publicCopy));
   });
 

@@ -6,6 +6,7 @@ import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CAPABILITIES,
 } from "@/data/magazzino-capability-matrix";
+import { COMMERCIAL_MANIFEST } from "@/lib/pricing";
 import "./globals.css";
 
 const BASE_URL = "https://labmanagergestionale.com";
@@ -15,7 +16,7 @@ const PRODUCT_AUDIENCE = {
     "Laboratori artigianali alimentari: pasticcerie, panifici e gelaterie",
 } as const;
 const PRODUCT_POSITIONING_DESCRIPTION =
-  "LabManager è il gestionale per laboratori artigianali alimentari, in particolare pasticcerie, panifici e gelaterie, dedicato a Ricette e Food Cost, Produzione ed Etichette, Magazzino, Ordini e Piano di Lavoro.";
+  "LabManager è il gestionale Light e Plus per laboratori artigianali alimentari, in particolare pasticcerie, panifici e gelaterie, dedicato a Ricette e Food Cost, Produzione ed Etichette, Magazzino, Ordini e Piano di Lavoro.";
 const PRODUCT_FEATURES = [
   "Ricette e Food Cost: ricette, ingredienti, costi e margini.",
   "Produzione ed Etichette: organizzazione della produzione, etichette, allergeni e PDF.",
@@ -92,12 +93,20 @@ export const structuredDataGraph = {
       description: PRODUCT_POSITIONING_DESCRIPTION,
       audience: PRODUCT_AUDIENCE,
       featureList: PRODUCT_FEATURES,
-      additionalProperty: MAGAZZINO_CAPABILITIES.map((capability) => ({
-        "@type": "PropertyValue",
-        propertyID: capability.id,
-        name: capability.publicCopy,
-        value: "available-and-marketable",
-      })),
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          propertyID: "livelli-commerciali",
+          name: "Livelli commerciali",
+          value: COMMERCIAL_MANIFEST.tier.join(", "),
+        },
+        ...MAGAZZINO_CAPABILITIES.map((capability) => ({
+          "@type": "PropertyValue",
+          propertyID: capability.id,
+          name: capability.publicCopy,
+          value: "available-and-marketable",
+        })),
+      ],
       screenshot: [
         {
           "@type": "ImageObject",

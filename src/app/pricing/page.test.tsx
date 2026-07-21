@@ -6,118 +6,137 @@ import PricingPage, {
   pricingPageStructuredData,
 } from "@/app/pricing/page";
 import {
-  MAGAZZINO_CANONICAL_COPY,
-  MAGAZZINO_CLAIM_ID_ATTRIBUTE,
-} from "@/data/magazzino-capability-matrix";
+  DEVICE_CONTACT_COPY,
+  TRIAL_EXPLANATION,
+} from "@/lib/pricing";
 
 const PAGE_URL = "https://labmanagergestionale.com/pricing";
-const PAGE_TITLE = "Prezzi e prova gratuita | LabManager";
+const PAGE_TITLE = "Prezzi Light e Plus | LabManager";
 const PAGE_DESCRIPTION =
-  "Scopri il piano LabManager con prova gratuita di 14 giorni senza carta.";
+  "Confronta LabManager Light e Plus, prezzi mensili e annuali, funzionalità, supporto e prova gratuita di 14 giorni senza carta.";
+const REGISTRATION_URL = "https://app.labmanagergestionale.com";
 
 describe("pricing page", () => {
-  it("exports stable page-specific metadata without offer details", () => {
-    expect(metadata.title).toEqual({ absolute: PAGE_TITLE });
-    expect(metadata.description).toBe(PAGE_DESCRIPTION);
-    expect(metadata.alternates?.canonical).toBe(PAGE_URL);
-    expect(metadata.openGraph?.url).toBe(PAGE_URL);
-    expect(metadata.openGraph?.description).toBe(PAGE_DESCRIPTION);
-    expect(metadata.twitter?.description).toBe(PAGE_DESCRIPTION);
-
-    const publicDescriptions = JSON.stringify({
-      description: metadata.description,
-      openGraph: metadata.openGraph?.description,
-      twitter: metadata.twitter?.description,
+  it("exports Light/Plus metadata and aligned WebPage structured data", () => {
+    expect(metadata).toMatchObject({
+      title: { absolute: PAGE_TITLE },
+      description: PAGE_DESCRIPTION,
+      alternates: { canonical: PAGE_URL },
+      openGraph: { url: PAGE_URL, description: PAGE_DESCRIPTION },
+      twitter: { description: PAGE_DESCRIPTION },
     });
-    expect(publicDescriptions).not.toMatch(
-      /€|44[,.]99|480|mensil|annual|sessioni private|supporto prioritario|un solo piano/i,
-    );
-  });
-
-  it("renders one complete plan with both payment modes and the card-free trial", () => {
-    const { container } = render(<PricingPage />);
-    const main = within(screen.getByRole("main"));
-    const plans = container.querySelectorAll("[data-pricing-plan]");
-
-    expect(plans).toHaveLength(1);
-    expect(main.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Prezzi e prova gratuita",
-    );
-    expect(plans[0]).toHaveTextContent("Piano completo");
-    expect(plans[0]).toHaveTextContent("€44,99/mese");
-    expect(plans[0]).toHaveTextContent("€480/anno");
-    expect(plans[0]).toHaveTextContent("14 giorni di prova gratuita");
-    expect(plans[0]).toHaveTextContent("senza carta");
-    expect(main.queryByText(/Piano Light/i)).not.toBeInTheDocument();
-  });
-
-  it("keeps annual benefits, simultaneous sessions, CTA, and FAQ wording exact", async () => {
-    const user = userEvent.setup();
-    const { container } = render(<PricingPage />);
-    const mainElement = screen.getByRole("main");
-    const main = within(mainElement);
-    const annualMode = container.querySelector("[data-payment-mode='annual']");
-
-    expect(annualMode).not.toBeNull();
-    if (!annualMode) return;
-
-    expect(annualMode).toHaveTextContent("2 sessioni private 1:1");
-    expect(annualMode).toHaveTextContent("Supporto prioritario");
-    expect(annualMode).not.toHaveTextContent(/onboarding|team/i);
-
-    expect(
-      main.getByRole("link", { name: "Registrati per una prova gratuita" }),
-    )
-      .toHaveAttribute("href", "https://app.labmanagergestionale.com");
-    expect(
-      main.getByRole("link", { name: "Registrati per una prova gratuita" }),
-    ).not.toHaveAttribute("target");
-
-    expect(
-      mainElement.textContent?.match(/2 sessioni attive simultanee/g),
-    ).toHaveLength(2);
-    expect(mainElement).not.toHaveTextContent(/2 dispositivi/i);
-
-    const sessionsQuestion = main.getByRole("button", {
-      name: "Quante sessioni posso usare contemporaneamente?",
-    });
-    await user.click(sessionsQuestion);
-    expect(sessionsQuestion).toHaveAttribute("aria-expanded", "true");
-    expect(
-      main.getByText("Il piano include 2 sessioni attive simultanee."),
-    ).toBeVisible();
-  });
-
-  it("keeps public content and WebPage data within approved product boundaries", () => {
-    const { container } = render(<PricingPage />);
-    const main = screen.getByRole("main");
-    const renderedStructuredData = JSON.parse(
-      container.querySelector('script[type="application/ld+json"]')
-        ?.textContent ?? "null",
-    );
-
-    expect(main).toHaveTextContent(MAGAZZINO_CANONICAL_COPY);
-    expect(
-      container.querySelector("[data-magazzino-claim-ids]"),
-    ).toHaveAttribute(
-      "data-magazzino-claim-ids",
-      MAGAZZINO_CLAIM_ID_ATTRIBUTE,
-    );
-    expect(main).not.toHaveTextContent(
-      /Piano Light|download|installazione|android|windows|offline|sincronizz|\bteam\b|dispositiv/i,
-    );
-
-    expect(renderedStructuredData).toEqual(pricingPageStructuredData);
     expect(pricingPageStructuredData).toMatchObject({
       "@context": "https://schema.org",
       "@type": "WebPage",
       "@id": `${PAGE_URL}#webpage`,
       url: PAGE_URL,
-      name: "Prezzi e prova gratuita",
+      name: "Prezzi Light e Plus",
       description: PAGE_DESCRIPTION,
     });
-    expect(JSON.stringify(pricingPageStructuredData)).not.toMatch(
-      /Piano Light|"Offer"|"offers"|€|44[,.]99|480|annual|sessioni private|supporto prioritario/i,
+  });
+
+  it("renders the monthly desktop offer with two adjacent cards and one recommended badge", () => {
+    const { container } = render(<PricingPage />);
+    const main = within(screen.getByRole("main"));
+    const cards = container.querySelector("[data-pricing-cards]");
+    const plans = container.querySelectorAll("[data-pricing-plan]");
+
+    expect(main.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Scegli tra Light e Plus",
     );
+    expect(cards).toHaveClass("grid", "lg:grid-cols-2");
+    expect(plans).toHaveLength(2);
+    expect(plans[0]).toHaveAttribute("data-pricing-plan", "light");
+    expect(plans[0]).toHaveTextContent("€19,99/mese");
+    expect(plans[1]).toHaveAttribute("data-pricing-plan", "plus");
+    expect(plans[1]).toHaveTextContent("€44,99/mese");
+    expect(main.getAllByText("Consigliato")).toHaveLength(1);
+    expect(main.getAllByText(TRIAL_EXPLANATION)).toHaveLength(2);
+
+    const trialLinks = main.getAllByRole("link", {
+      name: "Prova gratis 14 giorni",
+    });
+    expect(trialLinks).toHaveLength(2);
+    for (const link of trialLinks) {
+      expect(link).toHaveAttribute("href", REGISTRATION_URL);
+      expect(link).not.toHaveAttribute("target");
+    }
+  });
+
+  it("switches both cards, prices and support to the annual offer without persisting a plan", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<PricingPage />);
+    const annualToggle = screen.getByRole("button", { name: "annuale" });
+    const monthlyToggle = screen.getByRole("button", { name: "mensile" });
+
+    expect(monthlyToggle).toHaveAttribute("aria-pressed", "true");
+    expect(annualToggle).toHaveAttribute("aria-pressed", "false");
+    await user.click(annualToggle);
+
+    expect(annualToggle).toHaveAttribute("aria-pressed", "true");
+    expect(monthlyToggle).toHaveAttribute("aria-pressed", "false");
+    const light = container.querySelector("[data-pricing-plan='light']");
+    const plus = container.querySelector("[data-pricing-plan='plus']");
+    expect(light).toHaveAttribute("data-periodicita", "annuale");
+    expect(light).toHaveTextContent("€200/anno");
+    expect(light).toHaveTextContent("Supporto email standard");
+    expect(plus).toHaveTextContent("€480/anno");
+    expect(plus).toHaveTextContent(
+      "Supporto prioritario + 2 sessioni individuali (iniziale e revisione)",
+    );
+    for (const link of screen.getAllByRole("link", {
+      name: "Prova gratis 14 giorni",
+    })) {
+      expect(link).toHaveAttribute("href", REGISTRATION_URL);
+      expect(link.getAttribute("href")).not.toMatch(/light|plus|annual/i);
+    }
+  });
+
+  it("renders the complete responsive comparison and keeps Food Cost separate from Costi aziendali", () => {
+    const { container } = render(<PricingPage />);
+    const table = container.querySelector("[data-pricing-comparison]");
+    expect(table).not.toBeNull();
+    if (!table) return;
+
+    const comparison = within(table as HTMLElement);
+    const foodCostRow = comparison.getByRole("row", {
+      name: /Food cost della ricetta/i,
+    });
+    const businessCostsRow = comparison.getByRole("row", {
+      name: /Dashboard Costi aziendali/i,
+    });
+    expect(foodCostRow).toHaveTextContent("Incluso");
+    expect(businessCostsRow).toHaveTextContent("Non incluso");
+    expect(businessCostsRow).toHaveTextContent("Incluso");
+
+    for (const expectedRow of [
+      /Importazioni AI ricette al giorno/,
+      /Importazioni AI DDT al giorno/,
+      /Dispositivi simultanei/,
+      /Supporto \(mensile\)/,
+      /Esportazioni dei moduli inclusi/,
+    ]) {
+      expect(
+        comparison.getByRole("row", { name: expectedRow }),
+      ).toBeInTheDocument();
+    }
+    expect(table.closest("div")).toHaveClass("overflow-x-auto");
+    expect(screen.getByLabelText(DEVICE_CONTACT_COPY)).toBeInTheDocument();
+  });
+
+  it("keeps the mobile toggle and actions touch-friendly", () => {
+    const { container } = render(<PricingPage />);
+    const toggle = container.querySelector("[data-pricing-toggle]");
+    expect(toggle).toHaveClass("flex", "w-fit");
+    for (const button of screen.getAllByRole("button", {
+      name: /mensile|annuale/,
+    })) {
+      expect(button).toHaveClass("touch-target");
+    }
+    for (const link of screen.getAllByRole("link", {
+      name: "Prova gratis 14 giorni",
+    })) {
+      expect(link).toHaveClass("touch-target", "w-full");
+    }
   });
 });

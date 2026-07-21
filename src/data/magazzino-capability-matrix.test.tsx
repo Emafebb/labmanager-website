@@ -150,7 +150,9 @@ describe("Magazzino capability matrix v1", () => {
     };
     expect(softwareApplication.featureList).toContain(MAGAZZINO_CANONICAL_COPY);
     expect(
-      softwareApplication.additionalProperty?.map(({ propertyID }) => propertyID),
+      softwareApplication.additionalProperty
+        ?.slice(1)
+        .map(({ propertyID }) => propertyID),
     ).toEqual(EXPECTED_IDS);
   });
 

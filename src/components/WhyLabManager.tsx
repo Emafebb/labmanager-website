@@ -31,7 +31,7 @@ const differentiators = [
     icon: Gift,
     title: "Trial Gratuito 14 Giorni",
     description:
-      "Prova LabManager gratis per 14 giorni senza impegno. Poi scegli il piano mensile o annuale direttamente dall'app.",
+      "Prova tutte le funzionalità Plus gratis per 14 giorni senza carta. Poi scegli Light o Plus e la periodicità direttamente dall'app.",
   },
 ];
 

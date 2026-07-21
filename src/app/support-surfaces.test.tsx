@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import type { Metadata } from "next";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createElement } from "react";
@@ -44,12 +45,7 @@ function serializedMetadata(metadata: object) {
 }
 
 function expectNeutralSocialMetadata(
-  metadata: {
-    description?: string | null;
-    keywords?: string | string[] | null;
-    openGraph?: { description?: string; url?: string | URL } | null;
-    twitter?: { description?: string } | null;
-  },
+  metadata: Metadata,
   expectedUrl: string,
 ) {
   expect(metadata.keywords).toBeNull();

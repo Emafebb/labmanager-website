@@ -4,10 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "commerciale:check": "node scripts/verifica-manifesto-commerciale.mjs",
+    "commerciale:test": "node --test scripts/verifica-manifesto-commerciale.node-test.mjs",
+    "test": "npm run commerciale:test && vitest run",
+    "prebuild": "npm run commerciale:check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "prepreview": "npm run commerciale:check",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "predeploy": "npm run commerciale:check",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {

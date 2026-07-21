@@ -4,9 +4,13 @@
 
 ## Pagine SEO principali
 
-- [Home](https://labmanagergestionale.com): Presentazione di LabManager e prova gratuita di 14 giorni.
+- [Home](https://labmanagergestionale.com): Presentazione di LabManager Light e Plus e prova gratuita di 14 giorni.
 - [Ordini](https://labmanagergestionale.com/ordini): Gestione di ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.
-- [Prezzi](https://labmanagergestionale.com/pricing): Piano LabManager e prova gratuita di 14 giorni senza carta.
+- [Prezzi](https://labmanagergestionale.com/pricing): Confronto Light e Plus con periodicità mensile o annuale e prova gratuita di 14 giorni senza carta.
+
+## Offerta Light e Plus
+
+Light include ricette, food cost della ricetta, bilanciamento, ingredienti, assemblaggi, tabelle nutrizionali, etichette, strumenti di laboratorio e gestione del team. Plus aggiunge produzione, ordini e piano di lavoro, vendite, Costi aziendali e magazzino con DDT. La prova include tutte le funzionalità Plus; scelta e pagamento avvengono nell'app autenticata.
 
 ## Pubblico
 
