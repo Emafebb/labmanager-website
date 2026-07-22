@@ -2,6 +2,38 @@ import { describe, expect, it, vi } from "vitest";
 import { enforceHttpTransportPolicy } from "@/lib/edge-http-policy";
 
 describe("edge HTTP transport policy", () => {
+  it.each([
+    ["https://labmanagergestionale.com/download", "GET"],
+    ["https://labmanagergestionale.com/download/?source=legacy", "HEAD"],
+    ["https://preview.example/download/legacy", "POST"],
+    ["https://labmanagergestionale.com/%64ownload", "GET"],
+  ])(
+    "returns 404 for the retired download route before OpenNext handles %s",
+    async (url, method) => {
+      const forward = vi.fn(async () => new Response("origin"));
+      const response = await enforceHttpTransportPolicy(
+        new Request(url, { method }),
+        forward,
+      );
+
+      expect(response.status).toBe(404);
+      expect(response.headers.get("cache-control")).toBe("no-store");
+      expect(await response.text()).toBe("");
+      expect(forward).not.toHaveBeenCalled();
+    },
+  );
+
+  it("does not block paths that merely start with the word download", async () => {
+    const originResponse = new Response("origin", { status: 200 });
+    const forward = vi.fn(async () => originResponse);
+    const request = new Request("https://preview.example/downloads");
+
+    const response = await enforceHttpTransportPolicy(request, forward);
+
+    expect(response).toBe(originResponse);
+    expect(forward).toHaveBeenCalledWith(request);
+  });
+
   it.each(["GET", "HEAD"])(
     "redirects HTTP %s to the exact HTTPS resource in one 308 response",
     async (method) => {

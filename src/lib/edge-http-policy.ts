@@ -1,7 +1,27 @@
 const SAFE_HTTP_METHODS = new Set(["GET", "HEAD"]);
 const PRODUCTION_HOSTNAME = "labmanagergestionale.com";
+const RETIRED_DOWNLOAD_PATH = "/download";
 
 type OriginForwarder = (request: Request) => Response | Promise<Response>;
+
+function isRetiredDownloadPath(pathname: string): boolean {
+  let decodedPathname = pathname;
+
+  try {
+    decodedPathname = decodeURIComponent(pathname);
+  } catch {
+    // Leave malformed paths to the application router.
+  }
+
+  const normalizedPathname = decodedPathname
+    .replace(/\/{2,}/g, "/")
+    .toLowerCase();
+
+  return (
+    normalizedPathname === RETIRED_DOWNLOAD_PATH ||
+    normalizedPathname.startsWith(`${RETIRED_DOWNLOAD_PATH}/`)
+  );
+}
 
 function incomingScheme(request: Request): "http" | "https" {
   const cloudflareVisitor = request.headers.get("cf-visitor");
@@ -25,7 +45,16 @@ export async function enforceHttpTransportPolicy(
   request: Request,
   forwardToOpenNext: OriginForwarder,
 ): Promise<Response> {
-  if (new URL(request.url).hostname !== PRODUCTION_HOSTNAME) {
+  const requestUrl = new URL(request.url);
+
+  if (isRetiredDownloadPath(requestUrl.pathname)) {
+    return new Response(null, {
+      status: 404,
+      headers: { "cache-control": "no-store" },
+    });
+  }
+
+  if (requestUrl.hostname !== PRODUCTION_HOSTNAME) {
     return forwardToOpenNext(request);
   }
 
