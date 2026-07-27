@@ -12,11 +12,7 @@ import ContactForm from "@/components/ContactForm";
 import PricingFAQ from "@/app/pricing/pricing-faq";
 import PricingSelector from "@/app/pricing/pricing-selector";
 import { EXTERNAL_WIDGET_THEME_SCRIPT } from "@/components/SiteScripts";
-import {
-  HERO_ASSETS,
-  NEWSLETTER_ASSETS,
-  RESPONSIVE_ASSET_PATHS,
-} from "@/data/responsive-images";
+import { HERO_ASSETS, RESPONSIVE_ASSET_PATHS } from "@/data/responsive-images";
 
 vi.mock("next/image", () => ({
   default: ({
@@ -105,24 +101,23 @@ describe("responsive static asset contract", () => {
     ).toHaveAttribute("srcset", HERO_ASSETS.desktop.avifSrcSet);
   });
 
-  it("serves the newsletter screenshot from responsive AVIF/WebP markup without preload", () => {
+  it("keeps the newsletter focused on subscription without a product screenshot", () => {
     const { container } = render(<NewsletterPage />);
-    const picture = container.querySelector("picture[data-newsletter-image]");
 
-    expect(picture).not.toBeNull();
-    expect(picture?.querySelector('source[type="image/avif"]')).toHaveAttribute(
-      "srcset",
-      NEWSLETTER_ASSETS.avifSrcSet,
+    expect(container.querySelector("picture[data-newsletter-image]")).toBeNull();
+    expect(container.querySelector("main img")).toBeNull();
+  });
+
+  it("splits newsletter content and form on compact desktop widths", () => {
+    const { container } = render(<NewsletterPage />);
+    const layout = container.querySelector(
+      'section[aria-labelledby="newsletter-page-title"] > div',
     );
-    expect(picture?.querySelector('source[type="image/webp"]')).toHaveAttribute(
-      "srcset",
-      NEWSLETTER_ASSETS.webpSrcSet,
+
+    expect(layout).toHaveClass(
+      "min-[900px]:grid-cols-[minmax(0,1fr)_380px]",
+      "min-[900px]:gap-10",
     );
-    expect(picture?.querySelector("img")).toHaveAttribute(
-      "sizes",
-      NEWSLETTER_ASSETS.sizes,
-    );
-    expect(container.querySelector('link[rel="preload"]')).toBeNull();
   });
 });
 

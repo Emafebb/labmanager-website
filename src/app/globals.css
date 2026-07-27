@@ -32,6 +32,7 @@
   --color-icon: var(--icon-color);
   --color-card-border: var(--card-border);
   --color-surface: var(--surface);
+  --color-success: var(--success);
 
   --font-sans: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   --font-display: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -57,8 +58,11 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* Grigio, mai viola: il viola significa "azione disponibile", il focus significa
+   "sei qui". Il tono regge il rapporto di contrasto 3:1 richiesto per gli
+   indicatori non testuali. */
 :where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
-  outline: 2px solid #D1D5DB;
+  outline: 2px solid #6B7280;
   outline-offset: 3px;
 }
 
@@ -161,6 +165,16 @@ html {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  /* Copre anche le transizioni dichiarate inline nei componenti (hover delle
+     CTA, freccia, chevron), che le regole per singola classe non raggiungono. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .animate-fade-in-up,
   .animate-fade-in,
   .animate-scale-in,

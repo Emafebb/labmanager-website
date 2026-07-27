@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "title": "Design System: LabManager",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Indaco Profondo",
+        "canonical": "#4403af",
+        "tonalRamp": [
+          "oklch(0.15 0.09 285)",
+          "oklch(0.24 0.15 285)",
+          "oklch(0.31 0.21 285)",
+          "oklch(0.38 0.235 285)",
+          "oklch(0.48 0.24 285)",
+          "oklch(0.62 0.20 285)",
+          "oklch(0.80 0.10 285)",
+          "oklch(0.95 0.03 285)"
+        ]
+      },
+      "primary-light": {
+        "role": "primary",
+        "displayName": "Indaco Chiaro",
+        "canonical": "#5a1ec9",
+        "tonalRamp": [
+          "oklch(0.17 0.09 288)",
+          "oklch(0.26 0.15 288)",
+          "oklch(0.35 0.21 288)",
+          "oklch(0.44 0.235 288)",
+          "oklch(0.54 0.23 288)",
+          "oklch(0.68 0.18 288)",
+          "oklch(0.83 0.09 288)",
+          "oklch(0.95 0.03 288)"
+        ]
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Indaco Cupo",
+        "canonical": "#3a0390",
+        "tonalRamp": [
+          "oklch(0.13 0.08 285)",
+          "oklch(0.21 0.13 285)",
+          "oklch(0.27 0.18 285)",
+          "oklch(0.33 0.21 285)",
+          "oklch(0.43 0.22 285)",
+          "oklch(0.58 0.19 285)",
+          "oklch(0.78 0.10 285)",
+          "oklch(0.94 0.03 285)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Inchiostro",
+        "canonical": "#333333",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.24 0 0)",
+          "oklch(0.32 0 0)",
+          "oklch(0.38 0 0)",
+          "oklch(0.52 0 0)",
+          "oklch(0.68 0 0)",
+          "oklch(0.84 0 0)",
+          "oklch(0.96 0 0)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Grigio Nebbia",
+        "canonical": "#F8F9FA",
+        "tonalRamp": [
+          "oklch(0.18 0.003 250)",
+          "oklch(0.30 0.003 250)",
+          "oklch(0.44 0.003 250)",
+          "oklch(0.58 0.004 250)",
+          "oklch(0.72 0.004 250)",
+          "oklch(0.86 0.004 250)",
+          "oklch(0.94 0.004 250)",
+          "oklch(0.98 0.003 250)"
+        ]
+      },
+      "canvas-cool": {
+        "role": "neutral",
+        "displayName": "Bianco Freddo",
+        "canonical": "#FAFBFE",
+        "tonalRamp": [
+          "oklch(0.18 0.008 275)",
+          "oklch(0.30 0.010 275)",
+          "oklch(0.44 0.012 275)",
+          "oklch(0.58 0.012 275)",
+          "oklch(0.72 0.011 275)",
+          "oklch(0.86 0.009 275)",
+          "oklch(0.94 0.007 275)",
+          "oklch(0.99 0.004 275)"
+        ]
+      },
+      "card-border": {
+        "role": "neutral",
+        "displayName": "Grigio Bordo",
+        "canonical": "#E5E7EB",
+        "tonalRamp": [
+          "oklch(0.20 0.005 265)",
+          "oklch(0.32 0.006 265)",
+          "oklch(0.46 0.007 265)",
+          "oklch(0.60 0.008 265)",
+          "oklch(0.74 0.009 265)",
+          "oklch(0.87 0.008 265)",
+          "oklch(0.92 0.006 265)",
+          "oklch(0.97 0.004 265)"
+        ]
+      },
+      "focus-ring": {
+        "role": "neutral",
+        "displayName": "Grigio Focus",
+        "canonical": "#6B7280",
+        "tonalRamp": [
+          "oklch(0.20 0.006 265)",
+          "oklch(0.32 0.008 265)",
+          "oklch(0.46 0.010 265)",
+          "oklch(0.60 0.012 265)",
+          "oklch(0.72 0.012 265)",
+          "oklch(0.85 0.010 265)",
+          "oklch(0.92 0.007 265)",
+          "oklch(0.97 0.004 265)"
+        ]
+      },
+      "success": {
+        "role": "tertiary",
+        "displayName": "Verde Conferma",
+        "canonical": "#107C10",
+        "tonalRamp": [
+          "oklch(0.18 0.06 145)",
+          "oklch(0.27 0.09 145)",
+          "oklch(0.36 0.12 145)",
+          "oklch(0.46 0.14 145)",
+          "oklch(0.58 0.16 145)",
+          "oklch(0.72 0.14 145)",
+          "oklch(0.86 0.08 145)",
+          "oklch(0.96 0.03 145)"
+        ]
+      },
+      "warning": {
+        "role": "tertiary",
+        "displayName": "Ambra Attenzione",
+        "canonical": "#E6A700",
+        "tonalRamp": [
+          "oklch(0.22 0.05 85)",
+          "oklch(0.33 0.08 85)",
+          "oklch(0.45 0.11 85)",
+          "oklch(0.57 0.13 85)",
+          "oklch(0.68 0.15 85)",
+          "oklch(0.79 0.13 85)",
+          "oklch(0.89 0.08 85)",
+          "oklch(0.97 0.03 85)"
+        ]
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Rosso Errore",
+        "canonical": "#E81123",
+        "tonalRamp": [
+          "oklch(0.20 0.09 27)",
+          "oklch(0.30 0.13 27)",
+          "oklch(0.40 0.17 27)",
+          "oklch(0.50 0.20 27)",
+          "oklch(0.59 0.22 27)",
+          "oklch(0.72 0.17 27)",
+          "oklch(0.86 0.09 27)",
+          "oklch(0.96 0.03 27)"
+        ]
+      },
+      "whatsapp": {
+        "role": "tertiary",
+        "displayName": "Verde WhatsApp",
+        "canonical": "#25D366",
+        "tonalRamp": [
+          "oklch(0.22 0.07 150)",
+          "oklch(0.33 0.10 150)",
+          "oklch(0.45 0.14 150)",
+          "oklch(0.57 0.17 150)",
+          "oklch(0.68 0.19 150)",
+          "oklch(0.79 0.15 150)",
+          "oklch(0.89 0.09 150)",
+          "oklch(0.97 0.03 150)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Solo l'h1 di ogni pagina. Interlinea 1.08 e tracking stretto: il titolo si legge come blocco compatto."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titoli di sezione (h2), sempre preceduti da un occhiello."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titoli di card e di gruppo (h3)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Testo corrente in Inchiostro 70%. I paragrafi introduttivi salgono a 1.125–1.25rem entro 65 caratteri."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etichette di form, voci di navigazione, testo dei pulsanti."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "Occhiello maiuscolo in Indaco Profondo che apre una sezione. Mai usato come badge o tag."
+      }
+    },
+    "shadows": [
+      {
+        "name": "appoggio",
+        "value": "0 1px 3px rgba(0, 0, 0, 0.04)",
+        "purpose": "Stato di riposo di card, input, pillole e barra di navigazione dopo lo scroll. Quasi invisibile per progetto."
+      },
+      {
+        "name": "sollevamento",
+        "value": "0 4px 12px rgba(0, 0, 0, 0.06)",
+        "purpose": "Risposta all'hover di una card. Gradino immediatamente successivo ad appoggio, mai un salto."
+      },
+      {
+        "name": "distacco",
+        "value": "0 8px 24px rgba(0, 0, 0, 0.08)",
+        "purpose": "Livello massimo del sistema, per superfici che si staccano davvero dal flusso."
+      },
+      {
+        "name": "alone-primario",
+        "value": "0 10px 15px -3px rgba(68, 3, 175, 0.2)",
+        "purpose": "Unica ombra colorata ammessa, solo sull'hover della CTA primaria. Non esiste a riposo."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "ease-out: l'unica curva del sistema, per ogni transizione di stato."
+      },
+      {
+        "name": "duration-state",
+        "value": "200ms",
+        "purpose": "Durata di ogni transizione di stato: hover, focus, apertura del menu mobile, restringimento della navbar."
+      },
+      {
+        "name": "duration-enter",
+        "value": "400ms",
+        "purpose": "Animazioni di ingresso fadeInUp e scaleIn."
+      },
+      {
+        "name": "duration-enter-slow",
+        "value": "600ms",
+        "purpose": "Ingresso scaglionato dei dispositivi nell'apertura (ritardi 0.2s / 0.45s / 0.6s)."
+      },
+      {
+        "name": "lift-hover",
+        "value": "translateY(-2px)",
+        "purpose": "L'unico spostamento ammesso in risposta all'hover di una superficie."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "container", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "L'azione principale di ogni superficie. Una sola per schermata.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Prova gratis 14 giorni<svg class=\"ds-btn-primary__arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; background: var(--primary, #4403af); color: #fff; padding: 14px 28px; border-radius: 12px; font-family: var(--font-sans, 'DM Sans', sans-serif); font-size: 1rem; font-weight: 600; text-decoration: none; transition: background-color 200ms cubic-bezier(0,0,0.2,1), box-shadow 200ms cubic-bezier(0,0,0.2,1), transform 200ms cubic-bezier(0,0,0.2,1); } .ds-btn-primary__arrow { transition: transform 200ms cubic-bezier(0,0,0.2,1); } .ds-btn-primary:hover { background: var(--primary-dark, #3a0390); transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(68,3,175,0.2); } .ds-btn-primary:hover .ds-btn-primary__arrow { transform: translateX(2px); } .ds-btn-primary:focus-visible { outline: 2px solid #D1D5DB; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Azione alternativa accanto alla primaria. Non prende mai colore, nemmeno all'hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Scopri le funzionalità</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; background: #fff; color: #374151; padding: 14px 28px; border: 1px solid #E5E7EB; border-radius: 12px; font-family: var(--font-sans, 'DM Sans', sans-serif); font-size: 1rem; font-weight: 600; text-decoration: none; transition: border-color 200ms cubic-bezier(0,0,0.2,1), box-shadow 200ms cubic-bezier(0,0,0.2,1), transform 200ms cubic-bezier(0,0,0.2,1); } .ds-btn-secondary:hover { border-color: #D1D5DB; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); } .ds-btn-secondary:focus-visible { outline: 2px solid #D1D5DB; outline-offset: 3px; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Voce di navigazione desktop. Prende il viola solo all'hover, come velo al 5%.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Funzionalità</a>",
+      "css": ".ds-nav-link { display: inline-block; padding: 8px 16px; border-radius: 8px; color: #4B5563; font-family: var(--font-sans, 'DM Sans', sans-serif); font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: color 200ms cubic-bezier(0,0,0.2,1), background-color 200ms cubic-bezier(0,0,0.2,1); } .ds-nav-link:hover { color: var(--primary, #4403af); background: rgba(68,3,175,0.05); } .ds-nav-link:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #D1D5DB; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Campo di modulo con etichetta iconata sopra. Testo a 1rem per non innescare lo zoom su iOS.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field__label\" for=\"ds-email\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Email</label><input class=\"ds-field__input\" id=\"ds-email\" type=\"email\" placeholder=\"nome@laboratorio.it\"></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; font-family: var(--font-sans, 'DM Sans', sans-serif); } .ds-field__label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #111827; font-size: 0.875rem; font-weight: 600; } .ds-field__label svg { color: var(--icon-color, #4403af); } .ds-field__input { width: 100%; padding: 12px 16px; background: #fff; border: 1px solid #E5E7EB; border-radius: 8px; font-family: inherit; font-size: 1rem; color: #333; outline: none; transition: border-color 200ms cubic-bezier(0,0,0.2,1), box-shadow 200ms cubic-bezier(0,0,0.2,1); } .ds-field__input::placeholder { color: rgba(51,51,51,0.5); } .ds-field__input:focus { border-color: #9CA3AF; box-shadow: 0 0 0 4px #E5E7EB; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card-feature",
+      "description": "La card di contenuto con piastrella icona. Piatta a riposo, sale di 2px all'hover.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-card__tile\" aria-hidden=\"true\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg></span><h3 class=\"ds-card__title\">Ricette e Food Cost</h3><p class=\"ds-card__body\">Organizza ricette e ingredienti, calcola costi e margini delle preparazioni.</p></article>",
+      "css": ".ds-card { display: block; background: #fff; border: 1px solid #F3F4F6; border-radius: 16px; padding: 32px; font-family: var(--font-sans, 'DM Sans', sans-serif); box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 200ms cubic-bezier(0,0,0.2,1), transform 200ms cubic-bezier(0,0,0.2,1); } .ds-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); } .ds-card__tile { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-bottom: 20px; border: 1px solid #F3F4F6; border-radius: 12px; background: #fff; color: var(--primary, #4403af); box-shadow: 0 1px 3px rgba(0,0,0,0.04); } .ds-card__title { margin: 0 0 8px; font-size: 1rem; font-weight: 600; color: #333; } .ds-card__body { margin: 0; font-size: 0.875rem; line-height: 1.625; color: rgba(51,51,51,0.7); }"
+    },
+    {
+      "name": "Eyebrow",
+      "kind": "custom",
+      "refersTo": "typography.eyebrow",
+      "description": "L'occhiello che apre una sezione sopra l'h2. Una sezione, un occhiello.",
+      "html": "<p class=\"ds-eyebrow\">Funzionalità</p>",
+      "css": ".ds-eyebrow { margin: 0 0 12px; font-family: var(--font-sans, 'DM Sans', sans-serif); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary, #4403af); }"
+    },
+    {
+      "name": "Eyebrow Pill",
+      "kind": "chip",
+      "refersTo": "pill-eyebrow",
+      "description": "La variante in evidenza dell'occhiello, usata nell'apertura sopra l'h1.",
+      "html": "<span class=\"ds-pill\">Il gestionale per laboratori alimentari</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; padding: 8px 16px; background: #fff; border: 1px solid rgba(68,3,175,0.1); border-radius: 9999px; font-family: var(--font-sans, 'DM Sans', sans-serif); font-size: 0.875rem; font-weight: 700; color: var(--primary, #4403af); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }"
+    },
+    {
+      "name": "Icon Tile",
+      "kind": "custom",
+      "refersTo": "icon-tile",
+      "description": "Il modulo ricorrente che lega le sezioni: quadrato da 44px, velo indaco, icona a tratto.",
+      "html": "<span class=\"ds-tile\" aria-hidden=\"true\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><path d=\"M14 2v6h6\"/><path d=\"M9 15h6\"/></svg></span>",
+      "css": ".ds-tile { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(68,3,175,0.08); color: var(--primary, #4403af); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La Catena Continua",
+    "overview": "Dalla ricetta all'ordine senza interruzioni. Il sistema visivo non presenta funzioni affiancate: presenta un flusso che si aggancia sezione dopo sezione. Ogni superficie eredita qualcosa dalla precedente — lo stesso indaco, la stessa scala di raggi, lo stesso respiro di 96px — così che scorrere la pagina somigli a percorrere il laboratorio da monte a valle. La continuità è la firma: non un effetto, ma il rifiuto sistematico di far sembrare separate cose che nel prodotto sono collegate.\n\nIl tono è solido, non startup. Questo sistema deve somigliare a un fornitore di attrezzature che sta in piedi da vent'anni, non a un lancio. L'anti-riferimento è preciso e vincolante: l'estetica SaaS generica — gradienti viola-blu, illustrazioni astratte di persone senza volto, glassmorphism, promesse vaghe al posto dei numeri. Il prodotto è la prova, quindi il sistema mostra schermate vere su superfici quiete e lascia parlare i dati.\n\nLa materia è stratificazione leggera: le superfici si distinguono davvero per livello, ma con ombre che non superano l'8% di nero. Nessun bordo urlato, nessuna profondità teatrale. Un solo colore forte in un ambiente chiaro, e quel colore compare solo dove c'è un'azione o un'affermazione da fare.",
+    "keyCharacteristics": [
+      "Un solo accento cromatico: indaco profondo su bianco e grigi freddissimi",
+      "DM Sans in quattro pesi, nessuna seconda famiglia",
+      "Ombre tenui e reali, mai decorative: massimo 8% di nero",
+      "Scala di raggi che cresce con la superficie: 8 → 12 → 16 → 24 px",
+      "Respiro fisso di 96px tra le sezioni, contenitore a 1280px",
+      "Griglie che non superano due colonne su desktop",
+      "Movimento breve e monodirezionale: 200ms, verso l'alto, mai di rimbalzo",
+      "Focus grigio neutro, distinto per costruzione dall'hover viola"
+    ],
+    "rules": [
+      {
+        "name": "The One Violet Rule",
+        "body": "Il sistema ha un accento e uno solo. Verde, ambra e rosso sono segnali di stato: dicono cosa è successo, non attirano attenzione. Se un elemento ha bisogno di risaltare e non è un'azione o uno stato, la risposta è spazio o peso tipografico, non un secondo colore.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dead Gradient Rule",
+        "body": "L'utility .gradient-text interpola da --primary a --icon-color, e --icon-color è --primary: il gradiente è piatto, e i titoli che lo usano rendono indaco pieno. È un residuo, non una scelta. I titoli restano a tinta unita — non 'sistemare' il gradiente rendendolo reale.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tint-Only Rule",
+        "body": "Il viola tinge una superficie solo al 5% o al 10%. Non esistono sfondi viola a piena saturazione fuori dalle CTA e dalle superfici di navigazione attive.",
+        "section": "colors"
+      },
+      {
+        "name": "The Four Weights Rule",
+        "body": "DM Sans è caricato solo ai pesi 400, 500, 600 e 700. Non esistono 800 né 900: se il codice li chiede, il browser sintetizza un grassetto finto che si nota. Il peso massimo del sistema è 700. font-extrabold e font-black sono vietati finché il font non viene caricato con quei pesi.",
+        "section": "typography"
+      },
+      {
+        "name": "The Eyebrow Rule",
+        "body": "L'occhiello apre una sezione e non compare mai altrove. Non è un badge, non è un tag, non è un'etichetta di card. Una sezione, un occhiello.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Nessuna seconda famiglia tipografica entra nel sistema. Se una superficie sembra aver bisogno di un display serif o di un monospaziato, il problema è la gerarchia, non il font.",
+        "section": "typography"
+      },
+      {
+        "name": "The 96 Rule",
+        "body": "Novantasei pixel tra le sezioni. Sempre. Una sezione che ha bisogno di staccarsi di più cambia superficie (Bianco Puro ↔ Grigio Nebbia), non spaziatura.",
+        "section": "layout"
+      },
+      {
+        "name": "The Two-Column Ceiling Rule",
+        "body": "Nessuna griglia di contenuto supera due colonne su desktop. Tre o quattro colonne trasformano il flusso in un catalogo, che è esattamente ciò che questo sistema rifiuta.",
+        "section": "layout"
+      },
+      {
+        "name": "The Eight Percent Rule",
+        "body": "Nessuna ombra del sistema supera l'8% di nero. Un elemento che sembra aver bisogno di più profondità ha in realtà un problema di contrasto o di spaziatura.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Two-Pixel Lift Rule",
+        "body": "L'unica risposta al passaggio del mouse su una superficie è salire di 2px e passare al gradino d'ombra successivo. Niente scala, niente rotazione, niente cambio di colore della card.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Radius Ladder Rule",
+        "body": "8 → 12 → 16 → 24. Il raggio non è una preferenza estetica per elemento: è una funzione della dimensione della superficie. Una card grande con raggio da controllo, o un input con raggio da card, rompono la scala.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Neutral Focus Rule",
+        "body": "L'anello di focus è grigio (#D1D5DB, 2px, offset 3px), mai viola. Il viola significa 'azione disponibile'; il grigio significa 'sei qui'. Confonderli rende la navigazione da tastiera indistinguibile dall'hover.",
+        "section": "components"
+      },
+      {
+        "name": "The 44 Rule",
+        "body": "Ogni elemento interattivo raggiunge almeno 44×44px reali. L'utility .touch-target esiste per questo e va applicata, non riscoperta caso per caso.",
+        "section": "components"
+      },
+      {
+        "name": "The 200ms Rule",
+        "body": "Le transizioni di stato durano 200ms con ease-out. Le animazioni di ingresso durano da 400 a 600ms. Non esistono durate intermedie negoziate elemento per elemento, e ogni animazione è annullata sotto prefers-reduced-motion.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do costruire la gerarchia con peso tipografico, spazio e superficie. Il colore è l'ultima leva, non la prima.",
+      "Do rispettare la scala dei raggi 8 → 12 → 16 → 24 in funzione della dimensione della superficie.",
+      "Do mantenere 96px tra le sezioni e cambiare superficie (Bianco Puro ↔ Grigio Nebbia ↔ Bianco Freddo) quando serve uno stacco più netto.",
+      "Do usare icone a tratto Lucide, dimensioni da 15 a 28px, sempre con aria-hidden=\"true\" quando il testo accanto già comunica il significato.",
+      "Do mostrare schermate reali del prodotto. La prova è il software che lavora, e le immagini vanno servite in AVIF/WebP responsive come già fa src/data/responsive-images.ts.",
+      "Do dichiarare ogni nuova animazione dentro il blocco prefers-reduced-motion di globals.css.",
+      "Do rendere ogni superficie leggibile prima su telefono, a fine giornata, con luce variabile."
+    ],
+    "donts": [
+      "Don't introdurre un secondo accento cromatico. L'ambra (#FBBF24 / amber-400) e il prugna scuro (#1d0640) sono deriva, non sistema, e non vanno promossi in globals.css. Il listino (src/app/pricing/) e src/components/TrialCallout.tsx sono già stati riportati all'indaco. Restano da ricondurre, quando quelle superfici verranno toccate: src/components/Features.tsx (gradiente amber-50/orange-50 sulla seconda card della home) e src/components/DownloadClient.tsx. L'ambra in src/app/billing/cancel/page.tsx è invece uso semantico di avviso ed è legittima, ma dovrebbe passare per il token --warning anziché per la scala Tailwind.",
+      "Don't usare font-extrabold (800) o font-black (900): DM Sans è caricato solo a 400/500/600/700 e il browser sintetizzerebbe un grassetto finto. Presente anch'esso nel listino prezzi, da rientrare.",
+      "Don't aggiungere gradienti — di testo, di sfondo, di bordo. Il gradiente in .gradient-text è un no-op che rende piatto e va lasciato tale o rimosso, non reso reale.",
+      "Don't superare l'8% di nero nelle ombre, né usare ombre colorate a riposo.",
+      "Don't colorare l'anello di focus di viola.",
+      "Don't portare le griglie di contenuto oltre due colonne su desktop.",
+      "Don't introdurre una seconda famiglia tipografica.",
+      "Don't usare illustrazioni astratte, mockup 3D o immagini stock di persone: il registro è quello di uno strumento professionale, e l'anti-riferimento dichiarato è l'estetica SaaS generica.",
+      "Don't far competere visivamente più di una azione primaria per schermata."
+    ]
+  }
+}

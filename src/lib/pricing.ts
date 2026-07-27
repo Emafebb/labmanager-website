@@ -50,8 +50,12 @@ export const TRIAL_DAYS = 14;
 export const TRIAL_CTA_LABEL = `Prova gratis ${TRIAL_DAYS} giorni`;
 export const TRIAL_EXPLANATION =
   "La prova include tutte le funzionalità Plus. Al termine scegli il piano più adatto.";
-export const DEVICE_CONTACT_COPY =
-  "Hai bisogno di più dispositivi? Contattaci";
+/** Requisito 36 della spec 0009: il sito deve mostrare questo testo esatto.
+ *  Il prompt e l'etichetta del link restano separati perché il link è un
+ *  elemento a sé, ma il testo visibile combinato deve corrispondere. */
+export const DEVICE_CONTACT_PROMPT = "Hai bisogno di più dispositivi?";
+export const DEVICE_CONTACT_LINK_LABEL = "Contattaci";
+export const DEVICE_CONTACT_COPY = `${DEVICE_CONTACT_PROMPT} ${DEVICE_CONTACT_LINK_LABEL}`;
 
 export function getCommercialOffer(
   tier: CommercialTier,

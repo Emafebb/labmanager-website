@@ -12,10 +12,6 @@ const heroTablet240Avif = imagePath("hero-tablet-240.avif");
 const heroTablet480Avif = imagePath("hero-tablet-480.avif");
 const heroTablet240Webp = imagePath("hero-tablet-240.webp");
 const heroTablet480Webp = imagePath("hero-tablet-480.webp");
-const newsletter640Avif = imagePath("newsletter-dashboard-640.avif");
-const newsletter1280Avif = imagePath("newsletter-dashboard-1280.avif");
-const newsletter640Webp = imagePath("newsletter-dashboard-640.webp");
-const newsletter1280Webp = imagePath("newsletter-dashboard-1280.webp");
 
 export const HERO_ASSETS = {
   android: {
@@ -39,13 +35,6 @@ export const HERO_ASSETS = {
   sizes: "(max-width: 639px) 260px, (max-width: 1023px) calc(100vw - 72px), 540px",
 } as const;
 
-export const NEWSLETTER_ASSETS = {
-  avifSrcSet: `${newsletter640Avif} 640w, ${newsletter1280Avif} 1280w`,
-  webpSrcSet: `${newsletter640Webp} 640w, ${newsletter1280Webp} 1280w`,
-  fallbackSrc: newsletter1280Webp,
-  sizes: "(min-width: 1024px) 640px, calc(100vw - 48px)",
-} as const;
-
 export const RESPONSIVE_ASSET_PATHS = [
   heroAndroid360Avif,
   heroAndroid720Avif,
@@ -59,8 +48,4 @@ export const RESPONSIVE_ASSET_PATHS = [
   heroTablet480Avif,
   heroTablet240Webp,
   heroTablet480Webp,
-  newsletter640Avif,
-  newsletter1280Avif,
-  newsletter640Webp,
-  newsletter1280Webp,
 ] as const;

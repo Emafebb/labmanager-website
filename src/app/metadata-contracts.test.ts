@@ -140,7 +140,7 @@ describe("route metadata contracts", () => {
     expect(newsletterMetadata).toMatchObject({
       title: "Newsletter",
       description:
-        "Aggiornamenti su LabManager, nuove funzionalità e consigli scelti editorialmente per il lavoro in laboratorio.",
+        "La newsletter di LabManager raccoglie aggiornamenti sul prodotto, nuove funzionalità e consigli pratici per il lavoro in laboratorio.",
       robots: { index: false, follow: true },
       alternates: { canonical: `${BASE_URL}/newsletter` },
       openGraph: { url: `${BASE_URL}/newsletter` },

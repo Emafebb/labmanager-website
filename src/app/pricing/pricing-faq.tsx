@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import {
+  DEVICE_CONTACT_COPY,
   TRIAL_EXPLANATION,
   commercialPriceSummary,
   describeOfferSupport,
@@ -24,13 +25,13 @@ export const PRICING_FAQS = [
     answer: `Light include sempre ${describeOfferSupport(getCommercialOffer("Light", "mensile")).toLowerCase()}. Plus mensile include ${describeOfferSupport(getCommercialOffer("Plus", "mensile")).toLowerCase()}; Plus annuale include ${describeOfferSupport(getCommercialOffer("Plus", "annuale")).toLowerCase()}.`,
   },
   {
-    question: "Quanti dispositivi posso usare contemporaneamente?",
-    answer: `Light include ${getCommercialLevel("Light").sessioniSimultanee} dispositivi simultanei e Plus ${getCommercialLevel("Plus").sessioniSimultanee}. Hai bisogno di più dispositivi? Contattaci.`,
+    question: "Quanti accessi contemporanei sono inclusi?",
+    answer: `Light include ${getCommercialLevel("Light").sessioniSimultanee} sessioni attive simultanee e Plus ${getCommercialLevel("Plus").sessioniSimultanee}, indipendentemente dal dispositivo usato. Non c'è invece alcun limite ai dispositivi diversi usati nel tempo. ${DEVICE_CONTACT_COPY}.`,
   },
   {
-    question: "Posso acquistare dal sito?",
+    question: "Come si passa dalla prova al piano?",
     answer:
-      "No. Il sito presenta l'offerta e conduce alla registrazione della prova senza carta. La scelta e il pagamento si gestiscono nell'app autenticata.",
+      "Non serve fare nulla su questo sito: la registrazione della prova non chiede la carta. Scelta del piano e pagamento si gestiscono nell'app autenticata, quando hai deciso.",
   },
   {
     question: "Posso disdire quando voglio?",
@@ -40,11 +41,21 @@ export const PRICING_FAQS = [
 ] as const;
 
 export default function PricingFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  // Chi valuta tiene aperte più risposte insieme: prova, disdetta e pagamento
+  // si leggono in parallelo, non una alla volta.
+  const [openIndexes, setOpenIndexes] = useState<readonly number[]>([]);
+
+  function toggle(index: number) {
+    setOpenIndexes((current) =>
+      current.includes(index)
+        ? current.filter((value) => value !== index)
+        : [...current, index],
+    );
+  }
 
   return (
     <section
-      className="bg-white px-6 py-20"
+      className="bg-white px-6 py-24"
       aria-labelledby="pricing-faq-heading"
     >
       <div className="mx-auto max-w-3xl">
@@ -61,20 +72,20 @@ export default function PricingFAQ() {
 
         <div className="space-y-3">
           {PRICING_FAQS.map((faq, index) => {
-            const isOpen = openIndex === index;
+            const isOpen = openIndexes.includes(index);
             const answerId = `pricing-faq-answer-${index}`;
 
             return (
               <article
                 key={faq.question}
-                className="rounded-xl border border-gray-200 bg-white shadow-sm"
+                className="rounded-2xl border border-gray-200 bg-white shadow-sm"
               >
                 <button
                   type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={answerId}
-                  className="touch-target flex w-full items-center justify-between gap-4 rounded-xl p-6 text-left transition-colors duration-200 hover:bg-gray-50"
+                  className="touch-target flex w-full items-center justify-between gap-4 rounded-2xl p-6 text-left transition-colors duration-200 hover:bg-gray-50"
                 >
                   <span className="text-base font-semibold text-gray-900">
                     {faq.question}
@@ -82,7 +93,7 @@ export default function PricingFAQ() {
                   <ChevronDown
                     size={20}
                     aria-hidden="true"
-                    className={`shrink-0 text-icon transition-transform duration-200 ${
+                    className={`shrink-0 text-primary transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />

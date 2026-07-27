@@ -1,17 +1,34 @@
+/*
+ * THESIS: questa pagina possiede il tabellone del sabato — il piano di lavoro diviso
+ * per come l'ordine deve finire (ritiro, consegna, ordine interno), con lo stato di
+ * produzione scritto sulla riga. Rifiuta l'impaginato che questa pagina spediva prima:
+ * hero + occhiello + tre card icona-titolo-testo + metriche 12/7/5 + FAQ a card.
+ * OWN-WORLD: sistema LabManager invariato — indaco #4403af come unico accento, DM Sans
+ * 400/600/700, superfici bianco / #F8F9FA / #FAFBFE, ombre ≤8%, scala raggi 8→12→16→24,
+ * tratti 1px #E5E7EB. Il tabellone è la nuova famiglia: corsie identiche, celle ordine
+ * identiche su fondo grigio senza bordo né ombra, verde solo su "Pronto".
+ * STORY: il titolare riconosce il proprio sabato dentro il primo schermo; il capo
+ * laboratorio vede che la riga porta lo stato di produzione, non solo un nome. Azione:
+ * Scopri i prezzi.
+ * FIRST VIEWPORT: occhiello, h1, riga d'offerta, le due CTA; subito sotto il tabellone a
+ * larghezza piena del contenitore, tre corsie orizzontali che si aprono in sequenza.
+ * FORM: struttura 5 della lista per risonanza (il tabellone per destinazione), staging
+ * piano — l'artefatto guida a scala reale, nessuna rivelazione allo scroll.
+ * Seed: 5e156d8e (surface / persuade).
+ */
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  ArrowLeftRight,
   ArrowRight,
   BarChart3,
   CalendarDays,
-  CheckCircle2,
-  ClipboardList,
-  Clock3,
-  ListChecks,
   PackageCheck,
+  Store,
   Truck,
   Wallet,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -60,78 +77,183 @@ export const metadata: Metadata = {
 
 const ordersPricingCta = getCommercialCta("orders-pricing");
 
-const flowItems = [
-  "Ordini cliente organizzati nel piano di lavoro.",
-  "Ordini interni collegati al lavoro del laboratorio.",
-  "Ritiro o consegna associati a ogni ordine.",
-  "Acconti, saldi e report operativi per seguire il lavoro.",
-];
+/* Stato di produzione della riga d'ordine. L'indaco marca l'unica corsa attiva; il verde
+   è uso semantico di esito positivo, l'unico ammesso fuori dall'accento. */
+type OrderState = "da-preparare" | "in-produzione" | "pronto";
 
-const capabilityCards = [
+const orderStates: Record<OrderState, { label: string; className: string }> = {
+  "da-preparare": {
+    label: "Da preparare",
+    className: "bg-white text-gray-600 ring-1 ring-inset ring-card-border",
+  },
+  "in-produzione": {
+    label: "In produzione",
+    className: "bg-primary/10 text-primary",
+  },
+  pronto: {
+    label: "Pronto",
+    className: "bg-success/10 text-success",
+  },
+};
+
+type BoardOrder = {
+  time: string;
+  item: string;
+  party: string;
+  state: OrderState;
+  note?: string;
+};
+
+type BoardLane = {
+  id: string;
+  icon: LucideIcon;
+  name: string;
+  count: string;
+  orders: readonly BoardOrder[];
+};
+
+const boardLanes: readonly BoardLane[] = [
   {
-    icon: CalendarDays,
-    title: "Ordini cliente e interni",
-    text: "Riunisci ordini cliente e ordini interni in un piano di lavoro condiviso con il laboratorio.",
+    id: "ritiro",
+    icon: Store,
+    name: "Ritiro al banco",
+    count: "3 ordini cliente",
+    orders: [
+      {
+        time: "08:30",
+        item: "Vassoio mignon 1,2 kg",
+        party: "Cliente Bianchi",
+        state: "pronto",
+      },
+      {
+        time: "10:00",
+        item: "Torta 24 porzioni",
+        party: "Cliente Ferrari",
+        state: "in-produzione",
+        note: "Acconto registrato, saldo al ritiro",
+      },
+      {
+        time: "11:30",
+        item: "Crostate di frutta ×6",
+        party: "Cliente Neri",
+        state: "da-preparare",
+      },
+    ],
   },
   {
-    icon: PackageCheck,
-    title: "Produzione collegata",
-    text: "Collega gli ordini alla produzione per sapere cosa preparare e seguire l'avanzamento del lavoro.",
-  },
-  {
+    id: "consegna",
     icon: Truck,
-    title: "Ritiro e consegna",
-    text: "Indica per ogni ordine se è previsto il ritiro oppure la consegna e organizzalo nel piano di lavoro.",
+    name: "Consegna",
+    count: "3 consegne",
+    orders: [
+      {
+        time: "07:00",
+        item: "Brioche ×80",
+        party: "Bar Centrale",
+        state: "pronto",
+      },
+      {
+        time: "09:00",
+        item: "Semifreddi ×12",
+        party: "Hotel Aurora",
+        state: "in-produzione",
+        note: "Saldo alla consegna",
+      },
+      {
+        time: "15:00",
+        item: "Pasticceria mignon 3 kg",
+        party: "Bottega Verdi",
+        state: "da-preparare",
+      },
+    ],
   },
   {
-    icon: Wallet,
-    title: "Acconti e saldi",
-    text: "Registra acconti e saldi come informazioni operative collegate all'ordine.",
-  },
-  {
-    icon: BarChart3,
-    title: "Report operativi",
-    text: "Consulta report operativi sugli ordini per controllare il lavoro completato e quello ancora da organizzare.",
+    id: "interno",
+    icon: ArrowLeftRight,
+    name: "Ordine interno",
+    count: "3 ordini interni",
+    orders: [
+      {
+        time: "05:30",
+        item: "Basi e semilavorati",
+        party: "Per la produzione del giorno",
+        state: "in-produzione",
+      },
+      {
+        time: "06:30",
+        item: "Pan di Spagna ×8",
+        party: "Sede via Roma",
+        state: "da-preparare",
+      },
+      {
+        time: "14:00",
+        item: "Frolla 6 kg",
+        party: "Scorta per lunedì",
+        state: "da-preparare",
+      },
+    ],
   },
 ];
 
 const workSteps = [
   {
     title: "Registra l'ordine",
-    text: "Inserisci un ordine cliente o interno e indica se prevede ritiro o consegna.",
+    text: "Inserisci un ordine cliente o interno e indica subito se prevede ritiro o consegna.",
   },
   {
     title: "Collega la produzione",
-    text: "Trasforma l'ordine in lavoro da preparare e segui la produzione collegata.",
+    text: "L'ordine diventa lavoro da preparare: la produzione collegata entra nel piano del laboratorio.",
   },
   {
     title: "Segui la chiusura",
-    text: "Organizza ritiro o consegna e aggiorna acconti e saldi dell'ordine.",
+    text: "Organizza il ritiro o la consegna e aggiorna acconti e saldi sulla riga dell'ordine.",
+  },
+  {
+    title: "Controlla il lavoro fatto",
+    text: "I report operativi mostrano cosa è stato completato e cosa resta ancora da organizzare.",
   },
 ];
 
-const planStats = [
-  { label: "Da preparare", value: "12", detail: "righe ordine" },
-  { label: "In produzione", value: "7", detail: "attivit\u00e0" },
-  { label: "Da consegnare", value: "5", detail: "ritiri e consegne" },
+const orderAnatomy = [
+  { label: "Cliente", value: "Ferrari, ordine cliente" },
+  { label: "Produzione collegata", value: "In produzione — impasto e farcitura" },
+  { label: "Chiusura", value: "Ritiro al banco, sabato alle 10:00" },
+  { label: "Acconti e saldi", value: "Acconto registrato, saldo al ritiro" },
 ];
 
-const workPlanPreview = [
+const capabilities = [
   {
-    time: "08:00",
-    title: "Basi e preparazioni",
-    text: "Gli ordini collegati alla produzione diventano attività per il laboratorio.",
+    icon: CalendarDays,
+    title: "Ordini cliente e interni",
+    text: "Un solo piano di lavoro per le richieste del banco e per quello che il laboratorio deve preparare per sé.",
   },
   {
-    time: "11:30",
-    title: "Ordini cliente",
-    text: "Il piano di lavoro mostra quali ordini cliente devono essere preparati.",
+    icon: PackageCheck,
+    title: "Produzione collegata",
+    text: "L'ordine diventa lavoro: il laboratorio vede cosa preparare e a che punto è arrivato.",
   },
   {
-    time: "15:00",
-    title: "Ritiro, consegna o sede",
-    text: "Il piano separa ordini da ritirare, consegne e ordini interni tra sedi.",
+    icon: Truck,
+    title: "Ritiro e consegna",
+    text: "Ogni ordine dichiara come deve chiudersi, e il piano di lavoro lo organizza di conseguenza.",
   },
+  {
+    icon: Wallet,
+    title: "Acconti e saldi",
+    text: "Acconto e saldo restano attaccati all'ordine come informazione operativa, non su un foglio a parte.",
+  },
+  {
+    icon: BarChart3,
+    title: "Report operativi",
+    text: "A fine giornata sai cosa è stato completato e cosa resta ancora da organizzare.",
+  },
+];
+
+const closingChain = [
+  "Ordine",
+  "Produzione collegata",
+  "Ritiro o consegna",
+  "Report operativi",
 ];
 
 const faqs = [
@@ -184,10 +306,21 @@ export const ordersPageStructuredData = {
   ],
 };
 
+function OrderStateChip({ state }: { state: OrderState }) {
+  const { label, className } = orderStates[state];
+
+  return (
+    <span
+      className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${className}`}
+    >
+      {label}
+    </span>
+  );
+}
+
 export default function OrdersPage() {
   return (
     <>
-
       <Navbar />
       <main id="main-content" className="pt-28">
         <script
@@ -198,111 +331,113 @@ export default function OrdersPage() {
         />
 
         <section
-          className="bg-[#FAFBFE] px-6 pb-20"
+          className="bg-[#FAFBFE] px-6 pb-24"
           aria-labelledby="orders-heading"
         >
-          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_480px] lg:gap-16">
-            <div className="animate-fade-in-up">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-primary shadow-sm">
-                <ClipboardList size={16} aria-hidden="true" />
-                <span>Ordini e Piano di Lavoro</span>
-              </div>
+          <div className="mx-auto max-w-7xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+              Ordini e Piano di Lavoro
+            </p>
 
-              <h1
-                id="orders-heading"
-                className="mb-6 text-4xl font-bold tracking-tight text-gray-900 text-pretty sm:text-5xl lg:text-6xl"
+            <h1
+              id="orders-heading"
+              className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-gray-900 text-pretty sm:text-5xl lg:text-[3.5rem]"
+            >
+              Gestione ordini e piano di lavoro
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+              {PAGE_DESCRIPTION}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                href={ordersPricingCta.destination}
+                className="touch-target group inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-base font-semibold text-white transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[0_10px_15px_-3px_rgba(68,3,175,0.2)]"
               >
-                Gestione ordini e piano di lavoro
-              </h1>
-
-              <p className="mb-6 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
-                {PAGE_DESCRIPTION}
-              </p>
-
-              <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-600">
-                Riunisci ordini cliente e interni, produzione collegata, ritiro
-                e consegna, acconti, saldi e report operativi in un solo flusso.
-              </p>
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
-                  href={ordersPricingCta.destination}
-                  className="inline-flex touch-manipulation items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-white transition-[background-color,box-shadow] duration-200 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
-                >
-                  {ordersPricingCta.label}
-                  <ArrowRight size={18} aria-hidden="true" />
-                </Link>
-                <Link
-                  href="#flusso-ordine"
-                  className="inline-flex touch-manipulation items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-base font-semibold text-gray-700 transition-[border-color,box-shadow] duration-200 hover:border-gray-300 hover:shadow-md"
-                >
-                  Vedi come funziona
-                </Link>
-              </div>
+                {ordersPricingCta.label}
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+              <Link
+                href="#flusso-ordine"
+                className="touch-target inline-flex items-center justify-center rounded-xl border border-card-border bg-white px-7 py-3.5 text-base font-semibold text-gray-700 transition-[border-color,box-shadow] duration-200 hover:border-gray-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]"
+              >
+                Vedi come funziona
+              </Link>
             </div>
 
-            <div className="relative animate-fade-in">
-              <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-xl sm:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">
-                      Piano di lavoro
-                    </p>
-                    <h2 className="text-2xl font-bold text-gray-900 text-pretty">
-                      Cosa va preparato, quando e per chi
-                    </h2>
-                  </div>
-                  <div className="shrink-0 rounded-2xl bg-primary/10 p-3 text-primary">
-                    <ListChecks size={26} aria-hidden="true" />
-                  </div>
-                </div>
-
-                <p className="mt-4 text-sm leading-relaxed text-gray-600">
-                  Il piano di lavoro traduce ogni ordine in attivit&agrave;
-                  operative e mantiene collegati ordine cliente o interno,
-                  produzione, ritiro o consegna.
+            <div className="mt-16">
+              <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-pretty sm:text-3xl">
+                  Il tabellone di un sabato mattina
+                </h2>
+                <p className="text-sm text-gray-500">
+                  Esempio di piano di lavoro
                 </p>
+              </div>
 
-                <div className="mt-6 grid grid-cols-3 gap-3">
-                  {planStats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-2xl border border-gray-100 bg-surface px-3 py-4 text-center"
-                    >
-                      <p className="text-2xl font-bold text-gray-900">
-                        {stat.value}
-                      </p>
-                      <p className="mt-1 break-words text-xs font-semibold text-gray-600">
-                        {stat.label}
-                      </p>
-                      <p className="mt-1 hidden text-xs text-gray-500 sm:block">
-                        {stat.detail}
-                      </p>
+              <div className="overflow-hidden rounded-3xl border border-card-border bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                {boardLanes.map((lane, laneIndex) => (
+                  <div
+                    key={lane.id}
+                    className="animate-fade-in-up border-t border-card-border p-5 first:border-t-0 sm:p-7 lg:p-8"
+                    style={{
+                      animationDelay: `${laneIndex * 90}ms`,
+                      animationFillMode: "both",
+                    }}
+                  >
+                    <div className="grid gap-5 lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)] lg:gap-10">
+                      <div className="flex items-center gap-3 lg:block">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary lg:mb-3">
+                          <lane.icon size={20} aria-hidden="true" />
+                        </div>
+                        <div>
+                          <h3
+                            id={`lane-${lane.id}`}
+                            className="text-base font-bold text-gray-900"
+                          >
+                            {lane.name}
+                          </h3>
+                          <p className="text-sm text-gray-500">{lane.count}</p>
+                        </div>
+                      </div>
+
+                      <ul
+                        aria-labelledby={`lane-${lane.id}`}
+                        className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                      >
+                        {lane.orders.map((order) => (
+                          <li
+                            key={`${lane.id}-${order.time}`}
+                            className="rounded-xl bg-surface p-4"
+                          >
+                            <div className="flex items-center justify-between gap-3">
+                              <span className="text-sm font-bold text-primary">
+                                {order.time}
+                              </span>
+                              <OrderStateChip state={order.state} />
+                            </div>
+                            <p className="mt-2.5 text-sm font-bold leading-snug text-gray-900">
+                              {order.item}
+                            </p>
+                            <p className="mt-1 text-sm leading-snug text-gray-600">
+                              {order.party}
+                            </p>
+                            {order.note ? (
+                              <p className="mt-2.5 border-t border-card-border pt-2.5 text-xs leading-snug text-gray-500">
+                                {order.note}
+                              </p>
+                            ) : null}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 space-y-3">
-                  {workPlanPreview.map((item) => (
-                    <article
-                      key={item.time}
-                      className="flex gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm"
-                    >
-                      <div className="flex min-w-14 items-center gap-1 text-sm font-bold text-primary">
-                        <Clock3 size={15} aria-hidden="true" />
-                        <span>{item.time}</span>
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="text-sm font-bold text-gray-900">
-                          {item.title}
-                        </h3>
-                        <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                          {item.text}
-                        </p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -310,61 +445,114 @@ export default function OrdersPage() {
 
         <section
           id="flusso-ordine"
-          className="scroll-mt-28 bg-white px-6 py-20"
+          className="scroll-mt-28 bg-white px-6 py-24"
           aria-labelledby="orders-flow-heading"
         >
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-12 text-center">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">
+            <div>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
                 Flusso operativo
               </p>
               <h2
                 id="orders-flow-heading"
-                className="mb-4 text-3xl font-bold text-gray-900 text-pretty sm:text-4xl"
+                className="text-3xl font-bold tracking-tight text-gray-900 text-pretty sm:text-4xl"
               >
                 Come funziona la gestione ordini in LabManager?
               </h2>
-              <p className="mx-auto max-w-2xl text-lg text-gray-600">
+              <p className="mt-5 text-lg leading-relaxed text-gray-600">
                 L&apos;ordine non resta isolato: accompagna il lavoro dal banco al
                 laboratorio, fino al ritiro o alla consegna.
               </p>
             </div>
 
-            <div className="mb-12 grid gap-6 lg:grid-cols-3">
+            <ol>
               {workSteps.map((step, index) => (
-                <article
+                <li
                   key={step.title}
-                  className="rounded-2xl border border-gray-100 bg-surface p-6"
+                  className="relative flex gap-5 pb-9 last:pb-0"
                 >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
-                    {index + 1}
-                  </div>
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-gray-600">
-                    {step.text}
-                  </p>
-                </article>
-              ))}
-            </div>
-
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold text-gray-900">
-                Cosa puoi gestire con il modulo ordini
-              </h3>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {flowItems.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm leading-relaxed text-gray-600"
-                  >
-                    <CheckCircle2
-                      size={18}
-                      className="mt-0.5 shrink-0 text-primary"
+                  {index < workSteps.length - 1 ? (
+                    <span
+                      className="absolute bottom-0 left-5 top-10 w-px -translate-x-1/2 bg-card-border"
                       aria-hidden="true"
                     />
-                    <span>{item}</span>
+                  ) : null}
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                    {index + 1}
+                  </span>
+                  <div className="pt-1.5">
+                    <h3 className="text-lg font-bold text-gray-900">
+                      {step.title}
+                    </h3>
+                    <p className="mt-1.5 max-w-xl leading-relaxed text-gray-600">
+                      {step.text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section
+          className="bg-surface px-6 py-24"
+          aria-labelledby="orders-capabilities-heading"
+        >
+          <div className="mx-auto max-w-7xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+              Che cosa porta con sé un ordine
+            </p>
+            <h2
+              id="orders-capabilities-heading"
+              className="max-w-3xl text-3xl font-bold tracking-tight text-gray-900 text-pretty sm:text-4xl"
+            >
+              Una riga d&apos;ordine tiene insieme il lavoro che genera
+            </h2>
+
+            <div className="mt-12 grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+              <div className="rounded-3xl border border-card-border bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:p-8">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-sm font-bold text-primary">10:00</span>
+                  <OrderStateChip state="in-produzione" />
+                </div>
+                <p className="mt-3 text-2xl font-bold tracking-tight text-gray-900">
+                  Torta 24 porzioni
+                </p>
+
+                <dl className="mt-6">
+                  {orderAnatomy.map((row) => (
+                    <div
+                      key={row.label}
+                      className="border-t border-card-border py-3.5 sm:flex sm:items-baseline sm:gap-6"
+                    >
+                      <dt className="text-xs font-semibold uppercase tracking-wider text-gray-500 sm:w-48 sm:shrink-0">
+                        {row.label}
+                      </dt>
+                      <dd className="mt-1 text-sm font-semibold text-gray-900 sm:mt-0">
+                        {row.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <ul>
+                {capabilities.map((capability) => (
+                  <li
+                    key={capability.title}
+                    className="flex gap-5 border-t border-card-border py-6 first:border-t-0 first:pt-0"
+                  >
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-card-border bg-white text-primary shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                      <capability.icon size={20} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-gray-900">
+                        {capability.title}
+                      </h3>
+                      <p className="mt-1.5 leading-relaxed text-gray-600">
+                        {capability.text}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -373,78 +561,30 @@ export default function OrdersPage() {
         </section>
 
         <section
-          className="bg-surface px-6 py-20"
-          aria-labelledby="orders-capabilities-heading"
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-12 text-center">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
-                Ordini e operatività
-              </p>
-              <h2
-                id="orders-capabilities-heading"
-                className="mb-4 text-3xl font-bold text-gray-900 text-pretty sm:text-4xl"
-              >
-                Tutto il flusso ordini in un solo piano di lavoro
-              </h2>
-              <p className="mx-auto max-w-2xl text-lg text-gray-600">
-                LabManager collega ordini cliente e interni, produzione,
-                ritiro o consegna, acconti e report operativi.
-              </p>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {capabilityCards.map((card) => (
-                <article
-                  key={card.title}
-                  className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
-                >
-                  <div className="mb-4 w-fit rounded-xl bg-primary/10 p-3">
-                    <card.icon
-                      size={22}
-                      className="text-primary"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <h3 className="mb-2 text-base font-bold text-gray-900">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-gray-600">
-                    {card.text}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section
-          className="bg-white px-6 py-20"
+          className="bg-white px-6 py-24"
           aria-labelledby="orders-faq-heading"
         >
           <div className="mx-auto max-w-4xl">
-            <div className="mb-12 text-center">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
-                Domande frequenti
-              </p>
-              <h2
-                id="orders-faq-heading"
-                className="text-3xl font-bold text-gray-900 text-pretty sm:text-4xl"
-              >
-                Domande sul modulo ordini
-              </h2>
-            </div>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+              Domande frequenti
+            </p>
+            <h2
+              id="orders-faq-heading"
+              className="text-3xl font-bold tracking-tight text-gray-900 text-pretty sm:text-4xl"
+            >
+              Domande sul modulo ordini
+            </h2>
 
-            <div className="space-y-4">
+            <div className="mt-10">
               {faqs.map((faq) => (
                 <article
                   key={faq.question}
-                  className="rounded-2xl border border-gray-100 bg-surface p-6"
+                  className="border-t border-card-border py-7 sm:grid sm:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] sm:gap-10"
                 >
-                  <h3 className="mb-2 text-lg font-bold text-gray-900">
+                  <h3 className="text-lg font-bold text-gray-900 text-pretty">
                     {faq.question}
                   </h3>
-                  <p className="text-sm leading-relaxed text-gray-600">
+                  <p className="mt-2 leading-relaxed text-gray-600 sm:mt-0">
                     {faq.answer}
                   </p>
                 </article>
@@ -453,6 +593,38 @@ export default function OrdersPage() {
           </div>
         </section>
 
+        <section
+          className="border-t border-card-border bg-[#FAFBFE] px-6 py-24"
+          aria-labelledby="orders-close-heading"
+        >
+          <div className="mx-auto max-w-7xl">
+            <h2
+              id="orders-close-heading"
+              className="max-w-3xl text-3xl font-bold tracking-tight text-gray-900 text-pretty sm:text-4xl"
+            >
+              L&apos;ordine non finisce al banco
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-600">
+              Dalla richiesta del cliente al lavoro del laboratorio, fino alla
+              chiusura: una sola catena, un solo piano di lavoro.
+            </p>
+
+            <ol className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3 text-lg font-bold tracking-tight text-gray-900 sm:text-xl">
+              {closingChain.map((stage, index) => (
+                <li key={stage} className="flex items-center gap-4">
+                  {index > 0 ? (
+                    <ArrowRight
+                      size={20}
+                      className="shrink-0 text-primary"
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                  {stage}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
       </main>
       <Footer />
       <WhatsAppButton />

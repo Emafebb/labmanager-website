@@ -77,9 +77,11 @@ describe("support surface roles and discovery", () => {
 
     const newsletter = render(<NewsletterPage />);
     const main = within(screen.getByRole("main"));
-    expect(main.getByText(/aggiornamenti su LabManager/i)).toBeInTheDocument();
+    expect(
+      main.getByRole("heading", { name: /Resta aggiornato su LabManager/i }),
+    ).toBeInTheDocument();
     expect(main.getByText(/nuove funzionalità/i)).toBeInTheDocument();
-    expect(main.getByText(/consigli scelti editorialmente/i)).toBeInTheDocument();
+    expect(main.getAllByText(/consigli pratici/i).length).toBeGreaterThan(0);
     expect(screen.getByRole("main")).not.toHaveTextContent(
       /android|windows|offline|ristorant/i,
     );

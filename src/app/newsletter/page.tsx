@@ -1,17 +1,32 @@
+/*
+THESIS: una superficie di servizio per restare informati, non un blog né un archivio di uscite.
+OWN-WORLD: indaco profondo, bianco freddo, righe operative e superfici nette del sistema LabManager.
+STORY: il visitatore capisce cosa può ricevere e completa l’iscrizione senza deviazioni.
+FIRST VIEWPORT: titolo e tre righe informative guidano al form, ancorato a destra come unica azione primaria.
+FORM: “Registro essenziale”, posizione 7; staging con contenuto lineare e form laterale, seed 4748ffa6.
+*/
+
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Bell, CheckCircle2, MailCheck, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Bell,
+  ClipboardCheck,
+  ListChecks,
+  MailCheck,
+  PanelsTopLeft,
+  ShieldCheck,
+} from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import NewsletterForm from "@/components/NewsletterForm";
-import { NEWSLETTER_ASSETS } from "@/data/responsive-images";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const PAGE_URL = `${BASE_URL}/newsletter`;
 const PAGE_TITLE = "Newsletter";
 const PAGE_DESCRIPTION =
-  "Aggiornamenti su LabManager, nuove funzionalità e consigli scelti editorialmente per il lavoro in laboratorio.";
+  "La newsletter di LabManager raccoglie aggiornamenti sul prodotto, nuove funzionalità e consigli pratici per il lavoro in laboratorio.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -65,142 +80,142 @@ export const newsletterPageStructuredData = {
 };
 
 const UPDATE_ITEMS = [
-  "Una selezione delle modifiche più utili",
-  "Approfondimenti sulle funzionalità già disponibili",
-  "Consigli pratici per ricette, Food Cost, produzione e organizzazione",
+  {
+    title: "Aggiornamenti selezionati",
+    description: "Una selezione delle modifiche più utili.",
+    icon: ListChecks,
+  },
+  {
+    title: "Funzionalità, nel loro contesto",
+    description: "Approfondimenti sulle funzionalità già disponibili.",
+    icon: PanelsTopLeft,
+  },
+  {
+    title: "Consigli pratici",
+    description:
+      "Ricette, Food Cost, produzione e organizzazione del laboratorio.",
+    icon: ClipboardCheck,
+  },
 ] as const;
 
 export default function NewsletterPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28">
+      <main className="pt-20">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(newsletterPageStructuredData),
           }}
         />
-        <section className="px-6 pb-20" aria-labelledby="newsletter-page-title">
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_440px] gap-10 lg:gap-14 items-center">
-            <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
-                <Bell size={16} aria-hidden="true" />
-                <span>Newsletter LabManager</span>
+        <section
+          className="bg-[#FAFBFE] px-6 pb-20 pt-10 sm:pt-14 lg:pt-16"
+          aria-labelledby="newsletter-page-title"
+        >
+          <div className="mx-auto grid max-w-6xl items-start gap-12 min-[900px]:grid-cols-[minmax(0,1fr)_380px] min-[900px]:gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-12">
+            <div className="min-w-0 animate-fade-in-up">
+              <div className="mb-6 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-primary shadow-[var(--shadow-sm)]">
+                  <Bell size={20} aria-hidden="true" />
+                </span>
+                <p className="text-sm font-semibold text-primary">
+                  Newsletter
+                </p>
               </div>
 
               <h1
                 id="newsletter-page-title"
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight"
+                className="max-w-3xl text-balance text-4xl font-bold leading-[1.08] tracking-[-0.025em] text-gray-900 sm:text-5xl lg:text-[3.5rem]"
               >
                 Resta aggiornato su{" "}
-                <span className="gradient-text">LabManager</span>
+                <span className="text-primary">LabManager</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mb-8">
-                Iscriviti per ricevere aggiornamenti su LabManager, nuove
-                funzionalità e consigli scelti editorialmente per il lavoro in
-                laboratorio.
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+                Può includere novità sul prodotto, nuove funzionalità e consigli
+                pratici per il lavoro in laboratorio.
               </p>
 
-              <ul className="space-y-4 mb-8">
-                {UPDATE_ITEMS.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <CheckCircle2 size={15} aria-hidden="true" />
-                    </span>
-                    <span className="text-base text-gray-700 leading-relaxed">
-                      {item}
-                    </span>
+              <ul className="mt-10 border-y border-gray-200">
+                {UPDATE_ITEMS.map(({ title, description, icon: Icon }) => (
+                  <li
+                    key={title}
+                    className="grid gap-3 border-b border-gray-200 py-5 last:border-b-0 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] sm:items-center sm:gap-8"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[rgba(68,3,175,0.05)] text-primary">
+                        <Icon size={20} aria-hidden="true" />
+                      </span>
+                      <h2 className="font-semibold text-gray-900">{title}</h2>
+                    </div>
+                    <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
+                      {description}
+                    </p>
                   </li>
                 ))}
               </ul>
-
-              <div className="grid sm:grid-cols-2 gap-4 mb-8 max-w-2xl">
-                <div className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-                  <MailCheck
-                    size={20}
-                    className="text-icon flex-shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Ricevi solo comunicazioni legate a LabManager.
-                  </p>
-                </div>
-                <div className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-                  <ShieldCheck
-                    size={20}
-                    className="text-icon flex-shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Puoi disiscriverti in qualsiasi momento.
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative h-48 sm:h-64 max-w-2xl overflow-hidden rounded-2xl border border-gray-200 bg-surface shadow-sm">
-                <picture data-newsletter-image>
-                  <source
-                    type="image/avif"
-                    srcSet={NEWSLETTER_ASSETS.avifSrcSet}
-                    sizes={NEWSLETTER_ASSETS.sizes}
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet={NEWSLETTER_ASSETS.webpSrcSet}
-                    sizes={NEWSLETTER_ASSETS.sizes}
-                  />
-                  <img
-                    src={NEWSLETTER_ASSETS.fallbackSrc}
-                    srcSet={NEWSLETTER_ASSETS.webpSrcSet}
-                    sizes={NEWSLETTER_ASSETS.sizes}
-                    alt="Schermata di LabManager con dashboard e gestione ricette"
-                    width={1280}
-                    height={625}
-                    className="h-full w-full object-cover object-left-top"
-                    loading="lazy"
-                  />
-                </picture>
-              </div>
             </div>
 
             <aside
-              className="bg-white rounded-2xl border border-gray-200 shadow-lg shadow-primary/5 p-6 sm:p-8 animate-fade-in-up"
+              className="animate-fade-in-up rounded-2xl bg-white p-6 shadow-[var(--shadow-lg)] sm:p-8"
               style={{ animationDelay: "0.08s" }}
               aria-labelledby="newsletter-form-title"
             >
+              <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-[rgba(68,3,175,0.05)] text-primary">
+                <MailCheck size={21} aria-hidden="true" />
+              </div>
               <h2
                 id="newsletter-form-title"
-                className="text-2xl font-bold text-gray-900 mb-2"
+                className="text-2xl font-bold tracking-[-0.02em] text-gray-900"
               >
                 Iscriviti agli aggiornamenti
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              <p className="mb-6 mt-2 text-sm leading-relaxed text-gray-600">
                 Inserisci i tuoi dati e conferma il consenso per ricevere la
                 newsletter.
               </p>
 
               <NewsletterForm />
+
+              <div className="mt-6 space-y-3 border-t border-gray-200 pt-5">
+                <p className="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
+                  <MailCheck
+                    size={17}
+                    className="mt-0.5 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  <span>Solo comunicazioni relative al prodotto.</span>
+                </p>
+                <p className="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
+                  <ShieldCheck
+                    size={17}
+                    className="mt-0.5 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  <span>Puoi disiscriverti in qualsiasi momento.</span>
+                </p>
+              </div>
             </aside>
           </div>
         </section>
 
-        <section className="px-6 py-12 bg-surface">
-          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <section className="bg-white px-6 py-16">
+          <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-bold tracking-[-0.02em] text-gray-900">
                 Vuoi anche parlare con noi?
               </h2>
-              <p className="text-gray-600 leading-relaxed">
-                Per domande su LabManager puoi usare il form contatti del sito.
+              <p className="mt-2 leading-relaxed text-gray-600">
+                Per qualsiasi domanda puoi usare il form contatti del sito.
               </p>
             </div>
             <Link
               href="/#contatti"
-              className="inline-flex items-center justify-center rounded-lg bg-gray-900 px-5 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-gray-700"
+              className="touch-target inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-[var(--shadow-md)]"
             >
-              Vai ai contatti
+              <span>Vai ai contatti</span>
+              <ArrowRight size={17} aria-hidden="true" />
             </Link>
           </div>
         </section>

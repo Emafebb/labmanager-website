@@ -112,7 +112,8 @@ describe("commercial CTA inventory", () => {
     const links = within(screen.getByRole("main")).getAllByRole("link", {
       name: cta.label,
     });
-    expect(links).toHaveLength(2);
+    // Due nelle card dei piani più la chiusura dopo la FAQ.
+    expect(links).toHaveLength(3);
     for (const link of links) {
       expectSameTabLink(link, cta.destination);
     }

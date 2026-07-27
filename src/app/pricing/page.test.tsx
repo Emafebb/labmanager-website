@@ -7,6 +7,7 @@ import PricingPage, {
 } from "@/app/pricing/page";
 import {
   DEVICE_CONTACT_COPY,
+  DEVICE_CONTACT_PROMPT,
   TRIAL_EXPLANATION,
 } from "@/lib/pricing";
 
@@ -35,7 +36,7 @@ describe("pricing page", () => {
     });
   });
 
-  it("renders the annual desktop offer with two adjacent cards and one recommended badge", () => {
+  it("renders the annual desktop offer with two adjacent cards and one trial badge", () => {
     const { container } = render(<PricingPage />);
     const main = within(screen.getByRole("main"));
     const cards = container.querySelector("[data-pricing-cards]");
@@ -53,13 +54,16 @@ describe("pricing page", () => {
     expect(plans[1]).toHaveAttribute("data-pricing-plan", "plus");
     expect(plans[1]).toHaveTextContent("€40/mese");
     expect(plans[1]).toHaveTextContent("€480/anno");
-    expect(main.getAllByText(/Consigliato/)).toHaveLength(1);
+    // Spec 0009 req. 46: badge "Consigliato" sulla card Plus. Il claim di
+    // prova sociale ("dai laboratori") non è sostanziabile e resta fuori.
+    expect(main.getAllByText("Consigliato")).toHaveLength(1);
+    expect(main.queryByText(/Consigliato dai laboratori/)).toBeNull();
     expect(main.getAllByText(TRIAL_EXPLANATION)).toHaveLength(2);
 
     const trialLinks = main.getAllByRole("link", {
       name: "Prova gratis 14 giorni",
     });
-    expect(trialLinks).toHaveLength(2);
+    expect(trialLinks).toHaveLength(3);
     for (const link of trialLinks) {
       expect(link).toHaveAttribute("href", REGISTRATION_URL);
       expect(link).not.toHaveAttribute("target");
@@ -113,16 +117,30 @@ describe("pricing page", () => {
     for (const expectedRow of [
       /Importazioni AI ricette al giorno/,
       /Importazioni AI DDT al giorno/,
-      /Dispositivi simultanei/,
-      /Supporto \(annuale\)/,
+      /Sessioni attive simultanee/,
+      /Supporto mensile/,
+      /Supporto annuale/,
       /Esportazioni dei moduli inclusi/,
     ]) {
       expect(
         comparison.getByRole("row", { name: expectedRow }),
       ).toBeInTheDocument();
     }
+    // Il glossario vieta "dispositivi" per descrivere il limite di accessi.
+    expect(comparison.queryByRole("row", { name: /Dispositivi/ })).toBeNull();
     expect(table.closest("div")).toHaveClass("overflow-x-auto");
-    expect(screen.getByLabelText(DEVICE_CONTACT_COPY)).toBeInTheDocument();
+    // Spec 0009 req. 36: sotto il confronto il testo visibile deve
+    // corrispondere esattamente, link incluso.
+    const comparisonSection = container.querySelector(
+      'section[aria-labelledby="pricing-comparison-heading"]',
+    );
+    expect(comparisonSection).not.toBeNull();
+    expect(
+      within(comparisonSection as HTMLElement).getByText(
+        DEVICE_CONTACT_PROMPT,
+        { exact: false },
+      ),
+    ).toHaveTextContent(DEVICE_CONTACT_COPY);
   });
 
   it("keeps the mobile toggle and actions touch-friendly", () => {
@@ -137,7 +155,14 @@ describe("pricing page", () => {
     for (const link of screen.getAllByRole("link", {
       name: "Prova gratis 14 giorni",
     })) {
-      expect(link).toHaveClass("touch-target", "w-full");
+      expect(link).toHaveClass("touch-target");
+    }
+    // Solo le CTA dentro le card occupano l'intera colonna; quella di chiusura
+    // è centrata e non deve stirarsi per tutta la larghezza della sezione.
+    for (const cardCta of container.querySelectorAll(
+      "[data-pricing-plan] [data-registration-cta]",
+    )) {
+      expect(cardCta).toHaveClass("w-full");
     }
   });
 });
