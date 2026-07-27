@@ -41,7 +41,7 @@ vi.mock("@/components/NewsletterPopup", () => ({
 }));
 
 const FORBIDDEN_PUBLIC_CLAIMS =
-  /android|windows|offline|\bpwa\b|ristorant|sincronizz|compatibilit[aà] per dispositivo/i;
+  /android|windows|offline|\bpwa\b|sincronizz|compatibilit[aà] per dispositivo/i;
 
 function renderPublicPageText(Page: React.ComponentType) {
   const view = render(<Page />);

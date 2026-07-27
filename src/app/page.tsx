@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import OrdersPreview from "@/components/OrdersPreview";
 import Warehouse from "@/components/Warehouse";
+import TrialCallout from "@/components/TrialCallout";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -11,10 +12,9 @@ import NewsletterPopup from "@/components/NewsletterPopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const BASE_URL = "https://labmanagergestionale.com";
-const HOME_TITLE =
-  "Gestionale per pasticcerie, panifici e gelaterie | LabManager";
+const HOME_TITLE = "Gestionale per laboratori alimentari | LabManager";
 const HOME_DESCRIPTION =
-  "Il gestionale Light e Plus per laboratori artigianali alimentari: ricette, food cost, produzione, etichette, magazzino e ordini. Prova gratuita di 14 giorni.";
+  "Gestionale Light e Plus per pasticcerie, panifici, gelaterie, gastronomie, ristoranti e chef: ricette, food cost, produzione, magazzino e ordini.";
 
 export const metadata: Metadata = {
   title: {
@@ -68,6 +68,7 @@ export default function Home() {
         <Features />
         <OrdersPreview />
         <Warehouse />
+        <TrialCallout />
         <ContactForm />
         <FAQ />
       </main>

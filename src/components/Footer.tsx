@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
-import { Heart } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
 import CookieSettingsLink from "@/components/CookieSettingsLink";
 import { WHATSAPP_URL } from "@/data/support-links";
@@ -101,8 +100,8 @@ export default function Footer() {
               </Link>
 
               <p className="text-gray-400 leading-relaxed max-w-sm">
-                Il gestionale per laboratori artigianali alimentari: ricette,
-                food cost, produzione, etichette, magazzino e ordini.
+                Il gestionale per laboratori alimentari: ricette, food cost,
+                produzione, etichette, magazzino e ordini.
               </p>
 
               <div className="mt-7">
@@ -171,10 +170,11 @@ export default function Footer() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-gray-400" aria-label="Fatto con amore per i pasticceri">
-                <span aria-hidden="true">Fatto con</span>
-                <Heart size={14} className="text-red-500" fill="currentColor" aria-hidden="true" />
-                <span aria-hidden="true">per i pasticceri</span>
+              <div
+                className="text-sm text-gray-400"
+                aria-label="Fatto per chi lavora ogni giorno in laboratorio"
+              >
+                Fatto per chi lavora ogni giorno in laboratorio
               </div>
             </div>
 

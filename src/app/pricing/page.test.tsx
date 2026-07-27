@@ -35,7 +35,7 @@ describe("pricing page", () => {
     });
   });
 
-  it("renders the monthly desktop offer with two adjacent cards and one recommended badge", () => {
+  it("renders the annual desktop offer with two adjacent cards and one recommended badge", () => {
     const { container } = render(<PricingPage />);
     const main = within(screen.getByRole("main"));
     const cards = container.querySelector("[data-pricing-cards]");
@@ -47,10 +47,13 @@ describe("pricing page", () => {
     expect(cards).toHaveClass("grid", "lg:grid-cols-2");
     expect(plans).toHaveLength(2);
     expect(plans[0]).toHaveAttribute("data-pricing-plan", "light");
-    expect(plans[0]).toHaveTextContent("€19,99/mese");
+    expect(plans[0]).toHaveAttribute("data-periodicita", "annuale");
+    expect(plans[0]).toHaveTextContent("€16,67/mese");
+    expect(plans[0]).toHaveTextContent("€200/anno");
     expect(plans[1]).toHaveAttribute("data-pricing-plan", "plus");
-    expect(plans[1]).toHaveTextContent("€44,99/mese");
-    expect(main.getAllByText("Consigliato")).toHaveLength(1);
+    expect(plans[1]).toHaveTextContent("€40/mese");
+    expect(plans[1]).toHaveTextContent("€480/anno");
+    expect(main.getAllByText(/Consigliato/)).toHaveLength(1);
     expect(main.getAllByText(TRIAL_EXPLANATION)).toHaveLength(2);
 
     const trialLinks = main.getAllByRole("link", {
@@ -63,27 +66,25 @@ describe("pricing page", () => {
     }
   });
 
-  it("switches both cards, prices and support to the annual offer without persisting a plan", async () => {
+  it("switches both cards, prices and support to the monthly offer without persisting a plan", async () => {
     const user = userEvent.setup();
     const { container } = render(<PricingPage />);
     const annualToggle = screen.getByRole("button", { name: "annuale" });
     const monthlyToggle = screen.getByRole("button", { name: "mensile" });
 
-    expect(monthlyToggle).toHaveAttribute("aria-pressed", "true");
-    expect(annualToggle).toHaveAttribute("aria-pressed", "false");
-    await user.click(annualToggle);
-
     expect(annualToggle).toHaveAttribute("aria-pressed", "true");
     expect(monthlyToggle).toHaveAttribute("aria-pressed", "false");
+    await user.click(monthlyToggle);
+
+    expect(monthlyToggle).toHaveAttribute("aria-pressed", "true");
+    expect(annualToggle).toHaveAttribute("aria-pressed", "false");
     const light = container.querySelector("[data-pricing-plan='light']");
     const plus = container.querySelector("[data-pricing-plan='plus']");
-    expect(light).toHaveAttribute("data-periodicita", "annuale");
-    expect(light).toHaveTextContent("€200/anno");
+    expect(light).toHaveAttribute("data-periodicita", "mensile");
+    expect(light).toHaveTextContent("€19,99/mese");
     expect(light).toHaveTextContent("Supporto email standard");
-    expect(plus).toHaveTextContent("€480/anno");
-    expect(plus).toHaveTextContent(
-      "Supporto prioritario + 2 sessioni individuali (iniziale e revisione)",
-    );
+    expect(plus).toHaveTextContent("€44,99/mese");
+    expect(plus).toHaveTextContent("Supporto prioritario");
     for (const link of screen.getAllByRole("link", {
       name: "Prova gratis 14 giorni",
     })) {
@@ -113,7 +114,7 @@ describe("pricing page", () => {
       /Importazioni AI ricette al giorno/,
       /Importazioni AI DDT al giorno/,
       /Dispositivi simultanei/,
-      /Supporto \(mensile\)/,
+      /Supporto \(annuale\)/,
       /Esportazioni dei moduli inclusi/,
     ]) {
       expect(

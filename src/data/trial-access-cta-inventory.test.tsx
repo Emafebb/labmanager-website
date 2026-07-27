@@ -129,8 +129,7 @@ describe("commercial CTA inventory", () => {
 
   it("uses absolute page titles so Next cannot append the brand twice", () => {
     expect(homeMetadata.title).toEqual({
-      absolute:
-        "Gestionale per pasticcerie, panifici e gelaterie | LabManager",
+      absolute: "Gestionale per laboratori alimentari | LabManager",
     });
     expect(ordersMetadata.title).toEqual({
       absolute: "Gestione ordini e piano di lavoro | LabManager",

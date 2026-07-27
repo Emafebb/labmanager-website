@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BadgeCheck, ShieldCheck, Timer } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -69,19 +70,43 @@ export default function PricingPage() {
           }}
         />
 
-        <section className="mb-14 px-6 text-center">
-          <div className="mx-auto max-w-3xl animate-fade-in-up">
-            <p className="mb-6 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-primary">
-              Prezzi
-            </p>
-            <h1 className="mb-6 text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
-              Scegli tra Light e Plus
-            </h1>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
-              Un&apos;unica prova completa, due livelli pensati per esigenze
-              diverse e la libertà di scegliere la periodicità mensile o
-              annuale.
-            </p>
+        <section className="mb-14 px-6">
+          <div className="mx-auto max-w-4xl animate-fade-in-up">
+            <div className="max-w-2xl">
+              <p className="mb-6 inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-primary">
+                Prezzi
+              </p>
+              <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                Scegli tra Light e Plus
+              </h1>
+              <p className="text-lg leading-relaxed text-gray-600 sm:text-xl">
+                Un&apos;unica prova completa, due livelli pensati per esigenze
+                diverse e la libertà di scegliere la periodicità mensile o
+                annuale.
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
+                <li className="flex items-center gap-1.5">
+                  <Timer size={16} className="text-primary" aria-hidden="true" />
+                  14 giorni di prova
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <ShieldCheck
+                    size={16}
+                    className="text-primary"
+                    aria-hidden="true"
+                  />
+                  Senza carta di credito
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <BadgeCheck
+                    size={16}
+                    className="text-primary"
+                    aria-hidden="true"
+                  />
+                  Disdici quando vuoi
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 

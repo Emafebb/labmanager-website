@@ -44,16 +44,20 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-20">
           {/* Left column - Text content */}
           <div className="animate-fade-in-up lg:flex-1 text-center lg:text-left mb-16 lg:mb-0 max-w-2xl mx-auto lg:mx-0">
+            <p className="mx-auto mb-5 inline-flex rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-bold text-primary shadow-sm lg:mx-0">
+              Il gestionale per laboratori alimentari
+            </p>
+
             <h1
               id="hero-heading"
-              className="gradient-text mb-4 text-[2.5rem] font-bold leading-[1.08] tracking-tight text-foreground sm:text-[3.25rem] xl:text-[3.75rem]"
+              className="gradient-text mb-5 text-[2.5rem] font-bold leading-[1.08] tracking-tight text-foreground sm:text-[3.25rem] xl:text-[3.5rem]"
             >
-              Il gestionale per laboratori artigianali alimentari
+              Dalla ricetta all&apos;ordine, tutto il laboratorio sotto controllo
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-500 max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed font-normal">
-              Ricette, food cost, produzione, etichette, magazzino e ordini:
-              tutto ciò che serve per organizzare il lavoro del laboratorio.
+              Calcola food cost e margini, organizza produzione, etichette,
+              magazzino e ordini in un unico flusso di lavoro.
             </p>
 
             {/* CTA Buttons */}

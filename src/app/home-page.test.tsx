@@ -21,9 +21,11 @@ vi.mock("@/components/NewsletterPopup", () => ({
   default: () => null,
 }));
 
-const HERO_TITLE = "Il gestionale per laboratori artigianali alimentari";
+const HERO_AUDIENCE = "Il gestionale per laboratori alimentari";
+const HERO_TITLE =
+  "Dalla ricetta all'ordine, tutto il laboratorio sotto controllo";
 const HERO_COPY =
-  "Ricette, food cost, produzione, etichette, magazzino e ordini: tutto ciò che serve per organizzare il lavoro del laboratorio.";
+  "Calcola food cost e margini, organizza produzione, etichette, magazzino e ordini in un unico flusso di lavoro.";
 const CANCELLATION_COPY =
   "Puoi disdire quando vuoi; in caso di cancellazione a fine periodo, l'accesso resta attivo fino alla scadenza prevista.";
 
@@ -35,10 +37,18 @@ describe("home repositioning", () => {
     expect(
       main.getByRole("heading", { level: 1, name: HERO_TITLE }),
     ).toBeInTheDocument();
+    expect(main.getByText(HERO_AUDIENCE)).toBeInTheDocument();
     expect(main.getByText(HERO_COPY)).toBeInTheDocument();
-    expect(
-      main.getByRole("link", { name: "Registrati per una prova gratuita" }),
-    ).toHaveAttribute("href", "https://app.labmanagergestionale.com");
+    const trialLinks = main.getAllByRole("link", {
+      name: "Registrati per una prova gratuita",
+    });
+    expect(trialLinks).toHaveLength(2);
+    for (const trialLink of trialLinks) {
+      expect(trialLink).toHaveAttribute(
+        "href",
+        "https://app.labmanagergestionale.com",
+      );
+    }
     expect(
       main.getByRole("link", { name: "Scopri le funzionalità" }),
     ).toHaveAttribute("href", "/#funzionalita");
@@ -54,6 +64,18 @@ describe("home repositioning", () => {
     expect(
       main.getByRole("link", { name: "Scopri il modulo ordini" }),
     ).toHaveAttribute("href", "/ordini");
+    expect(
+      main.getByRole("heading", {
+        level: 2,
+        name: "Porta ordine nel lavoro di ogni giorno",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByLabelText(
+        "Fatto per chi lavora ogni giorno in laboratorio",
+      ),
+    ).toBeInTheDocument();
+    expect(document.body).not.toHaveTextContent("per i pasticceri");
   });
 
   it("keeps the responsive hero artwork without repeating the detailed warehouse copy", () => {

@@ -27,13 +27,12 @@ vi.mock("next/font/google", () => ({
 }));
 
 const BASE_URL = "https://labmanagergestionale.com";
-const HOME_TITLE =
-  "Gestionale per pasticcerie, panifici e gelaterie | LabManager";
+const HOME_TITLE = "Gestionale per laboratori alimentari | LabManager";
 const HOME_DESCRIPTION =
-  "Il gestionale Light e Plus per laboratori artigianali alimentari: ricette, food cost, produzione, etichette, magazzino e ordini. Prova gratuita di 14 giorni.";
+  "Gestionale Light e Plus per pasticcerie, panifici, gelaterie, gastronomie, ristoranti e chef: ricette, food cost, produzione, magazzino e ordini.";
 
 const FORBIDDEN_PUBLIC_CLAIMS =
-  /android|windows|offline|\bpwa\b|ristorant|sincronizz|compatibilit[aà] per dispositivo/i;
+  /android|windows|offline|\bpwa\b|sincronizz|compatibilit[aà] per dispositivo/i;
 
 function serializePublicData(value: unknown) {
   return JSON.stringify(value, (_key, nestedValue: unknown) => {
