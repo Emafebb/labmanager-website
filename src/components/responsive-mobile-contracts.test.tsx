@@ -12,7 +12,7 @@ import ContactForm from "@/components/ContactForm";
 import PricingFAQ from "@/app/pricing/pricing-faq";
 import PricingSelector from "@/app/pricing/pricing-selector";
 import { EXTERNAL_WIDGET_THEME_SCRIPT } from "@/components/SiteScripts";
-import { HERO_ASSETS, RESPONSIVE_ASSET_PATHS } from "@/data/responsive-images";
+import { RESPONSIVE_ASSET_PATHS } from "@/data/responsive-images";
 
 vi.mock("next/image", () => ({
   default: ({
@@ -32,73 +32,24 @@ describe("responsive static asset contract", () => {
     }
   });
 
-  it("uses mutually exclusive mobile and desktop picture sources for the hero", () => {
+  it("uses a responsive code-native map instead of app screenshots in the hero", () => {
     const { container } = render(<Hero />);
-    const picture = container.querySelector("picture[data-hero-lcp]");
 
-    expect(picture).not.toBeNull();
-    expect(
-      picture?.querySelector(
-        `source[media="(max-width: 639px)"][type="image/avif"]`,
-      ),
-    ).toHaveAttribute("srcset", HERO_ASSETS.android.avifSrcSet);
-    expect(
-      picture?.querySelector(
-        `source[media="(max-width: 639px)"][type="image/webp"]`,
-      ),
-    ).toHaveAttribute("srcset", HERO_ASSETS.android.webpSrcSet);
-    expect(
-      picture?.querySelector(
-        `source[media="(min-width: 640px)"][type="image/avif"]`,
-      ),
-    ).toHaveAttribute("srcset", HERO_ASSETS.desktop.avifSrcSet);
-    expect(
-      picture?.querySelector(
-        `source[media="(min-width: 640px)"][type="image/webp"]`,
-      ),
-    ).toHaveAttribute("srcset", HERO_ASSETS.desktop.webpSrcSet);
-    expect(picture?.querySelector("img")).toHaveAttribute(
-      "sizes",
-      HERO_ASSETS.sizes,
-    );
-    expect(picture?.querySelector("img")).toHaveAttribute(
-      "alt",
-      "Anteprima di LabManager su telefono e desktop",
-    );
+    expect(container.querySelector("[data-flow-map]")).not.toBeNull();
+    expect(container.querySelectorAll("[data-flow-map] button")).toHaveLength(6);
+    expect(container.querySelector("picture")).toBeNull();
+    expect(container.querySelector("img")).toBeNull();
   });
 
-  it("preloads exactly one hero family at each breakpoint and never the tablet", () => {
+  it("does not preload or reference screenshot assets from the hero", () => {
     const heroSource = readFileSync(
       join(process.cwd(), "src", "components", "Hero.tsx"),
       "utf8",
     );
-    expect(heroSource).not.toContain("HeroPreloads");
-
-    const { container } = render(<Hero />);
-    const preloads = Array.from(
-      document.head.querySelectorAll<HTMLLinkElement>(
-        'link[rel="preload"][as="image"]',
-      ),
-    );
-    expect(preloads).toHaveLength(2);
-    expect(preloads.map(({ media }) => media)).toEqual([
-      "(max-width: 639px)",
-      "(min-width: 640px)",
-    ]);
-    expect(container.querySelector("picture[data-hero-lcp] img")).toHaveAttribute(
-      "fetchpriority",
-      "high",
-    );
-    expect(
-      container.querySelector(
-        'picture[data-hero-lcp] source[media="(max-width: 639px)"]',
-      ),
-    ).toHaveAttribute("srcset", HERO_ASSETS.android.avifSrcSet);
-    expect(
-      container.querySelector(
-        'picture[data-hero-lcp] source[media="(min-width: 640px)"]',
-      ),
-    ).toHaveAttribute("srcset", HERO_ASSETS.desktop.avifSrcSet);
+    expect(heroSource).not.toContain("HERO_ASSETS");
+    expect(heroSource).not.toContain("preload(");
+    expect(heroSource).not.toContain("<picture");
+    expect(heroSource).not.toContain("<img");
   });
 
   it("keeps the newsletter focused on subscription without a product screenshot", () => {

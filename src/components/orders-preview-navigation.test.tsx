@@ -9,9 +9,12 @@ import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
 describe("orders preview and navigation", () => {
   it("renders the homepage orders preview with a link to the dedicated page", () => {
-    render(<OrdersPreview />);
+    const { container } = render(<OrdersPreview />);
 
-    expect(screen.getByText("Nuovo modulo")).toBeInTheDocument();
+    expect(
+      screen.getByText("Passaggio 06 · Piano di lavoro"),
+    ).toBeInTheDocument();
+    expect(container.querySelector(".home-route-section__node svg")).not.toBeNull();
     expect(
       screen.getByRole("heading", {
         name: "Ordini e Piano di Lavoro",

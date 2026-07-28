@@ -93,6 +93,28 @@ describe("SiteScripts", () => {
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
+  it("stacks the accessibility control above WhatsApp instead of covering homepage actions", () => {
+    const { container } = render(<SiteScripts />);
+    const widget = container.querySelector("#tabnav-accessibility-widget");
+    const config = JSON.parse(
+      widget?.getAttribute("tnv-data-config") ?? "{}",
+    ) as {
+      widgetLocation?: string;
+      buttonLocation?: string;
+      buttonSize?: string;
+    };
+    const themeScript = container.querySelector("#external-widget-theme");
+
+    expect(config).toMatchObject({
+      widgetLocation: "right",
+      buttonLocation: "bottom",
+      buttonSize: "small",
+    });
+    expect(themeScript).toHaveTextContent("button-expand-panel-element");
+    expect(themeScript).toHaveTextContent("right:24px!important");
+    expect(themeScript).toHaveTextContent("bottom:96px!important");
+  });
+
   it("excludes every external script from the standalone Instagram route", () => {
     pathnameState.value = "/instagram";
 

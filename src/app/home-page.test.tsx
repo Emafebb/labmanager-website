@@ -31,7 +31,7 @@ const CANCELLATION_COPY =
 
 describe("home repositioning", () => {
   it("renders the approved hero, actions, four pillars, and orders landing link", () => {
-    render(<Home />);
+    const { container } = render(<Home />);
 
     const main = within(screen.getByRole("main"));
     expect(
@@ -70,6 +70,15 @@ describe("home repositioning", () => {
         name: "Porta ordine nel lavoro di ogni giorno",
       }),
     ).toBeInTheDocument();
+    expect(container.querySelector(".home-trial__route")).toBeNull();
+    expect(main.getByText("Passaggi 01—02")).toBeInTheDocument();
+    expect(main.getByText("Passaggi 03—04")).toBeInTheDocument();
+    expect(main.getByText("Passaggio 05 · Controllo scorte")).toBeInTheDocument();
+    expect(main.getByText("Passaggio 06 · Piano di lavoro")).toBeInTheDocument();
+    expect(
+      document.querySelectorAll(".home-route-section__node svg"),
+    ).toHaveLength(2);
+    expect(main.queryByText(/Stazion/i)).not.toBeInTheDocument();
     expect(
       screen.getByLabelText(
         "Fatto per chi lavora ogni giorno in laboratorio",
@@ -78,20 +87,40 @@ describe("home repositioning", () => {
     expect(document.body).not.toHaveTextContent("per i pasticceri");
   });
 
-  it("keeps the responsive hero artwork without repeating the detailed warehouse copy", () => {
+  it("uses a code-native flow map without app screenshots or repeated warehouse copy", () => {
     const { container } = render(<Hero />);
 
     expect(container).not.toHaveTextContent(MAGAZZINO_CANONICAL_COPY);
     expect(
       container.querySelector("[data-magazzino-claim-ids]"),
     ).toBeNull();
-    expect(container.querySelector("picture[data-hero-lcp]")).not.toBeNull();
-    expect(
-      screen.getByAltText("Anteprima di LabManager su telefono e desktop"),
-    ).toHaveAttribute("fetchpriority", "high");
+    expect(container.querySelector("[data-flow-map]")).not.toBeNull();
+    expect(container.querySelectorAll("[data-flow-map] button")).toHaveLength(6);
+    expect(container.querySelector("picture")).toBeNull();
+    expect(container.querySelector("img")).toBeNull();
     expect(container.textContent).not.toMatch(
       /android|windows|offline|cloud|compatibil/i,
     );
+  });
+
+  it("lets keyboard and pointer users inspect each station in the flow map", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<Hero />);
+    const flowMap = within(
+      container.querySelector("[data-flow-map]") as HTMLElement,
+    );
+    const warehouseStation = flowMap.getByRole("button", {
+      name: /Magazzino/i,
+    });
+
+    await user.click(warehouseStation);
+
+    expect(warehouseStation).toHaveAttribute("aria-pressed", "true");
+    expect(
+      within(flowMap.getByRole("status")).getByText(
+        /Ricevimenti, giacenze, FIFO e scadenze restano dentro lo stesso flusso/i,
+      )
+    ).toBeInTheDocument();
   });
 
   it("removes legacy sections and prohibited acquisition claims from the marketing DOM", () => {
@@ -167,6 +196,11 @@ describe("home contact surface", () => {
     expect(container.querySelector("form")).not.toBeNull();
     expect(screen.getByLabelText(/Ho letto e accetto/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Acconsento a ricevere/i)).not.toBeRequired();
+    expect(
+      screen.getByRole("button", { name: "Invia Messaggio" }),
+    ).toHaveAccessibleDescription(
+      "Per inviare il messaggio, accetta prima la Privacy Policy.",
+    );
     expect(
       screen.getByRole("link", { name: "Scrivici su WhatsApp" }),
     ).toBeInTheDocument();

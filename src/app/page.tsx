@@ -1,3 +1,10 @@
+/*
+THESIS: La ricetta è l'origine visibile di tutto il lavoro; la homepage rifiuta il classico hero SaaS con screenshot e griglia di feature.
+OWN-WORLD: Una linea indaco continua, nodi tecnici, fondo porcellana e regole sottili organizzano ogni contenuto senza simulare l'app.
+STORY: Il visitatore riconosce il proprio flusso, verifica la profondità tecnica e avvia la prova gratuita.
+FIRST VIEWPORT: Promessa e CTA a sinistra; una mappa operativa interattiva occupa il lato destro e continua oltre la piega.
+FORM: “Binario continuo”, prima composizione approvata; direzione La Mappa del Laboratorio, seed 33e7ee4d.
+*/
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -66,8 +73,8 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <Features />
-        <OrdersPreview />
         <Warehouse />
+        <OrdersPreview />
         <TrialCallout />
         <ContactForm />
         <FAQ />

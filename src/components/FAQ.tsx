@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CLAIM_ID_ATTRIBUTE,
@@ -64,35 +64,40 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="bg-white px-6 py-24" aria-labelledby="faq-heading">
+    <section
+      id="faq"
+      className="home-faq bg-white px-6 py-14 sm:py-16"
+      aria-labelledby="faq-heading"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-14 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-primary">
-            <HelpCircle size={16} aria-hidden="true" />
-            <span>FAQ</span>
-          </div>
-
-          <h2 id="faq-heading" className="mb-5 text-4xl font-bold text-gray-900 sm:text-5xl">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <p className="mb-5 flex items-center gap-3 text-sm font-semibold text-primary">
+            <span className="h-px w-10 bg-primary" aria-hidden="true" />
+            Prima di partire
+          </p>
+          <h2
+            id="faq-heading"
+            className="text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-gray-900 sm:text-5xl"
+          >
             Domande frequenti
           </h2>
-
-          <p className="text-lg leading-relaxed text-gray-600">
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-gray-600">
             Trova risposta alle domande più comuni su LabManager.
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="border-t border-gray-300">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
               <div
                 key={faq.question}
-                className="rounded-xl border border-gray-200 bg-white shadow-sm"
+                className="border-b border-gray-300"
               >
                 <button
                   id={`faq-question-${index}`}
@@ -104,15 +109,20 @@ export default function FAQ() {
                       ? MAGAZZINO_CLAIM_ID_ATTRIBUTE
                       : undefined
                   }
-                  className="touch-target flex w-full items-center justify-between gap-4 rounded-xl p-6 text-left transition-colors duration-200 hover:bg-gray-50"
+                  className="touch-target flex w-full items-center justify-between gap-6 rounded-lg px-0 py-6 text-left transition-colors duration-200 hover:text-primary"
                 >
-                  <h3 className="text-base font-semibold text-gray-900">
-                    {faq.question}
-                  </h3>
+                  <span
+                    className="home-faq__question"
+                    data-question-index={`Q${String(index + 1).padStart(2, "0")}`}
+                  >
+                    <span className="text-base font-semibold text-gray-900">
+                      {faq.question}
+                    </span>
+                  </span>
                   <ChevronDown
                     size={20}
                     aria-hidden="true"
-                    className={`flex-shrink-0 text-icon transition-transform duration-200 ${
+                    className={`shrink-0 text-primary transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -126,7 +136,7 @@ export default function FAQ() {
                     isOpen ? "max-h-[600px]" : "max-h-0"
                   }`}
                 >
-                  <p className="px-6 pb-6 leading-relaxed text-gray-600">
+                  <p className="max-w-2xl pb-6 pl-12 pr-8 leading-relaxed text-gray-600">
                     {faq.answer}
                   </p>
                 </div>

@@ -1,10 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, Mail, User, MessageSquare, MessageCircle } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  Send,
+  User,
+} from "lucide-react";
 import { WHATSAPP_URL } from "@/data/support-links";
 
-const PRIVACY_POLICY_URL = "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
+const PRIVACY_POLICY_URL =
+  "https://app.legalblink.it/api/documents/69e89f282420950024cb1a58/privacy-policy-per-siti-web-o-e-commerce-it";
+const SUPPORT_EMAIL = "labmanager.info@gmail.com";
+
+const helpTopics = [
+  "Informazioni su LabManager",
+  "Domande sul piano",
+  "Assistenza sull'utilizzo",
+  "Suggerimenti e feedback",
+] as const;
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -14,7 +31,9 @@ export default function ContactForm() {
   });
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [newsletterAccepted, setNewsletterAccepted] = useState(false);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,7 +43,11 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, privacyAccepted, newsletterAccepted }),
+        body: JSON.stringify({
+          ...formData,
+          privacyAccepted,
+          newsletterAccepted,
+        }),
       });
 
       if (!res.ok) throw new Error("Errore invio");
@@ -39,201 +62,276 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contatti" className="px-6 py-24 bg-surface" aria-labelledby="contact-heading">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold mb-6 border border-gray-200">
-            <Mail size={16} aria-hidden="true" />
-            <span>CONTATTACI</span>
-          </div>
-
-          <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+    <section
+      id="contatti"
+      className="home-contact bg-surface px-6 py-14 sm:py-16"
+      aria-labelledby="contact-heading"
+    >
+      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <p className="mb-5 flex items-center gap-3 text-sm font-semibold text-primary">
+            <span className="h-px w-10 bg-primary" aria-hidden="true" />
+            Percorso di supporto
+          </p>
+          <h2
+            id="contact-heading"
+            className="text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-gray-900 sm:text-5xl"
+          >
             Hai domande? <span className="text-primary">Parla con noi</span>
           </h2>
-
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-600">
             Scrivici per domande su LabManager, sul piano o sul suo utilizzo nel
             tuo laboratorio. Puoi compilare il form o contattarci su WhatsApp.
           </p>
+
+          <div className="mt-10 border-y border-gray-300">
+            {helpTopics.map((topic, index) => (
+              <div
+                key={topic}
+                className="grid grid-cols-[2.5rem_1fr] items-center gap-3 border-b border-gray-200 py-4 last:border-b-0"
+              >
+                <span className="text-xs font-semibold text-primary">
+                  S{index + 1}
+                </span>
+                <span className="font-medium text-gray-700">{topic}</span>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="touch-target mt-8 inline-flex items-center gap-3 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#1ebe57]"
+          >
+            <MessageCircle
+              size={20}
+              fill="currentColor"
+              aria-hidden="true"
+            />
+            <span>Scrivici su WhatsApp</span>
+          </a>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Come possiamo aiutarti?
+        <div>
+          {status === "success" ? (
+            <div
+              role="status"
+              className="home-contact__form animate-scale-in flex min-h-[34rem] flex-col items-center justify-center text-center"
+            >
+              <div className="mb-6 inline-flex rounded-full bg-green-100 p-5">
+                <CheckCircle2
+                  size={40}
+                  className="text-green-700"
+                  aria-hidden="true"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">
+                Messaggio inviato!
               </h3>
-
-              <ul className="space-y-4">
-                {[
-                  { icon: Mail, text: "Informazioni su LabManager" },
-                  { icon: MessageSquare, text: "Domande sul piano" },
-                  { icon: AlertCircle, text: "Assistenza sull'utilizzo" },
-                  { icon: MessageSquare, text: "Suggerimenti e feedback" },
-                ].map((item) => (
-                  <li key={item.text} className="flex items-center gap-4">
-                    <div className="flex-shrink-0 p-2.5 rounded-lg bg-icon/10">
-                      <item.icon size={18} className="text-icon" aria-hidden="true" />
-                    </div>
-                    <p className="text-gray-700 font-medium">{item.text}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">WhatsApp</h3>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                Preferisci un messaggio diretto? Usa WhatsApp per parlare con
-                noi di LabManager.
+              <p className="mt-3 max-w-md leading-relaxed text-gray-600">
+                Grazie per averci contattato. Ti risponderemo al più presto.
               </p>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 w-full justify-center bg-[#25D366] text-white px-5 py-3 rounded-lg font-bold hover:bg-[#1ebe57] transition-colors duration-200 text-sm"
+              <button
+                onClick={() => setStatus("idle")}
+                className="touch-target mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white transition-colors duration-200 hover:bg-primary-dark"
               >
-                <MessageCircle size={20} fill="currentColor" aria-hidden="true" />
-                <span>Scrivici su WhatsApp</span>
-              </a>
+                <Send size={18} aria-hidden="true" />
+                <span>Invia un altro messaggio</span>
+              </button>
             </div>
-          </div>
-
-          <div>
-            {status === "success" ? (
-              <div role="status" className="bg-white rounded-xl p-12 border border-gray-200 shadow-sm text-center animate-scale-in">
-                <div className="inline-flex p-5 rounded-full bg-green-100 mb-6">
-                  <CheckCircle2 size={40} className="text-green-600" aria-hidden="true" />
+          ) : (
+            <form onSubmit={handleSubmit} className="home-contact__form">
+              <div className="mb-8 flex items-center justify-between gap-4 border-b border-gray-200 pb-5">
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.12em] text-primary">
+                    CONTATTI
+                  </p>
+                  <h3 className="mt-2 text-xl font-bold text-gray-900">
+                    Raccontaci cosa ti serve
+                  </h3>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Messaggio inviato!</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
-                  Grazie per averci contattato. Ti risponderemo al più presto.
-                </p>
+                <Mail size={24} className="text-primary" aria-hidden="true" />
+              </div>
+
+              <div className="space-y-5">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900"
+                  >
+                    <User
+                      size={15}
+                      className="text-primary"
+                      aria-hidden="true"
+                    />
+                    Nome completo
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base outline-none transition-[border-color,box-shadow] duration-200 focus:border-gray-500 focus:ring-4 focus:ring-gray-200"
+                    placeholder="Mario Rossi"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900"
+                  >
+                    <Mail
+                      size={15}
+                      className="text-primary"
+                      aria-hidden="true"
+                    />
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base outline-none transition-[border-color,box-shadow] duration-200 focus:border-gray-500 focus:ring-4 focus:ring-gray-200"
+                    placeholder="mario.rossi@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-900"
+                  >
+                    <MessageSquare
+                      size={15}
+                      className="text-primary"
+                      aria-hidden="true"
+                    />
+                    Messaggio
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    className="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 text-base outline-none transition-[border-color,box-shadow] duration-200 focus:border-gray-500 focus:ring-4 focus:ring-gray-200"
+                    placeholder="Scrivi qui il tuo messaggio..."
+                  />
+                </div>
+
+                <div className="flex items-start gap-3 border-t border-gray-200 pt-5">
+                  <input
+                    id="privacy"
+                    type="checkbox"
+                    checked={privacyAccepted}
+                    onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-300"
+                  />
+                  <label
+                    htmlFor="privacy"
+                    className="touch-target cursor-pointer text-sm leading-relaxed text-gray-700"
+                  >
+                    Ho letto e accetto la{" "}
+                    <a
+                      href={PRIVACY_POLICY_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-primary underline hover:text-primary-dark"
+                    >
+                      Privacy Policy
+                    </a>
+                  </label>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input
+                    id="newsletter"
+                    type="checkbox"
+                    checked={newsletterAccepted}
+                    onChange={(e) => setNewsletterAccepted(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-300"
+                  />
+                  <label
+                    htmlFor="newsletter"
+                    className="touch-target cursor-pointer text-sm leading-relaxed text-gray-700"
+                  >
+                    Acconsento a ricevere aggiornamenti e novità di LabManager
+                    via email.{" "}
+                    <span className="text-xs text-gray-500">(opzionale)</span>
+                  </label>
+                </div>
+
+                {status === "error" && (
+                  <div
+                    role="alert"
+                    className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+                  >
+                    <AlertCircle
+                      size={18}
+                      className="mt-0.5 shrink-0"
+                      aria-hidden="true"
+                    />
+                    <p>
+                      Non siamo riusciti a inviare il messaggio. Riprova oppure
+                      scrivici a{" "}
+                      <a
+                        href={`mailto:${SUPPORT_EMAIL}`}
+                        className="font-semibold underline hover:text-red-900"
+                      >
+                        {SUPPORT_EMAIL}
+                      </a>
+                      .
+                    </p>
+                  </div>
+                )}
+
+                {!privacyAccepted && (
+                  <p
+                    id="contact-privacy-hint"
+                    className="text-sm leading-relaxed text-gray-600"
+                  >
+                    Per inviare il messaggio, accetta prima la Privacy Policy.
+                  </p>
+                )}
+
                 <button
-                  onClick={() => setStatus("idle")}
-                  className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary-dark transition-colors duration-200"
+                  type="submit"
+                  disabled={status === "loading" || !privacyAccepted}
+                  aria-busy={status === "loading"}
+                  aria-describedby={
+                    !privacyAccepted ? "contact-privacy-hint" : undefined
+                  }
+                  className="touch-target inline-flex w-full items-center justify-center gap-3 rounded-xl bg-primary px-8 py-4 text-base font-bold text-white transition-colors duration-200 hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <Send size={18} aria-hidden="true" />
-                  <span>Invia un altro messaggio</span>
+                  {status === "loading" ? (
+                    <>
+                      <span
+                        className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white"
+                        aria-hidden="true"
+                      />
+                      <span>Invio in corso...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} aria-hidden="true" />
+                      <span>Invia Messaggio</span>
+                    </>
+                  )}
                 </button>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 sm:p-10 border border-gray-200 shadow-sm">
-                <div className="space-y-5">
-                  <div>
-                    <label htmlFor="name" className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
-                      <User size={15} className="text-icon" aria-hidden="true" />
-                      Nome completo
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base bg-white"
-                      placeholder="Mario Rossi"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
-                      <Mail size={15} className="text-icon" aria-hidden="true" />
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base bg-white"
-                      placeholder="mario.rossi@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="flex items-center gap-2 text-sm font-semibold text-gray-900 mb-2">
-                      <MessageSquare size={15} className="text-icon" aria-hidden="true" />
-                      Messaggio
-                    </label>
-                    <textarea
-                      id="message"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gray-400 focus:ring-4 focus:ring-gray-200 outline-none transition-[border-color,box-shadow] duration-200 text-base resize-none bg-white"
-                      placeholder="Scrivi qui il tuo messaggio..."
-                    />
-                  </div>
-
-                  <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <input
-                      id="privacy"
-                      type="checkbox"
-                      checked={privacyAccepted}
-                      onChange={(e) => setPrivacyAccepted(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200"
-                    />
-                    <label htmlFor="privacy" className="touch-target text-sm text-gray-700 leading-relaxed cursor-pointer">
-                      Ho letto e accetto la{" "}
-                      <a
-                        href={PRIVACY_POLICY_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary font-semibold hover:text-primary-dark underline"
-                      >
-                        Privacy Policy
-                      </a>
-                    </label>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <input
-                      id="newsletter"
-                      type="checkbox"
-                      checked={newsletterAccepted}
-                      onChange={(e) => setNewsletterAccepted(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-200"
-                    />
-                    <label htmlFor="newsletter" className="touch-target text-sm text-gray-700 leading-relaxed cursor-pointer">
-                      Acconsento a ricevere aggiornamenti e novità di LabManager via email.{" "}
-                      <span className="text-gray-400 text-xs">(opzionale)</span>
-                    </label>
-                  </div>
-
-                  {status === "error" && (
-                    <div role="alert" className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                      <AlertCircle size={18} className="flex-shrink-0" aria-hidden="true" />
-                      <p>
-                        Errore nell&apos;invio del messaggio. Riprova o scrivici direttamente via email.
-                      </p>
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={status === "loading" || !privacyAccepted}
-                    aria-busy={status === "loading"}
-                    className="w-full inline-flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-lg text-base font-bold hover:bg-primary-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {status === "loading" ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Invio in corso...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} aria-hidden="true" />
-                        <span>Invia Messaggio</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
+            </form>
+          )}
         </div>
       </div>
     </section>

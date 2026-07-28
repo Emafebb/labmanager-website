@@ -8,9 +8,9 @@ const TABNAV_WIDGET_CONFIG = {
   language: "it",
   color: "#4403af",
   buttonColor: "#4403af",
-  buttonSize: "large",
+  buttonSize: "small",
   widgetSize: "small",
-  widgetLocation: "left",
+  widgetLocation: "right",
   buttonLocation: "bottom",
 } as const;
 
@@ -27,7 +27,8 @@ export const EXTERNAL_WIDGET_THEME_SCRIPT = `
   ].join('');
 
   var tabNavCss = [
-    '.tr-button{min-width:44px!important;min-height:44px!important;}',
+    '.tr-button{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;left:auto!important;right:24px!important;bottom:96px!important;}',
+    '@media (max-width:639px){.tr-button{right:16px!important;bottom:88px!important;}}',
     '.tr-button:focus-visible{outline:2px solid #d1d5db!important;outline-offset:2px!important;}'
   ].join('');
 
@@ -54,7 +55,7 @@ export const EXTERNAL_WIDGET_THEME_SCRIPT = `
   }
 
   function patchTabNav() {
-    document.querySelectorAll('container-element').forEach(function (widget) {
+    document.querySelectorAll('container-element, button-expand-panel-element').forEach(function (widget) {
       upsertStyle(widget.shadowRoot, 'labmanager-tabnav-theme', tabNavCss);
     });
   }
