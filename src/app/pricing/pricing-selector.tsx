@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -130,6 +130,31 @@ function Inclusion({ included }: { included: boolean }) {
       <Minus size={16} aria-hidden="true" />
       <span className="sr-only">Non incluso</span>
     </span>
+  );
+}
+
+function ComparisonCell({
+  tier,
+  children,
+  valueClassName = "",
+}: {
+  tier: CommercialTier;
+  children: ReactNode;
+  valueClassName?: string;
+}) {
+  return (
+    <td
+      className={`flex min-w-0 flex-col px-4 pb-4 pt-1 text-left sm:table-cell sm:px-6 sm:py-3 sm:text-center ${
+        tier === "Plus" ? "bg-primary/5" : ""
+      }`}
+    >
+      <span className="text-[0.6875rem] font-bold uppercase tracking-wider text-gray-500 sm:hidden">
+        {tier}
+      </span>
+      <span className={`mt-1 block min-w-0 sm:mt-0 ${valueClassName}`}>
+        {children}
+      </span>
+    </td>
   );
 }
 
@@ -423,11 +448,14 @@ export default function PricingSelector() {
           </h3>
 
           <div className="mt-4 overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
-            <table className="w-full min-w-[560px] text-sm" data-pricing-comparison>
+            <table
+              className="block w-full min-w-0 text-sm sm:table sm:min-w-[560px]"
+              data-pricing-comparison
+            >
               <caption className="sr-only">
                 Moduli e condizioni inclusi nei piani LabManager Light e Plus
               </caption>
-              <thead>
+              <thead className="hidden sm:table-header-group">
                 <tr className="border-b border-gray-200 bg-white">
                   <th
                     scope="col"
@@ -449,14 +477,14 @@ export default function PricingSelector() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="block sm:table-row-group">
                 {COMPARISON_GROUPS.map((group) => (
                   <Fragment key={group.label}>
-                    <tr className="border-b border-gray-200 bg-gray-50">
+                    <tr className="block border-b border-gray-200 bg-gray-50 sm:table-row">
                       <th
                         colSpan={3}
                         scope="colgroup"
-                        className="px-6 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-gray-500"
+                        className="block w-full px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-gray-500 sm:table-cell sm:px-6"
                       >
                         {group.label}
                       </th>
@@ -466,7 +494,7 @@ export default function PricingSelector() {
                       return (
                         <tr
                           key={id}
-                          className="border-b border-gray-100"
+                          className="grid grid-cols-2 border-b border-gray-100 sm:table-row"
                           data-magazzino-claim-ids={
                             id === "magazzino_ddt"
                               ? MAGAZZINO_CLAIM_ID_ATTRIBUTE
@@ -475,68 +503,66 @@ export default function PricingSelector() {
                         >
                           <th
                             scope="row"
-                            className="sticky left-0 z-10 bg-white px-6 py-3 text-left font-medium text-gray-700"
+                            className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
                           >
                             {capability.nome}
                           </th>
-                          <td className="px-6 py-3 text-center">
+                          <ComparisonCell tier="Light">
                             <Inclusion
                               included={capability.tierMinimo === "Light"}
                             />
-                          </td>
-                          <td className="bg-primary/5 px-6 py-3 text-center">
+                          </ComparisonCell>
+                          <ComparisonCell tier="Plus">
                             <Inclusion included />
-                          </td>
+                          </ComparisonCell>
                         </tr>
                       );
                     })}
                   </Fragment>
                 ))}
-                <tr className="border-b border-gray-200 bg-gray-50">
+                <tr className="block border-b border-gray-200 bg-gray-50 sm:table-row">
                   <th
                     colSpan={3}
                     scope="colgroup"
-                    className="px-6 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-gray-500"
+                    className="block w-full px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-gray-500 sm:table-cell sm:px-6"
                   >
                     Limiti e supporto
                   </th>
                 </tr>
-                <tr className="border-b border-gray-100">
+                <tr className="grid grid-cols-2 border-b border-gray-100 sm:table-row">
                   <th
                     scope="row"
-                    className="sticky left-0 z-10 bg-white px-6 py-3 text-left font-medium text-gray-700"
+                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
                   >
                     Importazioni AI ricette al giorno
                   </th>
                   {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                    <td
+                    <ComparisonCell
                       key={tier}
-                      className={`px-6 py-3 text-center font-semibold text-gray-700 ${
-                        tier === "Plus" ? "bg-primary/5" : ""
-                      }`}
+                      tier={tier}
+                      valueClassName="font-semibold text-gray-700"
                     >
                       {getCommercialLevel(tier).quoteAiGiornaliere.recipe}
-                    </td>
+                    </ComparisonCell>
                   ))}
                 </tr>
-                <tr className="border-b border-gray-100">
+                <tr className="grid grid-cols-2 border-b border-gray-100 sm:table-row">
                   <th
                     scope="row"
-                    className="sticky left-0 z-10 bg-white px-6 py-3 text-left font-medium text-gray-700"
+                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
                   >
                     Importazioni AI DDT al giorno
                   </th>
                   {COMMERCIAL_MANIFEST.tier.map((tier) => {
                     const quota = getCommercialLevel(tier).quoteAiGiornaliere.ddt;
                     return (
-                      <td
+                      <ComparisonCell
                         key={tier}
-                        className={`px-6 py-3 text-center font-semibold text-gray-700 ${
-                          tier === "Plus" ? "bg-primary/5" : ""
-                        }`}
+                        tier={tier}
+                        valueClassName="font-semibold text-gray-700"
                       >
                         {quota === 0 ? "Non incluse" : quota}
-                      </td>
+                      </ComparisonCell>
                     );
                   })}
                 </tr>
@@ -545,62 +571,62 @@ export default function PricingSelector() {
                     i dispositivi posseduti (requisito 31), e GLOSSARY.md vieta
                     "dispositivi" per descriverlo. Non riportare a "Dispositivi
                     simultanei": dichiarerebbe male l'entitlement. */}
-                <tr className="border-b border-gray-100">
+                <tr className="grid grid-cols-2 border-b border-gray-100 sm:table-row">
                   <th
                     scope="row"
-                    className="sticky left-0 z-10 bg-white px-6 py-3 text-left font-medium text-gray-700"
+                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
                   >
                     Sessioni attive simultanee
                   </th>
                   {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                    <td
+                    <ComparisonCell
                       key={tier}
-                      className={`px-6 py-3 text-center font-semibold text-gray-700 ${
-                        tier === "Plus" ? "bg-primary/5" : ""
-                      }`}
+                      tier={tier}
+                      valueClassName="font-semibold text-gray-700"
                     >
                       {getCommercialLevel(tier).sessioniSimultanee}
-                    </td>
+                    </ComparisonCell>
                   ))}
                 </tr>
                 {/* Due righe distinte: l'etichetta non deve dipendere da un
                     toggle che a questa altezza è fuori schermo. */}
                 {COMMERCIAL_MANIFEST.periodicita.map((value) => (
-                  <tr key={value} className="border-b border-gray-100">
+                  <tr
+                    key={value}
+                    className="grid grid-cols-2 border-b border-gray-100 sm:table-row"
+                  >
                     <th
                       scope="row"
-                      className="sticky left-0 z-10 bg-white px-6 py-3 text-left font-medium capitalize text-gray-700"
+                      className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium capitalize text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
                     >
                       Supporto {value}
                     </th>
                     {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                      <td
+                      <ComparisonCell
                         key={tier}
-                        className={`px-6 py-3 text-center text-gray-700 ${
-                          tier === "Plus" ? "bg-primary/5" : ""
-                        }`}
+                        tier={tier}
+                        valueClassName="text-gray-700"
                       >
                         {describeOfferSupport(getCommercialOffer(tier, value))}
-                      </td>
+                      </ComparisonCell>
                     ))}
                   </tr>
                 ))}
-                <tr>
+                <tr className="grid grid-cols-2 sm:table-row">
                   <th
                     scope="row"
-                    className="sticky left-0 z-10 bg-white px-6 py-3 text-left font-medium text-gray-700"
+                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
                   >
                     Esportazioni dei moduli inclusi
                   </th>
                   {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                    <td
+                    <ComparisonCell
                       key={tier}
-                      className={`px-6 py-3 text-center font-semibold capitalize text-gray-700 ${
-                        tier === "Plus" ? "bg-primary/5" : ""
-                      }`}
+                      tier={tier}
+                      valueClassName="font-semibold capitalize text-gray-700"
                     >
                       {getCommercialLevel(tier).esportazioni.moduliInclusi}
-                    </td>
+                    </ComparisonCell>
                   ))}
                 </tr>
               </tbody>

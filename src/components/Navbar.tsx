@@ -38,21 +38,21 @@ export default function Navbar() {
   return (
     <nav
       aria-label="Navigazione principale"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 overflow-x-clip transition-all duration-200 ease-out ${
         scrolled
           ? "bg-white border-b border-gray-200 shadow-sm py-3"
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto w-full max-w-7xl px-6">
         <div className="flex justify-between items-center">
           <Link
             href="/"
-            className="group flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+            className="group flex min-w-0 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-4 focus-visible:ring-offset-white"
           >
-            <BrandLogo />
+            <BrandLogo className="shrink-0" />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900 tracking-tight">
+              <span className="whitespace-nowrap text-xl font-bold text-gray-900 tracking-tight">
                 LabManager
               </span>
             </div>
@@ -83,7 +83,7 @@ export default function Navbar() {
           </ul>
 
           <button
-            className="touch-target lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            className="touch-target relative z-10 inline-flex shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white p-2 shadow-sm transition-colors duration-200 ease-out hover:bg-gray-50 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Chiudi menu" : "Apri menu"}
             aria-expanded={mobileOpen}

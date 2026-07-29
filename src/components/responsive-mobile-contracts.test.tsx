@@ -84,9 +84,11 @@ describe("shared 44px touch-target contract", () => {
 
   it("applies the utility to the mobile menu, hero CTAs and FAQ buttons", () => {
     const navbar = render(<Navbar />);
-    expect(
-      screen.getByRole("button", { name: "Apri menu" }),
-    ).toHaveClass("touch-target");
+    expect(screen.getByRole("button", { name: "Apri menu" })).toHaveClass(
+      "touch-target",
+      "inline-flex",
+      "shrink-0",
+    );
     navbar.unmount();
 
     const hero = render(<Hero />);

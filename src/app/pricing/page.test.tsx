@@ -129,6 +129,13 @@ describe("pricing page", () => {
     // Il glossario vieta "dispositivi" per descrivere il limite di accessi.
     expect(comparison.queryByRole("row", { name: /Dispositivi/ })).toBeNull();
     expect(table.closest("div")).toHaveClass("overflow-x-auto");
+    expect(table).toHaveClass(
+      "block",
+      "min-w-0",
+      "sm:table",
+      "sm:min-w-[560px]",
+    );
+    expect(foodCostRow).toHaveClass("grid", "grid-cols-2", "sm:table-row");
     // Spec 0009 req. 36: sotto il confronto il testo visibile deve
     // corrispondere esattamente, link incluso.
     const comparisonSection = container.querySelector(
