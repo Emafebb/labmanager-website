@@ -69,7 +69,7 @@ export default function Home() {
     <>
       <NewsletterPopup />
 
-      <Navbar />
+      <Navbar featuresHref="#funzionalita" />
       <main id="main-content">
         <Hero />
         <Features />

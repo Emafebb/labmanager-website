@@ -6,17 +6,24 @@ import { Menu, X } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
 import { getCommercialCta } from "@/data/trial-access-cta-inventory";
 
-const navLinks = [
-  { href: "/#funzionalita", label: "Funzionalità" },
+const secondaryNavLinks = [
   { href: "/ordini", label: "Ordini" },
   { href: "/pricing", label: "Prezzi" },
 ];
 
 const accessCta = getCommercialCta("navbar-access");
 
-export default function Navbar() {
+type NavbarProps = {
+  featuresHref?: "/" | "#funzionalita";
+};
+
+export default function Navbar({ featuresHref = "/" }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navLinks = [
+    { href: featuresHref, label: "Funzionalità" },
+    ...secondaryNavLinks,
+  ];
 
   useEffect(() => {
     function handleScroll() {

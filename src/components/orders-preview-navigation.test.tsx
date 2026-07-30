@@ -38,7 +38,7 @@ describe("orders preview and navigation", () => {
     const mobile = screen.getByRole("list", { name: "Navigazione mobile" });
     const expectedLabels = ["Funzionalità", "Ordini", "Prezzi", "Accedi"];
     const expectedHrefs = [
-      "/#funzionalita",
+      "/",
       "/ordini",
       "/pricing",
       TRIAL_ACCESS_APP_HREF,
@@ -60,6 +60,19 @@ describe("orders preview and navigation", () => {
     expect(menuButton).toHaveAttribute("aria-expanded", "true");
     await user.click(within(mobile).getByRole("link", { name: "Prezzi" }));
     expect(menuButton).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("keeps the Funzionalità anchor only when the navbar belongs to the homepage", () => {
+    render(<Navbar featuresHref="#funzionalita" />);
+
+    for (const navigation of [
+      screen.getByRole("list", { name: "Navigazione desktop" }),
+      screen.getByRole("list", { name: "Navigazione mobile" }),
+    ]) {
+      expect(
+        within(navigation).getByRole("link", { name: "Funzionalità" }),
+      ).toHaveAttribute("href", "#funzionalita");
+    }
   });
 
   it("renders only the approved Product, Support, and existing Legal footer links", () => {
