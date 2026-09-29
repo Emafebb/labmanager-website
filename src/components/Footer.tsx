@@ -180,7 +180,7 @@ export default function Footer() {
 
             <div className="mt-6 pt-6 border-t border-white/5">
               <p className="text-xs sm:text-sm text-gray-400 text-center leading-relaxed">
-                LabManager di Emanuele Lucania — Impresa individuale — P.IVA: 04257360364 — MO-455893 — Sede: Via Guido Mazzali 37, Carpi (MO) —{" "}
+                LabManager è un prodotto di PastryLab S.N.C. di Pedrielli Laura e C. — P.IVA e C.F.: 04279110367 — REA: MO-457542 — Sede legale: Via Giacomo Matteotti 21, 41012 Carpi (MO) —{" "}
                 <a href="mailto:labmanager.info@gmail.com" className="hover:text-gray-400 transition-colors duration-200">
                   labmanager.info@gmail.com
                 </a>
