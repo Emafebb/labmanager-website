@@ -1,0 +1,57 @@
+/* Kit autonomo: importare soltanto quando si integra la direzione approvata. */
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/manrope-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/manrope-600.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/manrope-700.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("fonts/fraunces-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --lm-bosco: #223d32;
+  --lm-avorio: #f5f1e8;
+  --lm-salvia: #b8c7b6;
+  --lm-ambra: #f7b52b;
+  --lm-bianco: #ffffff;
+  --lm-testo: var(--lm-bosco);
+  --lm-azione: var(--lm-bosco);
+  --lm-su-azione: var(--lm-bianco);
+  --lm-superficie-sito: var(--lm-avorio);
+  --lm-superficie-dati: var(--lm-bianco);
+  --lm-superficie-secondaria: var(--lm-salvia);
+  --lm-font-testo: "Manrope", system-ui, sans-serif;
+  --lm-font-editoriale: "Fraunces", Georgia, serif;
+}
+
+/* Maschera trasparente: colore e scala cambiano, la geometria resta identica. */
+.lm-pattern {
+  background: var(--lm-pattern-color, var(--lm-bosco));
+  mask: url("traccia-pattern.svg") repeat 0 0 / var(--lm-pattern-size, 480px 360px);
+  pointer-events: none;
+}
+
+.lm-pattern--quiet {
+  --lm-pattern-color: var(--lm-salvia);
+  opacity: 0.4;
+}

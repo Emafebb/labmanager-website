@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LabManager — Traccia · kit visivo</title>
+  <link rel="stylesheet" href="brand.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--lm-testo); background: var(--lm-avorio); font: 400 16px/1.6 var(--lm-font-testo); }
+    a { color: inherit; text-underline-offset: 4px; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--lm-bosco); outline-offset: 5px; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, .editoriale { font-family: var(--lm-font-editoriale); font-weight: 400; line-height: 1.08; letter-spacing: -.035em; }
+    h1 { max-width: 13ch; font-size: clamp(44px, 6.8vw, 88px); }
+    h2 { font-size: clamp(32px, 4vw, 48px); }
+    h3 { font-size: 20px; line-height: 1.3; }
+    main, .testata { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .testata { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 26px; border-bottom: 1px solid #223d3233; }
+    .marchio { display: inline-flex; align-items: center; gap: 12px; font-size: 23px; font-weight: 700; letter-spacing: -.04em; text-decoration: none; }
+    .marchio img { width: 52px; height: 52px; object-fit: contain; }
+    .nota, .indice { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .nota { text-transform: none; letter-spacing: .02em; }
+    .indice { display: block; margin-bottom: 16px; }
+    .intro { display: grid; grid-template-columns: 1.45fr 1fr; gap: 40px; align-items: center; padding-block: 72px; }
+    .intro p { max-width: 49ch; margin-top: 28px; font-size: 18px; }
+    .copertina { min-height: 360px; background-color: var(--lm-salvia); position: relative; overflow: hidden; border-radius: 12px; }
+    .copertina .lm-pattern { position: absolute; inset: 0; --lm-pattern-size: 384px 288px; }
+    section { padding: 48px 0; border-top: 1px solid #223d3233; }
+    .sezione-intro { display: flex; justify-content: space-between; align-items: start; gap: 32px; margin-bottom: 32px; }
+    .sezione-intro p { max-width: 48ch; }
+    .griglia { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .campione { background: var(--lm-bianco); padding: 28px; border-radius: 12px; }
+    .campione p { margin-top: 16px; }
+    .costruzione { display: flex; align-items: center; justify-content: space-around; gap: 16px; min-height: 176px; background-image: linear-gradient(#223d3210 1px, transparent 1px), linear-gradient(90deg, #223d3210 1px, transparent 1px); background-size: 12px 12px; }
+    .costruzione img { width: 96px; height: 96px; }
+    .ruotato { transform: rotate(180deg); }
+    .campo-pattern { min-height: 176px; background: url("traccia-pattern.svg") repeat 0 0 / 240px 180px; }
+    .regola { margin-top: 24px; padding: 20px 24px; border-left: 3px solid var(--lm-bosco); }
+    .regola strong { font-weight: 700; }
+    .colori { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+    .tinta { height: 140px; border: 1px solid #223d3222; border-radius: 12px; margin-bottom: 16px; }
+    .colori strong, .colori code { display: block; }
+    code { font-size: 13px; }
+    .colori p { margin-top: 8px; font-size: 13px; }
+    .tipografia { display: block; font-size: clamp(64px, 8vw, 96px); line-height: 1.2; letter-spacing: -.03em; }
+    .tipi-riga { font-size: 14px; overflow-wrap: anywhere; }
+    .esempio-sito { position: relative; overflow: hidden; min-height: 360px; padding: 30px; border: 1px solid #223d3233; }
+    .esempio-sito > :not(.bordo) { position: relative; z-index: 1; }
+    .esempio-sito .editoriale { max-width: 11ch; margin-top: 30px; font-size: clamp(36px, 4vw, 52px); }
+    .esempio-sito p { max-width: 26ch; margin-top: 16px; }
+    .bordo { position: absolute; right: -64px; bottom: -60px; width: 230px; height: 230px; opacity: .7; }
+    .azione { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; margin-top: 22px; color: var(--lm-su-azione); background: var(--lm-azione); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .azione:hover { text-decoration: underline; }
+    .prodotto { background: white; border: 1px solid #223d3233; border-radius: 12px; overflow: hidden; }
+    .prodotto-header { display: flex; align-items: center; gap: 12px; position: relative; padding: 20px 24px; background: #b8c7b62b; overflow: hidden; }
+    .prodotto-header .marchio { position: relative; z-index: 1; font-size: 18px; }
+    .prodotto-header .marchio img { width: 36px; height: 36px; }
+    .prodotto-header .lm-pattern { position: absolute; right: -24px; top: -14px; width: 130px; height: 100px; }
+    .prodotto-corpo { padding: 24px; }
+    .schede { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .scheda { padding: 7px 10px; font-size: 13px; border-radius: 8px; }
+    .scheda-attiva { background: var(--lm-bosco); color: white; }
+    .tabella { overflow-x: auto; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    caption { text-align: left; font-size: 12px; padding-bottom: 10px; }
+    th, td { padding: 12px 8px; border-bottom: 1px solid #223d3222; white-space: nowrap; }
+    .stato { padding: 4px 8px; background: #b8c7b650; border-radius: 8px; }
+    .esempio-nota { margin-top: 14px; font-size: 12px; }
+    .file { display: flex; gap: 12px 24px; flex-wrap: wrap; margin-block: 24px; }
+    .file a { padding-block: 10px; min-height: 44px; }
+    .note { max-width: 78ch; font-size: 14px; }
+    .note p + p { margin-top: 12px; }
+    footer { padding-block: 30px 48px; font-size: 12px; }
+    @media (max-width: 720px) {
+      main, .testata { width: calc(100% - 32px); }
+      .testata { align-items: start; }
+      .testata .nota { max-width: 12ch; text-align: right; font-size: 10px; }
+      .marchio { font-size: 20px; gap: 8px; }
+      .marchio img { width: 40px; height: 40px; }
+      .intro, .griglia { grid-template-columns: minmax(0, 1fr); }
+      .intro { padding-block: 44px; gap: 28px; }
+      .copertina { min-height: 230px; }
+      .sezione-intro { display: block; }
+      .sezione-intro p { margin-top: 20px; }
+      .colori { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+      .tinta { height: 110px; }
+      .campione, .esempio-sito, .prodotto-corpo { padding: 20px; }
+      section { padding: 36px 0; }
+    }
+    @media print { .file, .testata .nota { display: none; } section, .campione { break-inside: avoid; } body { print-color-adjust: exact; } }
+  </style>
+</head>
+<body>
+  <header class="testata">
+    <a class="marchio" href="#inizio"><img src="logo.png" alt="" width="52" height="52">LabManager</a>
+    <span class="nota">Traccia · kit visivo · 18 ottobre 2026</span>
+  </header>
+  <main id="inizio">
+    <div class="intro">
+      <div>
+        <h1>Vicino al tuo lavoro.</h1>
+        <p>Concreto e ordinato, con calore artigianale. Un sistema visivo per il sito e l’interfaccia di LabManager, al fianco di chi lavora nei laboratori artigianali alimentari.</p>
+      </div>
+      <div class="copertina" aria-hidden="true"><div class="lm-pattern"></div></div>
+    </div>
+
+    <section aria-labelledby="pattern">
+      <div class="sezione-intro">
+        <div><h2 id="pattern">Traccia: una regola, un ritmo.</h2></div>
+        <p>“Traccia” rielabora il ritmo delle curve del logo in tre linee parallele. Il modulo è una nuova costruzione geometrica; il logo resta il file originale.</p>
+      </div>
+      <div class="griglia">
+        <div class="campione">
+          <div class="costruzione" aria-label="Modulo originale e modulo ruotato di 180 gradi">
+            <img src="traccia-modulo.svg" alt="Modulo a tre curve parallele" width="96" height="96">
+            <span aria-hidden="true">→</span>
+            <img class="ruotato" src="traccia-modulo.svg" alt="Lo stesso modulo ruotato di 180 gradi" width="96" height="96">
+          </div>
+          <p><strong>Modulo 96 × 96.</strong> Tratto 2, distanza fra le linee 12. Raccordi circolari con raggi 12, 24 e 36.</p>
+        </div>
+        <div class="campione">
+          <div class="campo-pattern" role="img" aria-label="Ripetizione del pattern Traccia"></div>
+          <p><strong>Cella 120 × 120.</strong> Margine 12 attorno al modulo. Rotazione alternata di 180° su righe e colonne; ripetizione ogni 240 × 240.</p>
+        </div>
+      </div>
+      <p class="regola"><strong>Uso:</strong> sul sito, campi decorativi o dettagli ampi ai margini; nell’interfaccia, un accento tenue in testata. Tenere libere tabelle, campi di inserimento e aree di lettura. La distanza fra i moduli fa parte del disegno.</p>
+    </section>
+
+    <section aria-labelledby="palette">
+      <div class="sezione-intro"><div><h2 id="palette">Palette: colore al servizio del lavoro.</h2></div><p>Superfici chiare, comandi riconoscibili e un accento caldo. I colori del logo restano quelli originali.</p></div>
+      <div class="colori">
+        <div><div class="tinta" style="background:var(--lm-bosco)"></div><strong>Bosco</strong><code>#223D32</code><p>Testi, comandi e selezione attiva.</p></div>
+        <div><div class="tinta" style="background:var(--lm-avorio)"></div><strong>Avorio</strong><code>#F5F1E8</code><p>Sito e superfici editoriali.</p></div>
+        <div><div class="tinta" style="background:var(--lm-salvia)"></div><strong>Salvia</strong><code>#B8C7B6</code><p>Superfici secondarie e pattern discreto.</p></div>
+        <div><div class="tinta" style="background:var(--lm-ambra)"></div><strong>Ambra</strong><code>#F7B52B</code><p>Accenti decorativi. Per eventuali etichette, testo bosco.</p></div>
+        <div><div class="tinta" style="background:var(--lm-bianco)"></div><strong>Bianco</strong><code>#FFFFFF</code><p>Superfici dei dati e testo sui comandi bosco.</p></div>
+      </div>
+      <p class="regola">Il colore accompagna sempre parole o simboli leggibili. Gli stati di errore, avviso e successo richiedono una definizione funzionale separata quando si integra l’interfaccia.</p>
+    </section>
+
+    <section aria-labelledby="font">
+      <h2 id="font">Tipografia: chiarezza e calore.</h2>
+      <div class="griglia" style="margin-top:32px">
+        <div class="campione"><span class="tipografia">Aa</span><h3>Manrope</h3><p>Interfaccia e testi. Pesi 400, 600 e 700. Corpo 16 px; etichette e tabelle da 14 px. Numeri tabulari per costi e quantità.</p><p class="tipi-riga">Ricette · Produzione · Magazzino<br>€ 128,50 · 12,750 kg · 18/10/2026</p></div>
+        <div class="campione"><span class="tipografia editoriale">Aa</span><h3>Fraunces</h3><p>Titoli brevi del sito. Peso 400, dimensioni da 32 a 88 px, interlinea 1,08. Affidare a Manrope le spiegazioni, i comandi e i dati.</p><p class="editoriale" style="font-size:36px">Il lavoro prende forma.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="applicazioni">
+      <div class="sezione-intro"><div><h2 id="applicazioni">Dal sito al laboratorio.</h2></div><p>La stessa identità cambia densità in base al compito. Questi esempi illustrano il sistema visivo.</p></div>
+      <div class="griglia">
+        <div class="esempio-sito">
+          <span class="indice">Sito / esempio</span>
+          <p class="editoriale">Il tuo lavoro, con più ordine.</p>
+          <p>Il gestionale per laboratori artigianali alimentari.</p>
+          <a class="azione" href="logo.png">Vedi il logo originale ↗</a>
+          <img class="bordo" src="traccia-modulo.svg" alt="" width="230" height="230">
+        </div>
+        <div class="prodotto">
+          <div class="prodotto-header"><span class="marchio"><img src="logo.png" alt="" width="36" height="36">LabManager</span><div class="lm-pattern lm-pattern--quiet" aria-hidden="true"></div></div>
+          <div class="prodotto-corpo">
+            <div class="schede" aria-label="Voci di navigazione illustrate"><span class="scheda">Ricette</span><span class="scheda scheda-attiva">Produzione</span><span class="scheda">Magazzino</span></div>
+            <h3>Produzione</h3>
+            <div class="tabella"><table style="font-variant-numeric:tabular-nums"><caption>Dati dimostrativi del solo campione visivo</caption><thead><tr><th scope="col">Lavorazione</th><th scope="col">Quantità</th><th scope="col">Stato</th></tr></thead><tbody><tr><td>Preparazione A</td><td>12,750 kg</td><td><span class="stato">Da avviare</span></td></tr><tr><td>Preparazione B</td><td>8,500 kg</td><td><span class="stato">In corso</span></td></tr></tbody></table></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="asset">
+      <h2 id="asset">Asset pronti per il progetto.</h2>
+      <div class="file"><a href="traccia-modulo.svg" download>Scarica il modulo SVG</a><a href="traccia-pattern.svg" download>Scarica il pattern SVG</a><a href="brand.css" download>Scarica token e font CSS</a><a href="logo.png" download>Logo originale</a></div>
+      <div class="note">
+        <p><strong>Logo:</strong> questa pagina carica <code>logo.png</code>, copia identica di <code>public/images/logo.png</code>. Mantenerne colori, proporzioni e dettagli. Il kit non introduce un nuovo simbolo.</p>
+        <p><strong>Pattern:</strong> gli SVG sono autonomi e trasparenti. Per cambiarne il colore senza cambiare geometria, usare la classe <code>lm-pattern</code> in <code>brand.css</code> e la proprietà <code>--lm-pattern-color</code>. Le dimensioni si regolano con <code>--lm-pattern-size</code>. Marcare i pattern decorativi con <code>aria-hidden="true"</code>.</p>
+        <p><strong>Font locali:</strong> i quattro file TTF inclusi coprono i pesi utilizzati. Font ottenuti da <a href="https://fonts.google.com/specimen/Manrope">Google Fonts / Manrope</a> e <a href="https://fonts.google.com/specimen/Fraunces">Google Fonts / Fraunces</a>; licenze SIL OFL in <a href="fonts/Manrope-OFL.txt">Manrope-OFL.txt</a> e <a href="fonts/Fraunces-OFL.txt">Fraunces-OFL.txt</a>. Conservare le licenze quando si distribuiscono i font.</p>
+        <p><strong>Integrazione:</strong> il kit è separato dal sito. Prima di applicarlo, trasferire asset e font nella posizione scelta e collegare i token ai componenti. Il foglio CSS del kit non è importato dalle pagine del sito.</p>
+      </div>
+    </section>
+    <footer>LabManager · Traccia · Logo originale, pattern e sistema visivo per sito e interfaccia.</footer>
+  </main>
+</body>
+</html>

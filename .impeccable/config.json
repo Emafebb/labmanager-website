@@ -1,0 +1,98 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "manrope",
+        "files": [
+          "design/brandkit/brand.css"
+        ],
+        "createdAt": "2026-10-18T20:59:15.220Z",
+        "reason": "User confirmed: Manrope per interfaccia e testi nel kit Traccia, separato dal sito esistente."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "fraunces",
+        "files": [
+          "design/brandkit/brand.css"
+        ],
+        "createdAt": "2026-10-18T20:59:29.407Z",
+        "reason": "User confirmed: Manrope e Fraunces nel kit Traccia approvato, separato dal sito esistente."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "manrope",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T20:59:29.601Z",
+        "reason": "User confirmed: Manrope e Fraunces nel kit Traccia approvato, separato dal sito esistente."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "fraunces",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T20:59:29.799Z",
+        "reason": "User confirmed: Manrope e Fraunces nel kit Traccia approvato, separato dal sito esistente."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "files": [
+          "design/brandkit/brand.css"
+        ],
+        "createdAt": "2026-10-18T21:00:26.330Z",
+        "reason": "User confirmed: Fraunces nei titoli del sito per la direzione artigianale Traccia."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T21:00:26.577Z",
+        "reason": "User confirmed: Fraunces nei titoli del sito per la direzione artigianale Traccia."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T21:00:26.759Z",
+        "reason": "User confirmed: palette bosco, avorio, salvia e ambra nella tavola approvata."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T21:00:26.952Z",
+        "reason": "User confirmed: kit autonomo con la nuova palette approvata; i token del sito corrente restano separati."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T21:00:27.141Z",
+        "reason": "Agent: campionario tipografico autonomo del nuovo kit, con scale sito e interfaccia documentate nella pagina."
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "design/brandkit/preview.html"
+        ],
+        "createdAt": "2026-10-18T21:00:27.318Z",
+        "reason": "Agent: griglia di misurazione reale 12 px sotto i moduli SVG, per mostrarne geometria e rotazione."
+      }
+    ]
+  }
+}

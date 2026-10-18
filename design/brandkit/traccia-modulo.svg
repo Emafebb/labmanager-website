@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" fill="none" color="#223D32">
+  <title>Traccia — modulo a tre curve</title>
+  <desc>Tre curve parallele a distanza 12, raccordate con archi di raggio 12, 24 e 36. Rielaborazione del ritmo dei contorni del logo LabManager.</desc>
+  <g id="traccia-modulo" stroke="currentColor" stroke-width="2" stroke-linecap="butt">
+    <path d="M12 96V80A36 36 0 0 1 48 44A12 12 0 0 0 60 32V0"/>
+    <path d="M24 96V80A24 24 0 0 1 48 56A24 24 0 0 0 72 32V0"/>
+    <path d="M36 96V80A12 12 0 0 1 48 68A36 36 0 0 0 84 32V0"/>
+  </g>
+</svg>
