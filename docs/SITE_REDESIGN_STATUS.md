@@ -1,6 +1,10 @@
 # Stato del sito LabManager — 19 ottobre 2026
 
-## Stato corrente dopo il rilascio e il collaudo
+## Stato corrente — fix CMP pubblicato
+
+Commit remoto `62038af` (include `0fa9e6e`), Workers Builds `fdc1d3d7-1e8d-4c49-9864-c24d33fc0150` riuscita, versione `20f2bcc3-ace2-4adb-adcb-b43bfc6fe233` al 100%. Pubblicazione 19 ottobre, 15:28:58 Europe/Rome; BUILD_ID `_ydy_dmUjew6BEDreHjAX`. Il remoto era già aggiornato e la pipeline in corso alla ripresa; nessun secondo push/deploy manuale. Smoke HTTP e percorsi browser pubblici Home/Prezzi a 1440/390 px conclusi, con contesti nuovi e caricamento CMP unico. [Rapporto del rilascio e limiti](seo/2026-10-19/CMP-RELEASE-VERIFICATION.md). Restano le misure prestazionali PV-01 e le dipendenze esterne già elencate. Documentazione di questa verifica raccolta nel commit locale richiesto, senza ulteriore push; dipendenze concorrenti preservate.
+
+## Stato precedente dopo il rilascio iniziale e il collaudo
 
 **Sito pubblicato:** commit `471db081f694cd179c401907b38427b3a59901ab`, BUILD_ID pubblico `G8WscefcZhsVAJ3IWQo9N`. Il committente ha confermato **«Collaudo completato senza problemi»**. Le sezioni successive conservano le fasi storiche prepubblicazione.
 
