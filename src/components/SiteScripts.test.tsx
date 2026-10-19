@@ -26,29 +26,22 @@ describe("SiteScripts", () => {
     pathnameState.value = "/";
   });
 
-  it("keeps Consent Mode enabled without the advertising TCF banner", () => {
+  it("delegates CMP loading and configuration to Google Tag Manager", () => {
     const { container } = render(<SiteScripts />);
-    const script = container.querySelector("#legalblink-cmp");
 
-    expect(script).toHaveAttribute(
-      "src",
-      "https://app.legalblink.it/api/scripts/cmp/loader.js",
-    );
-    expect(script).toHaveAttribute(
-      "data-license-id",
-      "69e89f282420950024cb1a5e",
-    );
-    expect(script).toHaveAttribute("data-blocking-mode", "auto");
-    expect(script).toHaveAttribute("data-consent-mode", "true");
-    expect(script).not.toHaveAttribute("data-tcf-enabled");
+    expect(
+      container.querySelector('script[src*="app.legalblink.it"]'),
+    ).toBeNull();
+    expect(container.querySelector("[data-license-id]")).toBeNull();
+    expect(container.querySelector("#google-tag-manager")).not.toBeNull();
   });
 
-  it("keeps a persistent LegalBlink settings trigger ahead of the loader", () => {
+  it("keeps a persistent LegalBlink settings trigger ahead of Google Tag Manager", () => {
     const { container } = render(<SiteScripts />);
     const trigger = container.querySelector(
       "#legalblink-cookie-settings-trigger",
     );
-    const loader = container.querySelector("#legalblink-cmp");
+    const loader = container.querySelector("#google-tag-manager");
 
     expect(trigger).toHaveAttribute("data-lb", "c-settings");
     expect(trigger).toHaveAttribute("hidden");
@@ -79,18 +72,6 @@ describe("SiteScripts", () => {
     );
 
     expect(source.match(/GTM-TCZR8HQP/g)).toHaveLength(1);
-  });
-
-  it("places LegalBlink before the main Google Tag Manager loader", () => {
-    const { container } = render(<SiteScripts />);
-    const legalBlink = container.querySelector("#legalblink-cmp");
-    const tagManager = container.querySelector("#google-tag-manager");
-
-    expect(legalBlink).not.toBeNull();
-    expect(tagManager).not.toBeNull();
-    expect(
-      legalBlink?.compareDocumentPosition(tagManager as Node) ?? 0,
-    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it("stacks the accessibility control above WhatsApp instead of covering homepage actions", () => {

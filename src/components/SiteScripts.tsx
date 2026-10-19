@@ -91,15 +91,6 @@ export default function SiteScripts() {
         aria-hidden="true"
         tabIndex={-1}
       />
-      <Script
-        id="legalblink-cmp"
-        type="text/javascript"
-        src="https://app.legalblink.it/api/scripts/cmp/loader.js"
-        strategy="afterInteractive"
-        data-license-id="69e89f282420950024cb1a5e"
-        data-blocking-mode="auto"
-        data-consent-mode="true"
-      />
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

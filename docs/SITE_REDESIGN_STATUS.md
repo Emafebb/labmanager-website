@@ -1,5 +1,23 @@
 # Stato del sito LabManager — 19 ottobre 2026
 
+## Stato corrente dopo il rilascio e il collaudo
+
+**Sito pubblicato:** commit `471db081f694cd179c401907b38427b3a59901ab`, BUILD_ID pubblico `G8WscefcZhsVAJ3IWQo9N`. Il committente ha confermato **«Collaudo completato senza problemi»**. Le sezioni successive conservano le fasi storiche prepubblicazione.
+
+**Licenza CMP pubblicata:** il committente ha corretto il tag LegalBlink 7 in `GTM-TCZR8HQP`. Bundle pubblico verificato alla versione 8, licenza `69e89f282420950024cb1a5e`; unico campo cambiato nel tag. Il precedente blocco di accesso è superato per questa correzione.
+
+**Fix del doppio caricamento:** rimosso il caricamento LegalBlink diretto dal sito, mantenendo GTM come unica installazione. Su Home/Prezzi locali: un loader/un banner, API CMP 200 su reload e preferenze riapribili dopo navigazione client e da tastiera. Passano 133 test Vitest, 3 controlli commerciali, lint mirato e TypeScript del checkout. Questo aggiornamento documentale accompagna il commit locale richiesto del fix; **nessun push o deploy eseguito**, quindi il sito pubblico mantiene ancora il duplicato. Dettagli nella [diagnosi CMP](seo/2026-10-19/CMP-CONSOLE-DIAGNOSIS.md).
+
+**Limite della build locale:** la copia isolata usa le dipendenze attualmente installate, fra cui Next **16.4.2**, e Webpack. Compila ma rifiuta quattro esportazioni di route; stesso risultato con `SiteScripts.tsx` originale. `package.json` e lock concorrenti restano esclusi dal commit: la versione Git conserva Next **16.2.10**. Non è stata eseguita una nuova build con il lock versionato; prima del rilascio verificare quel contesto e OpenNext/workerd. Il fallimento locale non prova da solo l'esito della futura pipeline con dipendenze diverse.
+
+**Residui:** prestazioni mobile non rimisurate; screenshot autentici ancora attesi; Search Console nell'account corrente senza proprietà disponibili. Codice GUID attribuito ai componenti locali Kaspersky per corrispondenza testuale di 351/351 righe selezionate; processo d'inserimento e 404 non spiegati. Nessuna protezione modificata. [Piano aggiornato](seo/2026-10-19/ACTION-PLAN.md) e [handoff](HANDOFF_2026-10-19.md) riportano i prossimi passi.
+
+Evidenze del rilascio conservate in `output/release-2026-10-19/SUMMARY.json`: build `c4cfb9a2-f495-4f37-8f95-a2342d1cc533` riuscita, deployment `5c42c490-d61c-4cf5-889d-e1e86168ceba`, versione `20cbc833-af6a-4977-b909-48b6308a2906` al 100%, pubblicata il 19 ottobre alle 13:31:31 Europe/Rome. Controlli pubblici: sette pagine canoniche, 495 collegamenti senza destinazioni mancanti, immagini e redirect verificati; restano i limiti CMP/console descritti nella diagnosi. Sono prove del rilascio, non una nuova interrogazione dei servizi a ogni lettura del documento. Il campo `manualAcceptance: false` nel JSON è storico: la conferma manuale è arrivata dopo.
+
+Il commit richiesto comprende fix CMP, test, istruzioni del progetto e aggiornamenti documentali; l'hash si ricava dalla cronologia Git. Le modifiche concorrenti a `package.json` e `package-lock.json` sono preservate ed escluse: nessuna validazione complessiva dell'upgrade delle dipendenze è attestata da questa attività. Push e tentativo di deploy sono il passo successivo indicato dal committente, non eseguito in questa chiusura.
+
+## Chiusura locale precedente alla pubblicazione
+
 Il rifacimento del sito e i fix richiesti sono implementati nel checkout locale. Il committente eseguirà il collaudo manuale dell’intero sito: **accettazione manuale ancora da raccogliere**. Questa chiusura comprende documentazione e commit locale; non autorizza push, deploy o operazioni sui servizi esterni.
 
 ## Decisioni correnti

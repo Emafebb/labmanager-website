@@ -1,5 +1,7 @@
 # Esecuzione locale del piano SEO — 19 ottobre 2026
 
+**Nota di lettura successiva al rilascio:** PV-02, SG-01 e C-02 sono stati poi committati e pubblicati con `471db081f694cd179c401907b38427b3a59901ab`; il committente ha confermato il collaudo manuale senza problemi. Questo report conserva la fase locale e le sue prove. Stato corrente e dipendenze sono nel [piano aggiornato](ACTION-PLAN.md): licenza LegalBlink corretta dal committente e verificata nella versione GTM 8; caricamento diretto rimosso e verificato localmente, incluso nel successivo commit richiesto ma non pubblicato sul sito. La [diagnosi CMP](CMP-CONSOLE-DIAGNOSIS.md) distingue questi esiti dal fallimento della build locale con dipendenze concorrenti, escluse dal commit.
+
 **Implementati PV-02, SG-01 e C-02; PV-01 approfondito ma ancora aperto sul CMP.** Nessun commit, push, deploy o intervento sui servizi esterni. Il collaudo manuale del committente resta aperto. Questo aggiornamento prosegue il [piano approvato](ACTION-PLAN.md), senza ripetere l’audit o attribuire al dominio pubblico le prove locali.
 
 ## Candidata e provenienza

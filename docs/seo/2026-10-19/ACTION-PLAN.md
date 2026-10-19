@@ -1,4 +1,31 @@
-# Piano di azione SEO — candidata del 19 ottobre 2026
+# Piano di azione SEO — stato del 19 ottobre 2026
+
+Aggiornamento postpubblicazione: collaudo manuale confermato dal committente senza problemi. **Licenza LegalBlink corretta dal committente e pubblicata in GTM: versione 8 verificata nel bundle pubblico**, tag 7 con la licenza reale; gli altri campi del tag sono invariati. **Caricamento diretto rimosso e verificato localmente**, mantenendo GTM: fix e documenti raccolti nel commit locale richiesto, senza push o deploy. La build locale con Next 16.4.2/Webpack fallisce anche sul componente originale; il commit conserva le dipendenze versionate con Next 16.2.10, ancora da riverificare in una build pulita. La [diagnosi CMP/console](CMP-CONSOLE-DIAGNOSIS.md) conserva prove e limiti. PV-01 e meccanismo d'inserimento GUID restano aperti. Le sezioni successive descrivono il piano e le fasi precedenti.
+
+## Stato operativo corrente
+
+| Voce | Stato | Passo residuo / dipendenza |
+| --- | --- | --- |
+| PV-02: varianti foto/logo e priorità hero | Implementato, verificato e pubblicato con `471db08` | Nessun intervento aperto su questi asset |
+| SG-01: semplificazione JSON-LD | Implementato, verificato e pubblicato | Nessun intervento aperto su questo campo |
+| C-02: pubblico multisettore nei riepiloghi | Implementato, verificato e pubblicato | Nessun intervento aperto su questi testi |
+| Rilascio e smoke test pubblico | Completati | Prove in `output/release-2026-10-19/`; non ripetere l'audit completo automaticamente |
+| Collaudo manuale | Confermato dal committente senza problemi | Nessun nuovo collaudo integrale richiesto; verificare le superfici dei futuri cambiamenti |
+| Licenza CMP in GTM | Corretta e pubblicata dal committente; bundle pubblico verificato, versione 8 | Tag 7 con licenza reale e altri campi invariati. Pannello visibile nelle schermate di anteprima; controlli manuali confermati dal committente. Non ripetuta una nuova sessione browser pubblica completa in questo passaggio |
+| CMP: installazione unica tramite GTM | Implementata e verificata localmente; commit richiesto, non pubblicata | Un loader/un banner, API 200 e riapertura preferenze su Home/Prezzi. Prossimo passo: build con il lock versionato e OpenNext/workerd; poi push/tentativo deploy indicati dal committente. Il push su master può attivare Workers Builds |
+| PV-01: CMP e prestazioni mobile | Aperto | Ripetere misure comparabili su Home/Prezzi dopo la correzione del duplicato. Consent Mode e TCF mantenuti nella configurazione GTM pubblicata; GVL ancora caricata. Nessun nuovo risultato prestazionale attestato |
+| C-01 / SG-03: screenshot autentici | In attesa dei materiali | Food Cost, Ordini, Libro ingredienti con dati dimostrativi; integrazione responsive e allineamento del grafo |
+| Verifica Google dopo il rilascio | Bloccata dall'accesso alla proprietà | Nella ripresa l'account corrente mostra la schermata iniziale Search Console senza proprietà; configurazione API locale assente. Servono accessi per sitemap, copertura, canonical e query; nessun risultato Google ancora attestato |
+| Richieste GUID e console | Provenienza del codice attribuita a componenti locali Kaspersky; diagnosi runtime parziale | 351/351 righe selezionate dello script identiche nelle due librerie locali; non tracciato il processo d'inserimento né spiegati i 404. Nessuna protezione modificata; dettagli e limiti nella diagnosi |
+| C-03, breadcrumb e pulizia sitemap facoltativa | Backlog | C-03 solo dopo dati sulle query; altre voci a bassa priorità |
+
+La correzione circoscritta della licenza GTM è pubblicata; il precedente accesso all'account Laura era già autorizzato. Il committente ha poi richiesto la rimozione del doppio caricamento e ora il commit locale di fix e documentazione, indicando push e tentativo deploy come passo successivo. Questa chiusura si ferma al commit; nuovi cambiamenti a TCF o ai tag rimangono fuori ambito. Le modifiche alle dipendenze sono lavoro concorrente, preservato ed escluso dal commit.
+
+Nella prima ripresa del 19 ottobre il bundle GTM era ancora alla versione 7 con `license-id` e la sessione Laura non mostrava contenitori. Il blocco è stato poi superato dal committente, che ha operato in GTM e confermato la procedura; il controllo pubblico successivo attesta la versione 8 con licenza corretta. PV-01 e screenshot autentici restano aperti; non ripetuti audit completo, misure mobile o collaudo integrale. Nessuna pubblicazione del sito eseguita.
+
+Per il contesto di ripresa: [handoff](../../HANDOFF_2026-10-19.md). Le istruzioni e gli stati qui sotto conservano il piano originario e le fasi prepubblicazione.
+
+## Riferimento storico: piano iniziale e criteri di accettazione
 
 Base: [audit completo](FULL-AUDIT-REPORT.md), commit `3b9bb7c6b86f67500d2e1f0293b03060d13ca3ec`. Questo è un piano proposto: **nessuna modifica al prodotto, commit, push o deploy eseguito per l'audit**. Il collaudo manuale resta aperto.
 
