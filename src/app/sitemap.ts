@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { WORK_AREAS } from "@/data/work-areas";
 
 const BASE_URL = "https://labmanagergestionale.com";
 
@@ -8,19 +9,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: "2026-07-21",
+      lastModified: "2026-10-19",
       changeFrequency: "weekly",
       priority: 1,
     },
-    {
-      url: `${BASE_URL}/ordini`,
-      lastModified: "2026-07-14",
-      changeFrequency: "monthly",
+    ...WORK_AREAS.map((area) => ({
+      url: `${BASE_URL}${area.href}`,
+      lastModified: "2026-10-19",
+      changeFrequency: "monthly" as const,
       priority: 0.85,
-    },
+    })),
     {
       url: `${BASE_URL}/pricing`,
-      lastModified: "2026-07-21",
+      lastModified: "2026-10-19",
       changeFrequency: "monthly",
       priority: 0.8,
     },

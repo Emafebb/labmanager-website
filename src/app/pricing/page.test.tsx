@@ -43,9 +43,9 @@ describe("pricing page", () => {
     const plans = container.querySelectorAll("[data-pricing-plan]");
 
     expect(main.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Scegli tra Light e Plus",
+      "Un piano per il tuo lavoro.",
     );
-    expect(cards).toHaveClass("grid", "lg:grid-cols-2");
+    expect(cards).toHaveClass("pricing-plans__spread");
     expect(plans).toHaveLength(2);
     expect(plans[0]).toHaveAttribute("data-pricing-plan", "light");
     expect(plans[0]).toHaveAttribute("data-periodicita", "annuale");
@@ -54,11 +54,16 @@ describe("pricing page", () => {
     expect(plans[1]).toHaveAttribute("data-pricing-plan", "plus");
     expect(plans[1]).toHaveTextContent("€40/mese");
     expect(plans[1]).toHaveTextContent("€480/anno");
+    for (const plan of plans) {
+      expect(plan).toHaveTextContent("Equivalente mensile, con pagamento annuale");
+    }
     // Spec 0009 req. 46: badge "Consigliato" sulla card Plus. Il claim di
     // prova sociale ("dai laboratori") non è sostanziabile e resta fuori.
-    expect(main.getAllByText("Consigliato")).toHaveLength(1);
+    expect(
+      main.getAllByText(/Consigliato per la gestione completa/),
+    ).toHaveLength(1);
     expect(main.queryByText(/Consigliato dai laboratori/)).toBeNull();
-    expect(main.getAllByText(TRIAL_EXPLANATION)).toHaveLength(2);
+    expect(main.getAllByText(TRIAL_EXPLANATION)).toHaveLength(1);
 
     const trialLinks = main.getAllByRole("link", {
       name: "Prova gratis 14 giorni",
@@ -73,8 +78,8 @@ describe("pricing page", () => {
   it("switches both cards, prices and support to the monthly offer without persisting a plan", async () => {
     const user = userEvent.setup();
     const { container } = render(<PricingPage />);
-    const annualToggle = screen.getByRole("button", { name: "annuale" });
-    const monthlyToggle = screen.getByRole("button", { name: "mensile" });
+    const annualToggle = screen.getByRole("button", { name: /annuale/i });
+    const monthlyToggle = screen.getByRole("button", { name: /mensile/i });
 
     expect(annualToggle).toHaveAttribute("aria-pressed", "true");
     expect(monthlyToggle).toHaveAttribute("aria-pressed", "false");
@@ -128,14 +133,6 @@ describe("pricing page", () => {
     }
     // Il glossario vieta "dispositivi" per descrivere il limite di accessi.
     expect(comparison.queryByRole("row", { name: /Dispositivi/ })).toBeNull();
-    expect(table.closest("div")).toHaveClass("overflow-x-auto");
-    expect(table).toHaveClass(
-      "block",
-      "min-w-0",
-      "sm:table",
-      "sm:min-w-[560px]",
-    );
-    expect(foodCostRow).toHaveClass("grid", "grid-cols-2", "sm:table-row");
     // Spec 0009 req. 36: sotto il confronto il testo visibile deve
     // corrispondere esattamente, link incluso.
     const comparisonSection = container.querySelector(
@@ -150,26 +147,28 @@ describe("pricing page", () => {
     ).toHaveTextContent(DEVICE_CONTACT_COPY);
   });
 
-  it("keeps the mobile toggle and actions touch-friendly", () => {
+  it("distinguishes Libro ingredienti management from Plus PDF generation", () => {
     const { container } = render(<PricingPage />);
-    const toggle = container.querySelector("[data-pricing-toggle]");
-    expect(toggle).toHaveClass("flex", "w-fit");
-    for (const button of screen.getAllByRole("button", {
-      name: /mensile|annuale/,
-    })) {
-      expect(button).toHaveClass("touch-target");
-    }
-    for (const link of screen.getAllByRole("link", {
-      name: "Prova gratis 14 giorni",
-    })) {
-      expect(link).toHaveClass("touch-target");
-    }
-    // Solo le CTA dentro le card occupano l'intera colonna; quella di chiusura
-    // è centrata e non deve stirarsi per tutta la larghezza della sezione.
-    for (const cardCta of container.querySelectorAll(
-      "[data-pricing-plan] [data-registration-cta]",
-    )) {
-      expect(cardCta).toHaveClass("w-full");
-    }
+    const table = within(
+      container.querySelector("[data-pricing-comparison]") as HTMLElement,
+    );
+    const row = table.getByRole("row", { name: /Libro ingredienti/ });
+    expect(within(row.closest("tbody")!).getByRole("row", { name: "Progettazione e ricette" })).toBeInTheDocument();
+    expect(within(row.closest("tbody")!).queryByRole("row", { name: "Team e impostazioni" })).not.toBeInTheDocument();
+    const cells = within(row).getAllByRole("cell");
+    expect(cells[0]).toHaveAttribute("data-plan", "Light");
+    expect(cells[1]).toHaveAttribute("data-plan", "Plus");
+    expect(cells[0]).toHaveTextContent("Assortimenti e consultazione");
+    expect(cells[0]).not.toHaveTextContent(/generazione|storico PDF/);
+    expect(cells[1]).toHaveTextContent("generazione e storico PDF");
+  });
+
+  it("announces billing changes to assistive technology", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<PricingPage />);
+    await user.click(screen.getByRole("button", { name: /mensile/i }));
+    expect(container.querySelector('[aria-live="polite"]')).toHaveTextContent(
+      "Light €19,99/mese, Plus €44,99/mese",
+    );
   });
 });

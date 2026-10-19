@@ -5,7 +5,11 @@
 ## Pagine SEO principali
 
 - [Home](https://labmanagergestionale.com): Presentazione di LabManager Light e Plus e prova gratuita di 14 giorni.
+- [Ricette e Food Cost](https://labmanagergestionale.com/ricette-food-cost): Formulazione, bilanciamento, assemblaggi, costi e margini.
+- [Produzione e Magazzino](https://labmanagergestionale.com/produzione-magazzino): Preparazioni, disponibilità, lotti, giacenze per sede e scadenze.
 - [Ordini](https://labmanagergestionale.com/ordini): Gestione di ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.
+- [Etichette e Libro ingredienti](https://labmanagergestionale.com/etichette-libro-ingredienti): Composizione, allergeni, valori nutrizionali, etichette e documenti dell’assortimento.
+- [Strumenti e calcolatori](https://labmanagergestionale.com/strumenti): W farine, bagne, rinfresco lievito, impasti, lievitazione, stampi e overrun.
 - [Prezzi](https://labmanagergestionale.com/pricing): Confronto Light e Plus con periodicità mensile o annuale e prova gratuita di 14 giorni senza carta.
 
 ## Offerta Light e Plus
@@ -16,19 +20,15 @@ Light include ricette, food cost della ricetta, bilanciamento, ingredienti, asse
 
 LabManager si rivolge ai laboratori artigianali alimentari in Italia, in particolare a pasticcerie, panifici e gelaterie.
 
-## I quattro pilastri
+## Aree di lavoro
 
 ### Ricette e Food Cost
 
 Gestione di ricette, ingredienti, costi e margini.
 
-### Produzione ed Etichette
+### Produzione e Magazzino
 
-Organizzazione della produzione, etichette alimentari, allergeni ed esportazione PDF.
-
-### Magazzino
-
-Gestione magazzino con ricevimento merci, giacenze per sede, soglie configurabili, scarico FIFO, alert scadenze e trasferimenti tra sedi.
+Registro delle produzioni e disponibilità per sede. Gestione magazzino con ricevimento merci, giacenze per sede, soglie configurabili, scarico FIFO, alert scadenze e trasferimenti tra sedi.
 
 Claim Magazzino approvati: `magazzino.ricevimento-merci`, `magazzino.giacenze-per-sede`, `magazzino.soglie-configurabili`, `magazzino.scarico-fifo`, `magazzino.alert-scadenze`, `magazzino.trasferimenti-tra-sedi`.
 
@@ -36,7 +36,27 @@ Claim Magazzino approvati: `magazzino.ricevimento-merci`, `magazzino.giacenze-pe
 
 Il modulo ordini gestisce ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.
 
+### Etichette e Libro ingredienti
+
+Ingredienti, allergeni, valori nutrizionali, etichette e storico. Libro ingredienti: assortimenti e consultazione con Light; generazione con verifiche e storico PDF con Plus. I documenti richiedono il controllo dei dati rispetto a materie prime e lavorazioni effettive.
+
+### Strumenti e calcolatori
+
+Sette calcolatori nella web app, inclusi in Light e Plus: W farine, bilanciamento bagne, rinfresco lievito, parametri impasto, tempistiche lievitazione, conversione stampi e overrun. Le tempistiche seguono le durate impostate dall’utente.
+
 ## Contatti
 
 - Email: labmanager.info@gmail.com
 - Sito web: https://labmanagergestionale.com
+
+## Altre funzionalità del prodotto
+
+- Bilanciamento e tools: PAC/POD, W farine, bagne, rinfresco lievito, parametri impasto, tempi di lievitazione, conversione stampi e overrun.
+- Food Cost e menu: costi per kg o porzione, lavoro e altri costi, margine obiettivo, composizione menu e proposte PDF.
+- Lotti: inserimento anche senza registrare una produzione, movimenti, scarti, rettifiche e schede di tracciabilità.
+- Documenti e AI: importazione assistita di ricette, DDT e fatture; l'utente verifica i dati prima della conferma.
+- Controllo economico: confronto periodi, margini, costi fissi e personale, cassa e scadenzario.
+- Team: clienti, fornitori, personale, operatore con PIN, ruoli e permessi.
+- Libro ingredienti: assortimenti e consultazione con Light; generazione con verifiche e storico PDF con Plus.
+
+Le funzionalità dipendono dal piano scelto.

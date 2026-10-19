@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
 import CloudflareWebAnalytics from "@/components/CloudflareWebAnalytics";
 import SiteScripts from "@/components/SiteScripts";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CAPABILITIES,
@@ -22,14 +22,12 @@ const PRODUCT_FEATURES = [
   "Produzione ed Etichette: organizzazione della produzione, etichette, allergeni e PDF.",
   MAGAZZINO_CANONICAL_COPY,
   "Ordini e Piano di Lavoro: ordini cliente e interni, produzione collegata, ritiro e consegna, acconti e report operativi.",
+  "Bilanciamento, assemblaggi e strumenti di calcolo per il laboratorio.",
+  "Menu: costo per persona, simulazioni di prezzo e grammatura, proposte PDF.",
+  "Controllo economico: margini, costi aziendali, cassa e scadenzario.",
+  "Importazione assistita di ricette, DDT e fatture, con verifica dei dati.",
+  "Libro ingredienti: assortimenti, generazione con verifiche e storico PDF.",
 ] as const;
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -112,8 +110,8 @@ export const structuredDataGraph = {
           "@type": "ImageObject",
           contentUrl: `${BASE_URL}/images/software-gestionale-pasticceria-desktop.png`,
           description:
-            "Schermata di LabManager con ricette, ingredienti, costi e margini.",
-          name: "LabManager: vista ricette e Food Cost",
+            "Schermata di una versione precedente del menu principale di LabManager.",
+          name: "LabManager: menu principale",
         },
         {
           "@type": "ImageObject",
@@ -136,7 +134,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it" className={dmSans.variable}>
+    <html lang="it">
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
@@ -145,6 +143,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <WhatsAppButton />
         <SiteScripts />
         <CloudflareWebAnalytics />
       </body>

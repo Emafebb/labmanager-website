@@ -10,6 +10,8 @@ Fuori scope: Worker labmanager, Worker labmanager-downloads, progetto Pages labm
 
 Tutti i comandi Wrangler eseguiti dalla radice del repository usano `wrangler.jsonc`, il cui campo `name` deve restare `labmanager-website`. Prima di qualsiasi operazione remota, ricontrollare questo nome. Non aggiungere `--name` per puntare ad altre risorse e non modificare i componenti fuori scope.
 
+Le pagine `/download` e `/aggiornamenti` sono state rimosse localmente il 19 ottobre 2026. Questa modifica del sito non disattiva il Worker `labmanager-downloads` o i file che distribuisce. Consultare la [decisione e guida al ritiro separato](RETIRED_PAGES.md) prima di intervenire sui download; nessuna operazione remota è autorizzata da quella guida.
+
 ## Comandi rapidi: dall'installazione al deploy
 
 Questa procedura è compatibile con macOS. Esegui i comandi nell'app **Terminale**, dalla cartella principale del progetto, seguendo i passaggi in ordine. Su Mac, `Ctrl-C` significa premere **Control + C**, non **Command + C**. I dettagli e la risoluzione dei problemi sono spiegati nelle sezioni successive.
@@ -156,11 +158,13 @@ curl -fsS http://localhost:8787/pricing | rg -o '<title>[^<]+</title>'
 
 I risultati attesi sono, rispettivamente:
 
-- `Gestionale per pasticcerie, panifici e gelaterie | LabManager`
+- `Gestionale per laboratori alimentari | LabManager`
 - `Gestione ordini e piano di lavoro | LabManager`
-- `Prezzi e prova gratuita | LabManager`
+- `Prezzi Light e Plus | LabManager`
 
 Interrompere la preview con `Ctrl-C` al termine.
+
+Il rifacimento comprende anche `/ricette-food-cost`, `/produzione-magazzino`, `/etichette-libro-ingredienti` e `/strumenti`. Insieme a Home, Ordini e Prezzi formano le sette pagine della sitemap corrente; includerle nei controlli prima e dopo la pubblicazione. Stato di collaudo e riferimenti aggiornati in [SITE_REDESIGN_STATUS.md](SITE_REDESIGN_STATUS.md).
 
 ## Checklist pre-deploy
 

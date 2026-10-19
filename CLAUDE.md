@@ -71,6 +71,7 @@ Italian marketing/landing site for **LabManager**, a management platform for art
 
 Canonical domain: `https://labmanagergestionale.com`. A historical domain (`pastrylabmanager.com`) permanently redirects here and must never appear as a separate site in search results.
 
+For continuity of the 19 October 2026 website work, read `.taste-skill/brief.md` and `.taste-skill/pagine-aree-di-lavoro.md` before changing shared surfaces. For release status, manual acceptance, or the next SEO review, start from `docs/SITE_REDESIGN_STATUS.md`; confirm which build is being inspected. The earlier footer handoff is historical.
 
 
 ## Deployment Architecture
@@ -84,18 +85,24 @@ Canonical domain: `https://labmanagergestionale.com`. A historical domain (`past
 ## Architecture
 
 ### Route structure (`src/app`)
-The App Router has more than the marketing homepage: `pricing`, `ordini`, `download`, `newsletter`, `aggiornamenti` (the product changelog — noindex, existing users only, see Glossary), `instagram` (standalone landing, opts out of `SiteScripts`), `account/billing`, and `billing/success` / `billing/cancel`. Each route's `page.tsx` exports its own `metadata`; there's no shared layout wrapper for SEO fields beyond `src/app/layout.tsx`.
+The five work-area pages are `ricette-food-cost`, `produzione-magazzino`, `ordini`, `etichette-libro-ingredienti` and `strumenti`. Their shared inventory is `src/data/work-areas.ts`, used by navigation, footer, home catalog, related links and sitemap. The four new routes use `WorkAreaPage`; Ordini retains its own page and historic `#flusso-ordine` anchor. Home, these five areas and `pricing` are the seven sitemap entries.
+
+Other routes: `newsletter`, `instagram` (standalone landing, opts out of `SiteScripts`), `account/billing`, and `billing/success` / `billing/cancel`. They retain their route-specific noindex contracts. Each route exports its own `metadata`.
+
+Decision of 19 October 2026: `/download` and `/aggiornamenti` are retired. Their pages, dedicated download components, changelog data and styles have been removed. Let Next/OpenNext return the existing branded 404, including through `worker.ts`; do not restore a blank edge response, a homepage redirect, release-note maintenance or package links. This supersedes earlier instructions to retain these legacy support pages. Newsletter product news and in-app document update status are unrelated and remain. See `docs/RETIRED_PAGES.md` for the decision and separate Cloudflare download-service guidance; no remote retirement has been performed.
 
 ### Home page composition
-`src/app/page.tsx` composes independent, self-contained section components (`Navbar`, `Hero`, `Features`, `OrdersPreview`, `Warehouse`, `ContactForm`, `FAQ`, `Footer`, plus `NewsletterPopup` and `WhatsAppButton`). Keep new sections in this same pattern: one component per concern, imported and slotted into the JSX composition.
+`src/app/page.tsx` composes independent section components. The current narrative and craft selector are implemented in `Hero` and `WorkflowExplorer`; `Features` contains the expanded catalog, followed by the trial, FAQ and contact sections. `Navbar` and `Footer` provide shared navigation. `NewsletterPopup` is mounted on the home; `WhatsAppButton` is mounted once in the root layout and covers public pages and all three billing routes. It excludes Instagram and unknown/retired routes, and observes the footer contact again after client navigation. Keep section concerns in their existing components.
 
 ### Structured data / SEO contracts
 `src/app/layout.tsx` emits a global `@graph` JSON-LD (WebSite, Organization, SoftwareApplication) that several tests assert against directly (`metadata-contracts.test.ts`, `route-structured-data.test.tsx`, `crawl-contracts.test.tsx`, `orders-seo.test.ts`). When changing metadata, canonical URLs, or structured data, expect and update the corresponding contract test — these are treated as a source of truth for SEO correctness, not incidental snapshots.
 
 ### Design system
-- Color tokens as CSS custom properties in `src/app/globals.css` `:root` — primary is `--primary` (`#4403af`), plus `--primary-light`/`--primary-dark`, semantic `--success`/`--warning`/`--error`, and shadow/surface tokens.
-- Single font: **DM Sans** (`next/font/google`, loaded in `layout.tsx` as `--font-dm-sans`), used for both `--font-sans` and `--font-display`. Tests that render `layout.tsx` or `page.tsx` must mock `next/font/google` (see existing `vi.mock("next/font/google", ...)` in `home-page.test.tsx` / `crawl-contracts.test.tsx`).
-- Tailwind v4 utility-first styling; custom entrance animations (`fadeInUp`, `fadeIn`, `scaleIn`) exposed as `.animate-fade-in-up`, `.animate-fade-in`, `.animate-scale-in`.
+- The approved visual authority is **Traccia**: `design/brandkit/brand.css`, `design/brandkit/preview.html` and the implemented tokens in `src/app/globals.css`. Bosco `#223d32`, avorio `#f5f1e8`, salvia `#b8c7b6`, ambra `#f7b52b`, white. Primary controls use bosco/white; ambra is decorative.
+- Local **Manrope 400/600/700** for body, controls and data; **Fraunces 400** for short headings. Assets and font licences are distributed in `public/brandkit/`. The original logo and Traccia pattern are preserved.
+- `PageMotion` and the existing CSS govern reveals and reduced motion. Work-area flows use three columns for three steps above 1000px; four-step flows use two columns above 700px. Read the shared CSS for the narrower layouts.
+- For visual changes, read `DESIGN.md`: it records the approved Traccia decisions; `.impeccable/design.json` is its derived sidecar. Use `design-taste-frontend` for the design and verification workflow within that identity. Older surface briefs may still describe indigo/DM Sans: treat conflicting instructions as historical. Keep `.impeccable/config.json`'s targeted brandkit exceptions and the original seed in `.taste-skill/direction.json`. Update the guide and sidecar together when an approved visual decision changes.
+- Editorial AI photographs are distinct from product screenshots. Their visible disclosures remain in place. Food Cost, Ordini and Libro ingredienti screenshots are still awaited from the user with demonstration data; the discussion about disclosure is recorded in `.taste-skill/pagine-aree-di-lavoro.md`.
 
 ### Contact form and newsletter flows
 Both follow the same client/API split, escaping HTML server-side before embedding user input in emails:

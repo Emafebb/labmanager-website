@@ -34,45 +34,22 @@ describe("orders page", () => {
     expect(metadata.robots).toBeUndefined();
   });
 
-  it("renders only the approved product story and commercial CTA", () => {
+  it("explains orders, actual weights and payments without inventing live customer data", () => {
     render(<OrdersPage />);
-
     const mainElement = screen.getByRole("main");
     const main = within(mainElement);
-
-    expect(
-      main.getByRole("heading", {
-        level: 1,
-        name: "Gestione ordini e piano di lavoro",
-      }),
-    ).toBeInTheDocument();
-    for (const approvedCapability of [
-      /ordini cliente/i,
-      /ordini interni/i,
-      /produzione collegata/i,
-      /ritiro/i,
-      /consegna/i,
-      /acconti/i,
-      /report operativi/i,
-    ]) {
-      expect(main.getAllByText(approvedCapability).length).toBeGreaterThan(0);
-    }
-    expect(
-      main.getByRole("link", { name: "Scopri i prezzi" }),
-    ).toHaveAttribute("href", "/pricing");
-    expect(
-      main.queryByRole("link", { name: /prova gratuita/i }),
-    ).not.toBeInTheDocument();
-    expect(
-      main.queryByRole("link", { name: "Scarica LabManager" }),
-    ).not.toBeInTheDocument();
-    expect(main.getByRole("link", { name: "Vedi come funziona" })).toHaveAttribute(
-      "href",
-      "#flusso-ordine",
+    expect(main.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Ogni ordine, al suo posto.",
     );
-    expect(mainElement).not.toHaveTextContent(
-      /android|windows|offline|\bpwa\b|notifich|cassa|contabil|fattur|prima nota|export|excel|pdf/i,
+    expect(main.getByRole("table")).toHaveAccessibleName(
+      "Esempio di piano di lavoro, con dati illustrativi",
     );
+    expect(mainElement).toHaveTextContent("Il peso effettivo");
+    expect(mainElement).toHaveTextContent("Acconti e saldi");
+    for (const link of main.getAllByRole("link", { name: "Scopri i prezzi" }))
+      expect(link).toHaveAttribute("href", "/pricing");
+    expect(main.getAllByRole("link", { name: "Prova gratis 14 giorni" })).toHaveLength(2);
+    expect(main.queryByRole("link", { name: /scarica|accedi/i })).not.toBeInTheDocument();
   });
 
   it("exports visible webpage and FAQ data without prohibited commercial schema", () => {
@@ -88,14 +65,10 @@ describe("orders page", () => {
         };
       }>;
     };
-    const faqPage = graph.find(
-      (node) => node["@type"] === "FAQPage",
-    ) as FaqNode | undefined;
+    const faqPage = graph.find((node) => node["@type"] === "FAQPage") as
+      FaqNode | undefined;
 
-    expect(graph.map((node) => node["@type"])).toEqual([
-      "WebPage",
-      "FAQPage",
-    ]);
+    expect(graph.map((node) => node["@type"])).toEqual(["WebPage", "FAQPage"]);
     expect(graph).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -113,12 +86,12 @@ describe("orders page", () => {
     );
 
     const faqSection = container.querySelector(
-      'section[aria-labelledby="orders-faq-heading"]',
+      'section[aria-labelledby="orders-faq"]',
     );
     const visibleFaqs = Array.from(
-      faqSection?.querySelectorAll("article") ?? [],
+      faqSection?.querySelectorAll("details") ?? [],
     ).map((article) => ({
-      name: article.querySelector("h3")?.textContent,
+      name: article.querySelector("summary")?.textContent?.replace(/\+$/, ""),
       acceptedAnswer: {
         "@type": "Answer",
         text: article.querySelector("p")?.textContent,

@@ -92,6 +92,51 @@
         ],
         "createdAt": "2026-10-18T21:00:27.318Z",
         "reason": "Agent: griglia di misurazione reale 12 px sotto i moduli SVG, per mostrarne geometria e rotazione."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-10-19T06:58:22.536Z",
+        "reason": "user confirmed: richiesta riallinea al brandkit Traccia; design/brandkit/brand.css prescrive Manrope e Fraunces. DESIGN.md descrive ancora la precedente identita indaco/DM Sans."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "manrope",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-10-19T06:58:22.747Z",
+        "reason": "user confirmed: richiesta riallinea al brandkit Traccia; design/brandkit/brand.css prescrive Manrope e Fraunces. DESIGN.md descrive ancora la precedente identita indaco/DM Sans."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "fraunces",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-10-19T06:58:22.950Z",
+        "reason": "user confirmed: richiesta riallinea al brandkit Traccia; design/brandkit/brand.css prescrive Manrope e Fraunces. DESIGN.md descrive ancora la precedente identita indaco/DM Sans."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "32px",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-10-19T07:28:46.400Z",
+        "reason": "user confirmed: riallineamento al brandkit Traccia; design/brandkit/preview.html prescrive Fraunces per titoli brevi a partire da 32 px, usati nel popup newsletter richiesto."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(34 61 50 / 55%)",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-10-19T07:28:46.593Z",
+        "reason": "Agent: velo del dialogo nativo derivato dal Bosco #223d32 del brandkit Traccia; separa lo sfondo inerte del popup newsletter richiesto. DESIGN.md descrive ancora la vecchia identita."
       }
     ]
   }

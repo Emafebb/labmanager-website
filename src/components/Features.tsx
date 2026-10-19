@@ -1,100 +1,78 @@
-import { ArrowDownRight } from "lucide-react";
-
-const pillars = [
-  {
-    code: "A",
-    route: "01—02",
-    title: "Ricette e Food Cost",
-    description:
-      "Organizza ricette, ingredienti e semilavorati. Dallo stesso dato calcoli costi, margini e composizione.",
-    outcomes: [
-      "Ingredienti, quantità e rese",
-      "Costo e margine della ricetta",
-      "Confronto tra ricette",
-      "Bilanciamento della composizione",
-    ],
-  },
-  {
-    code: "B",
-    route: "03—04",
-    title: "Produzione ed Etichette",
-    description:
-      "Porta la ricetta nel lavoro quotidiano e prepara etichette coerenti con ciò che produci.",
-    outcomes: [
-      "Registro di produzione",
-      "Allergeni e composizione",
-      "Tabelle nutrizionali",
-      "Etichette e storico",
-    ],
-  },
-] as const;
+import Link from "next/link";
+import { WORK_AREAS } from "@/data/work-areas";
+import { PRODUCT_FEATURES } from "@/data/product-features";
+import {
+  MAGAZZINO_CANONICAL_COPY,
+  MAGAZZINO_CLAIM_ID_ATTRIBUTE,
+} from "@/data/magazzino-capability-matrix";
 
 export default function Features() {
   return (
     <section
       id="funzionalita"
-      className="home-flow-section bg-white py-14 sm:py-16"
+      className="features section-space"
       aria-labelledby="features-heading"
     >
-      <div className="home-flow-section__inner mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="home-flow-section__header grid gap-10 border-b border-gray-200 pb-14 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-          <div>
-            <p className="mb-4 flex items-center gap-3 text-sm font-semibold text-primary">
-              <span className="h-px w-10 bg-primary" aria-hidden="true" />
-              Dal dato al lavoro
-            </p>
-            <h2
-              id="features-heading"
-              className="max-w-xl text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-4xl"
-            >
-              Una ricetta, due catene sempre allineate
-            </h2>
-          </div>
-          <p className="max-w-2xl text-lg leading-relaxed text-gray-600 lg:justify-self-end">
-            LabManager tiene insieme la parte tecnica e quella economica:
-            quando una ricetta cambia, il lavoro che ne deriva resta nello
-            stesso percorso.
-          </p>
-        </div>
-
-        <div className="home-pillar-list">
-          {pillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="home-pillar"
-              data-route-code={pillar.code}
-            >
-              <div className="home-pillar__station" aria-hidden="true">
-                <span>{pillar.route}</span>
-              </div>
-
-              <div>
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-primary">
-                  Passaggi {pillar.route}
-                </p>
-                <h3 className="text-2xl font-bold tracking-[-0.02em] text-foreground sm:text-3xl">
-                  {pillar.title}
-                </h3>
-                <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
-                  {pillar.description}
-                </p>
-              </div>
-
-              <ul className="home-pillar__outcomes">
-                {pillar.outcomes.map((outcome) => (
-                  <li key={outcome}>
-                    <ArrowDownRight
-                      size={17}
-                      className="text-primary"
-                      aria-hidden="true"
-                    />
-                    <span>{outcome}</span>
-                  </li>
+      <div className="features__intro" data-reveal>
+        <h2 id="features-heading">
+          Ogni dettaglio <br />
+          conta.
+        </h2>
+        <p>
+          Il peso di un ingrediente. Il costo di una porzione. Un ordine da
+          consegnare. LabManager tiene insieme il lavoro tecnico e la gestione
+          dell’attività.
+        </p>
+        <Link href="/pricing" className="text-link">
+          Confronta Light e Plus
+        </Link>
+      </div>
+      <div className="features__index">
+        {PRODUCT_FEATURES.map((feature) => (
+          <details
+            key={feature.id}
+            id={feature.id}
+            className="feature"
+            data-reveal
+          >
+            <summary>
+              <span>{feature.title}</span>
+              <span className="feature__plus" aria-hidden="true">
+                +
+              </span>
+            </summary>
+            <div className="feature__body">
+              <p>{feature.description}</p>
+              <ul>
+                {feature.items.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
-          ))}
-        </div>
+              {feature.id === "magazzino" && (
+                <p data-magazzino-claim-ids={MAGAZZINO_CLAIM_ID_ATTRIBUTE}>
+                  {MAGAZZINO_CANONICAL_COPY}
+                </p>
+              )}
+              {WORK_AREAS.filter((area) =>
+                area.featureIds.some((id) => id === feature.id),
+              ).map((area) => (
+                <Link
+                  href={area.href}
+                  className="text-link feature__area-link"
+                  key={area.href}
+                >
+                  Approfondisci {area.title}
+                </Link>
+              ))}
+              {feature.id === "libro-ingredienti" && (
+                <p>
+                  Light include assortimenti e consultazione. Plus aggiunge
+                  generazione e storico PDF.
+                </p>
+              )}
+            </div>
+          </details>
+        ))}
       </div>
     </section>
   );

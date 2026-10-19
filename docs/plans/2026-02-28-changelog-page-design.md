@@ -1,6 +1,6 @@
 # Changelog Page Design — `/aggiornamenti`
 
-> **Stato:** Approvato | **Data:** 2026-02-28
+> **Stato:** Superato il 19 ottobre 2026 dalla [rimozione delle pagine Aggiornamenti e Download](../RETIRED_PAGES.md). Il seguito è documentazione storica: non ripristinare pagina, dati o manutenzione delle release da questo piano. **Data originaria:** 2026-02-28.
 
 ---
 

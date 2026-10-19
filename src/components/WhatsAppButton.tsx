@@ -1,18 +1,52 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { WHATSAPP_URL } from "@/data/support-links";
+import { WORK_AREAS } from "@/data/work-areas";
+
+const SUPPORTED_ROUTES = new Set([
+  "/",
+  "/pricing",
+  "/newsletter",
+  ...WORK_AREAS.map((area) => area.href),
+  "/billing/success",
+  "/billing/cancel",
+  "/account/billing",
+]);
 
 export default function WhatsAppButton() {
+  const pathname = usePathname();
+  const enabled = SUPPORTED_ROUTES.has(pathname);
+  const [footerContactVisible, setFooterContactVisible] = useState(false);
+
+  useEffect(() => {
+    if (!enabled) return;
+    const contact = document.querySelector(
+      `.site-footer a[href="${WHATSAPP_URL}"]`,
+    );
+    if (!contact || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setFooterContactVisible(entry.isIntersecting);
+    });
+    observer.observe(contact);
+    return () => observer.disconnect();
+  }, [pathname, enabled]);
+
+  if (!enabled) return null;
+
   return (
     <a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contattaci su WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#1ebe57] hover:scale-105 transition-all duration-200"
+      className="whatsapp-float"
+      aria-label="Scrivici su WhatsApp"
+      hidden={footerContactVisible}
     >
-      <MessageCircle size={28} fill="currentColor" />
+      <MessageCircle size={22} aria-hidden="true" />
+      <span><span className="whatsapp-float__prefix">Scrivici su </span>WhatsApp</span>
     </a>
   );
 }

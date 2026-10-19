@@ -1,14 +1,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { structuredDataGraph } from "@/app/layout";
 import sitemap from "@/app/sitemap";
-
-vi.mock("next/font/google", () => ({
-  DM_Sans: () => ({
-    variable: "font-dm-sans",
-  }),
-}));
 
 type JsonLdNode = {
   "@id"?: string;

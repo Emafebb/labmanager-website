@@ -36,12 +36,11 @@ describe("billing status pages", () => {
       screen.getByRole("navigation", { name: "Navigazione principale" }),
     );
 
-    expect(main.getByText("Pagamento completato")).toBeInTheDocument();
     expect(
-      main.getByRole("heading", { name: "Pagamento ricevuto correttamente" }),
+      main.getByRole("heading", { name: "Pagamento ricevuto" }),
     ).toBeInTheDocument();
     expect(
-      main.getByText("Goditi LabManager."),
+      main.getByText("LabManager sta aggiornando il tuo abbonamento."),
     ).toBeInTheDocument();
     expect(
       main.queryByRole("link", { name: "Torna a LabManager" }),
@@ -74,13 +73,12 @@ describe("billing status pages", () => {
       screen.getByRole("navigation", { name: "Navigazione principale" }),
     );
 
-    expect(main.getByText("Checkout interrotto")).toBeInTheDocument();
     expect(
       main.getByRole("heading", { name: "Operazione annullata" }),
     ).toBeInTheDocument();
     expect(
       main.getByText(
-        "Hai interrotto il checkout prima del completamento. Nessuna modifica è stata confermata al tuo abbonamento.",
+        "Il pagamento non è stato completato. Nessuna modifica è stata confermata al tuo abbonamento.",
       ),
     ).toBeInTheDocument();
     expect(
@@ -126,18 +124,17 @@ describe("billing status pages", () => {
       screen.getByRole("navigation", { name: "Navigazione principale" }),
     );
 
-    expect(main.getByText("Portale abbonamento")).toBeInTheDocument();
     expect(
-      main.getByRole("heading", { name: "Gestione abbonamento aggiornata" }),
+      main.getByRole("heading", { name: "Abbonamento aggiornato" }),
     ).toBeInTheDocument();
     expect(
       main.getByText(
-        "Le modifiche effettuate nel portale Stripe sono state registrate correttamente.",
+        "LabManager applicherà automaticamente le modifiche salvate nel portale abbonamento.",
       ),
     ).toBeInTheDocument();
     expect(
       main.getByText(
-        "LabManager si riallineerà automaticamente alle modifiche del tuo abbonamento. Se hai richiesto una cancellazione a fine periodo, l'accesso resterà attivo fino alla scadenza prevista.",
+        "Se hai richiesto una cancellazione a fine periodo, l'accesso resterà attivo fino alla scadenza prevista.",
       ),
     ).toBeInTheDocument();
     expect(

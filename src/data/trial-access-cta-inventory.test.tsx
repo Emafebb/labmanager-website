@@ -24,13 +24,13 @@ function expectSameTabLink(link: HTMLElement, destination: string) {
 }
 
 describe("commercial CTA inventory", () => {
-  it("contains exactly the five approved actions and their opening behavior", () => {
+  it("contains the six approved actions and their opening behavior", () => {
     expect(TRIAL_ACCESS_CTA_INVENTORY).toEqual([
       {
         id: "home-trial",
         route: "/",
         placements: ["home"],
-        label: "Registrati per una prova gratuita",
+        label: "Prova gratis 14 giorni",
         intent: "start-trial",
         destination: "https://app.labmanagergestionale.com",
         openingBehavior: "same-tab",
@@ -63,6 +63,15 @@ describe("commercial CTA inventory", () => {
         openingBehavior: "same-tab",
       },
       {
+        id: "work-area-trial",
+        route: "work-areas",
+        placements: ["work-area"],
+        label: "Prova gratis 14 giorni",
+        intent: "start-trial",
+        destination: "https://app.labmanagergestionale.com",
+        openingBehavior: "same-tab",
+      },
+      {
         id: "navbar-access",
         route: "all-routes",
         placements: ["navbar-desktop", "navbar-mobile"],
@@ -90,16 +99,14 @@ describe("commercial CTA inventory", () => {
     expect(screen.queryByText("Richiedi una prova gratuita")).toBeNull();
   });
 
-  it("renders only the approved commercial action on Orders", () => {
+  it("renders pricing and the approved work-area trial on Orders", () => {
     const cta = getInventoryItem("orders-pricing");
     render(<OrdersPage />);
 
     const main = within(screen.getByRole("main"));
-    expectSameTabLink(
-      main.getByRole("link", { name: cta.label }),
-      cta.destination,
-    );
-    expect(main.queryByRole("link", { name: /prova|accedi/i })).toBeNull();
+    for (const link of main.getAllByRole("link", { name: cta.label })) expectSameTabLink(link, cta.destination);
+    for (const link of main.getAllByRole("link", { name: "Prova gratis 14 giorni" })) expectSameTabLink(link, TRIAL_ACCESS_APP_HREF);
+    expect(main.queryByRole("link", { name: /accedi/i })).toBeNull();
     expect(
       main.queryByRole("link", { name: /download|scarica/i }),
     ).toBeNull();

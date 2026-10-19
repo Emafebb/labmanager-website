@@ -6,8 +6,8 @@ import { LEGALBLINK_COOKIE_SETTINGS_TRIGGER_ID } from "@/lib/legalblink";
 
 const TABNAV_WIDGET_CONFIG = {
   language: "it",
-  color: "#4403af",
-  buttonColor: "#4403af",
+  color: "#223d32",
+  buttonColor: "#223d32",
   buttonSize: "small",
   widgetSize: "small",
   widgetLocation: "right",
@@ -21,7 +21,7 @@ export const GTM_CONTAINER_ID = "GTM-TCZR8HQP";
 export const EXTERNAL_WIDGET_THEME_SCRIPT = `
 (function () {
   var legalBlinkCss = [
-    ':host{--primary:#4403af!important;--primary-foreground:#fff!important;--ring:#d1d5db!important;--border:#e5e7eb!important;--input:#e5e7eb!important;}',
+    ':host{--primary:#223d32!important;--primary-foreground:#fff!important;--ring:#d1d5db!important;--border:#e5e7eb!important;--input:#e5e7eb!important;}',
     'button,[role="button"]{box-shadow:none!important;min-width:44px!important;min-height:44px!important;}',
     'button:focus-visible,[role="button"]:focus-visible{outline:2px solid #d1d5db!important;outline-offset:2px!important;box-shadow:none!important;}'
   ].join('');
@@ -46,7 +46,7 @@ export const EXTERNAL_WIDGET_THEME_SCRIPT = `
   function patchLegalBlink() {
     var banner = document.querySelector('lb-cookie-banner');
     if (!banner) return;
-    banner.style.setProperty('--primary', '#4403af', 'important');
+    banner.style.setProperty('--primary', '#223d32', 'important');
     banner.style.setProperty('--primary-foreground', '#ffffff', 'important');
     banner.style.setProperty('--ring', '#d1d5db', 'important');
     banner.style.setProperty('--border', '#e5e7eb', 'important');

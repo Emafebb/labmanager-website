@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   metadata as rootMetadata,
   structuredDataGraph,
@@ -22,14 +22,10 @@ import {
   MAGAZZINO_CLAIM_IDS,
 } from "@/data/magazzino-capability-matrix";
 
-vi.mock("next/font/google", () => ({
-  DM_Sans: () => ({ variable: "font-dm-sans" }),
-}));
-
 const BASE_URL = "https://labmanagergestionale.com";
 const HOME_TITLE = "Gestionale per laboratori alimentari | LabManager";
 const HOME_DESCRIPTION =
-  "Gestionale Light e Plus per pasticcerie, panifici, gelaterie, gastronomie, ristoranti e chef: ricette, food cost, produzione, magazzino e ordini.";
+  "Il gestionale per laboratori artigianali alimentari: ricette, bilanciamento, food cost, menu, ordini, produzione, lotti e controllo economico.";
 
 const FORBIDDEN_PUBLIC_CLAIMS =
   /android|windows|offline|\bpwa\b|sincronizz|compatibilit[aà] per dispositivo/i;
@@ -233,7 +229,7 @@ describe("structured data contracts", () => {
       expect(node?.description).toMatch(/Ordini e Piano di Lavoro/);
     }
 
-    expect(softwareApplication?.featureList).toHaveLength(4);
+    expect(softwareApplication?.featureList).toEqual(expect.arrayContaining([expect.stringContaining("Menu:"), expect.stringContaining("Controllo economico:")]));
     expect(softwareApplication?.featureList).toContain(
       MAGAZZINO_CANONICAL_COPY,
     );
@@ -314,9 +310,9 @@ describe("structured data contracts", () => {
 
     expect(softwareApplication?.screenshot).toEqual([
       expect.objectContaining({
-        name: "LabManager: vista ricette e Food Cost",
+        name: "LabManager: menu principale",
         description:
-          "Schermata di LabManager con ricette, ingredienti, costi e margini.",
+          "Schermata di una versione precedente del menu principale di LabManager.",
       }),
       expect.objectContaining({
         name: "LabManager: vista compatta del lavoro",

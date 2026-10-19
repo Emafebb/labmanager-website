@@ -64,12 +64,16 @@ function buildPage(title: string, message: string): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — LabManager</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #f5f5f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-    .card { background: white; border-radius: 12px; padding: 48px 40px; max-width: 420px; text-align: center; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-    h1 { font-size: 22px; color: #1e1b18; margin: 0 0 12px; }
-    p { font-size: 14px; color: #6a6258; line-height: 1.6; margin: 0 0 24px; }
-    a { display: inline-block; color: #4403af; font-size: 13px; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    @font-face { font-family: Manrope; src: url('/brandkit/fonts/manrope-400.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: Fraunces; src: url('/brandkit/fonts/fraunces-400.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+    * { box-sizing: border-box; }
+    body { font: 400 16px/1.6 Manrope, system-ui, sans-serif; color: #223d32; background: #f5f1e8; display: flex; align-items: center; justify-content: center; min-height: 100svh; margin: 0; padding: 24px; }
+    .card { background: #ffffff; border-radius: 12px; padding: 40px 28px; width: min(100%, 480px); text-align: center; }
+    h1 { font: 400 32px/1.08 Fraunces, Georgia, serif; letter-spacing: -.035em; margin: 0 0 24px; }
+    p { margin: 0 0 24px; }
+    a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-underline-offset: 4px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid #223d32; outline-offset: 5px; }
   </style>
 </head>
 <body>

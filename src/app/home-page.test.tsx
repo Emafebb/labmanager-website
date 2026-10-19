@@ -1,137 +1,95 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { createElement } from "react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import Home from "@/app/page";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
-import Hero from "@/components/Hero";
+import TrialCallout from "@/components/TrialCallout";
+import { PRODUCT_FEATURES } from "@/data/product-features";
 import { MAGAZZINO_CANONICAL_COPY } from "@/data/magazzino-capability-matrix";
-
-vi.mock("next/image", () => ({
-  default: ({
-    alt,
-    src,
-    ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement> & { src?: string }) =>
-    createElement("img", { alt, src, ...props }),
-}));
-
-vi.mock("@/components/NewsletterPopup", () => ({
-  default: () => null,
-}));
-
-const HERO_AUDIENCE = "Il gestionale per laboratori alimentari";
-const HERO_TITLE =
-  "Dalla ricetta all'ordine, tutto il laboratorio sotto controllo";
-const HERO_COPY =
-  "Calcola food cost e margini, organizza produzione, etichette, magazzino e ordini in un unico flusso di lavoro.";
 const CANCELLATION_COPY =
   "Puoi disdire quando vuoi; in caso di cancellazione a fine periodo, l'accesso resta attivo fino alla scadenza prevista.";
 
-describe("home repositioning", () => {
-  it("renders the approved hero, actions, four pillars, and orders landing link", () => {
+describe("editorial product site", () => {
+  it("contains the expanded product catalog, honest imagery and real trial links", () => {
     const { container } = render(<Home />);
-
-    const main = within(screen.getByRole("main"));
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Dalla ricetta al banco.",
+    );
+    for (const feature of PRODUCT_FEATURES)
+      expect(container.querySelector(`#${feature.id}`)).toHaveTextContent(
+        feature.title,
+      );
+    expect(container.querySelector("#libro-ingredienti")).not.toHaveTextContent(
+      "In arrivo",
+    );
     expect(
-      main.getByRole("heading", { level: 1, name: HERO_TITLE }),
+      container.querySelectorAll('main img[src^="/images/editorial/"]'),
+    ).toHaveLength(4);
+    expect(
+      screen.getByText(/illustrazioni editoriali generate con AI/),
     ).toBeInTheDocument();
-    expect(main.getByText(HERO_AUDIENCE)).toBeInTheDocument();
-    expect(main.getByText(HERO_COPY)).toBeInTheDocument();
-    const trialLinks = main.getAllByRole("link", {
-      name: "Registrati per una prova gratuita",
-    });
-    expect(trialLinks).toHaveLength(2);
-    for (const trialLink of trialLinks) {
-      expect(trialLink).toHaveAttribute(
+    for (const link of screen.getAllByRole("link", {
+      name: "Prova gratis 14 giorni",
+    })) {
+      expect(link).toHaveAttribute(
         "href",
         "https://app.labmanagergestionale.com",
       );
+      expect(link).not.toHaveAttribute("target");
     }
-    expect(
-      main.getByRole("link", { name: "Scopri le funzionalità" }),
-    ).toHaveAttribute("href", "/#funzionalita");
-
-    for (const pillar of [
-      "Ricette e Food Cost",
-      "Produzione ed Etichette",
-      "Magazzino",
-      "Ordini e Piano di Lavoro",
-    ]) {
-      expect(main.getByRole("heading", { name: pillar })).toBeInTheDocument();
-    }
-    expect(
-      main.getByRole("link", { name: "Scopri il modulo ordini" }),
-    ).toHaveAttribute("href", "/ordini");
-    expect(
-      main.getByRole("heading", {
-        level: 2,
-        name: "Porta ordine nel lavoro di ogni giorno",
-      }),
-    ).toBeInTheDocument();
-    expect(container.querySelector(".home-trial__route")).toBeNull();
-    expect(main.getByText("Passaggi 01—02")).toBeInTheDocument();
-    expect(main.getByText("Passaggi 03—04")).toBeInTheDocument();
-    expect(main.getByText("Passaggio 05 · Controllo scorte")).toBeInTheDocument();
-    expect(main.getByText("Passaggio 06 · Piano di lavoro")).toBeInTheDocument();
-    expect(
-      document.querySelectorAll(".home-route-section__node svg"),
-    ).toHaveLength(2);
-    expect(main.queryByText(/Stazion/i)).not.toBeInTheDocument();
-    expect(
-      screen.getByLabelText(
-        "Fatto per chi lavora ogni giorno in laboratorio",
-      ),
-    ).toBeInTheDocument();
-    expect(document.body).not.toHaveTextContent("per i pasticceri");
-  });
-
-  it("uses a code-native flow map without app screenshots or repeated warehouse copy", () => {
-    const { container } = render(<Hero />);
-
-    expect(container).not.toHaveTextContent(MAGAZZINO_CANONICAL_COPY);
-    expect(
-      container.querySelector("[data-magazzino-claim-ids]"),
-    ).toBeNull();
-    expect(container.querySelector("[data-flow-map]")).not.toBeNull();
-    expect(container.querySelectorAll("[data-flow-map] button")).toHaveLength(6);
-    expect(container.querySelector("picture")).toBeNull();
-    expect(container.querySelector("img")).toBeNull();
-    expect(container.textContent).not.toMatch(
-      /android|windows|offline|cloud|compatibil/i,
+    expect(screen.getByRole("main")).not.toHaveTextContent(
+      /tutto offline|conformità garantita|QR pubblico/,
     );
   });
-
-  it("lets keyboard and pointer users inspect each station in the flow map", async () => {
+  it("filters the example by craft and opens the relevant product detail", async () => {
     const user = userEvent.setup();
-    const { container } = render(<Hero />);
-    const flowMap = within(
-      container.querySelector("[data-flow-map]") as HTMLElement,
-    );
-    const warehouseStation = flowMap.getByRole("button", {
-      name: /Magazzino/i,
-    });
-
-    await user.click(warehouseStation);
-
-    expect(warehouseStation).toHaveAttribute("aria-pressed", "true");
-    expect(
-      within(flowMap.getByRole("status")).getByText(
-        /Ricevimenti, giacenze, FIFO e scadenze restano dentro lo stesso flusso/i,
-      )
-    ).toBeInTheDocument();
-  });
-
-  it("removes legacy sections and prohibited acquisition claims from the marketing DOM", () => {
     const { container } = render(<Home />);
-    const main = screen.getByRole("main");
-
-    expect(container.querySelector("#piattaforme")).toBeNull();
-    expect(container.querySelector("#perche-labmanager")).toBeNull();
-    expect(main).not.toHaveTextContent(
-      /android|windows|offline|\bpwa\b|ristorant|2 sessioni attive simultanee/i,
+    await user.click(screen.getByRole("button", { name: "Gelateria" }));
+    expect(screen.getByRole("button", { name: "Gelateria" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
     );
+    expect(container.querySelector("#workflow-gelateria")).toBeVisible();
+    expect(container.querySelector("#workflow-panificio")).not.toBeVisible();
+    const links = within(
+      container.querySelector("#workflow-gelateria") as HTMLElement,
+    ).getAllByRole("link", { name: "Bilancia" });
+    await user.click(links[0]);
+    expect(container.querySelector("#bilanciamento")).toHaveAttribute("open");
+    await user.click(screen.getByRole("button", { name: "Mostra tutti" }));
+    expect(container.querySelector("#workflow-panificio")).not.toHaveAttribute(
+      "hidden",
+    );
+  });
+  it("offers a restaurant workflow focused on dish costs and menus", async () => {
+    const user = userEvent.setup();
+    const { container } = render(<Home />);
+    expect(screen.queryByRole("button", { name: "Gastronomia" })).toBeNull();
+    await user.click(screen.getByRole("button", { name: "Ristorazione" }));
+    const workflow = container.querySelector("#workflow-ristorazione")!;
+    expect(workflow).toBeVisible();
+    expect(workflow).toHaveTextContent(/costo per porzione/i);
+    expect(workflow).toHaveTextContent(/menu/i);
+    expect(within(workflow as HTMLElement).getByRole("link", { name: "Sei un consulente?" })).toHaveAttribute("href", "/ricette-food-cost#recipe-menu-heading");
+    expect(workflow).toHaveTextContent(/menu dei tuoi clienti/);
+    const costLink = within(workflow as HTMLElement).getByRole("link", { name: "Calcola il Food Cost" });
+    await user.click(costLink);
+    expect(container.querySelector("#food-cost")).toHaveAttribute("open");
+    await user.click(screen.getByRole("button", { name: "Mostra tutti" }));
+    expect(container.querySelector("#workflow-panificio")).not.toHaveAttribute("hidden");
+  });
+  it("shows monthly equivalents with explicit annual billing and totals", () => {
+    const { container } = render(<TrialCallout />);
+    const plans = container.querySelectorAll(".trial__plan");
+    expect(plans[0]).toHaveTextContent("€16,67/mese");
+    expect(plans[0]).toHaveTextContent("Fatturati €200/anno.");
+    expect(plans[1]).toHaveTextContent("€40/mese");
+    expect(plans[1]).toHaveTextContent("Fatturati €480/anno.");
+    for (const plan of plans) {
+      expect(plan).toHaveTextContent("Con pagamento annuale.");
+    }
+    expect(container).toHaveTextContent("Disponibili anche con pagamento mensile.");
   });
 });
 
@@ -190,7 +148,7 @@ describe("home contact surface", () => {
     expect(
       screen.getByRole("heading", {
         level: 2,
-        name: "Hai domande? Parla con noi",
+        name: "Parliamo del tuo lavoro.",
       }),
     ).toBeInTheDocument();
     expect(container.querySelector("form")).not.toBeNull();

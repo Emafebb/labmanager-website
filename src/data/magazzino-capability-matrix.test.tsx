@@ -5,23 +5,17 @@ import userEvent from "@testing-library/user-event";
 import { createElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { structuredDataGraph } from "@/app/layout";
-import AggiornamentiPage from "@/app/aggiornamenti/page";
 import PricingPage, {
   pricingMagazzinoFeature,
 } from "@/app/pricing/page";
 import FAQ from "@/components/FAQ";
 import Warehouse from "@/components/Warehouse";
-import { changelog } from "@/data/changelog";
 import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CAPABILITIES,
   MAGAZZINO_CLAIM_IDS,
   MAGAZZINO_REQUIRED_SURFACES,
 } from "@/data/magazzino-capability-matrix";
-
-vi.mock("next/font/google", () => ({
-  DM_Sans: () => ({ variable: "font-dm-sans" }),
-}));
 
 vi.mock("next/image", () => ({
   default: ({
@@ -51,7 +45,6 @@ describe("Magazzino capability matrix v1", () => {
       "warehouse",
       "faq",
       "pricing",
-      "changelog",
       "llms",
       "software-application",
     ]);
@@ -123,21 +116,7 @@ describe("Magazzino capability matrix v1", () => {
     );
   });
 
-  it("maps changelog, llms.txt and SoftwareApplication data to the matrix", () => {
-    const mappedReleaseNotes = changelog.flatMap((entry) =>
-      entry.sections.filter((section) => section.magazzinoClaimIds),
-    );
-    expect(mappedReleaseNotes).toHaveLength(1);
-    expect(mappedReleaseNotes[0]).toMatchObject({
-      items: [MAGAZZINO_CANONICAL_COPY],
-      magazzinoClaimIds: EXPECTED_IDS,
-    });
-    const releaseNotes = render(<AggiornamentiPage />);
-    expect(
-      releaseNotes.container.querySelector("[data-magazzino-claim-ids]"),
-    ).toHaveAttribute("data-magazzino-claim-ids", claimIdAttribute);
-    releaseNotes.unmount();
-
+  it("maps llms.txt and SoftwareApplication data to the matrix", () => {
     const llms = readFileSync(join(process.cwd(), "public", "llms.txt"), "utf8");
     expect(llms).toContain(MAGAZZINO_CANONICAL_COPY);
     for (const id of EXPECTED_IDS) expect(llms).toContain(id);

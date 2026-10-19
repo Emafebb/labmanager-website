@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" color="#223D32">
+  <title>Traccia — ripetizione alternata</title>
+  <desc>Modulo 96 su celle 120, margine 12, tratto 2. Rotazione alternata di 180 gradi su righe e colonne; periodo della ripetizione 240 per 240.</desc>
+  <defs>
+    <g id="traccia-modulo" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt">
+      <path d="M12 96V80A36 36 0 0 1 48 44A12 12 0 0 0 60 32V0"/>
+      <path d="M24 96V80A24 24 0 0 1 48 56A24 24 0 0 0 72 32V0"/>
+      <path d="M36 96V80A12 12 0 0 1 48 68A36 36 0 0 0 84 32V0"/>
+    </g>
+    <pattern id="traccia" width="240" height="240" patternUnits="userSpaceOnUse">
+      <use href="#traccia-modulo" transform="translate(12 12)"/>
+      <use href="#traccia-modulo" transform="translate(132 12) rotate(180 48 48)"/>
+      <use href="#traccia-modulo" transform="translate(12 132) rotate(180 48 48)"/>
+      <use href="#traccia-modulo" transform="translate(132 132)"/>
+    </pattern>
+  </defs>
+  <path fill="url(#traccia)" d="M0 0h480v360H0z"/>
+</svg>

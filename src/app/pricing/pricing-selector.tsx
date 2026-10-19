@@ -1,15 +1,7 @@
 "use client";
 
-import { Fragment, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Boxes,
-  Check,
-  Minus,
-  Scale,
-} from "lucide-react";
 import {
   MAGAZZINO_CANONICAL_COPY,
   MAGAZZINO_CLAIM_IDS,
@@ -31,14 +23,12 @@ import {
   getCommercialOffer,
 } from "@/lib/pricing";
 
-const pricingTrialCta = getCommercialCta("pricing-trial");
-
+const trial = getCommercialCta("pricing-trial");
 export const pricingMagazzinoFeature = {
   summary: MAGAZZINO_CANONICAL_COPY,
   claimIds: MAGAZZINO_CLAIM_IDS,
 };
-
-const CARD_FEATURE_IDS: Record<CommercialTier, readonly string[]> = {
+const PLAN_FEATURES: Record<CommercialTier, readonly string[]> = {
   Light: [
     "ricette_archivio",
     "food_cost_ricetta",
@@ -55,16 +45,7 @@ const CARD_FEATURE_IDS: Record<CommercialTier, readonly string[]> = {
     "magazzino_ddt",
   ],
 };
-
-const CARD_TAGLINES: Record<CommercialTier, string> = {
-  Light: "Per chi vuole ricette, food cost ed etichette sotto controllo.",
-  Plus: "Per il laboratorio che gestisce produzione, ordini e magazzino.",
-};
-
-const COMPARISON_GROUPS: readonly {
-  label: string;
-  ids: readonly string[];
-}[] = [
+const GROUPS = [
   {
     label: "Progettazione e ricette",
     ids: [
@@ -98,551 +79,277 @@ const COMPARISON_GROUPS: readonly {
     ],
   },
 ];
-
-const PLUS_ONLY_IDS = CARD_FEATURE_IDS.Plus;
-
-function annualSavingsMinor(tier: CommercialTier) {
-  const monthly = getCommercialOffer(tier, "mensile");
-  const annual = getCommercialOffer(tier, "annuale");
-  return monthly.prezzo.importoMinore * 12 - annual.prezzo.importoMinore;
-}
-
-/** Sconto annuale massimo tra i piani, arrotondato per difetto: il badge non
- *  deve mai promettere più di quanto il manifesto commerciale conceda. */
-function maxAnnualDiscountPercent() {
-  return Math.max(
-    ...COMMERCIAL_MANIFEST.tier.map((tier) => {
-      const yearOfMonthly =
-        getCommercialOffer(tier, "mensile").prezzo.importoMinore * 12;
-      return Math.floor((annualSavingsMinor(tier) / yearOfMonthly) * 100);
-    }),
+function savings(tier: CommercialTier) {
+  return (
+    getCommercialOffer(tier, "mensile").prezzo.importoMinore * 12 -
+    getCommercialOffer(tier, "annuale").prezzo.importoMinore
   );
 }
-
-function Inclusion({ included }: { included: boolean }) {
-  return included ? (
-    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
-      <Check size={14} strokeWidth={3} className="text-primary" aria-hidden="true" />
-      <span className="sr-only">Incluso</span>
-    </span>
-  ) : (
-    <span className="inline-flex h-6 w-6 items-center justify-center text-gray-500">
-      <Minus size={16} aria-hidden="true" />
-      <span className="sr-only">Non incluso</span>
-    </span>
-  );
-}
-
-function ComparisonCell({
-  tier,
-  children,
-  valueClassName = "",
+function ComparisonRow({
+  name,
+  values,
 }: {
-  tier: CommercialTier;
-  children: ReactNode;
-  valueClassName?: string;
+  name: string;
+  values: ReactNode[];
 }) {
   return (
-    <td
-      className={`flex min-w-0 flex-col px-4 pb-4 pt-1 text-left sm:table-cell sm:px-6 sm:py-3 sm:text-center ${
-        tier === "Plus" ? "bg-primary/5" : ""
-      }`}
-    >
-      <span className="text-[0.6875rem] font-bold uppercase tracking-wider text-gray-500 sm:hidden">
-        {tier}
-      </span>
-      <span className={`mt-1 block min-w-0 sm:mt-0 ${valueClassName}`}>
-        {children}
-      </span>
-    </td>
-  );
-}
-
-function PlanCard({
-  tier,
-  periodicita,
-}: {
-  tier: CommercialTier;
-  periodicita: BillingPeriodicity;
-}) {
-  const offer = getCommercialOffer(tier, periodicita);
-  const level = getCommercialLevel(tier);
-  const isPlus = tier === "Plus";
-  const isAnnual = periodicita === "annuale";
-  const TierIcon = isPlus ? Boxes : Scale;
-
-  return (
-    <article
-      data-pricing-plan={tier.toLowerCase()}
-      data-periodicita={periodicita}
-      className={`relative flex flex-col rounded-3xl border bg-white p-7 sm:p-9 ${
-        isPlus
-          ? "border-primary/25 shadow-[0_8px_24px_rgba(0,0,0,0.08)] lg:-my-4"
-          : "border-gray-200 shadow-sm"
-      }`}
-    >
-      {/* Requisito 46 della spec 0009: la card Plus porta il badge
-          "Consigliato". È una raccomandazione del venditore, non una prova
-          sociale di terzi, che il sito non potrebbe sostanziare. */}
-      {isPlus ? (
-        <p className="absolute -top-3.5 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
-          <BadgeCheck size={13} aria-hidden="true" /> Consigliato
-        </p>
-      ) : null}
-
-      <div className="flex items-center gap-3">
-        <span
-          className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10"
-          aria-hidden="true"
-        >
-          <TierIcon size={22} className="text-primary" />
-        </span>
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
-            LabManager
-          </p>
-          <h3 className="text-2xl font-bold">{tier}</h3>
-        </div>
-      </div>
-
-      <p className="mt-4 text-base leading-relaxed text-gray-600">
-        {CARD_TAGLINES[tier]}
-      </p>
-
-      <div className="mt-6">
-        <p className="flex items-end gap-2">
-          <span className="text-5xl font-bold tracking-tight">
-            {isAnnual
-              ? formatCommercialPrice(
-                  Math.round(offer.prezzo.importoMinore / 12),
-                )
-              : formatCommercialPrice(offer.prezzo.importoMinore)}
-          </span>
-          <span className="pb-1.5 text-sm font-medium text-gray-600">
-            /mese
-          </span>
-        </p>
-        <p className="mt-2 text-sm text-gray-600">
-          {isAnnual ? (
-            <>
-              Fatturati {formatOfferPrice(offer)} ·{" "}
-              <span className="font-semibold text-gray-900">
-                risparmi {formatCommercialPrice(annualSavingsMinor(tier))}
-              </span>
-            </>
-          ) : (
-            "Fatturazione mensile · nessun costo di attivazione"
-          )}
-        </p>
-      </div>
-
-      <div className="my-7 border-t border-gray-200" />
-
-      {isPlus ? (
-        <p className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary">
-          <BadgeCheck size={13} aria-hidden="true" /> Tutto di Light, più
-        </p>
-      ) : null}
-
-      <ul className="flex-1 space-y-3 text-base">
-        {CARD_FEATURE_IDS[tier].map((id) => (
-          <li key={id} className="flex items-start gap-2.5">
-            <span
-              className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10"
-              aria-hidden="true"
-            >
-              <Check size={12} strokeWidth={3.5} className="text-primary" />
-            </span>
-            <span className="text-gray-700">
-              {getCommercialCapability(id).nome}
-            </span>
-          </li>
-        ))}
-        <li className="flex items-start gap-2.5 text-gray-600">
-          <span
-            className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center"
-            aria-hidden="true"
-          >
-            <Check size={14} strokeWidth={3} />
-          </span>
-          <span>
-            {level.sessioniSimultanee} sessioni attive simultanee ·{" "}
-            {describeOfferSupport(offer)}
-          </span>
-        </li>
-      </ul>
-
-      <a
-        href={pricingTrialCta.destination}
-        data-registration-cta
-        className={`group touch-target mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-base font-bold transition-all duration-200 ${
-          isPlus
-            ? "bg-primary text-white hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
-            : "border border-gray-200 bg-white text-gray-700 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md"
-        }`}
-      >
-        {pricingTrialCta.label}
-        <ArrowRight
-          size={18}
-          className="transition-transform duration-200 group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </a>
-      <p className="mt-4 text-center text-sm leading-relaxed text-gray-600">
-        {TRIAL_EXPLANATION}
-      </p>
-      <p className="mt-2 text-center text-xs text-gray-600">
-        Senza carta. Il pagamento si gestisce solo nell&apos;app dopo la
-        registrazione.
-      </p>
-    </article>
+    <tr role="row">
+      <th role="rowheader" scope="row">{name}</th>
+      {values.map((value, index) => (
+        <td key={index} role="cell" data-plan={COMMERCIAL_MANIFEST.tier[index]}>{value}</td>
+      ))}
+    </tr>
   );
 }
 
 export default function PricingSelector() {
-  const [periodicita, setPeriodicita] =
-    useState<BillingPeriodicity>("annuale");
-  const discount = maxAnnualDiscountPercent();
-
+  const [periodicita, setPeriodicita] = useState<BillingPeriodicity>("annuale");
   const liveSummary = COMMERCIAL_MANIFEST.tier
-    .map((tier) => {
-      const offer = getCommercialOffer(tier, periodicita);
-      return `${tier} ${formatOfferPrice(offer)}`;
-    })
+    .map(
+      (tier) =>
+        `${tier} ${formatOfferPrice(getCommercialOffer(tier, periodicita))}`,
+    )
     .join(", ");
-
+  const discount = Math.max(
+    ...COMMERCIAL_MANIFEST.tier.map((tier) =>
+      Math.floor(
+        (savings(tier) /
+          (getCommercialOffer(tier, "mensile").prezzo.importoMinore * 12)) *
+          100,
+      ),
+    ),
+  );
   return (
     <>
-      <section className="px-6 pb-24" aria-labelledby="pricing-plans-heading">
-        <div className="mx-auto max-w-5xl">
-          <h2 id="pricing-plans-heading" className="sr-only">
-            Piani Light e Plus
-          </h2>
-
-          <div
-            role="group"
-            aria-label="Periodicità di fatturazione"
-            className="mx-auto mb-12 flex w-fit rounded-2xl border border-gray-200 bg-white p-1.5 shadow-sm"
-            data-pricing-toggle
-          >
-            {COMMERCIAL_MANIFEST.periodicita.map((value) => {
-              const selected = value === periodicita;
-              return (
-                <button
-                  key={value}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => setPeriodicita(value)}
-                  className={`touch-target flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold capitalize transition-colors duration-200 ${
-                    selected
-                      ? "bg-primary text-white"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
+      <section
+        className="pricing-plans"
+        aria-labelledby="pricing-plans-heading"
+      >
+        <h2 id="pricing-plans-heading" className="sr-only">
+          Piani Light e Plus
+        </h2>
+        <div
+          role="group"
+          aria-label="Periodicità di fatturazione"
+          className="pricing-toggle"
+          data-pricing-toggle
+        >
+          {COMMERCIAL_MANIFEST.periodicita.map((value) => (
+            <button
+              type="button"
+              key={value}
+              aria-pressed={periodicita === value}
+              onClick={() => setPeriodicita(value)}
+            >
+              {value === "mensile" ? "Mensile" : "Annuale"}
+              {value === "annuale" && (
+                <span aria-hidden="true">Fino a −{discount}%</span>
+              )}
+            </button>
+          ))}
+        </div>
+        <p className="sr-only" aria-live="polite">
+          Periodicità {periodicita}. {liveSummary}.
+        </p>
+        <div className="pricing-plans__spread" data-pricing-cards>
+          {COMMERCIAL_MANIFEST.tier.map((tier) => {
+            const offer = getCommercialOffer(tier, periodicita);
+            const annual = periodicita === "annuale";
+            const plus = tier === "Plus";
+            return (
+              <article
+                key={tier}
+                className={`pricing-plan${plus ? " pricing-plan--plus" : ""}`}
+                data-pricing-plan={tier.toLowerCase()}
+                data-periodicita={periodicita}
+              >
+                <header className="pricing-plan__head">
+                  <h3>{tier}</h3>
+                  {plus && <p>Consigliato per la gestione completa</p>}
+                </header>
+                <div className="pricing-plan__cost">
+                  <p className="pricing-plan__price">
+                    {formatCommercialPrice(
+                      annual
+                        ? Math.round(offer.prezzo.importoMinore / 12)
+                        : offer.prezzo.importoMinore,
+                    )}
+                    <span>/mese</span>
+                  </p>
+                  {annual && (
+                    <p className="pricing-plan__period">
+                      Equivalente mensile, con pagamento annuale
+                    </p>
+                  )}
+                  <p className="pricing-plan__billing">
+                    {annual ? (
+                      <>
+                        <strong>Fatturati {formatOfferPrice(offer)}.</strong>{" "}
+                        Risparmi {formatCommercialPrice(savings(tier))} rispetto
+                        a 12 mesi mensili.
+                      </>
+                    ) : (
+                      "Fatturazione mensile · nessun costo di attivazione"
+                    )}
+                  </p>
+                </div>
+                <div className="pricing-plan__features">
+                  <p>
+                    {plus
+                      ? "Per il laboratorio che gestisce produzione, ordini e magazzino."
+                      : "Per chi vuole ricette, food cost ed etichette sotto controllo."}
+                  </p>
+                  <p className="pricing-plan__includes">
+                    {plus ? "Tutto di Light, più" : "Nel piano Light"}
+                  </p>
+                  <ul>
+                    {PLAN_FEATURES[tier].map((id) => (
+                      <li key={id}>{getCommercialCapability(id).nome}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="pricing-plan__support">
+                  {getCommercialLevel(tier).sessioniSimultanee} sessioni attive
+                  simultanee. <br />
+                  {describeOfferSupport(offer)}.
+                </p>
+                <a
+                  className="button"
+                  href={trial.destination}
+                  data-registration-cta
+                  aria-describedby="pricing-trial-explanation"
                 >
-                  {value}
-                  {value === "annuale" ? (
-                    <span
-                      aria-hidden="true"
-                      className={`rounded-full px-2 py-0.5 text-xs font-bold uppercase ${
-                        selected
-                          ? "bg-white/20 text-white"
-                          : "bg-primary/10 text-primary"
-                      }`}
-                    >
-                      fino a −{discount}%
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* I prezzi cambiano senza ricaricare: senza questo annuncio chi usa
-              uno screen reader non percepisce l'effetto del toggle. */}
-          <p aria-live="polite" className="sr-only">
-            Periodicità {periodicita}. {liveSummary}.
+                  {trial.label}
+                </a>
+              </article>
+            );
+          })}
+        </div>
+        <div id="pricing-trial-explanation" className="pricing-trial-note">
+          <p>{TRIAL_EXPLANATION}</p>
+          <p>
+            Senza carta. Scelta del piano e pagamento si gestiscono nell’app
+            dopo la registrazione.
           </p>
-
-          <div
-            className="grid gap-6 lg:grid-cols-2 lg:items-center"
-            data-pricing-cards
-          >
-            {COMMERCIAL_MANIFEST.tier.map((tier) => (
-              <PlanCard key={tier} tier={tier} periodicita={periodicita} />
-            ))}
-          </div>
-
-          <div className="mt-14">
-            <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-              Non sai quale scegliere?
-            </h3>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-gray-200 bg-white p-6">
-                <p className="font-bold text-primary">Scegli Light se…</p>
-                <ul className="mt-3 space-y-2 text-base text-gray-600">
-                  <li>· Lavori soprattutto su ricette, costi ed etichette</li>
-                  <li>· Gestisci produzione e ordini fuori dall&apos;app</li>
-                  <li>· Siete in 1–2 sul gestionale</li>
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-primary/25 bg-primary/5 p-6">
-                <p className="font-bold text-primary">Scegli Plus se…</p>
-                <ul className="mt-3 space-y-2 text-base text-gray-600">
-                  <li>
-                    · Vuoi ordini, produzione e magazzino in un unico posto
-                  </li>
-                  <li>· Registri vendite e monitori i costi aziendali</li>
-                  <li>· Ricevi DDT e vuoi importarli con l&apos;AI</li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-
       <section
-        className="bg-surface px-6 py-24"
+        className="pricing-comparison section-space"
         aria-labelledby="pricing-comparison-heading"
       >
-        <div className="mx-auto max-w-5xl">
-          <h2
-            id="pricing-comparison-heading"
-            className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
-          >
-            Confronto completo
+        <div className="section-intro">
+          <h2 id="pricing-comparison-heading">
+            Il confronto, <br />
+            per intero.
           </h2>
-          <p className="mt-2 max-w-2xl leading-relaxed text-gray-600">
-            Le funzionalità dipendono solo dal piano: con l&apos;annuale cambiano
-            prezzo e supporto, non i moduli inclusi.
-          </p>
-
-          {/* La differenza reale tra i piani sta in cinque moduli: dirla prima
-              evita di far cercare cinque righe dentro ventidue. */}
-          <div className="mt-8 rounded-2xl border border-primary/25 bg-primary/5 p-6 sm:p-8">
-            <h3 className="text-lg font-bold text-gray-900">
-              In breve: cosa aggiunge Plus
-            </h3>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {PLUS_ONLY_IDS.map((id) => (
-                <li key={id} className="flex items-start gap-2.5">
-                  <span
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10"
-                    aria-hidden="true"
-                  >
-                    <Check size={12} strokeWidth={3.5} className="text-primary" />
-                  </span>
-                  <span className="text-gray-700">
-                    {getCommercialCapability(id).nome}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm text-gray-600">
-              Tutto il resto — ricette, food cost, bilanciamento, etichette,
-              team — è incluso in entrambi i piani.
-            </p>
-          </div>
-
-          <h3 className="mt-14 text-lg font-bold text-gray-900">
-            Confronto riga per riga
-          </h3>
-
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
-            <table
-              className="block w-full min-w-0 text-sm sm:table sm:min-w-[560px]"
-              data-pricing-comparison
-            >
-              <caption className="sr-only">
-                Moduli e condizioni inclusi nei piani LabManager Light e Plus
-              </caption>
-              <thead className="hidden sm:table-header-group">
-                <tr className="border-b border-gray-200 bg-white">
-                  <th
-                    scope="col"
-                    className="sticky left-0 z-10 w-1/2 bg-white px-6 py-4 text-left font-bold text-gray-700"
-                  >
-                    Moduli e condizioni
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-4 text-center font-bold text-gray-900"
-                  >
-                    Light
-                  </th>
-                  <th
-                    scope="col"
-                    className="bg-primary/10 px-6 py-4 text-center font-bold text-primary"
-                  >
-                    Plus
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="block sm:table-row-group">
-                {COMPARISON_GROUPS.map((group) => (
-                  <Fragment key={group.label}>
-                    <tr className="block border-b border-gray-200 bg-gray-50 sm:table-row">
-                      <th
-                        colSpan={3}
-                        scope="colgroup"
-                        className="block w-full px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-gray-500 sm:table-cell sm:px-6"
-                      >
-                        {group.label}
-                      </th>
-                    </tr>
-                    {group.ids.map((id) => {
-                      const capability = getCommercialCapability(id);
-                      return (
-                        <tr
-                          key={id}
-                          className="grid grid-cols-2 border-b border-gray-100 sm:table-row"
-                          data-magazzino-claim-ids={
-                            id === "magazzino_ddt"
-                              ? MAGAZZINO_CLAIM_ID_ATTRIBUTE
-                              : undefined
-                          }
-                        >
-                          <th
-                            scope="row"
-                            className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
-                          >
-                            {capability.nome}
-                          </th>
-                          <ComparisonCell tier="Light">
-                            <Inclusion
-                              included={capability.tierMinimo === "Light"}
-                            />
-                          </ComparisonCell>
-                          <ComparisonCell tier="Plus">
-                            <Inclusion included />
-                          </ComparisonCell>
-                        </tr>
-                      );
-                    })}
-                  </Fragment>
-                ))}
-                <tr className="block border-b border-gray-200 bg-gray-50 sm:table-row">
-                  <th
-                    colSpan={3}
-                    scope="colgroup"
-                    className="block w-full px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-gray-500 sm:table-cell sm:px-6"
-                  >
-                    Limiti e supporto
-                  </th>
-                </tr>
-                <tr className="grid grid-cols-2 border-b border-gray-100 sm:table-row">
-                  <th
-                    scope="row"
-                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
-                  >
-                    Importazioni AI ricette al giorno
-                  </th>
-                  {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                    <ComparisonCell
-                      key={tier}
-                      tier={tier}
-                      valueClassName="font-semibold text-gray-700"
-                    >
-                      {getCommercialLevel(tier).quoteAiGiornaliere.recipe}
-                    </ComparisonCell>
-                  ))}
-                </tr>
-                <tr className="grid grid-cols-2 border-b border-gray-100 sm:table-row">
-                  <th
-                    scope="row"
-                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
-                  >
-                    Importazioni AI DDT al giorno
-                  </th>
-                  {COMMERCIAL_MANIFEST.tier.map((tier) => {
-                    const quota = getCommercialLevel(tier).quoteAiGiornaliere.ddt;
-                    return (
-                      <ComparisonCell
-                        key={tier}
-                        tier={tier}
-                        valueClassName="font-semibold text-gray-700"
-                      >
-                        {quota === 0 ? "Non incluse" : quota}
-                      </ComparisonCell>
-                    );
-                  })}
-                </tr>
-                {/* Deviazione deliberata dalla parola usata nell'elenco del
-                    requisito 49: il limite conta gli accessi contemporanei, non
-                    i dispositivi posseduti (requisito 31), e GLOSSARY.md vieta
-                    "dispositivi" per descriverlo. Non riportare a "Dispositivi
-                    simultanei": dichiarerebbe male l'entitlement. */}
-                <tr className="grid grid-cols-2 border-b border-gray-100 sm:table-row">
-                  <th
-                    scope="row"
-                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
-                  >
-                    Sessioni attive simultanee
-                  </th>
-                  {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                    <ComparisonCell
-                      key={tier}
-                      tier={tier}
-                      valueClassName="font-semibold text-gray-700"
-                    >
-                      {getCommercialLevel(tier).sessioniSimultanee}
-                    </ComparisonCell>
-                  ))}
-                </tr>
-                {/* Due righe distinte: l'etichetta non deve dipendere da un
-                    toggle che a questa altezza è fuori schermo. */}
-                {COMMERCIAL_MANIFEST.periodicita.map((value) => (
-                  <tr
-                    key={value}
-                    className="grid grid-cols-2 border-b border-gray-100 sm:table-row"
-                  >
-                    <th
-                      scope="row"
-                      className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium capitalize text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
-                    >
-                      Supporto {value}
-                    </th>
-                    {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                      <ComparisonCell
-                        key={tier}
-                        tier={tier}
-                        valueClassName="text-gray-700"
-                      >
-                        {describeOfferSupport(getCommercialOffer(tier, value))}
-                      </ComparisonCell>
-                    ))}
-                  </tr>
-                ))}
-                <tr className="grid grid-cols-2 sm:table-row">
-                  <th
-                    scope="row"
-                    className="col-span-2 block bg-white px-4 pb-2 pt-4 text-left font-medium text-gray-700 sm:sticky sm:left-0 sm:z-10 sm:table-cell sm:px-6 sm:py-3"
-                  >
-                    Esportazioni dei moduli inclusi
-                  </th>
-                  {COMMERCIAL_MANIFEST.tier.map((tier) => (
-                    <ComparisonCell
-                      key={tier}
-                      tier={tier}
-                      valueClassName="font-semibold capitalize text-gray-700"
-                    >
-                      {getCommercialLevel(tier).esportazioni.moduliInclusi}
-                    </ComparisonCell>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className="mt-8 text-center font-semibold text-gray-700">
-            {DEVICE_CONTACT_PROMPT}{" "}
-            <Link
-              className="touch-target inline-flex items-center text-primary underline underline-offset-4"
-              href="/#contatti"
-            >
-              {DEVICE_CONTACT_LINK_LABEL}
-            </Link>
+          <p>
+            Le funzionalità dipendono dal piano. Con l’annuale cambiano prezzo e
+            supporto, non i moduli inclusi.
           </p>
         </div>
+        <table role="table" data-pricing-comparison>
+          <caption className="sr-only">
+            Moduli e condizioni inclusi nei piani LabManager Light e Plus
+          </caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th role="columnheader" scope="col">Moduli e condizioni</th>
+              <th role="columnheader" scope="col">Light</th>
+              <th role="columnheader" scope="col">Plus</th>
+            </tr>
+          </thead>
+          {GROUPS.map((group) => (
+            <tbody key={group.label} role="rowgroup">
+              <tr role="row" className="comparison-group">
+                <th role="columnheader" colSpan={3} scope="colgroup">
+                  {group.label}
+                </th>
+              </tr>
+              {group.ids.map((id) => {
+                const capability = getCommercialCapability(id);
+                return (
+                  <tr
+                    role="row"
+                    key={id}
+                    data-magazzino-claim-ids={
+                      id === "magazzino_ddt"
+                        ? MAGAZZINO_CLAIM_ID_ATTRIBUTE
+                        : undefined
+                    }
+                  >
+                    <th role="rowheader" scope="row">
+                      {capability.nome}
+                      {id === "food_cost_ricetta" && " e menu"}
+                    </th>
+                    <td role="cell" data-plan="Light">
+                      {capability.tierMinimo === "Light"
+                        ? "Incluso"
+                        : "Non incluso"}
+                    </td>
+                    <td role="cell" data-plan="Plus">Incluso</td>
+                  </tr>
+                );
+              })}
+              {group.label === "Progettazione e ricette" && (
+                <ComparisonRow
+                  name="Libro ingredienti"
+                  values={[
+                    "Assortimenti e consultazione",
+                    "Assortimenti, consultazione, generazione e storico PDF",
+                  ]}
+                />
+              )}
+            </tbody>
+          ))}
+          <tbody role="rowgroup">
+            <tr role="row" className="comparison-group">
+              <th role="columnheader" colSpan={3} scope="colgroup">
+                Limiti e supporto
+              </th>
+            </tr>
+            <ComparisonRow
+              name="Importazioni AI ricette al giorno"
+              values={COMMERCIAL_MANIFEST.tier.map(
+                (tier) => getCommercialLevel(tier).quoteAiGiornaliere.recipe,
+              )}
+            />
+            <ComparisonRow
+              name="Importazioni AI DDT al giorno"
+              values={COMMERCIAL_MANIFEST.tier.map(
+                (tier) =>
+                  getCommercialLevel(tier).quoteAiGiornaliere.ddt ||
+                  "Non incluse",
+              )}
+            />
+            <ComparisonRow
+              name="Sessioni attive simultanee"
+              values={COMMERCIAL_MANIFEST.tier.map(
+                (tier) => getCommercialLevel(tier).sessioniSimultanee,
+              )}
+            />
+            {COMMERCIAL_MANIFEST.periodicita.map((value) => (
+              <ComparisonRow
+                key={value}
+                name={`Supporto ${value}`}
+                values={COMMERCIAL_MANIFEST.tier.map((tier) =>
+                  describeOfferSupport(getCommercialOffer(tier, value)),
+                )}
+              />
+            ))}
+            <ComparisonRow
+              name="Esportazioni dei moduli inclusi"
+              values={COMMERCIAL_MANIFEST.tier.map(
+                (tier) => getCommercialLevel(tier).esportazioni.moduliInclusi,
+              )}
+            />
+          </tbody>
+        </table>
+        <p className="pricing-device">
+          {DEVICE_CONTACT_PROMPT}{" "}
+          <Link href="/#contatti" className="text-link">
+            {DEVICE_CONTACT_LINK_LABEL}
+          </Link>
+        </p>
       </section>
     </>
   );

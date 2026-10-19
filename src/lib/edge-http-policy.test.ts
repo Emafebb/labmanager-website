@@ -3,25 +3,22 @@ import { enforceHttpTransportPolicy } from "@/lib/edge-http-policy";
 
 describe("edge HTTP transport policy", () => {
   it.each([
-    ["https://labmanagergestionale.com/download", "GET"],
-    ["https://labmanagergestionale.com/download/?source=legacy", "HEAD"],
-    ["https://preview.example/download/legacy", "POST"],
-    ["https://labmanagergestionale.com/%64ownload", "GET"],
-  ])(
-    "returns 404 for the retired download route before OpenNext handles %s",
-    async (url, method) => {
-      const forward = vi.fn(async () => new Response("origin"));
-      const response = await enforceHttpTransportPolicy(
-        new Request(url, { method }),
-        forward,
-      );
+    "https://labmanagergestionale.com/download",
+    "https://labmanagergestionale.com/download/?source=legacy",
+    "https://preview.example/download/legacy",
+    "https://labmanagergestionale.com/%64ownload",
+    "https://labmanagergestionale.com/aggiornamenti",
+    "https://preview.example/aggiornamenti/legacy",
+  ])("lets OpenNext render the branded 404 for retired URL %s", async (url) => {
+    const originResponse = new Response("Pagina non trovata", { status: 404 });
+    const forward = vi.fn(async () => originResponse);
+    const request = new Request(url);
 
-      expect(response.status).toBe(404);
-      expect(response.headers.get("cache-control")).toBe("no-store");
-      expect(await response.text()).toBe("");
-      expect(forward).not.toHaveBeenCalled();
-    },
-  );
+    const response = await enforceHttpTransportPolicy(request, forward);
+
+    expect(response).toBe(originResponse);
+    expect(forward).toHaveBeenCalledWith(request);
+  });
 
   it("does not block paths that merely start with the word download", async () => {
     const originResponse = new Response("origin", { status: 200 });

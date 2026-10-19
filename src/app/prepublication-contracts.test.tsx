@@ -23,10 +23,6 @@ import {
   MAGAZZINO_CLAIM_IDS,
 } from "@/data/magazzino-capability-matrix";
 
-vi.mock("next/font/google", () => ({
-  DM_Sans: () => ({ variable: "font-dm-sans" }),
-}));
-
 vi.mock("next/image", () => ({
   default: ({
     alt,
@@ -91,7 +87,7 @@ describe("prepublication cross-surface contracts", () => {
     }
   });
 
-  it("documents only the three approved SEO pages and all governed positioning in llms.txt", () => {
+  it("documents Home, the five work areas and Prezzi in llms.txt", () => {
     const llms = readFileSync(join(process.cwd(), "public", "llms.txt"), "utf8");
     const seoPageLinks = Array.from(
       llms.matchAll(
@@ -102,10 +98,17 @@ describe("prepublication cross-surface contracts", () => {
 
     expect(seoPageLinks).toEqual([
       { label: "Home", url: "https://labmanagergestionale.com" },
+      { label: "Ricette e Food Cost", url: "https://labmanagergestionale.com/ricette-food-cost" },
+      { label: "Produzione e Magazzino", url: "https://labmanagergestionale.com/produzione-magazzino" },
       {
         label: "Ordini",
         url: "https://labmanagergestionale.com/ordini",
       },
+      {
+        label: "Etichette e Libro ingredienti",
+        url: "https://labmanagergestionale.com/etichette-libro-ingredienti",
+      },
+      { label: "Strumenti e calcolatori", url: "https://labmanagergestionale.com/strumenti" },
       {
         label: "Prezzi",
         url: "https://labmanagergestionale.com/pricing",
@@ -116,9 +119,10 @@ describe("prepublication cross-surface contracts", () => {
     );
     for (const pillar of [
       "### Ricette e Food Cost",
-      "### Produzione ed Etichette",
-      "### Magazzino",
+      "### Produzione e Magazzino",
       "### Ordini e Piano di Lavoro",
+      "### Etichette e Libro ingredienti",
+      "### Strumenti e calcolatori",
     ]) {
       expect(llms).toContain(pillar);
     }
@@ -126,6 +130,6 @@ describe("prepublication cross-surface contracts", () => {
     for (const claimId of MAGAZZINO_CLAIM_IDS) {
       expect(llms).toContain(claimId);
     }
-    expect(llms).not.toMatch(/newsletter|aggiornamenti|download|billing/i);
+    expect(seoPageLinks.map(({ url }) => url).join(" ")).not.toMatch(/newsletter|aggiornamenti|download|billing/i);
   });
 });

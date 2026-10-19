@@ -51,3 +51,10 @@ next-env.d.ts
 # git worktrees
 .worktrees/
 .gstack/
+# Keep durable design notes; browser captures and QA data stay local.
+/.taste-skill/**
+!/.taste-skill/**/
+!/.taste-skill/**/*.md
+!/.taste-skill/direction.json
+!/.taste-skill/brandkit/social-cover.html
+/output/

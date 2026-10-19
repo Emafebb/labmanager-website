@@ -1,14 +1,10 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createElement } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import AggiornamentiPage, {
-  metadata as aggiornamentiMetadata,
-} from "@/app/aggiornamenti/page";
-import DownloadPage, { metadata as downloadMetadata } from "@/app/download/page";
 import InstagramPage, {
   metadata as instagramMetadata,
 } from "@/app/instagram/page";
@@ -20,12 +16,6 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import NewsletterForm from "@/components/NewsletterForm";
-import { changelog } from "@/data/changelog";
-
-vi.mock("next/font/google", () => ({
-  DM_Sans: () => ({ variable: "font-dm-sans" }),
-  Playfair_Display: () => ({ variable: "font-playfair" }),
-}));
 
 vi.mock("next/image", () => ({
   default: ({
@@ -78,7 +68,7 @@ describe("support surface roles and discovery", () => {
     const newsletter = render(<NewsletterPage />);
     const main = within(screen.getByRole("main"));
     expect(
-      main.getByRole("heading", { name: /Resta aggiornato su LabManager/i }),
+      main.getByRole("heading", { name: /Novità dal laboratorio/i }),
     ).toBeInTheDocument();
     expect(main.getByText(/nuove funzionalità/i)).toBeInTheDocument();
     expect(main.getAllByText(/consigli pratici/i).length).toBeGreaterThan(0);
@@ -97,34 +87,6 @@ describe("support surface roles and discovery", () => {
     const navbar = render(<Navbar />);
     expect(screen.queryByRole("link", { name: "Newsletter" })).toBeNull();
     navbar.unmount();
-  });
-
-  it("keeps Aggiornamenti neutral while preserving factual legacy release notes", () => {
-    expect(aggiornamentiMetadata.robots).toMatchObject({ index: false });
-    expectNeutralSocialMetadata(
-      aggiornamentiMetadata,
-      "https://labmanagergestionale.com/aggiornamenti",
-    );
-
-    render(<AggiornamentiPage />);
-    expect(
-      screen.getByRole("heading", { level: 1, name: "Aggiornamenti" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Cronologia delle modifiche rilasciate in LabManager"),
-    ).toBeInTheDocument();
-    expect(screen.queryByText("Android")).toBeNull();
-    expect(screen.queryByText("Windows")).toBeNull();
-    expect(
-      screen.getByText("Su Android arrivano notifiche push"),
-    ).toBeInTheDocument();
-    expect(
-      changelog.some((entry) =>
-        entry.sections.some((section) =>
-          section.items.includes("Su Android arrivano notifiche push"),
-        ),
-      ),
-    ).toBe(true);
   });
 
   it("keeps Instagram noindex with exactly the four approved destinations", () => {
@@ -148,46 +110,16 @@ describe("support surface roles and discovery", () => {
     );
   });
 
-  it("keeps Download as direct legacy support without acquisition claims", () => {
-    expect(downloadMetadata.robots).toMatchObject({ index: false });
-    expectNeutralSocialMetadata(
-      downloadMetadata,
-      "https://labmanagergestionale.com/download",
-    );
-    expect(
-      serializedMetadata({
-        title: downloadMetadata.title,
-        description: downloadMetadata.description,
-        openGraphTitle: downloadMetadata.openGraph?.title,
-        openGraphDescription: downloadMetadata.openGraph?.description,
-        twitterTitle: downloadMetadata.twitter?.title,
-        twitterDescription: downloadMetadata.twitter?.description,
-      }),
-    ).not.toMatch(/android|windows|download|scaric|prova/);
-
-    const { container } = render(<DownloadPage />);
-    const main = within(screen.getByRole("main"));
-    expect(
-      main.getByRole("heading", {
-        level: 1,
-        name: "Supporto per installazioni",
-      }),
-    ).toBeInTheDocument();
-    expect(main.getByText(/utenti che usano già LabManager/i)).toBeInTheDocument();
-    expect(screen.getByRole("main")).not.toHaveTextContent(
-      /prova gratuita|ristorant|funziona offline|sincronizzazione|multi-utente/i,
-    );
-
-    const packageLinks = Array.from(
-      container.querySelectorAll<HTMLAnchorElement>("a[download]"),
-    );
-    expect(packageLinks).toHaveLength(2);
-    expect(packageLinks.map(({ href }) => href)).toEqual([
-      "https://labmanager-downloads.labmanager-info.workers.dev/android",
-      "https://labmanager-downloads.labmanager-info.workers.dev/windows",
-    ]);
-    expect(main.getAllByText(/assistenza installazione APK/i)).toHaveLength(2);
-    expect(main.queryByRole("link", { name: /prova|prezzi/i })).toBeNull();
+  it("removes retired pages and their dedicated components and data", () => {
+    for (const file of [
+      "src/app/aggiornamenti/page.tsx",
+      "src/app/download/page.tsx",
+      "src/components/Download.tsx",
+      "src/components/DownloadClient.tsx",
+      "src/data/changelog.ts",
+    ]) {
+      expect(existsSync(join(process.cwd(), file)), file).toBe(false);
+    }
   });
 
   it("excludes support routes from commercial navigation and organic discovery", () => {
@@ -207,7 +139,11 @@ describe("support surface roles and discovery", () => {
 
     expect(sitemap().map(({ url }) => url)).toEqual([
       "https://labmanagergestionale.com",
+      "https://labmanagergestionale.com/ricette-food-cost",
+      "https://labmanagergestionale.com/produzione-magazzino",
       "https://labmanagergestionale.com/ordini",
+      "https://labmanagergestionale.com/etichette-libro-ingredienti",
+      "https://labmanagergestionale.com/strumenti",
       "https://labmanagergestionale.com/pricing",
     ]);
 

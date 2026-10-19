@@ -9,12 +9,13 @@ export type CommercialCtaIntent =
   | "discover-pricing"
   | "access-app";
 
-export type CommercialCtaRoute = "/" | "/ordini" | "/pricing" | "all-routes";
+export type CommercialCtaRoute = "/" | "/ordini" | "/pricing" | "work-areas" | "all-routes";
 
 export type CommercialCtaPlacement =
   | "home"
   | "pricing"
   | "orders"
+  | "work-area"
   | "navbar-desktop"
   | "navbar-mobile";
 
@@ -38,7 +39,7 @@ export const TRIAL_ACCESS_CTA_INVENTORY = [
     id: "home-trial",
     route: "/",
     placements: ["home"],
-    label: "Registrati per una prova gratuita",
+    label: TRIAL_CTA_LABEL,
     intent: "start-trial",
     destination: TRIAL_ACCESS_APP_HREF,
     openingBehavior: "same-tab",
@@ -68,6 +69,15 @@ export const TRIAL_ACCESS_CTA_INVENTORY = [
     label: "Scopri i prezzi",
     intent: "discover-pricing",
     destination: "/pricing",
+    openingBehavior: "same-tab",
+  },
+  {
+    id: "work-area-trial",
+    route: "work-areas",
+    placements: ["work-area"],
+    label: TRIAL_CTA_LABEL,
+    intent: "start-trial",
+    destination: TRIAL_ACCESS_APP_HREF,
     openingBehavior: "same-tab",
   },
   {

@@ -55,59 +55,36 @@ export default function PricingFAQ() {
 
   return (
     <section
-      className="bg-white px-6 py-24"
+      className="pricing-faq faq-section section-space"
       aria-labelledby="pricing-faq-heading"
     >
-      <div className="mx-auto max-w-3xl">
-        <h2
-          id="pricing-faq-heading"
-          className="mb-4 text-center text-3xl font-bold text-gray-900 sm:text-4xl"
-        >
-          Domande prima di iniziare?
-        </h2>
-
-        <p className="mb-14 text-center leading-relaxed text-gray-600">
-          Le risposte essenziali su prova, pagamento e utilizzo del piano.
+      <div className="section-intro">
+        <h2 id="pricing-faq-heading">Tutto chiaro?</h2>
+        <p>
+          Prova, pagamento, accessi e assistenza. Le risposte prima di
+          scegliere.
         </p>
-
-        <div className="space-y-3">
-          {PRICING_FAQS.map((faq, index) => {
-            const isOpen = openIndexes.includes(index);
-            const answerId = `pricing-faq-answer-${index}`;
-
-            return (
-              <article
-                key={faq.question}
-                className="rounded-2xl border border-gray-200 bg-white shadow-sm"
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(index)}
-                  aria-expanded={isOpen}
-                  aria-controls={answerId}
-                  className="touch-target flex w-full items-center justify-between gap-4 rounded-2xl p-6 text-left transition-colors duration-200 hover:bg-gray-50"
-                >
-                  <span className="text-base font-semibold text-gray-900">
-                    {faq.question}
-                  </span>
-                  <ChevronDown
-                    size={20}
-                    aria-hidden="true"
-                    className={`shrink-0 text-primary transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-
-                <div id={answerId} hidden={!isOpen}>
-                  <p className="px-6 pb-6 leading-relaxed text-gray-600">
-                    {faq.answer}
-                  </p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+      </div>
+      <div className="faq-list">
+        {PRICING_FAQS.map((faq, index) => (
+          <article key={faq.question} className="faq-item">
+            <button
+              type="button"
+              onClick={() => toggle(index)}
+              aria-expanded={openIndexes.includes(index)}
+              aria-controls={`pricing-faq-answer-${index}`}
+            >
+              <span>{faq.question}</span>
+              <ChevronDown size={20} aria-hidden="true" />
+            </button>
+            <div
+              id={`pricing-faq-answer-${index}`}
+              hidden={!openIndexes.includes(index)}
+            >
+              <p>{faq.answer}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

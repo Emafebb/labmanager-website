@@ -4,6 +4,10 @@ Landing page italiana di LabManager, realizzata con Next.js App Router e distrib
 
 Per preview nel runtime Workers, deploy, secrets, smoke test, log e rollback consulta il [Runbook operativo Cloudflare](docs/CLOUDFLARE_RUNBOOK.md).
 
+Lo [stato del rifacimento Traccia](docs/SITE_REDESIGN_STATUS.md) raccoglie le decisioni correnti, le verifiche automatiche e ciò che resta da collaudare manualmente o verificare per la SEO. Il commit locale non costituisce una pubblicazione.
+
+Le pagine `/download` e `/aggiornamenti` sono state rimosse localmente: i vecchi indirizzi restituiscono la 404 del sito. La [decisione e la guida al servizio download separato](docs/RETIRED_PAGES.md) sostituiscono le precedenti istruzioni di mantenimento delle due pagine.
+
 ## Sviluppo locale
 
 Richiede Node.js 22 o successivo.

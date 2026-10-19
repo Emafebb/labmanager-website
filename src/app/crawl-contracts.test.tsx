@@ -1,28 +1,21 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { metadata as rootMetadata } from "@/app/layout";
 import Home, { metadata as homeMetadata } from "@/app/page";
 import NotFound, {
   metadata as notFoundMetadata,
   notFoundPageStructuredData,
 } from "@/app/not-found";
-import { metadata as updatesMetadata } from "@/app/aggiornamenti/page";
 import { metadata as accountBillingMetadata } from "@/app/account/billing/page";
 import { metadata as cancelMetadata } from "@/app/billing/cancel/page";
 import { metadata as successMetadata } from "@/app/billing/success/page";
-import { metadata as downloadMetadata } from "@/app/download/page";
 import { metadata as instagramMetadata } from "@/app/instagram/page";
 import { metadata as newsletterMetadata } from "@/app/newsletter/page";
 import { metadata as ordersMetadata } from "@/app/ordini/page";
 import { metadata as pricingMetadata } from "@/app/pricing/page";
 import sitemap from "@/app/sitemap";
-
-vi.mock("next/font/google", () => ({
-  DM_Sans: () => ({ variable: "font-dm-sans" }),
-  Playfair_Display: () => ({ variable: "font-playfair" }),
-}));
 
 describe("404 metadata and document contract", () => {
   it("keeps the homepage canonical page-scoped so the 404 cannot inherit it", () => {
@@ -64,13 +57,17 @@ describe("404 metadata and document contract", () => {
 });
 
 describe("crawl boundaries and text response ownership", () => {
-  it("limits indexable routes and the sitemap to Home, Ordini and Prezzi", () => {
+  it("limits the sitemap to Home, the five work areas and Prezzi", () => {
     const entries = sitemap();
     const urls = entries.map(({ url }) => url);
 
     expect(urls).toEqual([
       "https://labmanagergestionale.com",
+      "https://labmanagergestionale.com/ricette-food-cost",
+      "https://labmanagergestionale.com/produzione-magazzino",
       "https://labmanagergestionale.com/ordini",
+      "https://labmanagergestionale.com/etichette-libro-ingredienti",
+      "https://labmanagergestionale.com/strumenti",
       "https://labmanagergestionale.com/pricing",
     ]);
     expect(urls.join(" ")).not.toMatch(
@@ -83,10 +80,8 @@ describe("crawl boundaries and text response ownership", () => {
 
   it("preserves every agreed noindex contract outside the sitemap", () => {
     expect(newsletterMetadata.robots).toEqual({ index: false, follow: true });
-    expect(updatesMetadata.robots).toEqual({ index: false, follow: false });
     expect(instagramMetadata.robots).toEqual({ index: false });
     for (const metadata of [
-      downloadMetadata,
       accountBillingMetadata,
       successMetadata,
       cancelMetadata,
@@ -101,9 +96,13 @@ describe("crawl boundaries and text response ownership", () => {
     );
 
     expect(byUrl).toEqual({
-      "https://labmanagergestionale.com": "2026-07-21",
-      "https://labmanagergestionale.com/ordini": "2026-07-14",
-      "https://labmanagergestionale.com/pricing": "2026-07-21",
+      "https://labmanagergestionale.com": "2026-10-19",
+      "https://labmanagergestionale.com/ricette-food-cost": "2026-10-19",
+      "https://labmanagergestionale.com/produzione-magazzino": "2026-10-19",
+      "https://labmanagergestionale.com/ordini": "2026-10-19",
+      "https://labmanagergestionale.com/etichette-libro-ingredienti": "2026-10-19",
+      "https://labmanagergestionale.com/strumenti": "2026-10-19",
+      "https://labmanagergestionale.com/pricing": "2026-10-19",
     });
   });
 

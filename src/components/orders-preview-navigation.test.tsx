@@ -3,124 +3,76 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import OrdersPreview from "@/components/OrdersPreview";
 import WhatsAppButton, { WHATSAPP_URL } from "@/components/WhatsAppButton";
 import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
-describe("orders preview and navigation", () => {
-  it("renders the homepage orders preview with a link to the dedicated page", () => {
-    const { container } = render(<OrdersPreview />);
+vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
 
-    expect(
-      screen.getByText("Passaggio 06 · Piano di lavoro"),
-    ).toBeInTheDocument();
-    expect(container.querySelector(".home-route-section__node svg")).not.toBeNull();
-    expect(
-      screen.getByRole("heading", {
-        name: "Ordini e Piano di Lavoro",
-      }),
-    ).toBeInTheDocument();
-    expect(screen.getAllByText(/ordini cliente e interni/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/acconti e report operativi/i).length).toBeGreaterThan(0);
-    expect(document.body).not.toHaveTextContent(/cassa|fattur|contabil/i);
-    expect(
-      screen.getByRole("link", { name: "Scopri il modulo ordini" }),
-    ).toHaveAttribute("href", "/ordini");
-  });
-
-  it("renders the same approved links in order in desktop and mobile navigation", async () => {
+describe("site navigation", () => {
+  it("keeps the closed mobile menu out of the focus order and supports Escape", async () => {
     const user = userEvent.setup();
     render(<Navbar />);
-
-    const desktop = screen.getByRole("list", {
-      name: "Navigazione desktop",
-    });
-    const mobile = screen.getByRole("list", { name: "Navigazione mobile" });
-    const expectedLabels = ["Funzionalità", "Ordini", "Prezzi", "Accedi"];
-    const expectedHrefs = [
-      "/",
-      "/ordini",
-      "/pricing",
-      TRIAL_ACCESS_APP_HREF,
-    ];
-
-    for (const navigation of [desktop, mobile]) {
-      const links = within(navigation).getAllByRole("link");
-      expect(links.map((link) => link.textContent)).toEqual(expectedLabels);
-      expect(links.map((link) => link.getAttribute("href"))).toEqual(
-        expectedHrefs,
-      );
-      expect(within(navigation).getByRole("link", { name: "Accedi" })).not.toHaveAttribute(
-        "target",
-      );
-    }
-
-    const menuButton = screen.getByRole("button", { name: "Apri menu" });
-    await user.click(menuButton);
-    expect(menuButton).toHaveAttribute("aria-expanded", "true");
-    await user.click(within(mobile).getByRole("link", { name: "Prezzi" }));
-    expect(menuButton).toHaveAttribute("aria-expanded", "false");
-  });
-
-  it("keeps the Funzionalità anchor only when the navbar belongs to the homepage", () => {
-    render(<Navbar featuresHref="#funzionalita" />);
-
-    for (const navigation of [
-      screen.getByRole("list", { name: "Navigazione desktop" }),
-      screen.getByRole("list", { name: "Navigazione mobile" }),
-    ]) {
-      expect(
-        within(navigation).getByRole("link", { name: "Funzionalità" }),
-      ).toHaveAttribute("href", "#funzionalita");
-    }
-  });
-
-  it("renders only the approved Product, Support, and existing Legal footer links", () => {
-    render(<Footer />);
-
-    const footer = within(
-      screen.getByRole("contentinfo", { name: "Informazioni LabManager" }),
-    );
-    const product = footer.getByRole("navigation", { name: "Prodotto" });
-    const support = footer.getByRole("navigation", { name: "Supporto" });
-    const legal = footer.getByRole("navigation", { name: "Legale" });
-
     expect(
-      within(product).getAllByRole("link").map((link) => [
-        link.textContent,
-        link.getAttribute("href"),
-      ]),
-    ).toEqual([
-      ["Funzionalità", "/#funzionalita"],
-      ["Ordini", "/ordini"],
-      ["Prezzi", "/pricing"],
-    ]);
-    expect(
-      within(support).getAllByRole("link").map((link) => [
-        link.textContent,
-        link.getAttribute("href"),
-      ]),
-    ).toEqual([
-      ["Contatti", "/#contatti"],
-      ["Newsletter", "/newsletter"],
-      ["WhatsApp", WHATSAPP_URL],
-    ]);
-    expect(within(legal).getAllByRole("link")).toHaveLength(3);
-    expect(
-      within(legal).getByRole("link", {
-        name: "Aggiorna preferenze cookie",
-      }),
-    ).toHaveClass("lb-cs-settings-link");
-    expect(
-      footer.queryByRole("link", {
-        name: /Piattaforme|FAQ|Aggiornamenti|Accedi|prova/i,
-      }),
+      screen.queryByRole("list", { name: "Navigazione mobile" }),
     ).toBeNull();
+    const toggle = screen.getByRole("button", { name: "Apri menu" });
+    await user.click(toggle);
+    const mobile = screen.getByRole("list", { name: "Navigazione mobile" });
+    const desktop = screen.getByRole("list", { name: "Navigazione desktop" });
     expect(
-      within(support).getByRole("link", { name: "WhatsApp" }),
-    ).toHaveAttribute("target", "_blank");
+      within(mobile)
+        .getAllByRole("link", { hidden: true })
+        .map((a) => a.getAttribute("href")),
+    ).toEqual(
+      within(desktop)
+        .getAllByRole("link", { hidden: true })
+        .map((a) => a.getAttribute("href")),
+    );
+    await user.keyboard("{Escape}");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(toggle).toHaveFocus();
+    expect(screen.getByRole("link", { name: "Accedi" })).toHaveAttribute(
+      "href",
+      TRIAL_ACCESS_APP_HREF,
+    );
   });
-
+  it("closes the menu on navigation and preserves the home feature anchor", async () => {
+    const user = userEvent.setup();
+    render(<Navbar featuresHref="#funzionalita" />);
+    await user.click(screen.getByRole("button", { name: "Apri menu" }));
+    const mobile = within(
+      screen.getByRole("list", { name: "Navigazione mobile" }),
+    );
+    expect(mobile.getByRole("link", { name: "Funzionalità" })).toHaveAttribute(
+      "href",
+      "#funzionalita",
+    );
+    await user.click(mobile.getByRole("link", { name: "Prezzi" }));
+    expect(screen.getByRole("button", { name: "Apri menu" })).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
+  });
+  it("preserves product, support, legal and company information", () => {
+    render(<Footer />);
+    expect(screen.getByRole("link", { name: "Newsletter" })).toHaveAttribute(
+      "href",
+      "/newsletter",
+    );
+    expect(screen.getByRole("link", { name: "WhatsApp" })).toHaveAttribute(
+      "href",
+      WHATSAPP_URL,
+    );
+    expect(
+      within(screen.getByRole("navigation", { name: "Legale" })).getAllByRole(
+        "link",
+      ),
+    ).toHaveLength(3);
+    expect(screen.getByRole("contentinfo")).toHaveTextContent("04279110367");
+    expect(
+      screen.getByRole("link", { name: "Aggiorna preferenze cookie" }),
+    ).toHaveClass("lb-cs-settings-link");
+  });
   it("forwards cookie settings clicks to the persistent LegalBlink trigger after a footer remount", () => {
     const onTrigger = vi.fn();
     render(
@@ -152,11 +104,11 @@ describe("orders preview and navigation", () => {
     render(<WhatsAppButton />);
 
     const link = screen.getByRole("link", {
-      name: "Contattaci su WhatsApp",
+      name: "Scrivici su WhatsApp",
     });
     expect(link).toHaveAttribute("href", WHATSAPP_URL);
     expect(link).not.toHaveAttribute("href", TRIAL_ACCESS_APP_HREF);
-    expect(link).toHaveAccessibleName("Contattaci su WhatsApp");
+    expect(link).toHaveAccessibleName("Scrivici su WhatsApp");
     expect(link).not.toHaveAccessibleName(/prova|accedi/i);
   });
 });
