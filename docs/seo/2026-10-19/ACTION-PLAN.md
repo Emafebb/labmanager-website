@@ -1,5 +1,21 @@
 # Piano di azione SEO — stato del 19 ottobre 2026
 
+## Ultimo aggiornamento — sitemap riletta e quattro richieste accettate
+
+Ricontrollo programmato confermato dal committente, senza verifica diretta della configurazione; non creare attività duplicate. Prossimo passo operativo: inviare la bozza tecnica a LegalBlink e ottenere misure indipendenti.
+
+Su richiesta di procedere con la correzione, reinviata la sitemap: controllo finale circa 18:18, Google la riporta inviata/letta il **19 ottobre**, **Riuscita**, **7 URL rilevati**. Accettate singolarmente le richieste di indicizzazione per le quattro nuove pagine, dopo verifica preliminare Google. Controllati anche recupero HTTP, canonical e assenza di meta noindex; nessuna modifica al codice necessaria. [Rapporto aggiornato](SEARCH-CONSOLE-REVIEW.md).
+
+Resta da verificare l'indicizzazione effettiva e la scansione successiva al rilascio: nessun nuovo invio ripetuto. PV-01 aperto; bozza LegalBlink non inviata. Nessun commit/push/deploy, modifica GTM o alle dipendenze concorrenti.
+
+## Aggiornamento precedente — Search Console verificata e bozza LegalBlink
+
+Accesso GSC risolto nel profilo Chrome nativo Labmanager, account `labmanager.info@gmail.com`, proprietà `sc-domain:labmanagergestionale.com`. [Rapporto](SEARCH-CONSOLE-REVIEW.md): Home, Prezzi e Ordini indicizzate con canonical coerenti; quattro nuove pagine sconosciute a Google. Test live Ricette positivo, sitemap pubblica con sette URL ma GSC ancora alla lettura del 16 ottobre con tre. Baseline canonico Web 20 settembre–17 ottobre: 7 clic, 197 impressioni, CTR 3,6%, posizione media 27,5; nessun risultato postrilascio o dato CWV sufficiente.
+
+[Bozza LegalBlink](LEGALBLINK-SUPPORT-DRAFT.md) pronta, non inviata. Prossime azioni da valutare: reinvio sitemap e richieste mirate alle quattro nuove pagine, ricontrollo dopo scansione postrilascio, confronto query con la baseline; PV-01 resta aperto per ottimizzazione ufficiale CMP e misura indipendente. Nessun invio, richiesta di indicizzazione, commit/push/deploy o modifica applicativa/configurazione effettuati in questa verifica.
+
+## Aggiornamento precedente — rilascio CMP
+
 **Ultimo aggiornamento:** fix CMP pubblicato con `62038af`, pipeline `fdc1d3d7-1e8d-4c49-9864-c24d33fc0150` riuscita e versione `20f2bcc3-ace2-4adb-adcb-b43bfc6fe233` al 100%. Verificati HTTP e percorsi CMP pubblici Home/Prezzi in contesti nuovi desktop/mobile. [Esiti e limiti](CMP-RELEASE-VERIFICATION.md). Le note introduttive e di chiusura precedenti conservate sotto sono storiche; nessun nuovo miglioramento prestazionale attestato.
 
 Aggiornamento postpubblicazione: collaudo manuale confermato dal committente senza problemi. **Licenza LegalBlink corretta dal committente e pubblicata in GTM: versione 8 verificata nel bundle pubblico**, tag 7 con la licenza reale; gli altri campi del tag sono invariati. **Caricamento diretto rimosso e verificato localmente**, mantenendo GTM: fix e documenti nel commit locale `0fa9e6e`, senza push o deploy. **Build con il lock versionato ora verificata:** Next 16.2.10/Turbopack, OpenNext completo, dry-run e smoke HTTP workerd passano; il fallimento precedente Next 16.4.2/Webpack non si riproduce. [Rapporto](LOCKED-BUILD-VERIFICATION.md) e [diagnosi CMP/console](CMP-CONSOLE-DIAGNOSIS.md) conservano prove e limiti. PV-01 e meccanismo d'inserimento GUID restano aperti. Le sezioni successive descrivono il piano e le fasi precedenti.
@@ -17,7 +33,7 @@ Aggiornamento postpubblicazione: collaudo manuale confermato dal committente sen
 | CMP: installazione unica tramite GTM | Pubblicata con `62038af`, verificata sul dominio pubblico | Un loader e un banner a 1440/390 px; prima visita, reload, navigazione client e riapertura preferenze da clic/tastiera conclusi. Dettagli nel rapporto di rilascio; misure prestazionali ancora aperte |
 | PV-01: CMP e prestazioni mobile | Aperto | Ripetere misure comparabili su Home/Prezzi dopo la correzione del duplicato. Consent Mode e TCF mantenuti nella configurazione GTM pubblicata; GVL ancora caricata. Nessun nuovo risultato prestazionale attestato |
 | C-01 / SG-03: screenshot autentici | In attesa dei materiali | Food Cost, Ordini, Libro ingredienti con dati dimostrativi; integrazione responsive e allineamento del grafo |
-| Verifica Google dopo il rilascio | Bloccata dall'accesso alla proprietà | Nella ripresa l'account corrente mostra la schermata iniziale Search Console senza proprietà; configurazione API locale assente. Servono accessi per sitemap, copertura, canonical e query; nessun risultato Google ancora attestato |
+| Verifica Google dopo il rilascio | Sitemap riletta con sette URL; quattro richieste di indicizzazione accettate | Inviata/letta il 19 ottobre, Riuscita; conferme di coda prioritaria per tutte le nuove pagine. Verificare indicizzazione effettiva e scansioni postrilascio, senza reiterare gli invii. Baseline query precedente al rilascio; CWV insufficienti. [Rapporto](SEARCH-CONSOLE-REVIEW.md) |
 | Richieste GUID e console | Provenienza del codice attribuita a componenti locali Kaspersky; diagnosi runtime parziale | 351/351 righe selezionate dello script identiche nelle due librerie locali; non tracciato il processo d'inserimento né spiegati i 404. Nessuna protezione modificata; dettagli e limiti nella diagnosi |
 | C-03, breadcrumb e pulizia sitemap facoltativa | Backlog | C-03 solo dopo dati sulle query; altre voci a bassa priorità |
 

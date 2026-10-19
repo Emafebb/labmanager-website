@@ -1,6 +1,22 @@
 # Stato del sito LabManager — 19 ottobre 2026
 
-## Stato corrente — fix CMP pubblicato
+## Stato corrente — sitemap riletta con sette URL, indicizzazione richiesta
+
+Il committente conferma le attività di ricontrollo impostate; non crearne duplicati. Configurazione non verificata dall'agente. Prossimo passo: invio della bozza al supporto LegalBlink e verifica prestazionale indipendente.
+
+Eseguiti su richiesta del committente il reinvio della sitemap e quattro richieste mirate. **Google ora riporta sitemap inviata/letta il 19 ottobre, stato Riuscita, sette URL rilevati.** Accettate nella coda di scansione prioritaria le richieste per Ricette e Food Cost, Produzione e Magazzino, Etichette e Libro ingredienti, Strumenti. Conferme lette singolarmente; indicizzazione effettiva ancora da verificare. [Rapporto aggiornato](seo/2026-10-19/SEARCH-CONSOLE-REVIEW.md).
+
+Controllati HTTP e metadati delle quattro pagine, senza modifiche applicative. Non ripetere gli invii già accettati: ricontrollare scansioni e stato nell'indice. PV-01 resta aperto e la bozza LegalBlink non inviata. Nessun commit/push/deploy, modifica GTM o alle dipendenze concorrenti. Le sezioni successive conservano le fasi precedenti.
+
+## Aggiornamento precedente — Search Console accessibile, nuove pagine ancora da indicizzare
+
+Letta la proprietà di dominio `sc-domain:labmanagergestionale.com` nell'account `labmanager.info@gmail.com`, profilo Chrome nativo Labmanager. **Sette ispezioni:** Home, Prezzi e Ordini indicizzate, canonical Google coerenti, scansioni precedenti al rilascio; quattro nuove pagine sconosciute a Google. Test live Ricette e Food Cost positivo alle 18:07 del 19 ottobre. Sitemap GSC riuscita con ultima lettura 16 ottobre e tre URL; file pubblico attuale con sette. [Rapporto, query e limiti](seo/2026-10-19/SEARCH-CONSOLE-REVIEW.md).
+
+Baseline Web sul solo sito canonico, 20 settembre–17 ottobre: **7 clic, 197 impressioni, CTR 3,6%, posizione media 27,5**. Non misura il rilascio odierno. Proprietà comprensiva di sottodomini: i cinque URL indicizzati aggregati comprendono app e promo. CWV mobile e desktop senza dati sufficienti. Nessuna sitemap reinviata o richiesta di indicizzazione eseguita.
+
+[Bozza LegalBlink](seo/2026-10-19/LEGALBLINK-SUPPORT-DRAFT.md) pronta e non inviata: PV-01 resta aperto su caricamento iniziale CMP e misure indipendenti. Restano anche screenshot autentici e scoperta delle nuove pagine. Solo documentazione aggiornata, nessun commit/push/deploy o modifica applicativa, GTM o alle dipendenze concorrenti. Le precedenti note di accesso GSC assente sono superate.
+
+## Aggiornamento precedente — fix CMP pubblicato
 
 Commit remoto `62038af` (include `0fa9e6e`), Workers Builds `fdc1d3d7-1e8d-4c49-9864-c24d33fc0150` riuscita, versione `20f2bcc3-ace2-4adb-adcb-b43bfc6fe233` al 100%. Pubblicazione 19 ottobre, 15:28:58 Europe/Rome; BUILD_ID `_ydy_dmUjew6BEDreHjAX`. Il remoto era già aggiornato e la pipeline in corso alla ripresa; nessun secondo push/deploy manuale. Smoke HTTP e percorsi browser pubblici Home/Prezzi a 1440/390 px conclusi, con contesti nuovi e caricamento CMP unico. [Rapporto del rilascio e limiti](seo/2026-10-19/CMP-RELEASE-VERIFICATION.md). Restano le misure prestazionali PV-01 e le dipendenze esterne già elencate. Documentazione di questa verifica raccolta nel commit locale richiesto, senza ulteriore push; dipendenze concorrenti preservate.
 
