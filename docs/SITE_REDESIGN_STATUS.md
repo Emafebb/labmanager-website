@@ -43,3 +43,11 @@ Controllare le sette pagine indicizzabili, le esclusioni intenzionali delle pagi
 Il dominio canonico è `https://labmanagergestionale.com`; quello storico non deve diventare un secondo sito indicizzabile. Valutare intento e differenziazione delle cinque aree senza restringere tutto alle sole pasticcerie. Verificare il comportamento dei contenuti nei dettagli HTML. Separare validità schema da idoneità ai rich result, misure di laboratorio da dati CrUX e controlli locali da indicizzazione reale.
 
 Consegnare rilievi riproducibili con URL, evidenza, priorità e intervento proposto. Non inventare ranking, volumi, traffico, CWV o accessi Search Console. Non usare il punteggio SEO o Taste come prova di rilascio.
+
+## Audit SEO prepubblicazione — 19 ottobre 2026
+
+Completato l'[audit in sola lettura del prodotto](seo/2026-10-19/FULL-AUDIT-REPORT.md), con [piano di azione proposto](seo/2026-10-19/ACTION-PLAN.md). Target: build isolata dal commit `3b9bb7c6b86f67500d2e1f0293b03060d13ca3ec`, BUILD_ID `X48ne7fzxtjRhr0basNNh`, anteprima Node `http://127.0.0.1:3049`; 296 file tracciati confrontati con Git senza differenze. La precedente anteprima 3038 non è stata modificata.
+
+Sette pagine commerciali, esclusioni, ritiri, sitemap, metadata, link/ancore, HTML/DOM, contenuti e JSON-LD verificati. Nessun blocco locale di crawl/indicizzabilità trovato. Rischio da approfondire: LCP mobile simulato Prezzi circa 7,8 s con il banner CMP come elemento misurato; Home mediana 3,64 s su tre campioni variabili. Opportunità di varianti statiche delle immagini e screenshot autentici; discrepanza semantica a bassa priorità di `SoftwareApplication.additionalProperty`. Nessuna correzione al prodotto applicata.
+
+Build Next e TypeScript eseguiti nuovamente per la candidata; i 134 test Vitest e 3 controlli Node sopra restano prove della chiusura precedente, non rieseguite per il solo audit. Screenshot/JSON/script correnti sono locali e ignorati in `output/seo-audit-2026-10-19/`. Non verificati workerd, live, ranking, indicizzazione, INP/CWV reali o cache social. Nessuna credenziale Google configurata rilevata dalle skill. Collaudo manuale ancora aperto; nessun commit, push, deploy, invio moduli o richiesta di indicizzazione eseguito in questa verifica.
