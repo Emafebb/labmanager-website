@@ -16,6 +16,22 @@ Baseline Web sul solo sito canonico, 20 settembre–17 ottobre: **7 clic, 197 im
 
 [Bozza LegalBlink](seo/2026-10-19/LEGALBLINK-SUPPORT-DRAFT.md) pronta e non inviata: PV-01 resta aperto su caricamento iniziale CMP e misure indipendenti. Restano anche screenshot autentici e scoperta delle nuove pagine. Solo documentazione aggiornata, nessun commit/push/deploy o modifica applicativa, GTM o alle dipendenze concorrenti. Le precedenti note di accesso GSC assente sono superate.
 
+## Aggiornamento precedente — GTM v9 pubblicata, prestazioni PV-01 ancora aperte
+
+Pubblicata su conferma esplicita la versione **9 «CMP: Consent Mode senza TCF»**, il 19 ottobre alle **17:46:49 Europe/Rome**. Risorsa GTM pubblica confrontata integralmente con v8: cambiano solo versione e TCF false nel tag LegalBlink 7; Consent Mode, default, Meta e altri campi invariati. [Rilascio, prove e limiti](seo/2026-10-19/PV01-GTM-V9-RELEASE.md). Accesso risolto nel profilo Chrome Labmanager; non occorre rifare il login.
+
+Smoke pubblico Prezzi/Ricette: riapertura preferenze da clic e Return, dopo reload e navigazione, pubblicità negata conservata, TCF/Vendor assente. Nessun nuovo consenso marketing o invio moduli. Il test reale non prova il comportamento del vero SDK dopo revoca; i controlli isolati precedenti restano distinti.
+
+Sei nuove prime visite mobile: Home mediana **2,78 s** (2,75–8,08), Prezzi **8,83 s** (7,87–9,18). Nessuna GVL, quattro risorse CMP 200 per misura, trasferimento LegalBlink mediano **-36,1%**; bundle banner completo invariato. **Nessun miglioramento LCP affidabile**, GUID presenti in tutti i campioni e nessun dato CWV/INP indipendente. PV-01 resta aperto sul bundle/percorso CMP e verifica indipendente; screenshot autentici e Search Console restano dipendenze esterne.
+
+BUILD_ID del sito invariato `_ydy_dmUjew6BEDreHjAX`; nessun commit/push/deploy del sito o modifica alle dipendenze concorrenti. Stato di bozza e richiesta di conferma precedenti sono superati dalla v9 pubblicata.
+
+## Aggiornamento precedente — misure PV-01 dopo il rilascio
+
+Completata la serie pubblica di **dodici campioni mobile** sulla build `_ydy_dmUjew6BEDreHjAX`, verificata prima/dopo. LCP mediano nuova/ritorno: Home **2,70/0,91 s**, Prezzi **9,10/0,84 s**. Su Prezzi nuova il banner CMP è LCP 3/3; tutte le sessanta risposte CMP raccolte sono 200, con loader/host unici e scelta conservata nei reload successivi. [Rapporto completo](seo/2026-10-19/PV01-POST-RELEASE-MEASUREMENTS.md).
+
+**Misure concluse, ottimizzazione PV-01 aperta.** Il protocollo conserva la cache al ritorno; il confronto con la precedente build locale non dimostra l'effetto prestazionale del fix. Presenti 404 GUID in dieci misure: serve conferma da ambiente indipendente senza quelle interferenze prima di attribuire guadagni. Restano screenshot autentici e accesso Search Console. Nessuna modifica al prodotto, alle dipendenze o ai servizi; documenti aggiornati senza commit/push/deploy.
+
 ## Aggiornamento precedente — fix CMP pubblicato
 
 Commit remoto `62038af` (include `0fa9e6e`), Workers Builds `fdc1d3d7-1e8d-4c49-9864-c24d33fc0150` riuscita, versione `20f2bcc3-ace2-4adb-adcb-b43bfc6fe233` al 100%. Pubblicazione 19 ottobre, 15:28:58 Europe/Rome; BUILD_ID `_ydy_dmUjew6BEDreHjAX`. Il remoto era già aggiornato e la pipeline in corso alla ripresa; nessun secondo push/deploy manuale. Smoke HTTP e percorsi browser pubblici Home/Prezzi a 1440/390 px conclusi, con contesti nuovi e caricamento CMP unico. [Rapporto del rilascio e limiti](seo/2026-10-19/CMP-RELEASE-VERIFICATION.md). Restano le misure prestazionali PV-01 e le dipendenze esterne già elencate. Documentazione di questa verifica raccolta nel commit locale richiesto, senza ulteriore push; dipendenze concorrenti preservate.
