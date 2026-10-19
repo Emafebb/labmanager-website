@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Image from "next/image";
+import EditorialImage from "@/components/EditorialImage";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -135,13 +135,14 @@ export default function WorkAreaPage({
             </p>
           </div>
           <figure>
-            <Image
+            <EditorialImage
               src={image.src}
               alt={image.alt}
-              width={1536}
-              height={1024}
-              preload
-              sizes="(max-width: 700px) 100vw, 40vw"
+              width={image.src.includes("hero-laboratorio") ? 1086 : 1536}
+              height={image.src.includes("hero-laboratorio") ? 1448 : 1024}
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 700px) calc(100vw - 40px), calc((100vw - 120px) * 0.4)"
             />
             <figcaption>Illustrazione editoriale generata con AI.</figcaption>
           </figure>

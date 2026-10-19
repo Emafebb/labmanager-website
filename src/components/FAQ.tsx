@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "A chi è rivolto LabManager?",
     answer:
-      "LabManager è pensato per laboratori artigianali alimentari, in particolare pasticcerie, panifici e gelaterie.",
+      "LabManager è pensato per i laboratori artigianali alimentari, come pasticcerie, panifici e gelaterie, e per chi lavora nella ristorazione. I consulenti possono usarlo per analizzare ricette, Food Cost e menu dei propri clienti.",
   },
   {
     question: "Qual è la differenza tra Light e Plus?",

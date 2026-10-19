@@ -12,11 +12,13 @@ const eslintConfig = defineConfig([
     ".open-next/**",
     ".wrangler/**",
     "out/**",
+    "output/**",
     "build/**",
     "next-env.d.ts",
     // Git worktrees (duplicate repo checkouts) and the nested Remotion project
     // are separate codebases and must not be linted by the website config.
     ".worktrees/**",
+    "worktrees/**",
     "my-video/**",
     "claude-seo/**",
   ]),

@@ -15,6 +15,19 @@ All four generated originals were inspected at full delivered size: subject, ana
 
 Total delivery size: 704,362 bytes (approximately 688 KiB).
 
+## Static delivery variants — SEO follow-up, 19 October 2026
+
+The approved originals above remain unchanged. Eight WebP siblings at 400/800 px were derived with installed sharp (quality 86, effort 6), preserving each source's aspect ratio without cropping; the header also uses a lossless 80×80 WebP derived from the original logo. The metadata of all three non-hero originals is 1536×1024; the hero is 1086×1448. No new generation or creative change.
+
+| Stem | 400 px bytes | 800 px bytes |
+| --- | ---: | ---: |
+| hero-laboratorio | 34,470 | 90,278 |
+| pane | 25,692 | 81,422 |
+| gelato | 19,414 | 49,880 |
+| preparazioni | 20,350 | 57,340 |
+
+Header `logo-80.webp`: 11,802 bytes; original `logo.png` retained for other uses. The shared `EditorialImage` component serves local variants on Home and the five work-area pages; no Cloudflare Images service is enabled. Generation assertions, manifests, selected downloads, screenshots and the local generator are in ignored `output/seo-followup-2026-10-19/`. Regenerate siblings when replacing an original. Evidence and limits: [SEO follow-up](../docs/seo/2026-10-19/FOLLOW-UP-REPORT.md).
+
 ## Prompts and provenance
 
 ### hero-laboratorio.webp

@@ -125,14 +125,8 @@ describe("Magazzino capability matrix v1", () => {
       (node) => node["@type"] === "SoftwareApplication",
     ) as {
       featureList?: string[];
-      additionalProperty?: Array<{ propertyID: string }>;
     };
     expect(softwareApplication.featureList).toContain(MAGAZZINO_CANONICAL_COPY);
-    expect(
-      softwareApplication.additionalProperty
-        ?.slice(1)
-        .map(({ propertyID }) => propertyID),
-    ).toEqual(EXPECTED_IDS);
   });
 
   it("removes unapproved Magazzino claims instead of implicitly remapping them", () => {

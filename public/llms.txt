@@ -1,6 +1,6 @@
 # LabManager
 
-> LabManager è il gestionale per laboratori artigianali alimentari, pensato per pasticcerie, panifici e gelaterie. Riunisce ricette e food cost, produzione ed etichette, magazzino, ordini e piano di lavoro.
+> LabManager è il gestionale per laboratori artigianali alimentari, come pasticcerie, panifici e gelaterie, e per chi lavora nella ristorazione. Riunisce ricette e food cost, produzione ed etichette, magazzino, ordini e piano di lavoro. I consulenti possono usarlo per analizzare ricette, Food Cost e menu dei propri clienti.
 
 ## Pagine SEO principali
 
@@ -18,7 +18,7 @@ Light include ricette, food cost della ricetta, bilanciamento, ingredienti, asse
 
 ## Pubblico
 
-LabManager si rivolge ai laboratori artigianali alimentari in Italia, in particolare a pasticcerie, panifici e gelaterie.
+LabManager si rivolge ai laboratori artigianali alimentari in Italia, come pasticcerie, panifici e gelaterie, e a chi lavora nella ristorazione. I consulenti possono usarlo per analizzare ricette, Food Cost e menu dei propri clienti.
 
 ## Aree di lavoro
 

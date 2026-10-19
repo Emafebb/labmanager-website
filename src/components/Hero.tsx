@@ -1,4 +1,4 @@
-import Image from "next/image";
+import EditorialImage from "@/components/EditorialImage";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getCommercialCta } from "@/data/trial-access-cta-inventory";
@@ -33,13 +33,14 @@ export default function Hero() {
           </div>
         </div>
         <figure className="hero__image">
-          <Image
+          <EditorialImage
             src="/images/editorial/hero-laboratorio.webp"
             alt="Mani al lavoro su un impasto in un laboratorio artigianale"
             width={1086}
             height={1448}
-            preload
-            sizes="(max-width: 700px) 90vw, 42vw"
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 520px) calc(100vw - 68px), (max-width: 700px) 452px, 40vw"
           />
         </figure>
       </div>

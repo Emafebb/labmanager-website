@@ -115,8 +115,10 @@ describe("prepublication cross-surface contracts", () => {
       },
     ]);
     expect(llms).toContain(
-      "gestionale per laboratori artigianali alimentari, pensato per pasticcerie, panifici e gelaterie",
+      "gestionale per laboratori artigianali alimentari, come pasticcerie, panifici e gelaterie",
     );
+    expect(llms).toContain("ristorazione");
+    expect(llms).toContain("I consulenti possono usarlo per analizzare ricette, Food Cost e menu dei propri clienti.");
     for (const pillar of [
       "### Ricette e Food Cost",
       "### Produzione e Magazzino",

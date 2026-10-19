@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import EditorialImage from "@/components/EditorialImage";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -192,13 +192,14 @@ export default function OrdersPage() {
               funzioni per 14 giorni, senza carta di credito.
             </p>
           </div>
-          <Image
+          <EditorialImage
             src="/images/editorial/preparazioni.webp"
             alt="Preparazione di pasta ripiena per il lavoro del laboratorio"
             width={1536}
             height={1024}
-            preload
-            sizes="(max-width: 700px) 100vw, 40vw"
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 700px) calc(100vw - 40px), calc((100vw - 120px) * 0.4)"
           />
         </section>
         <section

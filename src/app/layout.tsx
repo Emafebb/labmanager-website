@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import CloudflareWebAnalytics from "@/components/CloudflareWebAnalytics";
 import SiteScripts from "@/components/SiteScripts";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import {
-  MAGAZZINO_CANONICAL_COPY,
-  MAGAZZINO_CAPABILITIES,
-} from "@/data/magazzino-capability-matrix";
-import { COMMERCIAL_MANIFEST } from "@/lib/pricing";
+import { MAGAZZINO_CANONICAL_COPY } from "@/data/magazzino-capability-matrix";
 import "./globals.css";
 
 const BASE_URL = "https://labmanagergestionale.com";
@@ -91,20 +87,6 @@ export const structuredDataGraph = {
       description: PRODUCT_POSITIONING_DESCRIPTION,
       audience: PRODUCT_AUDIENCE,
       featureList: PRODUCT_FEATURES,
-      additionalProperty: [
-        {
-          "@type": "PropertyValue",
-          propertyID: "livelli-commerciali",
-          name: "Livelli commerciali",
-          value: COMMERCIAL_MANIFEST.tier.join(", "),
-        },
-        ...MAGAZZINO_CAPABILITIES.map((capability) => ({
-          "@type": "PropertyValue",
-          propertyID: capability.id,
-          name: capability.publicCopy,
-          value: "available-and-marketable",
-        })),
-      ],
       screenshot: [
         {
           "@type": "ImageObject",

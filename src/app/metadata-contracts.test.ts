@@ -16,11 +16,7 @@ import {
   metadata as newsletterMetadata,
   newsletterPageStructuredData,
 } from "@/app/newsletter/page";
-import {
-  MAGAZZINO_CANONICAL_COPY,
-  MAGAZZINO_CAPABILITIES,
-  MAGAZZINO_CLAIM_IDS,
-} from "@/data/magazzino-capability-matrix";
+import { MAGAZZINO_CANONICAL_COPY } from "@/data/magazzino-capability-matrix";
 
 const BASE_URL = "https://labmanagergestionale.com";
 const HOME_TITLE = "Gestionale per laboratori alimentari | LabManager";
@@ -172,7 +168,6 @@ describe("structured data contracts", () => {
       [
         "@id",
         "@type",
-        "additionalProperty",
         "applicationCategory",
         "applicationSubCategory",
         "audience",
@@ -208,11 +203,6 @@ describe("structured data contracts", () => {
           audience?: { audienceType?: string };
           description?: string;
           featureList?: string[];
-          additionalProperty?: Array<{
-            propertyID?: string;
-            name?: string;
-            value?: string;
-          }>;
         }
       | undefined;
 
@@ -233,21 +223,7 @@ describe("structured data contracts", () => {
     expect(softwareApplication?.featureList).toContain(
       MAGAZZINO_CANONICAL_COPY,
     );
-    expect(softwareApplication?.additionalProperty?.[0]).toMatchObject({
-      propertyID: "livelli-commerciali",
-      name: "Livelli commerciali",
-      value: "Light, Plus",
-    });
-    expect(
-      softwareApplication?.additionalProperty
-        ?.slice(1)
-        .map(({ propertyID }) => propertyID),
-    ).toEqual(MAGAZZINO_CLAIM_IDS);
-    expect(
-      softwareApplication?.additionalProperty
-        ?.slice(1)
-        .map(({ name }) => name),
-    ).toEqual(MAGAZZINO_CAPABILITIES.map(({ publicCopy }) => publicCopy));
+    expect(softwareApplication).not.toHaveProperty("additionalProperty");
   });
 
   it("serializes global and page-scoped graphs without offers or prohibited claims", () => {

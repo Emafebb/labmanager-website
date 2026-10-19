@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import EditorialImage from "@/components/EditorialImage";
 import { useState } from "react";
 
 export const LAB_WORKFLOWS = [
@@ -209,32 +209,32 @@ export default function WorkflowExplorer() {
       </p>
       <div className="craft-gallery">
         <figure data-reveal>
-          <Image
+          <EditorialImage
             src="/images/editorial/pane.webp"
             alt="Lavorazione artigianale del pane"
             width={1536}
             height={1024}
-            sizes="(max-width: 700px) 100vw, 33vw"
+            sizes="(max-width: 700px) calc(100vw - 40px), 31vw"
           />
           <figcaption>Il pane di ogni giorno.</figcaption>
         </figure>
         <figure data-reveal>
-          <Image
+          <EditorialImage
             src="/images/editorial/gelato.webp"
             alt="Gelato al pistacchio lavorato con una spatola"
             width={1536}
             height={1024}
-            sizes="(max-width: 700px) 50vw, 33vw"
+            sizes="(max-width: 700px) calc((100vw - 52px) / 2), 31vw"
           />
           <figcaption>Il gusto messo a punto.</figcaption>
         </figure>
         <figure data-reveal>
-          <Image
+          <EditorialImage
             src="/images/editorial/preparazioni.webp"
             alt="Preparazione manuale di pasta ripiena in laboratorio"
             width={1536}
             height={1024}
-            sizes="(max-width: 700px) 50vw, 33vw"
+            sizes="(max-width: 700px) calc((100vw - 52px) / 2), 31vw"
           />
           <figcaption>La cura di ogni preparazione.</figcaption>
         </figure>
