@@ -321,6 +321,10 @@ img {
   font-size: 16px;
 }
 .site-nav__features > button:hover { text-decoration: underline; text-underline-offset: 5px; }
+.site-nav a[aria-current="page"],
+.site-nav__features > button[data-active] {
+  font-weight: 700;
+}
 .site-nav__feature-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -404,65 +408,97 @@ img {
   font-size: var(--step-small);
 }
 .workflow {
-  background: var(--paper);
+  background: var(--background);
+}
+.workflow .section-intro {
+  align-items: start;
+  margin-bottom: 40px;
+}
+.workflow__selector {
+  border: 0;
+  padding: 0;
+  margin: 0 auto 24px;
+  width: 100%;
+  max-width: 800px;
+  min-width: 0;
+}
+.workflow__selector legend {
+  margin-inline: auto;
+  margin-bottom: 16px;
+  font-weight: 600;
 }
 .workflow__choices {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  margin-bottom: 32px;
+  padding: 8px;
+  background: var(--lm-salvia);
+  border-radius: 12px;
 }
-.workflow__choices button {
-  background: var(--surface);
-  padding: 16px 24px;
-  font-size: 16px;
-  min-height: 52px;
-  border: 0;
-  transition: transform 0.2s;
-}
-.workflow__choices button[aria-pressed="true"] {
-  background: var(--foreground);
-  color: var(--paper);
-}
-.workflow__choices button:hover {
-  transform: translateY(-3px);
-}
-.workflow__choices .workflow__reset {
-  background: transparent;
-  text-decoration: underline;
-}
-.workflow__story {
-  margin-top: 8px;
-  background: var(--surface);
-}
-.workflow__story summary {
+.workflow__choice {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 12px;
+  background: var(--paper);
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 56px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.workflow__choice:has(input:checked) {
+  background: var(--foreground);
+  color: var(--paper);
+}
+.workflow__choice svg {
+  flex-shrink: 0;
+  visibility: hidden;
+}
+.workflow__choice:has(input:checked) svg {
+  visibility: visible;
+}
+.workflow__choice:has(input:focus-visible) {
+  outline: 3px solid var(--foreground);
+  outline-offset: 3px;
+}
+.workflow__choice:hover {
+  transform: translateY(-2px);
+}
+.workflow__choice:active {
+  transform: translateY(1px);
+}
+.workflow__selector:has(input[value="pasticceria"]:checked) + .workflow__results > :not(#workflow-pasticceria),
+.workflow__selector:has(input[value="panificio"]:checked) + .workflow__results > :not(#workflow-panificio),
+.workflow__selector:has(input[value="gelateria"]:checked) + .workflow__results > :not(#workflow-gelateria),
+.workflow__selector:has(input[value="ristorazione"]:checked) + .workflow__results > :not(#workflow-ristorazione) {
+  display: none;
+}
+.workflow__story {
+  background: var(--paper);
+}
+.workflow__title {
   padding: 24px 28px;
+  background: var(--foreground);
+  color: var(--paper);
   font-size: var(--step-lead);
   font-weight: 600;
-  list-style: none;
+  border-radius: 12px 12px 0 0;
 }
 summary::-webkit-details-marker {
   display: none;
-}
-.workflow__story summary > span {
-  transition: transform 0.25s;
-}
-.workflow__story[open] summary > span {
-  transform: rotate(45deg);
 }
 .workflow__steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-  padding: 8px 28px 32px;
+  padding: 32px 28px;
   list-style: none;
   margin: 0;
 }
-.workflow__steps h3 {
+.workflow__steps h4 {
   font-size: var(--step-lead);
   margin-bottom: 14px;
 }
@@ -1012,25 +1048,23 @@ summary::-webkit-details-marker {
     margin: 24px auto 8px;
   }
   .workflow__choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
-  .workflow__choices button {
-    flex: 1 1 42%;
-    padding: 14px;
+  .workflow__choice {
+    gap: 6px;
+    padding: 14px 12px;
   }
-  .workflow__choices .workflow__reset {
-    flex-basis: 100%;
-  }
-  .workflow__story summary {
+  .workflow__title {
     font-size: var(--step-lead);
     padding: 22px;
   }
   .workflow__steps {
     grid-template-columns: 1fr;
     gap: 28px;
-    padding: 8px 22px 28px;
+    padding: 24px 22px;
   }
-  .workflow__steps h3 {
+  .workflow__steps h4 {
     font-size: var(--step-lead);
     margin-bottom: 12px;
   }
@@ -1837,7 +1871,7 @@ details:not([open]) > :not(summary) {
     font-size: 36px;
   }
 }
-.workflow__steps h3 .text-link {
+.workflow__steps h4 .text-link {
   font-weight: inherit;
   margin-top: 0;
   font-size: inherit;
@@ -1857,6 +1891,14 @@ details:not([open]) > :not(summary) {
   }
 }
 @media (max-width: 360px) {
+  .workflow__choice {
+    padding-inline: 6px;
+    gap: 4px;
+  }
+  .workflow__choice svg {
+    width: 16px;
+    height: 16px;
+  }
   .trial__plans {
     grid-template-columns: 1fr;
   }
@@ -1870,7 +1912,7 @@ details:not([open]) > :not(summary) {
   background: var(--paper);
   color: var(--foreground);
 }
-:is(.site-nav__access, .site-nav__toggle, .workflow__choices button, .pricing-toggle button, .order-status) {
+:is(.site-nav__access, .site-nav__toggle, .pricing-toggle button, .order-status) {
   border-radius: 8px;
 }
 :is(.workflow__story, .feature, .trial__plan, .faq-item, .contact-form, .form-success, .pricing-plan, .status-page > section) {

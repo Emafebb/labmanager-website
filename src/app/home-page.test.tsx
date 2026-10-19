@@ -45,28 +45,29 @@ describe("editorial product site", () => {
   it("filters the example by craft and opens the relevant product detail", async () => {
     const user = userEvent.setup();
     const { container } = render(<Home />);
-    await user.click(screen.getByRole("button", { name: "Gelateria" }));
-    expect(screen.getByRole("button", { name: "Gelateria" })).toHaveAttribute(
-      "aria-pressed",
-      "true",
-    );
-    expect(container.querySelector("#workflow-gelateria")).toBeVisible();
-    expect(container.querySelector("#workflow-panificio")).not.toBeVisible();
+    const choices = screen.getByRole("group", { name: "Scegli il tuo laboratorio" });
+    const pastry = within(choices).getByRole("radio", { name: "Pasticceria" });
+    const gelato = within(choices).getByRole("radio", { name: "Gelateria" });
+    expect(pastry).toBeChecked();
+    expect(gelato).not.toBeChecked();
+    await user.click(gelato);
+    expect(gelato).toBeChecked();
+    expect(pastry).not.toBeChecked();
+    expect(gelato).toHaveAttribute("aria-controls", "workflow-gelateria");
     const links = within(
       container.querySelector("#workflow-gelateria") as HTMLElement,
     ).getAllByRole("link", { name: "Bilancia" });
     await user.click(links[0]);
     expect(container.querySelector("#bilanciamento")).toHaveAttribute("open");
-    await user.click(screen.getByRole("button", { name: "Mostra tutti" }));
-    expect(container.querySelector("#workflow-panificio")).not.toHaveAttribute(
-      "hidden",
-    );
+    await user.click(pastry);
+    expect(pastry).toBeChecked();
+    expect(gelato).not.toBeChecked();
   });
   it("offers a restaurant workflow focused on dish costs and menus", async () => {
     const user = userEvent.setup();
     const { container } = render(<Home />);
-    expect(screen.queryByRole("button", { name: "Gastronomia" })).toBeNull();
-    await user.click(screen.getByRole("button", { name: "Ristorazione" }));
+    expect(screen.queryByRole("radio", { name: "Gastronomia" })).toBeNull();
+    await user.click(screen.getByRole("radio", { name: "Ristorazione" }));
     const workflow = container.querySelector("#workflow-ristorazione")!;
     expect(workflow).toBeVisible();
     expect(workflow).toHaveTextContent(/costo per porzione/i);
@@ -76,8 +77,8 @@ describe("editorial product site", () => {
     const costLink = within(workflow as HTMLElement).getByRole("link", { name: "Calcola il Food Cost" });
     await user.click(costLink);
     expect(container.querySelector("#food-cost")).toHaveAttribute("open");
-    await user.click(screen.getByRole("button", { name: "Mostra tutti" }));
-    expect(container.querySelector("#workflow-panificio")).not.toHaveAttribute("hidden");
+    await user.click(screen.getByRole("radio", { name: "Panificio" }));
+    expect(screen.getByRole("radio", { name: "Panificio" })).toBeChecked();
   });
   it("shows monthly equivalents with explicit annual billing and totals", () => {
     const { container } = render(<TrialCallout />);

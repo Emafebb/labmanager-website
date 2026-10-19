@@ -185,8 +185,21 @@ Riutilizzare classi e componenti condivisi prima di creare nuove varianti.
   del confronto prezzi si fermano sotto la navbar; l’introduzione sticky al catalogo
   Funzionalità conserva altri 36 px di distanza dalla barra. Conservare Esc e ritorno del focus.
   Applicare a tutte le pagine con `Navbar`, incluse le 404; Instagram resta autonomo.
+  Ordine desktop: Home, Funzionalità, Prezzi, Contatti; Home è anche la prima voce
+  del menu mobile. La pagina corrente usa `aria-current="page"` e peso 700;
+  sulle pagine per area anche il comando Funzionalità usa peso 700.
+  I collegamenti dell'header usano la navigazione HTML nativa. Home, logo, Prezzi
+  e pagine per area puntano a `#main-content` per raggiungere l'inizio anche al
+  clic ripetuto; Panoramica e Contatti conservano le ancore delle rispettive sezioni.
+  Indietro/Avanti mantiene il ripristino del browser, senza reset globali dello scroll.
 - **Selettore del laboratorio:** `WorkflowExplorer` collega il mestiere a esempi dichiarati.
-  La selezione è percepibile; i percorsi restano disponibili senza JavaScript.
+  Campo avorio, gruppo salvia e scelte bianche; la scelta attiva usa bosco/bianco
+  con segno di conferma. Gruppo e dicitura «Scegli il tuo laboratorio» sono centrati;
+  larghezza massima 800 px, piena larghezza sui telefoni. Pasticceria
+  è selezionata all'ingresso. I quattro controlli radio nativi mostrano un solo
+  percorso, con testata bosco e corpo bianco; sostituiscono filtro e accordion
+  duplicati. Scelta e contenuti funzionano anche senza JavaScript. Su telefono
+  i comandi formano una griglia 2 × 2 e i passaggi seguono una colonna.
   Ristorazione sostituisce Gastronomia e segue piatto, Food Cost, menu e proposta PDF.
   Le tre fotografie hanno colonne uguali e bordi allineati; i piani Light/Plus della home
   condividono le righe di titolo, descrizione e prezzo, senza sfalsamenti decorativi.

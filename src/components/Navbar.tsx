@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages -- Native header links preserve top anchors and browser scroll history. */
+
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
@@ -12,6 +14,7 @@ export default function Navbar({
 }: {
   featuresHref?: string;
 }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
@@ -55,11 +58,23 @@ export default function Navbar({
         Salta al contenuto
       </a>
       <nav className="site-nav" aria-label="Navigazione principale">
-        <Link className="wordmark" href="/" aria-label="LabManager, homepage">
+        <a
+          className="wordmark"
+          href="/#main-content"
+          aria-label="LabManager, homepage"
+        >
           <BrandLogo />
           <span>LabManager</span>
-        </Link>
+        </a>
         <ul className="site-nav__desktop" aria-label="Navigazione desktop">
+          <li>
+            <a
+              href="/#main-content"
+              aria-current={pathname === "/" ? "page" : undefined}
+            >
+              Home
+            </a>
+          </li>
           <li
             ref={featuresMenu}
             className="site-nav__features"
@@ -77,6 +92,7 @@ export default function Navbar({
               type="button"
               aria-expanded={featuresOpen}
               aria-controls="feature-menu"
+              data-active={WORK_AREAS.some((area) => area.href === pathname) || undefined}
               onClick={() => setFeaturesOpen(!featuresOpen)}
             >
               Funzionalità <ChevronDown size={16} aria-hidden="true" />
@@ -87,25 +103,34 @@ export default function Navbar({
               hidden={!featuresOpen}
             >
               <li>
-                <Link
+                <a
                   href={featuresHref}
                   onClick={() => setFeaturesOpen(false)}
                 >
                   Panoramica delle funzionalità
-                </Link>
+                </a>
               </li>
               {WORK_AREAS.map((area) => (
                 <li key={area.href}>
-                  <Link href={area.href} onClick={() => setFeaturesOpen(false)}>
+                  <a
+                    href={`${area.href}#main-content`}
+                    aria-current={pathname === area.href ? "page" : undefined}
+                    onClick={() => setFeaturesOpen(false)}
+                  >
                     {area.title}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </li>
           {links.map((link) => (
             <li key={link.href}>
-              <Link href={link.href}>{link.label}</Link>
+              <a
+                href={link.href.includes("#") ? link.href : `${link.href}#main-content`}
+                aria-current={pathname === link.href ? "page" : undefined}
+              >
+                {link.label}
+              </a>
             </li>
           ))}
         </ul>
@@ -126,22 +151,39 @@ export default function Navbar({
         <div id="mobile-menu" className="site-nav__mobile" hidden={!open}>
           <ul aria-label="Navigazione mobile">
             <li>
-              <Link href={featuresHref} onClick={() => setOpen(false)}>
+              <a
+                href="/#main-content"
+                aria-current={pathname === "/" ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a href={featuresHref} onClick={() => setOpen(false)}>
                 Funzionalità
-              </Link>
+              </a>
             </li>
             {WORK_AREAS.map((area) => (
               <li key={area.href}>
-                <Link href={area.href} onClick={() => setOpen(false)}>
+                <a
+                  href={`${area.href}#main-content`}
+                  aria-current={pathname === area.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
                   {area.title}
-                </Link>
+                </a>
               </li>
             ))}
             {links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} onClick={() => setOpen(false)}>
+                <a
+                  href={link.href.includes("#") ? link.href : `${link.href}#main-content`}
+                  aria-current={pathname === link.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

@@ -1,7 +1,7 @@
 "use client";
 
 import EditorialImage from "@/components/EditorialImage";
-import { useState } from "react";
+import { Check } from "lucide-react";
 
 export const LAB_WORKFLOWS = [
   {
@@ -115,7 +115,6 @@ export const LAB_WORKFLOWS = [
 ] as const;
 
 export default function WorkflowExplorer() {
-  const [active, setActive] = useState<string | null>(null);
   return (
     <section
       className="workflow section-space"
@@ -131,57 +130,40 @@ export default function WorkflowExplorer() {
           laboratorio e segui un esempio.
         </p>
       </div>
-      <div
-        className="workflow__choices"
-        role="group"
-        aria-label="Scegli un laboratorio"
-        data-reveal
-      >
+      <fieldset className="workflow__selector" data-reveal>
+        <legend>Scegli il tuo laboratorio</legend>
+        <div className="workflow__choices">
+          {LAB_WORKFLOWS.map((workflow) => (
+            <label key={workflow.id} className="workflow__choice">
+              <input
+                type="radio"
+                name="laboratorio"
+                value={workflow.id}
+                defaultChecked={workflow.id === "pasticceria"}
+                aria-controls={`workflow-${workflow.id}`}
+                className="sr-only"
+              />
+              {workflow.name}
+              <Check size={20} aria-hidden="true" />
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <div className="workflow__results">
         {LAB_WORKFLOWS.map((workflow) => (
-          <button
-            key={workflow.id}
-            type="button"
-            aria-pressed={active === workflow.id}
-            onClick={() => {
-              setActive(workflow.id);
-              const panel = document.getElementById(`workflow-${workflow.id}`);
-              if (panel instanceof HTMLDetailsElement) panel.open = true;
-            }}
-            aria-controls={`workflow-${workflow.id}`}
-          >
-            {workflow.name}
-          </button>
-        ))}
-        {active && (
-          <button
-            type="button"
-            className="workflow__reset"
-            onClick={() => setActive(null)}
-          >
-            Mostra tutti
-          </button>
-        )}
-      </div>
-      <div className="workflow__results" aria-live="polite">
-        {LAB_WORKFLOWS.map((workflow) => (
-          <details
+          <article
             key={workflow.id}
             id={`workflow-${workflow.id}`}
             className="workflow__story"
-            open={
-              active === workflow.id ||
-              (active === null && workflow.id === "pasticceria")
-            }
-            hidden={active !== null && active !== workflow.id}
+            aria-labelledby={`workflow-title-${workflow.id}`}
           >
-            <summary>
+            <h3 className="workflow__title" id={`workflow-title-${workflow.id}`}>
               {workflow.product}
-              <span aria-hidden="true">+</span>
-            </summary>
+            </h3>
             <ol className="workflow__steps">
               {workflow.steps.map((step) => (
                 <li key={step.title}>
-                  <h3>
+                  <h4>
                     <a
                       href={step.href}
                       className="text-link"
@@ -195,12 +177,12 @@ export default function WorkflowExplorer() {
                     >
                       {step.title}
                     </a>
-                  </h3>
+                  </h4>
                   <p>{step.text}</p>
                 </li>
               ))}
             </ol>
-          </details>
+          </article>
         ))}
       </div>
       <p className="small-note">

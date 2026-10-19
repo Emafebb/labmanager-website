@@ -156,7 +156,7 @@ describe("work area pages", () => {
     for (const { href, title } of pages)
       expect(nav.getByRole("link", { name: title })).toHaveAttribute(
         "href",
-        href,
+        `${href}#main-content`,
       );
     await user.keyboard("{Escape}");
     expect(button).toHaveFocus();

@@ -1,5 +1,55 @@
 # LabManager — rifacimento, 19 ottobre 2026
 
+## Chiusura locale di questa sessione
+
+Il committente ha richiesto il commit locale degli interventi su selettore laboratorio,
+centratura, voce Home e scorrimento dell'header, con test e documentazione collegati.
+Dipendenze e documenti SEO concorrenti sono esclusi. Nessun push o deploy richiesto.
+Le indicazioni «nessun commit» nelle fasi seguenti descrivono lo stato precedente
+a questa chiusura; il commit si identifica nella cronologia Git.
+
+## Header — ritorno all'inizio delle pagine
+
+Riprodotto il difetto segnalato: da 800 px, Home/Prezzi potevano fermarsi a 696 px;
+clic sulla pagina già aperta lasciava la posizione invariata. I link dell'header
+usano ora navigazione HTML nativa e destinazioni `#main-content` per Home, logo,
+Prezzi e singole aree. Panoramica e Contatti conservano le rispettive sezioni.
+Indietro/Avanti conserva il ripristino del browser. Nessun reset globale dello scroll.
+
+Verifica: 24 casi Home/Prezzi desktop/mobile, cinque aree, ancore, cronologia e URL
+con query; 136 test Vitest + 3 Node, lint mirato e build passati.
+Build locale `EzKKQKyfAnxmAkGpm2PSK`, anteprima 3052; nessun commit/push/deploy.
+[Causa, scelta tecnica e limiti](workflow-review-2026-10-19/navigation-scroll.md).
+
+## Header — voce Home
+
+Su approvazione del committente, Home è la prima voce su desktop e nel menu mobile.
+La pagina corrente usa peso 700 e `aria-current="page"`; nelle aree anche il comando
+Funzionalità è evidenziato. Conservati logo, accesso, ancore e comportamento dei menu.
+Verifica: 136 test Vitest + 3 Node, lint, build e browser a 1440/901/900/390/320;
+ritorno a Home, chiusura menu mobile e cambio pagina attiva verificati.
+Build locale `8XJ-zm2-jTBrAIGJHujz4`, anteprima 3052. Nessun commit/push/deploy.
+Dettagli in [navbar-home.md](workflow-review-2026-10-19/navbar-home.md).
+
+## Selettore laboratorio — aggiornamento successivo
+
+Su approvazione della review visiva, «Il tuo lavoro, qui dentro» usa campo avorio,
+selettori bianchi raccolti su salvia e scelta attiva bosco/bianco con spunta.
+Su richiesta successiva, gruppo e dicitura sono centrati, entro 800 px.
+Pasticceria è selezionata all'ingresso; un solo percorso con testata bosco e corpo
+bianco sostituisce la combinazione filtro/accordion. Radio nativi e CSS mantengono
+la scelta funzionante anche senza JavaScript. Testi e destinazioni conservati;
+nessun nuovo asset o dipendenza. Guida Traccia e sidecar aggiornati insieme.
+
+Verifica nuova: 133 test Vitest + 3 controlli commerciali, lint, TypeScript,
+build produzione e browser 1440/768/390/320; tastiera, 16 collegamenti per viewport,
+selezione senza JavaScript e reduced motion a 1440/390. Taste finale 0 FAIL / 3 WARN,
+invariati rispetto alla baseline con popup chiusi. [Evidenze e limiti](workflow-review-2026-10-19/verification.md).
+Build locale dopo centratura `XHES7vKuh15rK0N24Gx_Z`, anteprima porta 3052.
+Centratura verificata nel browser a 1440/768/390/320, senza overflow.
+Nessun commit, push o deploy.
+Le sezioni successive conservano la cronologia precedente.
+
 ## Chiusura documentale e prossima verifica SEO
 
 Il committente ha richiesto il commit locale di tutto il lavoro sul sito e svolgerà personalmente il collaudo manuale completo. L’accettazione manuale resta da raccogliere. Stato durevole in [../docs/SITE_REDESIGN_STATUS.md](../docs/SITE_REDESIGN_STATUS.md); brief e report testuali sono ora versionati, mentre screenshot e dati QA restano locali. Prossima sessione: verifica SEO della nuova build, distinta dal dominio live. Handoff portabile nella cartella temporanea del sistema; nessuna autorizzazione a push o deploy.

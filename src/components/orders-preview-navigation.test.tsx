@@ -1,14 +1,46 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton, { WHATSAPP_URL } from "@/components/WhatsAppButton";
 import { TRIAL_ACCESS_APP_HREF } from "@/data/trial-access-cta-inventory";
 
-vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
+const route = vi.hoisted(() => ({ pathname: "/" }));
+vi.mock("next/navigation", () => ({ usePathname: () => route.pathname }));
+beforeEach(() => { route.pathname = "/"; });
 
 describe("site navigation", () => {
+  it("offers Home first on desktop and mobile and closes the mobile menu on return", async () => {
+    const user = userEvent.setup();
+    render(<Navbar />);
+    const desktop = within(screen.getByRole("list", { name: "Navigazione desktop" }));
+    const home = desktop.getAllByRole("link")[0];
+    expect(home).toHaveAccessibleName("Home");
+    expect(home).toHaveAttribute("href", "/#main-content");
+    expect(home).toHaveAttribute("aria-current", "page");
+    await user.click(screen.getByRole("button", { name: "Apri menu" }));
+    const mobile = within(screen.getByRole("list", { name: "Navigazione mobile" }));
+    const mobileHome = mobile.getAllByRole("link")[0];
+    expect(mobileHome).toHaveAccessibleName("Home");
+    expect(mobileHome).toHaveAttribute("aria-current", "page");
+    await user.click(mobileHome);
+    expect(screen.getByRole("button", { name: "Apri menu" })).toHaveAttribute("aria-expanded", "false");
+  });
+  it.each([
+    ["/pricing", "Prezzi"],
+    ["/ricette-food-cost", "Ricette e Food Cost"],
+  ])("marks the current page on %s and updates after returning home", (pathname, label) => {
+    route.pathname = pathname;
+    const { rerender } = render(<Navbar />);
+    const desktop = within(screen.getByRole("list", { name: "Navigazione desktop" }));
+    expect(desktop.getByRole("link", { name: label, hidden: true })).toHaveAttribute("aria-current", "page");
+    expect(desktop.getByRole("link", { name: "Home" })).not.toHaveAttribute("aria-current");
+    route.pathname = "/";
+    rerender(<Navbar />);
+    expect(desktop.getByRole("link", { name: "Home" })).toHaveAttribute("aria-current", "page");
+    expect(desktop.getByRole("link", { name: label, hidden: true })).not.toHaveAttribute("aria-current");
+  });
   it("keeps the closed mobile menu out of the focus order and supports Escape", async () => {
     const user = userEvent.setup();
     render(<Navbar />);

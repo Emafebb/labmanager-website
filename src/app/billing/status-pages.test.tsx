@@ -51,11 +51,11 @@ describe("billing status pages", () => {
     expect(
       navigation
         .getAllByRole("link")
-        .find((link) => link.getAttribute("href") === "/"),
+        .find((link) => link.getAttribute("href") === "/#main-content"),
     ).toBeDefined();
     expect(
       navigation.getAllByRole("link", { name: "Prezzi" })[0],
-    ).toHaveAttribute("href", "/pricing");
+    ).toHaveAttribute("href", "/pricing#main-content");
   });
 
   it("exports cancel metadata as non-indexable", () => {
@@ -99,11 +99,11 @@ describe("billing status pages", () => {
     expect(
       navigation
         .getAllByRole("link")
-        .find((link) => link.getAttribute("href") === "/"),
+        .find((link) => link.getAttribute("href") === "/#main-content"),
     ).toBeDefined();
     expect(
       navigation.getAllByRole("link", { name: "Prezzi" })[0],
-    ).toHaveAttribute("href", "/pricing");
+    ).toHaveAttribute("href", "/pricing#main-content");
     expect(
       screen.getByRole("contentinfo", { name: "Informazioni LabManager" }),
     ).toBeInTheDocument();
@@ -149,11 +149,11 @@ describe("billing status pages", () => {
     expect(
       navigation
         .getAllByRole("link")
-        .find((link) => link.getAttribute("href") === "/"),
+        .find((link) => link.getAttribute("href") === "/#main-content"),
     ).toBeDefined();
     expect(
       navigation.getAllByRole("link", { name: "Prezzi" })[0],
-    ).toHaveAttribute("href", "/pricing");
+    ).toHaveAttribute("href", "/pricing#main-content");
     expect(
       screen.getByRole("contentinfo", { name: "Informazioni LabManager" }),
     ).toBeInTheDocument();

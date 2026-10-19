@@ -165,10 +165,13 @@
     ],
     "rules": [
       "Ristorazione segue piatto, Food Cost, menu e proposta PDF. Fotografie in tre colonne uguali e piani home Light/Plus allineati, con equivalente mensile dell’annuale e totale annuale esplicito. Ristorazione include i consulenti; dettagli HTML per i sette strumenti e confronto prezzi mobile con nome sopra ai valori Light/Plus.",
+      "Selettore laboratorio su campo avorio: gruppo salvia, scelte bianche e scelta attiva bosco/bianco con conferma. Gruppo e dicitura centrati entro 800 px, piena larghezza sui telefoni. Pasticceria selezionata all’ingresso; quattro radio nativi controllano un solo percorso con testata bosco e corpo bianco, anche senza JavaScript. Su telefono comandi 2 × 2 e passaggi in colonna; filtro e accordion duplicati rimossi.",
       "Footer entro 1280px: firma in Fraunces fino a 64px, frase e dati a sinistra; prodotto e contatti a destra.",
       "Fascia comune per privacy, cookie e nota AI con 240px liberi a destra per i comandi fissi; firma senza sottolineatura hover e con focus visibile.",
       "Fino a 900px il footer ha margini simmetrici: solo frase, dati societari e nota AI riservano 64px a destra, con 112px di spazio finale per i comandi. Fino a 700px firma, navigazione e dati in sequenza, prodotto a tutta larghezza e contatti su due colonne.",
-      "WhatsApp fisso è montato una sola volta nel layout condiviso sulle pagine pubbliche e sulle tre pagine billing; Instagram e pagine non trovate restano escluse. Si nasconde quando il collegamento WhatsApp del footer è visibile e ricompare quando quel collegamento esce dalla vista, anche dopo la navigazione fra pagine. Fino a 700px etichetta visibile WhatsApp e nome accessibile completo Scrivici su WhatsApp."
+      "WhatsApp fisso è montato una sola volta nel layout condiviso sulle pagine pubbliche e sulle tre pagine billing; Instagram e pagine non trovate restano escluse. Si nasconde quando il collegamento WhatsApp del footer è visibile e ricompare quando quel collegamento esce dalla vista, anche dopo la navigazione fra pagine. Fino a 700px etichetta visibile WhatsApp e nome accessibile completo Scrivici su WhatsApp.",
+      "Header: Home come prima voce su desktop e mobile. Ordine desktop Home, Funzionalità, Prezzi, Contatti. Pagina corrente con aria-current page e peso 700; sulle pagine per area anche il comando Funzionalità usa peso 700.",
+      "Header con collegamenti HTML nativi: Home, logo, Prezzi e pagine per area raggiungono #main-content anche al clic ripetuto. Panoramica e Contatti conservano le ancore di sezione. Nessun reset globale dello scroll; Indietro/Avanti ripristina la posizione del browser."
     ],
     "dos": [
       "Do mantenere Traccia e i font locali nelle nuove superfici.",
