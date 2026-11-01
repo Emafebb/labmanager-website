@@ -1,6 +1,33 @@
-# Stato del sito LabManager — 19 ottobre 2026
+# Stato del sito LabManager — 1 novembre 2026
 
-## Stato corrente — sitemap riletta con sette URL, indicizzazione richiesta
+## Stato corrente — step 1 concluso, build pubblica verificata
+
+Verifica del 1 novembre 2026, Europe/Rome. Il [nuovo handoff](HANDOFF_2026-11-01.md) segna lo step 1 come completato e gli step 2–4 come non avviati. Le evidenze seguenti sono uno snapshot di questa verifica; alla ripresa controllare se branch, checkout o release sono cambiati.
+
+| Stato | Evidenza |
+| --- | --- |
+| Implementato | Selettore con radio nativi e Pasticceria iniziale, voce Home e navigazione HTML nativa dell'header, aggiornamento dipendenze presenti nel codice. |
+| Testato il 1 novembre | 30 test Vitest mirati su quattro file, ESLint dei file coinvolti e diff-check passati. Verifiche browser pubbliche del selettore e smoke HTTP delle sette pagine commerciali. |
+| Committato | `455b789c7a1e5f2cbd0cd73ec1006e98ee97b4f6` — workflow e navigazione; `60a5c6fb09660244f1bac84b973b7040b3e85b84` — dipendenze. |
+| Pubblicato osservato | `https://labmanagergestionale.com`: sette pagine HTTP 200 con BUILD_ID `ydLe-Y2_BNt3TItJ-pPb9`; Worker `labmanager-website`, versione `9ba54767-86e2-4f54-b212-814a513152a9` al 100%. |
+
+**Review:** confronto congelato `git diff c13f887ee1248c665e5f950a87fbca03096a2a41...60a5c6fb09660244f1bac84b973b7040b3e85b84`, branch `master`; base e merge-base coincidenti. `code-review` con due agenti separati: zero violazioni documentate confermate nell'asse Standards e zero discrepanze certe nell'asse decisioni approvate. Non emerge una Spec ACT dedicata a questi ultimi interventi: fonti sono DESIGN.md, brief e rapporti del 19 ottobre. L'evidenziazione di Funzionalità nel menu mobile resta un'ambiguità della guida, senza requisito certamente violato. Nessun fix applicato.
+
+**Verifiche nuove:** `npm exec -- vitest run src/app/home-page.test.tsx src/components/orders-preview-navigation.test.tsx src/app/work-areas.test.tsx src/app/billing/status-pages.test.tsx` — 4 file e 30 test passati. ESLint sugli stessi test e su `Navbar.tsx`/`WorkflowExplorer.tsx`, più `git diff --check c13f887...60a5c6f`, terminati senza errori. Gli avvisi jsdom sulla navigazione Document e Node su localStorage non sono test falliti e non provano il comportamento della navigazione reale.
+
+Nel browser pubblico misurate le larghezze 320/390/700/701/720/740/768/900/901/1440 px: nessun overflow orizzontale della pagina o dei selettori, né sovrapposizione fra testo e spunta. A 701 px clic su Ristorazione riuscito, con un solo percorso visibile. Il sospetto restringimento fra 701 e 740 px non è un rilievo confermato. Nessuna nuova build, suite completa, verifica Safari o su dispositivi fisici.
+
+**Prove locali pregresse, distinte:** [selettore](../.taste-skill/workflow-review-2026-10-19/verification.md), [voce Home](../.taste-skill/workflow-review-2026-10-19/navbar-home.md) e [scroll/navigazione](../.taste-skill/workflow-review-2026-10-19/navigation-scroll.md). Il rapporto finale di navigazione del 19 ottobre attesta 136 test Vitest su 21 file, 3 controlli commerciali, build Next 16.4.2 con TypeScript, lint mirato e prove Chrome, BUILD_ID locale `EzKKQKyfAnxmAkGpm2PSK`. Non sono nuove esecuzioni del 1 novembre. Lockfile e installazione osservati coincidono su Next 16.4.2, OpenNext 1.20.12, Wrangler 4.151.2 e Tailwind 4.3.3; nessun nuovo audit dipendenze eseguito.
+
+**Release effettiva e limite di tracciabilità:** accesso Cloudflare in lettura riuscito nell'account LabManager. Il dominio canonico risulta abilitato e associato al Worker `labmanager-website`. Deployment attivo `45cecdb4-0e1d-4200-84ac-9ad4d7a3c518`, versione `9ba54767-86e2-4f54-b212-814a513152a9` al 100%, pubblicata il 19 ottobre alle **23:27:25 Europe/Rome**. La pipeline precedente `517fe3cc-bb92-4010-81a3-dd4e120ab7cd`, conclusa con successo alle 23:21:09, è collegata a HEAD `60a5c6f` e alla versione `9c2970d7-9278-47fb-bce3-9916bcece9e1`. Il successivo deploy Wrangler attivo non dichiara un hash Git: manca l'attestazione diretta del commit per quella versione.
+
+Home, Prezzi e cinque aree rispondono 200, espongono tutte BUILD_ID `ydLe-Y2_BNt3TItJ-pPb9` e contengono `main-content`; title coerenti. BUILD_ID locale e pubblico coincidenti; markup Home esclusi i blocchi di streaming RSC e CSS confrontati senza differenze. Questo conferma la corrispondenza osservata con l'artefatto locale, mantenendo aperta l'attribuzione completa del commit alla release attiva. Un deploy precedente o un endpoint workers.dev, da soli, non sarebbero questa prova.
+
+**Ripresa:** attendere conferma esplicita per lo step 2, prestazioni mobile e banner LegalBlink, usando la build identificata qui dopo averne ricontrollato l'identità. PV-01 resta aperto; stato del fornitore, Search Console e materiali autentici non sono stati aggiornati in questo step. Il presente aggiornamento riguarda solo documentazione: nessuna modifica applicativa, commit, push, deploy, invio esterno o modifica alla configurazione dei servizi. Il PNG concorrente è preservato.
+
+Le sezioni successive conservano le fasi storiche del 19 ottobre: build, conteggi e diciture «nessun commit», «collaudo aperto» o «prossima verifica» si riferiscono alle rispettive fasi e non sostituiscono questa sintesi.
+
+## Aggiornamento precedente — sitemap riletta con sette URL, indicizzazione richiesta
 
 Il committente conferma le attività di ricontrollo impostate; non crearne duplicati. Configurazione non verificata dall'agente. Prossimo passo: invio della bozza al supporto LegalBlink e verifica prestazionale indipendente.
 
